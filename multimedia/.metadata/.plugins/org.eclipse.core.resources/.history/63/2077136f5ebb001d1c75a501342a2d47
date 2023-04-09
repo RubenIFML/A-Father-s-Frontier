@@ -1,0 +1,198 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import elements.Botella;
+import elements.BotonRojo;
+import elements.BotonVerde;
+import elements.Lluvia;
+import elements.Maletin;
+import elements.Mesa;
+import elements.Pasaporte;
+import elements.Persona1;
+import elements.Pistola;
+import elements.Reglas;
+import elements.Reloj;
+import elements.Texto;
+import game.Demo;
+import game.Parametros;
+import managers.ResourceManager;
+
+public class GameScreen extends BScreen{
+
+Stage mainStage;
+OrthographicCamera camara;
+private TiledMap map;
+private OrthogonalTiledMapRenderer renderer;
+public float mouseX;
+public float mouseY;
+private Vector3 m3d;
+float tiempo = 0f;
+private Texture backgroundTexture;
+private Actor backgroundActor;
+private Music musica;
+private Music musica2;
+private Texto texto;
+private Lluvia lluvia;
+private Persona1 persona1;
+private Mesa mesa;
+private BotonRojo botonRojo;
+private BotonVerde botonVerde;
+private Maletin maletin;
+private Reglas reglas;
+private Reloj reloj;
+private Pasaporte pasaporte1;
+
+private boolean apareceP1=false;
+private boolean equipajeP1=false;
+
+	public GameScreen(Demo game) {
+		
+		//Básicos
+		
+		super(game);;
+		
+		mainStage=new Stage();
+		
+		Parametros.controlesActivos=true;
+		
+		backgroundTexture = new Texture(Gdx.files.internal("maps/images/PapersBackgraundTsx.png"));
+		backgroundActor = new Image(backgroundTexture);
+		
+		musica = Gdx.audio.newMusic(Gdx.files.internal("audio/music/maletin_por_favor.mp3"));
+		musica.play();
+        musica.setVolume(0.3f);
+		musica.setLooping(true);
+
+		musica2 = Gdx.audio.newMusic(Gdx.files.internal("audio/music/lluvia.mp3"));
+		musica2.play();
+        musica2.setVolume(0.4f);
+		musica2.setLooping(true);
+		
+		m3d = new Vector3();
+	    
+		map=ResourceManager.getMap("maps/PapersBackground.tmx");
+		
+		renderer=new OrthogonalTiledMapRenderer(map,mainStage.getBatch());
+		
+		camara=(OrthographicCamera) mainStage.getCamera();
+		camara.setToOrtho(false, Parametros.getAnchoPantalla()*Parametros.zoom, Parametros.getAltoPantalla()*Parametros.zoom);
+		renderer.setView(camara);
+
+		mainStage.addActor(backgroundActor);
+		backgroundActor.setSize(240,180);
+
+		lluvia = new Lluvia();
+		mainStage.addActor(lluvia);
+		
+		//Elementos imprescindibles
+		
+		persona1 = new Persona1();
+		mainStage.addActor(persona1);
+		persona1.hide();
+		
+		/*Persona2 persona2 = new Persona2();
+		mainStage.addActor(persona2);
+		persona2.hide;
+		
+		Persona3 persona3 = new Persona3();
+		mainStage.addActor(persona3);
+		persona3.hide;*/
+		
+		mesa = new Mesa();
+		mainStage.addActor(mesa);
+		botonRojo = new BotonRojo();
+		mainStage.addActor(botonRojo);
+		botonVerde = new BotonVerde();
+		mainStage.addActor(botonVerde);
+		
+		maletin = new Maletin();
+		mainStage.addActor(maletin);
+		maletin.hide();
+		
+		reglas = new Reglas();
+		mainStage.addActor(reglas);
+		
+		//Elementos que aparecen y desaparecen
+		
+		/*
+		Botella botella = new Botella();
+		mainStage.addActor(botella);
+		Pistola pistola = new Pistola();
+		mainStage.addActor(pistola);
+		*/		
+		
+		//Reloj
+		
+		reloj = new Reloj();
+		mainStage.addActor(reloj);
+
+		texto = new Texto("Que pase el siguiente.\n"
+							+ "(Pulsa ENTER)", 10, 154);
+		mainStage.addActor(texto);
+	       
+		Parametros.quitarTexto=true;
+		apareceP1=true;
+		
+		}
+	
+	@Override
+	public void render(float delta) {
+		// TODO Auto-generated method stub
+		super.render(delta);
+	    mainStage.act();
+	    mainStage.draw();
+	    //uiStage.act();
+	    
+	    m3d.x = Gdx.input.getX();
+	    m3d.y = Gdx.input.getY();
+	    m3d.z = 0;
+	    
+	    camara.unproject(m3d);
+	    
+	    mouseX = m3d.x;
+	    mouseY = m3d.y;
+	    
+	    //actualizarInterfaz();
+	    renderer.setView(camara);
+	    renderer.render();
+	       mainStage.draw();
+	       //uiStage.draw();
+	       
+		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true && Parametros.quitarTexto==true && apareceP1==true) {
+			texto.remove();
+			Parametros.quitarTexto=false;
+			persona1.show();
+			texto = new Texto("Pasaporte y equipaje,\n"
+							+ "por favor.", 10, 154);
+			mainStage.addActor(texto);
+			equipajeP1=true;
+			apareceP1=false;
+			
+		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true && Parametros.quitarTexto==true && equipajeP1 == true) {
+			texto.remove();
+			texto = new Texto("Comprobaré las reglas\n"
+					+ "y actuaré en consecuencia.", 10, 154);
+			mainStage.addActor(texto);
+			maletin.show();
+			pasaporte1 = new Pasaporte();
+			mainStage.addActor(pasaporte1);
+		}
+	}
+	
+	public void espera(float espera) {
+		tiempo += Gdx.graphics.getDeltaTime();
+		if (tiempo > espera) {
+		    tiempo = 0;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
+org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=11
+org.eclipse.jdt.core.compiler.compliance=11
+org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+org.eclipse.jdt.core.compiler.release=enabled
+org.eclipse.jdt.core.compiler.source=11
+org.eclipse.jdt.core.userLibrary.Libgdx=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="/Demo22/libs/gdx.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-backend-lwjgl.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-backend-lwjgl-natives.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-freetype.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-freetype-natives.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-natives.jar"/>\r\n\t<archive path\="/Demo22/libs/gdx-sources.jar"/>\r\n</userlibrary>\r\n
