@@ -30,23 +30,41 @@ public class FS1_3 extends Actor {
         super.act(delta);
         
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true && Parametros.analizar==true) {
+        	
+        	//Texto
         	texto = new Texto("(A pesar de las pintas\n"
         					+ "resultó ser legal)", 7, 154);
         	mainStage.addActor(texto);
-        	Parametros.analizar=false;
-        	Parametros.analizadoP3=true;
+        	
+        	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
+            
+            //Estadísticas
+            Parametros.dinero+=30;
             FrontierScreen.reloj.modTiempo(20);
-
+            
+            //Variables
+        	Parametros.analizar=false;
+        	Parametros.analizado3=true;
         }
+        
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
+        	
+        	//Texto
         	texto = new Texto("(No debí juzgarlo\n"
 							+ "por su apariencia...)", 7, 154);
         	mainStage.addActor(texto);
-        	Parametros.analizar=false;
-        	Parametros.analizadoP3=true;
+        	
+        	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
-            FrontierScreen.reloj.modTiempo(-80);
+            
+            //Estadísticas
+            Parametros.dinero-=30;
+            FrontierScreen.reloj.modTiempo(-10);
+            
+            //Variables
+        	Parametros.analizar=false;
+        	Parametros.analizado3=true;
         }
         
         if (elapsedTime < 1) {

@@ -32,10 +32,10 @@ private Texture background;
 	    
 	    batch = new SpriteBatch();
 	    background = new Texture("Menu/titleBackground.jpg");
-	    
+		
 		tabla = new Table();
 		tabla.setFillParent(true);
-
+		
 		tabla.setPosition(0, -170);	
 		tabla.pad(60);
 		

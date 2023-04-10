@@ -17,17 +17,17 @@ public class Parametros {
  //Estadísticas
  public static int dia = 1;
  public static int segundos = 100;
- public static int hambre = 10;
- public static int dinero = 50;
- public static boolean ganas = false;
+ public static int dineroAnterior = 0;
+ public static int dinero = 10;
  
  //Variables
  public static boolean controlesActivos = false;
  public static boolean quitarTexto = false;
  public static boolean analizar = false;
- public static boolean analizadoP1 = false;
- public static boolean analizadoP2 = false;
- public static boolean analizadoP3 = false;
+ public static boolean analizado1 = false;
+ public static boolean analizado2 = false;
+ public static boolean analizado3 = false;
+ public static boolean analizado4 = false;
  
  
 public static int getAnchoPantalla() {

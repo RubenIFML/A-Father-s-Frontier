@@ -12,6 +12,7 @@ import game.Parametros;
 import managers.AudioManager;
 
 public class Objeto extends Actor {
+    private static Objeto objetoArrastrado = null; // Objeto que está siendo arrastrado actualmente
     private boolean isDragged = false;
     private float lastX, lastY;
     private Texture reglas;
@@ -43,14 +44,21 @@ public class Objeto extends Actor {
         Vector2 stageCoords = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true) {
-            if (getRectangle().contains(stageCoords.x, stageCoords.y)) { // Usar las coordenadas de espacio de escena
+            if (getRectangle().contains(stageCoords.x, stageCoords.y) && objetoArrastrado == null) { // Verificar si otro objeto está siendo arrastrado
+                objetoArrastrado = this; // Establecer este objeto como el objeto que está siendo arrastrado
                 isDragged = true;
                 if (suena == true) {
                     AudioManager.playSound("01-FS/Audio/sounds/" + this.sonido);
                     suena = false;
                 }
             }
-        } else {
+        }
+        
+        else {
+            if (objetoArrastrado == this) {
+                objetoArrastrado = null; // Restablecer el objeto arrastrado a nulo
+            }
+            
             isDragged = false;
             suena = true;
         }

@@ -26,33 +26,81 @@ public final class ResourceManager {
 	public static Music musicaTitulo;
 	
 	public static void loadAllResources(){
-		//mapas
+		
+		//Mapas
 		assets.setLoader(TiledMap.class, new TmxMapLoader());
 		assets.load("Mapas/PapersBackground.tmx", TiledMap.class);
 		
-        //elementos de mapa
+        //Menú
 		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
-        assets.load("01-FS/Objetos/maletin.png", Texture.class);
+        assets.load("Menu/titleBackground.jpg", Texture.class);
+        assets.load("Menu/blackBackground.png", Texture.class);
         assets.load("Menu/menuBoton.png", Texture.class);
+        assets.load("Menu/lluvia.png", Texture.class);
+        
+        //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
         assets.load("01-FS/Objetos/pasaporte.1_2.png", Texture.class);
         assets.load("01-FS/Objetos/pasaporte.1_3.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.1_4.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.2_1.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.2_2.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.2_3.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.2_4.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.3_1.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.3_2.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.3_3.png", Texture.class);
+        assets.load("01-FS/Objetos/pasaporte.3_4.png", Texture.class);
+        
+        //Reglas
         assets.load("01-FS/Objetos/reglas.1_0.png", Texture.class);
+        assets.load("01-FS/Objetos/reglas.2_0.png", Texture.class);
+        assets.load("01-FS/Objetos/reglas.2_1.png", Texture.class);
+        assets.load("01-FS/Objetos/reglas.3_0.png", Texture.class);
+        assets.load("01-FS/Objetos/reglas.3_1.png", Texture.class);
+        assets.load("01-FS/Objetos/reglas.3_2.png", Texture.class);
+        
+        //Permisos
+        assets.load("01-FS/Objetos/permiso.3_1.png", Texture.class);
+        assets.load("01-FS/Objetos/permiso.3_2.png", Texture.class);
+        assets.load("01-FS/Objetos/permiso.3_4.png", Texture.class);
+        
+        //Objetos estáticos
         assets.load("01-FS/Objetos/botonRojo.png", Texture.class);
         assets.load("01-FS/Objetos/botonRojo_Pressed.png", Texture.class);
         assets.load("01-FS/Objetos/botonVerde.png", Texture.class);
         assets.load("01-FS/Objetos/botonVerde_Pressed.png", Texture.class);
         assets.load("01-FS/Objetos/mesa.png", Texture.class);
+        assets.load("01-FS/Objetos/maletin.png", Texture.class);
+        
+        //Objetos
         assets.load("01-FS/Objetos/objeto.pistola.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.botella.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.carta.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.duxer.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.hucha.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.llave.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.pintalabios.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.platano.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.sombrero.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.sopa.png", Texture.class);
+        
+        //Personajes
         assets.load("01-FS/Personajes/FS.1_1.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_2.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_3.png", Texture.class);
-        assets.load("Menu/titleBackground.jpg", Texture.class);
-        assets.load("Menu/blackBackground.png", Texture.class);
-        assets.load("Menu/lluvia.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.1_4.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.2_1.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.2_2.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.2_3.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.2_4.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.3_1.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.3_2.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.3_3.png", Texture.class);
+        assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
         
-        //Audio
+        //Sonidos
         assets.load("01-FS/Audio/sounds/boton.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/correcto.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/incorrecto.mp3", Sound.class);
@@ -62,6 +110,8 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/botella.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/pistola.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/maletin.mp3", Sound.class);
+        
+        //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.mp3", Music.class);
         assets.load("01-FS/Audio/music/final.mp3", Music.class);
         assets.load("01-FS/Audio/music/lluvia.mp3", Music.class);

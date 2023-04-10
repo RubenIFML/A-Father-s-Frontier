@@ -21,7 +21,7 @@ public class FS1_2 extends Actor {
 	
     public FS1_2(Stage mainStage) {
     	this.mainStage=mainStage;
-    	setBounds(57, 73, 120, 100); // Tamaï¿½o inicial del actor
+    	setBounds(57, 73, 120, 100); // Tamaño inicial del actor
         persona2 = new Texture("01-FS/Personajes/FS.1_2.png");
     }
 
@@ -30,23 +30,41 @@ public class FS1_2 extends Actor {
         super.act(delta);
         
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true && Parametros.analizar==true) {
+        	
+        	//Texto
         	texto = new Texto("(Mierda, pensé que lo\n"
         					+ "tenía controlado)", 7, 154);
         	mainStage.addActor(texto);
-        	Parametros.analizar=false;
-        	Parametros.analizadoP2=true;
+        	
+        	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
-            FrontierScreen.reloj.modTiempo(-80);
-
+            
+            //Estadísticas
+            Parametros.dinero-=30;
+            FrontierScreen.reloj.modTiempo(-10);
+            
+            //Variables
+        	Parametros.analizar=false;
+        	Parametros.analizado2=true;
         }
+        
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
+        	
+        	//Texto
         	texto = new Texto("(Sus sucios trucos no\n"
         					+ "son efectivos)", 7, 154);
         	mainStage.addActor(texto);
-        	Parametros.analizar=false;
-        	Parametros.analizadoP2=true;
+        	
+        	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
+
+            //Estadísticas
+            Parametros.dinero+=30;
             FrontierScreen.reloj.modTiempo(20);
+        	
+            //Variables
+        	Parametros.analizar=false;
+        	Parametros.analizado2=true;
         }
         
         if (elapsedTime < 1) {
