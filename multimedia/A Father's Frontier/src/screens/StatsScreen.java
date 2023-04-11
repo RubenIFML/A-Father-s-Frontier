@@ -32,8 +32,8 @@ private boolean diaHabilitada = false;
 	    background = new Texture("Menu/blackBackground.png");
 	    
 		estadisticas=new Label("Estadísticas del día: \r\n\n"
-				+ "DINERO ANTES: " + Parametros.dineroAnterior + "£ + " + (Parametros.dinero-Parametros.dineroAnterior) + "£\r\n"
-				+ "DINERO DEPUÉS: "  + Parametros.dinero + "£\r\n\n"
+				+ "DINERO ANTES: £" + Parametros.dineroAnterior + " + £" + (Parametros.dinero-Parametros.dineroAnterior) + "\r\n"
+				+ "DINERO DESPUÉS: £"  + Parametros.dinero + "\r\n\n"
 				+ "Pulse ENTER para continuar"
 				, uiStyle);
 		estadisticas.setPosition(130,140);
@@ -73,7 +73,5 @@ private boolean diaHabilitada = false;
 	     uiStage.draw();
 
 	}
-	
-	
 	
 }

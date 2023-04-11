@@ -16,9 +16,9 @@ public class Parametros {
  
  //Estadísticas
  public static int dia = 1;
- public static int segundos = 100;
+ public static int segundos = 1000;
  public static int dineroAnterior = 0;
- public static int dinero = 10;
+ public static int dinero = 1;
  
  //Variables
  public static boolean controlesActivos = false;
@@ -28,6 +28,14 @@ public class Parametros {
  public static boolean analizado2 = false;
  public static boolean analizado3 = false;
  public static boolean analizado4 = false;
+ public static boolean correcto = false;
+ 
+ //Misiones
+ public static boolean mision_carta = true;
+ 
+ 
+ 
+ 
  
  
 public static int getAnchoPantalla() {

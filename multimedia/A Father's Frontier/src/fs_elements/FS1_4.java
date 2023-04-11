@@ -21,7 +21,7 @@ public class FS1_4 extends Actor {
 	
     public FS1_4(Stage mainStage) {
     	this.mainStage=mainStage;
-    	setBounds(93, 73, 57, 93);
+    	setBounds(88, 73, 60, 100);
         persona4 = new Texture("01-FS/Personajes/FS.1_4.png");
     }
 
@@ -33,17 +33,14 @@ public class FS1_4 extends Actor {
         	
         	//Texto
         	texto = new Texto("Desiree: Un servicio\n"
-        					+ "excepcional, muchas", 7, 154);
-        	mainStage.addActor(texto);
-        	
-        	texto = new Texto("gracias...", 7, 154);
+        					+ "excepcional, gracias...", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
             
             //Estadísticas
-            Parametros.dinero-=30;
+            Parametros.dinero-=3;
             FrontierScreen.reloj.modTiempo(-10);
             
             //Variables
@@ -54,30 +51,20 @@ public class FS1_4 extends Actor {
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("Desiree: Está bien,\n"
-        					+ "quizás no cuela, pero", 7, 154);
+        	texto = new Texto("Desiree: Está bien...\n"
+        					+ "acepto mi destino, mas", 7, 154);
         	mainStage.addActor(texto);
-        	texto = new Texto("por favor, lleva esta.\n"
-        					+ "carta a mi marido...", 7, 154);
-        	mainStage.addActor(texto);
-        	texto = new Texto("Es un hombre italiano\n"
-        					+ "de buen porte, estoy", 7, 154);
-        	mainStage.addActor(texto);
-        	texto = new Texto("segura de que podrás\n"
-        					+ "encontrarlo...", 7, 154);
-        	mainStage.addActor(texto);
-        	texto = new Texto("Desiree: Gracias...", 7, 154);
-        	mainStage.addActor(texto);
-        	
+    	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
             
             //Estadísticas
-            Parametros.dinero+=30;
+            Parametros.dinero+=3;
             FrontierScreen.reloj.modTiempo(20);
             //Variables
         	Parametros.analizar=false;
         	Parametros.analizado4=true;
+        	Parametros.correcto=true;
         }
         
         if (elapsedTime < 1) {

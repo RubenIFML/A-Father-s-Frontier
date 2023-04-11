@@ -32,15 +32,15 @@ public class FS1_2 extends Actor {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("(Mierda, pensé que lo\n"
-        					+ "tenía controlado)", 7, 154);
+        	texto = new Texto("Otto: ¡Ja, ja, ja!\n"
+        					+ "un placer, compañero.", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
             
             //Estadísticas
-            Parametros.dinero-=30;
+            Parametros.dinero-=3;
             FrontierScreen.reloj.modTiempo(-10);
             
             //Variables
@@ -51,15 +51,15 @@ public class FS1_2 extends Actor {
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("(Sus sucios trucos no\n"
-        					+ "son efectivos)", 7, 154);
+        	texto = new Texto("Otto: ¡Sabía que no debí\n"
+        					+ "haber venido!", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
 
             //Estadísticas
-            Parametros.dinero+=30;
+            Parametros.dinero+=3;
             FrontierScreen.reloj.modTiempo(20);
         	
             //Variables

@@ -32,15 +32,15 @@ public class FS1_1 extends Actor {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("(Trabajo ejecutado a\n"
-        					+ "la perfección)", 7, 154);
+        	texto = new Texto("Robin: Muchas gracias,\n"
+        					+ "siempre es un placer.", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
         	
         	//Estadísticas
-        	Parametros.dinero=+30;
+        	Parametros.dinero+=3;
             FrontierScreen.reloj.modTiempo(20);
         	
         	//Variables
@@ -51,15 +51,15 @@ public class FS1_1 extends Actor {
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("(Parece que ha habido\n"
-        					+ "un error esta vez)", 7, 154);
+        	texto = new Texto("Robin: No puede ser...\n"
+        					+ "¡Exijo una revisión!", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
             
             //Estadísticas
-        	Parametros.dinero=-30;
+        	Parametros.dinero-=3;
             FrontierScreen.reloj.modTiempo(-10);
             
             //Variables

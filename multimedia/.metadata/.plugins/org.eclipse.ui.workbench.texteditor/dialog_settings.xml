@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="reglas"/>
+		<item key="selection" value="controlesA"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="reglas"/>
-			<item value="ganas"/>
-			<item value="persona"/>
-			<item value="pasaporte"/>
-			<item value="botonver"/>
-			<item value="botonve"/>
-			<item value="images"/>
-			<item value="01-FS/Menu/menuBoton.png"/>
-			<item value="01-FS/Objetos/menuBoton.png"/>
-			<item value="menu"/>
-			<item value="mapas"/>
-			<item value="tiles"/>
-			<item value="t"/>
-			<item value="til"/>
-			<item value="23"/>
+			<item value="controlesa"/>
+			<item value="fs1_2"/>
+			<item value="fs1_4"/>
+			<item value="sombrero"/>
+			<item value="pintalabios"/>
+			<item value="controlesactivos"/>
+			<item value="controles"/>
+			<item value="primera vez"/>
+			<item value="primeravez"/>
+			<item value="cuchillo"/>
+			<item value="pistola"/>
+			<item value="en la mesa"/>
+			<item value="P3"/>
+			<item value="3"/>
+			<item value="1"/>
 		</list>
 		<list key="replacehistory">
 		</list>
