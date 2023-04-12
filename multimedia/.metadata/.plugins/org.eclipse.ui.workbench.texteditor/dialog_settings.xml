@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="controlesA"/>
+		<item key="selection" value="hucha"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="hucha"/>
+			<item value=".stop"/>
+			<item value="sopa"/>
+			<item value="2_3"/>
+			<item value="blackb"/>
+			<item value="2_2"/>
+			<item value="2_12"/>
+			<item value="black"/>
+			<item value="backgroundactor"/>
+			<item value="backg"/>
+			<item value="botella"/>
 			<item value="controlesa"/>
 			<item value="fs1_2"/>
 			<item value="fs1_4"/>
 			<item value="sombrero"/>
-			<item value="pintalabios"/>
-			<item value="controlesactivos"/>
-			<item value="controles"/>
-			<item value="primera vez"/>
-			<item value="primeravez"/>
-			<item value="cuchillo"/>
-			<item value="pistola"/>
-			<item value="en la mesa"/>
-			<item value="P3"/>
-			<item value="3"/>
-			<item value="1"/>
 		</list>
 		<list key="replacehistory">
 		</list>

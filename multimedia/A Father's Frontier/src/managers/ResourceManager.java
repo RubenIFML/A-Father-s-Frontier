@@ -109,6 +109,7 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/papeles.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/botella.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/pistola.mp3", Sound.class);
+        assets.load("01-FS/Audio/sounds/hucha.mp3", Sound.class);
         assets.load("01-FS/Audio/sounds/maletin.mp3", Sound.class);
         
         //Música

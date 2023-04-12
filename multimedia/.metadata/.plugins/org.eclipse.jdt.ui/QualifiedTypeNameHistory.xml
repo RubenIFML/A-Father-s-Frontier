@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
-    <fullyQualifiedTypeName name="elements.BotonRojo"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Sprite"/>
     <fullyQualifiedTypeName name="elements.BotonVerde"/>
     <fullyQualifiedTypeName name="elements.Reglas"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_1"/>
+    <fullyQualifiedTypeName name="fs_elements.FS2_2"/>
+    <fullyQualifiedTypeName name="fs_elements.FS2_3"/>
+    <fullyQualifiedTypeName name="fs_elements.FS2_4"/>
 </qualifiedTypeNameHistroy>

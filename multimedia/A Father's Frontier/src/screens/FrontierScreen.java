@@ -17,6 +17,9 @@ import fs_elements.FS1_2;
 import fs_elements.FS1_3;
 import fs_elements.FS1_4;
 import fs_elements.FS2_1;
+import fs_elements.FS2_2;
+import fs_elements.FS2_3;
+import fs_elements.FS2_4;
 import fs_elements.Lluvia;
 import fs_elements.Maletin;
 import fs_elements.Mesa;
@@ -38,8 +41,10 @@ private OrthogonalTiledMapRenderer renderer;
 public float mouseX;
 public float mouseY;
 float tiempo = 0f;
+private Texture blackBackground;
 private Texture backgroundTexture;
 private Actor backgroundActor;
+private Actor blackBackgroundActor;
 private Music musica;
 private Music musica2;
 private Texto texto;
@@ -49,6 +54,9 @@ private FS1_2 fs1_2;
 private FS1_3 fs1_3;
 private FS1_4 fs1_4;
 private FS2_1 fs2_1;
+private FS2_2 fs2_2;
+private FS2_3 fs2_3;
+private FS2_4 fs2_4;
 private Mesa mesa;
 private Boton botonRojo;
 private Boton botonVerde;
@@ -66,6 +74,9 @@ private Objeto cuchillo;
 private Objeto carta;
 private Objeto pintalabios;
 private Objeto sombrero;
+private Objeto hucha;
+private Objeto sopa;
+private Objeto platano;
 
 private int contador = 0;
 
@@ -106,7 +117,10 @@ public boolean terminado = false;
 
 		lluvia = new Lluvia();
 		mainStage.addActor(lluvia);
-		
+
+		blackBackground = new Texture(Gdx.files.internal("Menu/blackBackground.png"));
+		blackBackgroundActor = new Image(blackBackground);
+
 		Parametros.controlesActivos = false;  
 		Parametros.quitarTexto = false;       
 		Parametros.analizar = false;          
@@ -165,6 +179,18 @@ public boolean terminado = false;
 				fs2_1 = new FS2_1(mainStage);
 				mainStage.addActor(fs2_1);
 				fs2_1.hide();          
+				
+				fs2_2 = new FS2_2(mainStage);
+				mainStage.addActor(fs2_2);
+				fs2_2.hide();          
+				
+				fs2_3 = new FS2_3(mainStage);
+				mainStage.addActor(fs2_3);
+				fs2_3.hide();        
+				
+				fs2_4 = new FS2_4(mainStage);
+				mainStage.addActor(fs2_4);
+				fs2_4.hide();        
 				
 				mesa = new Mesa();
 				mainStage.addActor(mesa);
@@ -269,8 +295,8 @@ public boolean terminado = false;
 		            	
 		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
 		    			texto.remove();
-		        		texto = new Texto("Que pase el siguiente,\n"
-										+ "gracias.", 7, 154);
+		        		texto = new Texto("¿?: Que pase el\n"
+										+ "siguiente, gracias.", 7, 154);
 		        		mainStage.addActor(texto);
 		        		contador++;
 		    			
@@ -496,7 +522,6 @@ public boolean terminado = false;
 			        	maletin.hide();
 			        	pintalabios.remove();
 			        	if(contador != 19) {carta.remove();}
-			        	FS1_4.texto.remove();
 						Parametros.analizar=false;
 						Parametros.analizado4=false;	
 						contador=0;
@@ -579,12 +604,255 @@ public boolean terminado = false;
 		            	
 		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
 		    			texto.remove();
-		        		texto = new Texto("¿?: Que pase el\n"
-										+ "siguiente, gracias.", 7, 154);
+		        		texto = new Texto("¿?: Siguiente, por\n"
+										+ "favor....", 7, 154);
 		        		mainStage.addActor(texto);
 		        		contador++;
-		            }
+		        		
+			        } else if (contador==5) {
+		            	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						texto.remove();
+		    			fs2_2.show();
+		    			texto = new Texto("¿?: Si es tan amable, su\n"
+		    							+ "pasaporte y equipaje.", 7, 154);
+		    			mainStage.addActor(texto);
+		    			
+		    			contador++;
+		    			
+		            } else if (contador==6) {
+		            	
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+		    			texto = new Texto("(No puedo quitármelo\n"
+		    							+ "de la cabeza...)", 7, 154);
+		    			mainStage.addActor(texto);
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		    			maletin.show();
+		
+		    			pasaporte2 = new Objeto(10, 30, 60, 83, "pasaporte.2_2.png", "papeles.mp3");
+		    			mainStage.addActor(pasaporte2);
+		    			
+		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "botella.mp3");
+		    			mainStage.addActor(sopa);
+		    			hucha = new Objeto(111, 32, 50, 41, "objeto.hucha.png", "hucha.mp3");
+		    			mainStage.addActor(hucha);
+		    			
+		    			contador++;
+		    			
+			        } else if (contador==7) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						texto.remove();
+						Parametros.controlesActivos=true;
+						contador=0;
+						Parametros.analizar=true;
+						
+			        } else if (Parametros.analizado2==true) {
+		
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						texto = new Texto("LLAMAR AL SIGUIENTE\n"
+		        						+ "(Pulsa CLICK)", 10, 154);
+		        		mainStage.addActor(texto);
+		    			Parametros.controlesActivos=false;
+		            	fs2_2.fadeOut();
+			        	pasaporte2.remove();
+			        	maletin.hide();
+			        	hucha.remove();
+			        	sopa.remove();
+			        	FS2_2.texto.remove();
+						Parametros.analizar=false;
+						Parametros.analizado2=false;
+						contador=8;
+						
+		            } else if (contador==8) {
+		            	
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+		        		texto = new Texto("¿?: ¿Usted es el si-\n"
+										+ "guiente? Pase por aquí.", 7, 154);
+		        		mainStage.addActor(texto);
+		        		contador++;
+		           
+		        	} else if (contador==9) {
+		        	
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+						fs2_3.show();
+						texto = new Texto("¿?: Su pasaporte y sus\n"
+										+ "bienes sobre la mesa.", 7, 154);
+						mainStage.addActor(texto);
+						
+						contador++;
+						
+		            } else if (contador==10) {
+		            	
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+		    			texto = new Texto("(Cada segundo, esto\n"
+		    							+ "solo empeora...)", 7, 154);
+		    			mainStage.addActor(texto);
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		    			maletin.show();
+		
+		    			pasaporte3 = new Objeto(10, 30, 60, 83, "pasaporte.2_3.png", "papeles.mp3");
+		    			mainStage.addActor(pasaporte3);
+		
+		    			platano = new Objeto(119, 29, 34, 36, "objeto.platano.png", "pistola.mp3");
+		    			mainStage.addActor(platano);
+		    			cuchillo = new Objeto(85, 32, 30, 38, "objeto.cuchillo.png", "pistola.mp3");
+		    			mainStage.addActor(cuchillo);
+		    			
+		    			contador++;
+			        } else if (contador==11) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						texto.remove();
+						Parametros.controlesActivos=true;
+						contador=0;
+						Parametros.analizar=true;
+						
+			        } else if (Parametros.analizado3==true) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						Parametros.controlesActivos=false;
+						texto = new Texto("LLAMAR AL SIGUIENTE\n"
+										+ "(Pulsa CLICK)", 10, 154);
+		        		mainStage.addActor(texto);
+		            	fs2_3.fadeOut();
+			        	pasaporte3.remove();
+			        	maletin.hide();
+			        	platano.remove();
+			        	cuchillo.remove();
+			        	FS2_3.texto.remove();
+						Parametros.analizar=false;
+						Parametros.analizado3=false;
+						contador=12;
+						
+		            } else if (contador==12) {
+		            	
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+		        		texto = new Texto("¿?: Si... Siguiente,\n"
+										+ "por aquí.", 7, 154);
+		        		mainStage.addActor(texto);
+		        		contador++;
+		           
+		        	} else if (contador==13) {
+		        	
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+						fs2_4.show();
+		        		texto = new Texto("¿?: E... Equipaje y...\n"
+										+ "Pasaporte, por favor.", 7, 154);
+						mainStage.addActor(texto);
+						
+						contador++;
+						
+		            } else if (contador==14) {
+		            	
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		    			texto.remove();
+		    			texto = new Texto("(Esta chica... Me\n"
+		    							+ "resulta familiar...)", 7, 154);
+		    			mainStage.addActor(texto);
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		    			maletin.show();
+		
+		    			pasaporte4 = new Objeto(10, 30, 60, 83, "pasaporte.2_4.png", "papeles.mp3");
+		    			mainStage.addActor(pasaporte4);
+		
+		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "botella.mp3");
+		    			mainStage.addActor(sopa);
+		    			botella = new Objeto(113, 28, 36, 43, "objeto.botella.png", "botella.mp3");
+		    			mainStage.addActor(botella);
+		    			
+		    			contador++;
+			        } else if (contador==15) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						texto.remove();
+						Parametros.controlesActivos=true;
+						contador=0;
+						Parametros.analizar=true;
+						
+			        } else if (Parametros.analizado4==true) {
+					    musica.stop();
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	FS2_4.texto.remove();
+						Parametros.controlesActivos=false;
+		            	fs2_4.fadeOut();
+			        	
+			        	texto = new Texto("(La chica ha salido\n"
+	        							+ "corriendo con una ", 7, 154);
+			        	mainStage.addActor(texto);
+			        	
+			        	contador=16;
+			        	
+						Parametros.analizar=false;
+						Parametros.analizado4=false;
+						Parametros.correcto=false;
+						
+			        } else if (contador==16) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	
+			        	texto = new Texto("expresión terrible en\n"
+			        					+ "su rostro...)", 7, 154);
+			        	mainStage.addActor(texto);
+			        	
+			        	contador++;
+						
+			        } else if (contador==17) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+	
+			    		mainStage.addActor(blackBackgroundActor);
+			    		blackBackgroundActor.setSize(240,180);
+			    		
+			        	texto = new Texto("(No sé qué está su-\n"
+										+ "cediendo... Pero", 7, 154);
+			    		
+			        	mainStage.addActor(texto);
+			        	
+			        	contador++;
+			        	
+			        } else if (contador==18) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	
+			        	texto = new Texto("debo averiguar qué\n"
+			        					+ "se esconde detrás ", 7, 154);
+			        	mainStage.addActor(texto);
+			        	
+			        	contador++;
+			        	
+			        	
+			        } else if (Parametros.analizado4==true && Parametros.correcto==false || contador==19) {
+			        	
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		texto = new Texto("de todo esto... Cues-\n"
+		        						+ "te lo que cueste...)", 7, 154);
+		        		mainStage.addActor(texto);
+			        	pasaporte4.remove();
+			        	maletin.hide();
+			        	sopa.remove();
+			        	botella.remove();
+						Parametros.analizar=false;
+						Parametros.analizado4=false;	
+						contador=0;
+						
+						terminado = true;
+						
+			        } else if (terminado==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+						Parametros.dia++;
+						game.setScreen(new StatsScreen(game));
+					    musica2.stop();
+			        }
 		        }
+		        
 	        	break;
 	        
 	        case 3:

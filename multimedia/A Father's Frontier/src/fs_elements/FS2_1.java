@@ -40,7 +40,7 @@ public class FS2_1 extends Actor {
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
         	
         	//Estadísticas
-        	Parametros.dinero+=3;
+        	Parametros.dinero-=3;
             FrontierScreen.reloj.modTiempo(-10);
         	
         	//Variables
