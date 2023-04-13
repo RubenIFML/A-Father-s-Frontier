@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="elements.BotonVerde"/>
-    <fullyQualifiedTypeName name="elements.Reglas"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Polygon"/>
     <fullyQualifiedTypeName name="elements.Maletin"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="fs_elements.FS2_2"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_3"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_4"/>
+    <fullyQualifiedTypeName name="fs_elements.FS3_1"/>
+    <fullyQualifiedTypeName name="fs_elements.FS3_2"/>
+    <fullyQualifiedTypeName name="fs_elements.FS3_3"/>
+    <fullyQualifiedTypeName name="fs_elements.FS3_4"/>
 </qualifiedTypeNameHistroy>

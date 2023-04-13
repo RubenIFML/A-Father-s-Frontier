@@ -10,6 +10,7 @@ public class Launcher
         Game myGame = new Demo(); 
         @SuppressWarnings("unused")
 		LwjglApplication launcher = new LwjglApplication(myGame, "A Father's Frontier", Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        
     }
     
     

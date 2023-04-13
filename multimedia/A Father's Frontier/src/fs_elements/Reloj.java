@@ -69,7 +69,10 @@ public class Reloj extends Actor {
 
 	public void start() {
 		empezar = true;
-		
+	}
+	
+	public void stop() {
+		empezar = false;
 	}
 	
 	public void modTiempo(float tiempo) {

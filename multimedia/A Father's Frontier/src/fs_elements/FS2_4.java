@@ -12,12 +12,12 @@ import managers.AudioManager;
 import screens.FrontierScreen;
 
 public class FS2_4 extends Actor {
-    private Texture persona6;
-    private float elapsedTime = 0;
-	public static Texto texto;
     private Stage mainStage;
-    private boolean fadingOut = false;
+    private Texture persona6;
+	public static Texto texto;
+    private float elapsedTime = 0;
     private float opacity = 1f;
+    private boolean fadingOut = false;
 
     public FS2_4(Stage mainStage) {
     	this.mainStage=mainStage;
