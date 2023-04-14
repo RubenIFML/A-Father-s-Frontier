@@ -22,6 +22,7 @@ public class Parametros {
  
  //Variables
  public static boolean controlesActivos = false;
+ public static boolean lockClick = false;
  public static boolean comienzo = false;
  public static boolean analizar = false;
  public static boolean analizado1 = false;

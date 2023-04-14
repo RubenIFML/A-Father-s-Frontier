@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Volker"/>
+		<item key="selection" value="Boton"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="boton"/>
+			<item value="papeles"/>
+			<item value="getalt"/>
+			<item value="background"/>
+			<item value="addac"/>
 			<item value="volker"/>
 			<item value="llave"/>
 			<item value="vativo"/>
@@ -18,11 +23,6 @@
 			<item value="cuchillo"/>
 			<item value="sombrero"/>
 			<item value="sopa"/>
-			<item value="favor..."/>
-			<item value="...."/>
-			<item value="2_"/>
-			<item value="correcto"/>
-			<item value="resiz"/>
 		</list>
 		<list key="replacehistory">
 		</list>

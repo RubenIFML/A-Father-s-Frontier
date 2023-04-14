@@ -37,6 +37,9 @@ public final class ResourceManager {
         assets.load("Menu/blackBackground.png", Texture.class);
         assets.load("Menu/menuBoton.png", Texture.class);
         assets.load("Menu/lluvia.png", Texture.class);
+        assets.load("Menu/periodico.1_0.png", Texture.class);
+        assets.load("Menu/periodico.2_0.png", Texture.class);
+        assets.load("Menu/periodico.3_0.png", Texture.class);
         
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
