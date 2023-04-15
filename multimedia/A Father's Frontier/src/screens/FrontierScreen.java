@@ -72,6 +72,7 @@ private int contador = 0;
 float tiempo = 0f;
 public boolean terminado = false;
 private boolean periodicoActivo=false;
+@SuppressWarnings("unused")
 private boolean controlesSiNo=false;
 
 //Personajes
@@ -116,7 +117,7 @@ private Objeto duxer;
  */
 	public FrontierScreen(Demo game) {
 		super(game);
-		mainStage=new Stage();
+		mainStage = new Stage();
 		lluvia = new Lluvia();
 		
 		//Dinero
@@ -129,11 +130,10 @@ private Objeto duxer;
 		blackBackgroundActor = new Image(blackBackground);
 		
 		//Música
-		musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor.mp3"));
-		musica.play();
+		musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor.wav"));
         musica.setVolume(0.3f);
 		musica.setLooping(true);
-		musica2 = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/lluvia.mp3"));
+		musica2 = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/lluvia.wav"));
 		musica2.play();
         musica2.setVolume(0.4f);
 		musica2.setLooping(true);
@@ -351,8 +351,8 @@ private Objeto duxer;
 		        	//FS.1_1
 		        	
 		        	if(contador==1) {
-		            	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			fs1_1.show();
@@ -363,8 +363,9 @@ private Objeto duxer;
 		    			contador++;
 		    			
 		            } else if (contador==2) {
-		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+
+		        		musica.play();
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Comprobaré las reglas\n"
@@ -372,11 +373,11 @@ private Objeto duxer;
 		    			mainStage.addActor(texto);
 		    			maletin.show();
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_1.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_1.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			pistola = new Objeto(108, 26, 48, 28, "objeto.pistola.png", "pistola.mp3");
+		    			pistola = new Objeto(108, 26, 48, 28, "objeto.pistola.png", "pistola.wav");
 		    			mainStage.addActor(pistola);
 		    			
 		    			reloj.start();
@@ -384,7 +385,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==3) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 
 		    			contador=0;
@@ -393,7 +394,7 @@ private Objeto duxer;
 		    			
 		            } else if (Parametros.analizado1==true) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            	FS1_1.texto.remove();
 		            	
 		    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -414,7 +415,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==4) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Que pase el\n"
@@ -425,7 +426,7 @@ private Objeto duxer;
 		    			
 			        } else if (contador==5) {
 		            	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 		    			texto = new Texto("¿?: El pasaporte y el\n"
@@ -438,25 +439,25 @@ private Objeto duxer;
 		    			
 		            } else if (contador==6) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Puedo... Debo hacer\n"
 		    							+ "esto bien...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_2.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_2.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			botella = new Objeto(76, 26, 36, 43, "objeto.botella.png", "botella.mp3");
+		    			botella = new Objeto(76, 26, 36, 43, "objeto.botella.png", "botella.wav");
 		    			mainStage.addActor(botella);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==7) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -465,7 +466,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado2==true) {
 		
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS1_2.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -486,7 +487,7 @@ private Objeto duxer;
 						
 		            } else if (contador==8) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("Siguiente por aquí,\n"
@@ -497,7 +498,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==9) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 						
 		    			texto = new Texto("Pasaporte y equipaje,\n"
@@ -510,27 +511,27 @@ private Objeto duxer;
 						
 		            } else if (contador==10) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Recuerda por quién\n"
 		    							+ "estás aquí...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_3.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_3.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			cuchillo = new Objeto(125, 32, 30, 38, "objeto.cuchillo.png", "pistola.mp3");
+		    			cuchillo = new Objeto(125, 32, 30, 38, "objeto.cuchillo.png", "pistola.wav");
 		    			mainStage.addActor(cuchillo);
-		    			botella = new Objeto(76, 26, 36, 43, "objeto.botella.png", "botella.mp3");
+		    			botella = new Objeto(76, 26, 36, 43, "objeto.botella.png", "botella.wav");
 		    			mainStage.addActor(botella);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==11) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -539,7 +540,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado3==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS1_3.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -561,7 +562,7 @@ private Objeto duxer;
 						
 		            } else if (contador==12) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Por aquí si es\n"
@@ -572,7 +573,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==13) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 						texto = new Texto("¿?: Pasaporte y objetos\n"
@@ -585,27 +586,27 @@ private Objeto duxer;
 						
 		            } else if (contador==14) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(No puedo dejar que\n"
 		    							+ "el miedo me supere...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_4.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.1_4.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			pintalabios = new Objeto(130, 30, 22, 32, "objeto.pintalabios.png", "pistola.mp3");
+		    			pintalabios = new Objeto(130, 30, 22, 32, "objeto.pintalabios.png", "pistola.wav");
 		    			mainStage.addActor(pintalabios);
-		    			carta = new Objeto(78, 30, 50, 31, "objeto.carta.png", "papeles.mp3");
+		    			carta = new Objeto(78, 30, 50, 31, "objeto.carta.png", "papeles.wav");
 		    			mainStage.addActor(carta);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==15) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -614,7 +615,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado4==true && Parametros.correcto==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS1_4.texto.remove();
 			        	
 			        	texto = new Texto("por favor, lleva esta.\n"
@@ -629,7 +630,7 @@ private Objeto duxer;
 						
 			        } else if (contador==16) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 			        	texto = new Texto("Es un hombre italiano\n"
@@ -640,7 +641,7 @@ private Objeto duxer;
 						
 			        } else if (contador==17) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 			        	texto = new Texto("segura de que podrás\n"
@@ -651,7 +652,7 @@ private Objeto duxer;
 			        	
 			        } else if (contador==18) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 			        	texto = new Texto("Desiree: Muchísimas\n"
@@ -662,7 +663,7 @@ private Objeto duxer;
 			        	
 			        } else if (Parametros.analizado4==true && Parametros.correcto==false || contador==19) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("¿?: ...\n"
@@ -684,7 +685,7 @@ private Objeto duxer;
 						
 			        } else if (terminado==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 
 						Parametros.dia++;
 						game.setScreen(new StatsScreen(game));
@@ -703,8 +704,8 @@ private Objeto duxer;
 		        	//FS 2_1
 		        	
 		        	if(contador==1) {
-		            	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("¿?: Su pasaporte y\n"
@@ -716,21 +717,22 @@ private Objeto duxer;
 		    			contador++;
 		    			
 		            } else if (contador==2) {
-		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+
+		        		musica.play();
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Estoy agotado... Pero\n"
 		    							+ "no debo detenerme...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_1.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_1.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			pistola = new Objeto(92, 33, 37, 23, "objeto.pistola.png", "pistola.mp3");
+		    			pistola = new Objeto(92, 33, 37, 23, "objeto.pistola.png", "pistola.wav");
 		    			mainStage.addActor(pistola);
-		    			sombrero = new Objeto(85, 31, 70, 40, "objeto.sombrero.png", "pistola.mp3");
+		    			sombrero = new Objeto(85, 31, 70, 40, "objeto.sombrero.png", "sombrero.wav");
 		    			mainStage.addActor(sombrero);
 		    			
 		    			reloj.start();
@@ -738,7 +740,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==3) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			Parametros.controlesActivos=true;
 		    			Parametros.analizar=true;
@@ -746,7 +748,7 @@ private Objeto duxer;
 		    			
 		            } else if (Parametros.analizado1==true) {
 		        		
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            	FS2_1.texto.remove();
 		            	
 		    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -768,7 +770,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==4) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Siguiente, por\n"
@@ -779,7 +781,7 @@ private Objeto duxer;
 		        		
 			        } else if (contador==5) {
 		            	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 		    			texto = new Texto("¿?: Si es tan amable, su\n"
@@ -792,27 +794,27 @@ private Objeto duxer;
 		    			
 		            } else if (contador==6) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(No puedo quitármelo\n"
 		    							+ "de la cabeza...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_2.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_2.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "botella.mp3");
+		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "lata.wav");
 		    			mainStage.addActor(sopa);
-		    			hucha = new Objeto(111, 32, 50, 41, "objeto.hucha.png", "hucha.mp3");
+		    			hucha = new Objeto(111, 32, 50, 41, "objeto.hucha.png", "hucha.wav");
 		    			mainStage.addActor(hucha);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==7) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -821,7 +823,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado2==true) {
 		
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS2_2.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -843,7 +845,7 @@ private Objeto duxer;
 						
 		            } else if (contador==8) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: ¿Usted es el si-\n"
@@ -854,7 +856,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==9) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 						texto = new Texto("¿?: Su pasaporte y sus\n"
@@ -867,27 +869,27 @@ private Objeto duxer;
 						
 		            } else if (contador==10) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Cada segundo, esto\n"
 		    							+ "solo empeora...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_3.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_3.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			platano = new Objeto(119, 29, 34, 36, "objeto.platano.png", "pistola.mp3");
+		    			platano = new Objeto(119, 29, 34, 36, "objeto.platano.png", "banana.wav");
 		    			mainStage.addActor(platano);
-		    			cuchillo = new Objeto(85, 32, 30, 38, "objeto.cuchillo.png", "pistola.mp3");
+		    			cuchillo = new Objeto(85, 32, 30, 38, "objeto.cuchillo.png", "pistola.wav");
 		    			mainStage.addActor(cuchillo);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==11) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -896,7 +898,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado3==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS2_3.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -918,7 +920,7 @@ private Objeto duxer;
 						
 		            } else if (contador==12) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Si... Siguiente,\n"
@@ -929,7 +931,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==13) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: E... Equipaje y...\n"
@@ -942,27 +944,27 @@ private Objeto duxer;
 						
 		            } else if (contador==14) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Esta chica... Me\n"
 		    							+ "resulta familiar...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_4.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.2_4.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "botella.mp3");
+		    			sopa = new Objeto(84, 28, 26, 30, "objeto.sopa.png", "lata.wav");
 		    			mainStage.addActor(sopa);
-		    			botella = new Objeto(113, 28, 36, 43, "objeto.botella.png", "botella.mp3");
+		    			botella = new Objeto(113, 28, 36, 43, "objeto.botella.png", "botella.wav");
 		    			mainStage.addActor(botella);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==15) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -971,7 +973,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado4==true) {
 
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS2_4.texto.remove();
 			        	
 					    musica.stop();
@@ -988,7 +990,7 @@ private Objeto duxer;
 						
 			        } else if (contador==16) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	
 			        	texto = new Texto("expresión terrible en\n"
 			        					+ "su rostro...)", 7, 154);
@@ -999,7 +1001,7 @@ private Objeto duxer;
 						
 			        } else if (contador==17) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 
 			        	texto = new Texto("(No sé qué está su-\n"
@@ -1013,7 +1015,7 @@ private Objeto duxer;
 			        	
 			        } else if (contador==18) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 			        	texto = new Texto("debo averiguar qué\n"
@@ -1024,7 +1026,7 @@ private Objeto duxer;
 			        	
 			        } else if (contador==19) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("de todo esto... Cues-\n"
@@ -1045,7 +1047,7 @@ private Objeto duxer;
 						
 			        } else if (terminado==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 
 						Parametros.dia++;
 						game.setScreen(new StatsScreen(game));
@@ -1063,8 +1065,8 @@ private Objeto duxer;
 		        	//FS 3_1
 		        	
 		        	if(contador==1) {
-		            	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("¿?: Equipaje y \n"
@@ -1076,23 +1078,24 @@ private Objeto duxer;
 		    			contador++;
 		    			
 		            } else if (contador==2) {
-		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+
+		        		musica.play();
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Hoy es el último día...\n"
 		    							+ "he de darlo todo...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_1.png", "papeles.mp3");
+		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_1.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_1.png", "papeles.mp3");
+		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_1.png", "papeles.wav");
 		    			mainStage.addActor(permiso);
-		    			sopa = new Objeto(81, 28, 26, 30, "objeto.sopa.png", "botella.mp3");
+		    			sopa = new Objeto(81, 28, 26, 30, "objeto.sopa.png", "lata.wav");
 		    			mainStage.addActor(sopa);
-		    			sombrero = new Objeto(110, 31, 50, 28, "objeto.sombrero.png", "pistola.mp3");
+		    			sombrero = new Objeto(110, 31, 50, 28, "objeto.sombrero.png", "sombrero.wav");
 		    			mainStage.addActor(sombrero);
 		    			
 		    			reloj.start();
@@ -1100,7 +1103,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==3) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			Parametros.controlesActivos=true;
 		    			Parametros.analizar=true;
@@ -1108,7 +1111,7 @@ private Objeto duxer;
 		    			
 		            } else if (Parametros.analizado1==true) {
 		        		
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            	FS3_1.texto.remove();
 		            	
 		    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -1131,7 +1134,7 @@ private Objeto duxer;
 		    			
 		            } else if (contador==4) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Usted, el que\n"
@@ -1142,7 +1145,7 @@ private Objeto duxer;
 		        		
 			        } else if (contador==5) {
 		            	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 		    			texto = new Texto("¿?: Pasaporte en regla\n"
@@ -1155,29 +1158,29 @@ private Objeto duxer;
 		    			
 		            } else if (contador==6) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			texto = new Texto("(Eso es... ¿Un preser-\n"
 		    							+ "vativo?...)", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_2.png", "papeles.mp3");
+		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_2.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_2.png", "papeles.mp3");
+		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_2.png", "papeles.wav");
 		    			mainStage.addActor(permiso);
-		    			duxer = new Objeto(120, 28, 26, 26, "objeto.duxer.png", "pistola.mp3");
+		    			duxer = new Objeto(120, 28, 26, 26, "objeto.duxer.png", "duxer.wav");
 		    			mainStage.addActor(duxer);
-		    			cuchillo = new Objeto(85, 31, 30, 38, "objeto.cuchillo.png", "pistola.mp3");
+		    			cuchillo = new Objeto(85, 31, 30, 38, "objeto.cuchillo.png", "pistola.wav");
 		    			mainStage.addActor(cuchillo);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==7) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -1186,7 +1189,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado2==true) {
 		
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS3_2.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -1209,7 +1212,7 @@ private Objeto duxer;
 						
 		            } else if (contador==8) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Por aquí, es por\n"
@@ -1220,7 +1223,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==9) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 						texto = new Texto("¿?: Todo lo que tenga\n"
@@ -1233,7 +1236,7 @@ private Objeto duxer;
 						
 		            } else if (contador==10) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		    			if (Parametros.dinero>=14) {
@@ -1246,20 +1249,20 @@ private Objeto duxer;
 		    			}
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.3_3.png", "papeles.mp3");
+		    			pasaporte = new Objeto(10, 30, 60, 83, "pasaporte.3_3.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			hucha = new Objeto(78, 29, 50, 41, "objeto.hucha.png", "hucha.mp3");
+		    			hucha = new Objeto(78, 29, 50, 41, "objeto.hucha.png", "hucha.wav");
 		    			mainStage.addActor(hucha);
-		    			cuchillo = new Objeto(122, 32, 30, 38, "objeto.cuchillo.png", "pistola.mp3");
+		    			cuchillo = new Objeto(122, 32, 30, 38, "objeto.cuchillo.png", "pistola.wav");
 		    			mainStage.addActor(cuchillo);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==11) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -1268,7 +1271,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado3==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS3_3.texto.remove();
 			        	
 						texto = new Texto("LLAMAR AL SIGUIENTE\n"
@@ -1290,7 +1293,7 @@ private Objeto duxer;
 						
 		            } else if (contador==12) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 		    			
 		        		texto = new Texto("¿?: Siguien...\n"
@@ -1301,7 +1304,7 @@ private Objeto duxer;
 		           
 		        	} else if (contador==13) {
 		        	
-		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 					    musica.stop();
 					    
@@ -1315,29 +1318,29 @@ private Objeto duxer;
 						
 		            } else if (contador==14) {
 		            	
-		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+		            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		    			texto.remove();
 
 		        		texto = new Texto("¿?: ...\n"
 		        						+ " ", 7, 154);
 		    			mainStage.addActor(texto);
 		    			
-		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.mp3");
+		        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
 		    			maletin.show();
-		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_4.png", "papeles.mp3");
+		    			pasaporte = new Objeto(12, 41, 60, 83, "pasaporte.3_4.png", "papeles.wav");
 		    			mainStage.addActor(pasaporte);
-		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_4.png", "papeles.mp3");
+		    			permiso = new Objeto(4, 7, 69, 33, "permiso.3_4.png", "papeles.wav");
 		    			mainStage.addActor(permiso);
-		    			llave = new Objeto(84, 34, 25, 25, "objeto.llave.png", "pistola.mp3");
+		    			llave = new Objeto(84, 34, 25, 25, "objeto.llave.png", "llaves.wav");
 		    			mainStage.addActor(llave);
-		    			botella = new Objeto(113, 28, 36, 43, "objeto.botella.png", "botella.mp3");
+		    			botella = new Objeto(113, 28, 36, 43, "objeto.botella.png", "botella.wav");
 		    			mainStage.addActor(botella);
 		    			
 		    			contador++;
 		    			
 			        } else if (contador==15) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						texto.remove();
 						
 						Parametros.controlesActivos=true;
@@ -1346,7 +1349,7 @@ private Objeto duxer;
 						
 			        } else if (Parametros.analizado4==true) {
 
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	FS3_4.texto.remove();
 			        	
 					    musica.stop();
@@ -1363,7 +1366,7 @@ private Objeto duxer;
 						
 			        } else if (contador==16) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	
 			        	texto = new Texto("¿?:...\n"
 			        					+ " ", 7, 154);
@@ -1373,17 +1376,18 @@ private Objeto duxer;
 						
 			        } else if (contador==17) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 
 			        	texto = new Texto("Rudolf: No hay tiempo,\n"
-										+ "Te sacaremos de aquí.", 7, 154);
+										+ "Te sacaré de esta.", 7, 154);
+			        	mainStage.addActor(texto);
 			        	
 			        	contador++;
 			        	
 			        } else if (contador==18) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 			        	texto = new Texto("Toma esta llave, y\n"
@@ -1394,7 +1398,7 @@ private Objeto duxer;
 			        	
 			        } else if (contador==19) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("Londres... Allí encon-\n"
@@ -1405,7 +1409,7 @@ private Objeto duxer;
 		        		
 			        } else if (contador==20) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("necesitas para acabar\n"
@@ -1416,7 +1420,7 @@ private Objeto duxer;
 		        		
 			        } else if (contador==21) {
 			        
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("...Hail Hitler...\n"
@@ -1433,7 +1437,7 @@ private Objeto duxer;
 		        	
 			        } else if (contador==22) {
 				        
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			        	texto.remove();
 			        	
 		        		texto = new Texto("Volker: ...\n"
@@ -1450,7 +1454,7 @@ private Objeto duxer;
 						
 			        } else if (terminado==true) {
 			        	
-			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						Parametros.dia++;
 						game.setScreen(new StatsScreen(game));
 					    musica2.stop();
@@ -1494,7 +1498,7 @@ private Objeto duxer;
 	    
         if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
         	if(periodicoActivo==false) {
-            	AudioManager.playSound("01-FS/Audio/sounds/papeles.mp3");
+            	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
         		mainStage.addActor(periodicoActor);
         		periodicoActor.setSize(240,180);
         		if (Parametros.controlesActivos==true) {
@@ -1505,7 +1509,7 @@ private Objeto duxer;
        			periodicoActivo=true;
         	}
         	else if (periodicoActivo==true) {
-            	AudioManager.playSound("01-FS/Audio/sounds/papeles.mp3");
+            	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
         		periodicoActor.remove();
        			if(controlesSiNo=true) {
        				Parametros.controlesActivos=true;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="elements.Maletin"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.utils.viewport.ScreenViewport"/>
@@ -27,7 +26,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputProcessor"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
     <fullyQualifiedTypeName name="elements.Persona2"/>
     <fullyQualifiedTypeName name="elements.Pasaporte2"/>
     <fullyQualifiedTypeName name="elements.Persona3"/>
@@ -38,7 +36,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
     <fullyQualifiedTypeName name="managers.AudioManager"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
     <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="screens.GameScreen"/>
@@ -50,7 +47,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Cell"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="managers.ResourceManager"/>
-    <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_1"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_2"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="fs_elements.FS3_2"/>
     <fullyQualifiedTypeName name="fs_elements.FS3_3"/>
     <fullyQualifiedTypeName name="fs_elements.FS3_4"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.NinePatch"/>
+    <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
 </qualifiedTypeNameHistroy>

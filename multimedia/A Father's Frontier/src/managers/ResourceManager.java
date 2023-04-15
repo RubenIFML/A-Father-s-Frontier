@@ -34,9 +34,11 @@ public final class ResourceManager {
         //Menú
 		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
         assets.load("Menu/titleBackground.jpg", Texture.class);
+        assets.load("Menu/titleTitle.png", Texture.class);
         assets.load("Menu/blackBackground.png", Texture.class);
         assets.load("Menu/menuBoton.png", Texture.class);
         assets.load("Menu/lluvia.png", Texture.class);
+        assets.load("Menu/periodico.0_0.png", Texture.class);
         assets.load("Menu/periodico.1_0.png", Texture.class);
         assets.load("Menu/periodico.2_0.png", Texture.class);
         assets.load("Menu/periodico.3_0.png", Texture.class);
@@ -104,22 +106,27 @@ public final class ResourceManager {
         assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
         
         //Sonidos
-        assets.load("01-FS/Audio/sounds/boton.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/correcto.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/incorrecto.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/boton.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/menuBoton.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/papeles.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/botella.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/pistola.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/hucha.mp3", Sound.class);
-        assets.load("01-FS/Audio/sounds/maletin.mp3", Sound.class);
+        assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/correcto.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/incorrecto.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/menuBoton.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/papeles.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/botella.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/pistola.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/hucha.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/sombrero.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/lata.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/banana.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/duxer.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/llaves.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/maletin.wav", Sound.class);
         
         //Música
-        assets.load("01-FS/Audio/music/maletin_por_favor.mp3", Music.class);
-        assets.load("01-FS/Audio/music/final.mp3", Music.class);
-        assets.load("01-FS/Audio/music/lluvia.mp3", Music.class);
-        assets.load("01-FS/Audio/music/title_theme.mp3", Music.class);
+        assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
+        assets.load("01-FS/Audio/music/final.wav", Music.class);
+        assets.load("01-FS/Audio/music/lluvia.wav", Music.class);
+        assets.load("01-FS/Audio/music/title_theme.wav", Music.class);
 	
 	}
 	
@@ -145,7 +152,7 @@ public final class ResourceManager {
 		textButtonStyle.up=new NinePatchDrawable(buttonPatch);
 		textButtonStyle.font=fuentePropia;
 		
-		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/title_theme.mp3"));
+		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/title_theme.wav"));
 		musicaTitulo.play();
 	    musicaTitulo.setVolume(0.5f);
 		musicaTitulo.setLooping(true);

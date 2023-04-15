@@ -37,7 +37,7 @@ public class FS3_1 extends Actor {
         	mainStage.addActor(texto);
         	
         	//Sonido
-            AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
+            AudioManager.playSound("01-FS/Audio/sounds/correcto.wav");
         	
         	//Estadísticas
         	Parametros.dinero+=3;
@@ -52,11 +52,11 @@ public class FS3_1 extends Actor {
         	
         	//Texto
         	texto = new Texto("Howard: Estoy harto de\n"
-        					+ "las personas como usted.", 7, 154);
+        					+ "las personas como tú.", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
-            AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
+            AudioManager.playSound("01-FS/Audio/sounds/incorrecto.wav");
             
             //Estadísticas
         	Parametros.dinero-=4;

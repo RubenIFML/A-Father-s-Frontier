@@ -33,11 +33,11 @@ public class FS3_3 extends Actor {
         	
         	//Texto
         	texto = new Texto("George: ¡Se siente bien\n"
-        					+ "estar de nuevo en casa!", 7, 154);
+        					+ "volver a casa!", 7, 154);
         	mainStage.addActor(texto);
         	
         	//Sonido
-            AudioManager.playSound("01-FS/Audio/sounds/incorrecto.mp3");
+            AudioManager.playSound("01-FS/Audio/sounds/incorrecto.wav");
         	
         	//Estadísticas
         	Parametros.dinero-=4;
@@ -56,7 +56,7 @@ public class FS3_3 extends Actor {
         	mainStage.addActor(texto);
         	
         	//Sonido
-            AudioManager.playSound("01-FS/Audio/sounds/correcto.mp3");
+            AudioManager.playSound("01-FS/Audio/sounds/correcto.wav");
             
             //Estadísticas
         	Parametros.dinero+=3;

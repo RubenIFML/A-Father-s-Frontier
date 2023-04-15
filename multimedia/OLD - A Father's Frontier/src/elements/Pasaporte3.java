@@ -32,7 +32,7 @@ public class Pasaporte3 extends Actor {
             if (getRectangle().contains(stageCoords.x, stageCoords.y)) { 
                 isDragged = true;
                 if (suena == true) {
-                    AudioManager.playSound("audio/sounds/papeles.mp3");
+                    AudioManager.playSound("audio/sounds/papeles.wav");
                     suena = false;
                 }
             }

@@ -1,98 +1,90 @@
 package screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Align;
 
 import game.Demo;
 import game.Parametros;
-import managers.AudioManager;
 import managers.ResourceManager;
-public class StartScreen extends BScreen{
+
+public class StartScreen extends BScreen {
 private OrthographicCamera camera;
 private Batch batch;
-private Texture background;
-private Label presentacion;
-private Label explicacion;
-private Label controles;
-private boolean presentacionHabilitada = false;
-private boolean explicacionHabilitada = false;
+private Texture periodico;
+private Actor periodicoActor;
+private Texture blackBackground;
+private Actor blackBackgroundActor;
+private boolean desactivable = false;
+private float fadeTimer = 0f;
 
-	public StartScreen(Demo game) {
-	    super(game);
-		
-	    camera = new OrthographicCamera();
-	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
-	    
-	    batch = new SpriteBatch();
-	    background = new Texture("Menu/blackBackground.png");
-	    
-		presentacion=new Label("Año 1940, Frontera de Reino Unido.\r\n\n"
-				+ "Su hijo ha sido secuestrado.\r\n"
-				+ "Es el nuevo guardia fronterizo,\r\n"
-				+ "trabaje para pagar su recompensa.\r\n\n"
-				+ "Pulse ENTER para continuar"
-				, uiStyle);
-		presentacion.setPosition(61,105);
-	    presentacion.setAlignment(1, 2);
-	    
-		explicacion=new Label("Compruebe que los pasaportes de \r\n"
-				+ "las personas no incumplan las reglas.\r\n"
-				+ "Tiene 100 segundos, si deja\r\n"
-				+ "pasar a quien no debe, se restarán\r\n"
-				+ "80 segundos. Si cumple todas las\r\n"
-				+ "normas, se sumarán 20"
-				, uiStyle);
-		explicacion.setPosition(53,140);
-		explicacion.setAlignment(1, 2);
-	    
-		controles=new Label("Aceptar entrada: ENTER\r\n"
-				+ "Denegar entrada: BORRAR\r\n"
-				+ "Mover objetos: Click Izdo.\r\n\n"
-				, uiStyle);
-		controles.setPosition(160,120);
-	    controles.setAlignment(1, 2);
-	    
-		this.uiStage.addActor(presentacion);
-		presentacionHabilitada=true;
-	}
-	
-	@Override
-	public void render(float delta) {
-		
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && presentacionHabilitada) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
-			presentacion.remove();
-    		this.uiStage.addActor(explicacion);
-    		explicacionHabilitada=true;
-    		presentacionHabilitada=false;
-        }
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (explicacionHabilitada)) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
-			explicacion.remove();
-    		this.uiStage.addActor(controles);
-    		explicacionHabilitada=false;    
-        }
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (explicacionHabilitada == false && presentacionHabilitada == false)) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
-			controles.remove();
-			game.setScreen(new FrontierScreen(game));
-		    ResourceManager.musicaTitulo.stop();	    
-        }
-		super.render(delta);
-	    
-	     uiStage.act();
-	     batch.begin();
-	     batch.draw(background, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
-	     batch.end();
-	     uiStage.draw();
+    public StartScreen(Demo game) {
+        super(game);
 
-	}
-	
-	
-	
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+
+        batch = new SpriteBatch();
+
+        switch (Parametros.dia) {
+            case 1:
+                periodico = new Texture("Menu/periodico.1_0.png");
+                break;
+            case 2:
+                periodico = new Texture("Menu/periodico.2_0.png");
+                break;
+            case 3:
+                periodico = new Texture("Menu/periodico.3_0.png");
+                break;
+            default:
+                periodico = new Texture("Menu/periodico.3_0.png");
+                ResourceManager.musicaTitulo.stop();
+                game.setScreen(new FrontierScreen(game));
+            	
+        }
+
+        blackBackground = new Texture("Menu/blackBackground.png");
+        blackBackgroundActor = new Image(blackBackground);
+        this.uiStage.addActor(blackBackgroundActor);
+
+        periodicoActor = new Image(periodico);
+        this.uiStage.addActor(periodicoActor);
+        periodicoActor.getColor().a = 0f; // set initial opacity to 0
+        periodicoActor.setPosition(Parametros.getAnchoPantalla() / 2f, Parametros.getAltoPantalla() / 2f, Align.center);
+
+    }
+
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (button == Input.Buttons.LEFT && desactivable == true) {
+            periodicoActor.remove();
+            ResourceManager.musicaTitulo.stop();
+            game.setScreen(new FrontierScreen(game));
+        }
+
+        return false;
+    }
+
+    @Override
+    public void render(float delta) {
+
+        super.render(delta);
+        uiStage.act();
+        
+        fadeTimer += delta;
+        if (fadeTimer < 1f) {
+            periodicoActor.getColor().a = fadeTimer;
+            desactivable = true;
+        }
+
+        batch.begin();
+        batch.draw(blackBackground, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        batch.end();
+
+        uiStage.draw();
+    }
 }

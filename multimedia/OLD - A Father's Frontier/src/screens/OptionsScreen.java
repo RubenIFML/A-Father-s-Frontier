@@ -52,7 +52,7 @@ private int estadoActual = 0;
 		dificultad.addListener(new ClickListener() {
 		    @Override
 		    public void clicked(InputEvent event, float x, float y) {
-		        AudioManager.playSound("audio/sounds/menuBoton.mp3");
+		        AudioManager.playSound("audio/sounds/menuBoton.wav");
 		        
 		        estadoActual = (estadoActual + 1) % estados.length;
 		        
@@ -73,7 +73,7 @@ private int estadoActual = 0;
 		volver.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("audio/sounds/menuBoton.wav");
 				this.dispose();
 
 				game.setScreen(new TitleScreen(game));

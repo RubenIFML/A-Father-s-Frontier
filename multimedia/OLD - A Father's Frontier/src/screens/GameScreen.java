@@ -90,12 +90,12 @@ public boolean terminado = false;
 		backgroundTexture = new Texture(Gdx.files.internal("maps/images/PapersBackgraundTsx.png"));
 		backgroundActor = new Image(backgroundTexture);
 		
-		musica = Gdx.audio.newMusic(Gdx.files.internal("audio/music/maletin_por_favor.mp3"));
+		musica = Gdx.audio.newMusic(Gdx.files.internal("audio/music/maletin_por_favor.wav"));
 		musica.play();
         musica.setVolume(0.3f);
 		musica.setLooping(true);
 
-		musica2 = Gdx.audio.newMusic(Gdx.files.internal("audio/music/lluvia.mp3"));
+		musica2 = Gdx.audio.newMusic(Gdx.files.internal("audio/music/lluvia.wav"));
 		musica2.play();
         musica2.setVolume(0.4f);
 		musica2.setLooping(true);
@@ -163,7 +163,7 @@ public boolean terminado = false;
 
         	if(apareceP1==true) {
             	
-        		AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        		AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
     			persona1.show();
     			texto = new Texto("Pasaporte y equipaje,\n"
@@ -175,12 +175,12 @@ public boolean terminado = false;
     			
             } else if (equipajeP1==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
     			texto = new Texto("(Comprobaré las reglas\n"
     							+ "y decidiré qué hacer)", 7, 154);
     			mainStage.addActor(texto);
-        		AudioManager.playSound("audio/sounds/maletin.mp3");
+        		AudioManager.playSound("audio/sounds/maletin.wav");
     			maletin.show();
     			pasaporte1 = new Pasaporte1();
     			mainStage.addActor(pasaporte1);
@@ -194,7 +194,7 @@ public boolean terminado = false;
     			
             } else if (startP1==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
     			Parametros.controlesActivos=true;
     			reloj.start();
@@ -204,7 +204,7 @@ public boolean terminado = false;
             } else if (Parametros.analizadoP1==true) {
 
             	Parametros.controlesActivos=false;
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto = new Texto("LLAMAR AL SIGUIENTE\n"
         						+ "(Pulsa CLICK)", 10, 154);
         		mainStage.addActor(texto);
@@ -219,7 +219,7 @@ public boolean terminado = false;
     			
             } else if (pasaP2==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
         		texto = new Texto("Que pase el siguiente,\n"
 								+ "más rápido, por favor.", 10, 154);
@@ -229,7 +229,7 @@ public boolean terminado = false;
     			
 	        } else if (apareceP2==true) {
             	
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				texto.remove();
     			persona2.show();
     			texto = new Texto("Pasaporte y equipaje,\n"
@@ -241,12 +241,12 @@ public boolean terminado = false;
     			
             } else if (equipajeP2==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
     			texto = new Texto("(Veamos qué tenemos\n"
     							+ "por aquí)", 7, 154);
     			mainStage.addActor(texto);
-        		AudioManager.playSound("audio/sounds/maletin.mp3");
+        		AudioManager.playSound("audio/sounds/maletin.wav");
     			maletin.show();
 
     			pasaporte2 = new Pasaporte2();
@@ -260,7 +260,7 @@ public boolean terminado = false;
     			
 	        } else if (startP2==true) {
 	        	
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				texto.remove();
 				Parametros.controlesActivos=true;
 				startP2=false;
@@ -268,7 +268,7 @@ public boolean terminado = false;
 				
 	        } else if (Parametros.analizadoP2==true) {
 
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				texto = new Texto("LLAMAR AL SIGUIENTE\n"
         						+ "(Pulsa CLICK)", 10, 154);
         		mainStage.addActor(texto);
@@ -284,7 +284,7 @@ public boolean terminado = false;
 				
             } else if (pasaP3==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
         		texto = new Texto("Siguiente, por favor,\n"
 								+ "no pienso repetirlo.", 10, 154);
@@ -294,7 +294,7 @@ public boolean terminado = false;
            
         	} else if (apareceP3==true) {
         	
-        		AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        		AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
 				persona3.show();
 				texto = new Texto("Pasaporte y equipaje,\n"
@@ -306,11 +306,11 @@ public boolean terminado = false;
 				
             } else if (equipajeP3==true) {
             	
-            	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+            	AudioManager.playSound("audio/sounds/menuBoton.wav");
     			texto.remove();
     			texto = new Texto("(Empecemos...)\n", 7, 154);
     			mainStage.addActor(texto);
-        		AudioManager.playSound("audio/sounds/maletin.mp3");
+        		AudioManager.playSound("audio/sounds/maletin.wav");
     			maletin.show();
 
     			pasaporte3 = new Pasaporte3();
@@ -325,7 +325,7 @@ public boolean terminado = false;
     			startP3=true;
 	        } else if (startP3==true) {
 	        	
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				texto.remove();
 				Parametros.controlesActivos=true;
 				startP3=false;
@@ -333,7 +333,7 @@ public boolean terminado = false;
 				
 	        } else if (Parametros.analizadoP3==true) {
 	        	
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				Parametros.controlesActivos=false;
         		texto = new Texto("(Parece que ya va\n"
 								+ "siendo hora de irse)", 10, 154);
@@ -349,7 +349,7 @@ public boolean terminado = false;
 				terminado = true;
 				
 	        } else if (terminado==true) {
-	        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+	        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 				Parametros.ganas=true;
 				game.setScreen(new EndScreen(game));
 			    musica.stop();

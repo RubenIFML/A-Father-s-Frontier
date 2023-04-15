@@ -43,7 +43,7 @@ private Texture background;
 		boton.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("audio/sounds/menuBoton.wav");
 				this.dispose();
 
 				game.setScreen(new StartScreen(game));
@@ -54,7 +54,7 @@ private Texture background;
 		botonOpciones.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("audio/sounds/menuBoton.wav");
 				this.dispose();
 
 				game.setScreen(new OptionsScreen(game));
@@ -65,7 +65,7 @@ private Texture background;
 		botonSalir.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("audio/sounds/menuBoton.wav");
 				this.dispose();
 			Gdx.app.exit();
 				return false;

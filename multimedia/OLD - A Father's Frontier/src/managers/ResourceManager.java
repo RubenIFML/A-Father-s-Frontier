@@ -53,19 +53,19 @@ public final class ResourceManager {
         assets.load("maps/images/lluvia.png", Texture.class);
         
         //Audio
-        assets.load("audio/sounds/boton.mp3", Sound.class);
-        assets.load("audio/sounds/correcto.mp3", Sound.class);
-        assets.load("audio/sounds/incorrecto.mp3", Sound.class);
-        assets.load("audio/sounds/boton.mp3", Sound.class);
-        assets.load("audio/sounds/menuBoton.mp3", Sound.class);
-        assets.load("audio/sounds/papeles.mp3", Sound.class);
-        assets.load("audio/sounds/botella.mp3", Sound.class);
-        assets.load("audio/sounds/pistola.mp3", Sound.class);
-        assets.load("audio/sounds/maletin.mp3", Sound.class);
-        assets.load("audio/music/maletin_por_favor.mp3", Music.class);
-        assets.load("audio/music/final.mp3", Music.class);
-        assets.load("audio/music/lluvia.mp3", Music.class);
-        assets.load("audio/music/title_theme.mp3", Music.class);
+        assets.load("audio/sounds/boton.wav", Sound.class);
+        assets.load("audio/sounds/correcto.wav", Sound.class);
+        assets.load("audio/sounds/incorrecto.wav", Sound.class);
+        assets.load("audio/sounds/boton.wav", Sound.class);
+        assets.load("audio/sounds/menuBoton.wav", Sound.class);
+        assets.load("audio/sounds/papeles.wav", Sound.class);
+        assets.load("audio/sounds/botella.wav", Sound.class);
+        assets.load("audio/sounds/pistola.wav", Sound.class);
+        assets.load("audio/sounds/maletin.wav", Sound.class);
+        assets.load("audio/music/maletin_por_favor.wav", Music.class);
+        assets.load("audio/music/final.wav", Music.class);
+        assets.load("audio/music/lluvia.wav", Music.class);
+        assets.load("audio/music/title_theme.wav", Music.class);
 	
 	}
 	
@@ -91,7 +91,7 @@ public final class ResourceManager {
 		textButtonStyle.up=new NinePatchDrawable(buttonPatch);
 		textButtonStyle.font=fuentePropia;
 		
-		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("audio/music/title_theme.mp3"));
+		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("audio/music/title_theme.wav"));
 		musicaTitulo.play();
 	    musicaTitulo.setVolume(0.5f);
 		musicaTitulo.setLooping(true);

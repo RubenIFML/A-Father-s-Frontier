@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="filters_last_used" value=""/>
 	<section name="SearchDialog">
 		<item key="PREVIOUS_PAGE" value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
 	</section>
@@ -8,11 +9,13 @@
 			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
 			<item value="org.eclipse.egit.ui.commitSearchPage"/>
 			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
 		</list>
 		<list key="Search.enabledPageIds">
 			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
 			<item value="org.eclipse.egit.ui.commitSearchPage"/>
 			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
 		</list>
 	</section>
 	<section name="SearchDialog.ScopePart">
@@ -31,12 +34,12 @@
 		<item key="WHOLE_WORD" value="false"/>
 		<item key="SEARCH_DERIVED" value="false"/>
 		<item key="SEARCH_IN_BINARIES" value="false"/>
-		<item key="HISTORY_SIZE" value="4"/>
+		<item key="HISTORY_SIZE" value="5"/>
 		<section name="HISTORY0">
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="10"/>
+			<item key="textPattern" value="mp3"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -51,7 +54,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="dinero"/>
+			<item key="textPattern" value="10"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -63,7 +66,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="images"/>
+			<item key="textPattern" value="dinero"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -72,6 +75,18 @@
 			</list>
 		</section>
 		<section name="HISTORY3">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="images"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY4">
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
@@ -92,5 +107,10 @@
 	</section>
 	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
+	</section>
+	<section name="ReplaceDialog2">
+		<list key="replace_with">
+			<item value="wav"/>
+		</list>
 	</section>
 </section>

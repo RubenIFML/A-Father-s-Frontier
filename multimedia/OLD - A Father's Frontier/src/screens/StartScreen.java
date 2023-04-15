@@ -65,20 +65,20 @@ private boolean explicacionHabilitada = false;
 	public void render(float delta) {
 		
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && presentacionHabilitada) {
-        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 			presentacion.remove();
     		this.uiStage.addActor(explicacion);
     		explicacionHabilitada=true;
     		presentacionHabilitada=false;
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (explicacionHabilitada)) {
-        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 			explicacion.remove();
     		this.uiStage.addActor(controles);
     		explicacionHabilitada=false;    
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (explicacionHabilitada == false && presentacionHabilitada == false)) {
-        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 			controles.remove();
 			game.setScreen(new GameScreen(game));
 		    ResourceManager.musicaTitulo.stop();	    

@@ -22,7 +22,7 @@ public class BotonRojo extends Actor {
     public void act(float delta) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true) {
             botonRojo = new Texture("elements/botonRojo_Pressed.png");
-            AudioManager.playSound("audio/sounds/boton.mp3");
+            AudioManager.playSound("audio/sounds/boton.wav");
         }
         else {
         	botonRojo = new Texture("elements/botonRojo.png");

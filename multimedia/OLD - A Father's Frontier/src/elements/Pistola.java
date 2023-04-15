@@ -32,7 +32,7 @@ public class Pistola extends Actor {
             if (getRectangle().contains(stageCoords.x, stageCoords.y)) { // Usar las coordenadas de espacio de escena
                 isDragged = true;
                 if (suena == true) {
-                    AudioManager.playSound("audio/sounds/pistola.mp3");
+                    AudioManager.playSound("audio/sounds/pistola.wav");
                     suena = false;
                 }
             }

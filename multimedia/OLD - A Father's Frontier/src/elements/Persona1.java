@@ -35,7 +35,7 @@ public class Persona1 extends Actor {
         	mainStage.addActor(texto);
         	Parametros.analizar=false;
         	Parametros.analizadoP1=true;
-            AudioManager.playSound("audio/sounds/correcto.mp3");
+            AudioManager.playSound("audio/sounds/correcto.wav");
             GameScreen.reloj.modTiempo(20);
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
@@ -44,7 +44,7 @@ public class Persona1 extends Actor {
         	mainStage.addActor(texto);
         	Parametros.analizadoP1=true;
         	Parametros.analizar=false;
-            AudioManager.playSound("audio/sounds/incorrecto.mp3");
+            AudioManager.playSound("audio/sounds/incorrecto.wav");
             GameScreen.reloj.modTiempo(-80);
         }
         

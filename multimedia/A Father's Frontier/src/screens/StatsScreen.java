@@ -51,17 +51,17 @@ private boolean diaHabilitada = false;
 	public void render(float delta) {
 		
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && estadisticasHabilitada) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			estadisticas.remove();
     		this.uiStage.addActor(dia);
     		diaHabilitada=true;
     		estadisticasHabilitada=false;
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (diaHabilitada)) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			dia.remove();
-			game.setScreen(new FrontierScreen(game));
-		    ResourceManager.musicaTitulo.stop();
+		    ResourceManager.musicaTitulo.play();
+			game.setScreen(new StartScreen(game));
         }
         
 		 super.render(delta);

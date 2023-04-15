@@ -29,7 +29,7 @@ public class Boton extends Actor {
     	if(x == 165) {
 	        if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true) {
 	            boton = new Texture("01-FS/Objetos/" + this.textura2);
-	            AudioManager.playSound("01-FS/Audio/sounds/boton.mp3");
+	            AudioManager.playSound("01-FS/Audio/sounds/boton.wav");
 	        }
 	        else {
 	        	boton = new Texture("01-FS/Objetos/" + this.textura1);
@@ -38,7 +38,7 @@ public class Boton extends Actor {
     	else if(x == 200) {
 	        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true) {
 	            boton = new Texture("01-FS/Objetos/" + this.textura2);
-	            AudioManager.playSound("01-FS/Audio/sounds/boton.mp3");
+	            AudioManager.playSound("01-FS/Audio/sounds/boton.wav");
 	        }
 	        else {
 	        	boton = new Texture("01-FS/Objetos/" + this.textura1);

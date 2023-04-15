@@ -35,7 +35,7 @@ public class Persona3 extends Actor {
         	mainStage.addActor(texto);
         	Parametros.analizar=false;
         	Parametros.analizadoP3=true;
-            AudioManager.playSound("audio/sounds/correcto.mp3");
+            AudioManager.playSound("audio/sounds/correcto.wav");
             GameScreen.reloj.modTiempo(20);
 
         }
@@ -45,7 +45,7 @@ public class Persona3 extends Actor {
         	mainStage.addActor(texto);
         	Parametros.analizar=false;
         	Parametros.analizadoP3=true;
-            AudioManager.playSound("audio/sounds/incorrecto.mp3");
+            AudioManager.playSound("audio/sounds/incorrecto.wav");
             GameScreen.reloj.modTiempo(-80);
         }
         

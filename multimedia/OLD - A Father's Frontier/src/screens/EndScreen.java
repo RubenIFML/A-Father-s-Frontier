@@ -25,7 +25,7 @@ private Music musicaFinal;
 	public EndScreen(Demo game) {
 	    super(game);
 	    
-		musicaFinal = Gdx.audio.newMusic(Gdx.files.internal("audio/music/final.mp3"));
+		musicaFinal = Gdx.audio.newMusic(Gdx.files.internal("audio/music/final.wav"));
 		musicaFinal.play();
         musicaFinal.setVolume(0.3f);
 		musicaFinal.setLooping(true);
@@ -79,13 +79,13 @@ private Music musicaFinal;
 	public void render(float delta) {
 		
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && finalHabilitado) {
-        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 			conclusion.remove();
     		this.uiStage.addActor(mensajeDemo);
     		finalHabilitado=false;
         }
         else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (finalHabilitado == false)) {
-        	AudioManager.playSound("audio/sounds/menuBoton.mp3");
+        	AudioManager.playSound("audio/sounds/menuBoton.wav");
 			mensajeDemo.remove();
 			game.setScreen(new TitleScreen(game));
 			musicaFinal.stop();

@@ -8,12 +8,15 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
+import fs_elements.Lluvia;
 import game.Demo;
 import game.Parametros;
 import managers.AudioManager;
@@ -24,6 +27,10 @@ private Table tabla;
 private OrthographicCamera camera;
 private Batch batch;
 private Texture background;
+private Actor titleActor;
+private Texture title;
+private Lluvia lluvia;
+
 	public TitleScreen(Demo game) {
 	    super(game);
 		
@@ -32,6 +39,15 @@ private Texture background;
 	    
 	    batch = new SpriteBatch();
 	    background = new Texture("Menu/titleBackground.jpg");
+	    title = new Texture("Menu/titleTitle.png");
+		titleActor = new Image(title);
+		lluvia = new Lluvia();
+		
+		this.uiStage.addActor(lluvia);
+		lluvia.setScaleY(Parametros.getAltoPantalla()/125);
+		lluvia.setScaleX(Parametros.getAnchoPantalla()/125);
+		this.uiStage.addActor(titleActor);
+		titleActor.setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 		
 		tabla = new Table();
 		tabla.setFillParent(true);
@@ -44,7 +60,7 @@ private Texture background;
 		boton.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				this.dispose();
 
 				game.setScreen(new StartScreen(game));
@@ -55,7 +71,7 @@ private Texture background;
 		botonOpciones.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				this.dispose();
 
 				game.setScreen(new OptionsScreen(game));
@@ -66,7 +82,7 @@ private Texture background;
 		botonSalir.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.mp3");
+				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				this.dispose();
 			Gdx.app.exit();
 				return false;

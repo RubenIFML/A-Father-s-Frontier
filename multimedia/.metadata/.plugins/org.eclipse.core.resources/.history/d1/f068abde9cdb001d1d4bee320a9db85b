@@ -1,0 +1,99 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.utils.Align;
+import game.Demo;
+import game.Parametros;
+import managers.ResourceManager;
+
+public class StartScreen extends BScreen {
+
+    private OrthographicCamera camera;
+    private Batch batch;
+    private Texture periodico;
+    private Actor periodicoActor;
+    private Image blackBackgroundActor;
+    private boolean desactivable = false;
+
+    public StartScreen(Demo game) {
+        super(game);
+
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+
+        batch = new SpriteBatch();
+
+        switch (Parametros.dia) {
+            case 1:
+                periodico = new Texture("Menu/periodico.1_0.png");
+                break;
+            case 2:
+                periodico = new Texture("Menu/periodico.2_0.png");
+                break;
+            case 3:
+                periodico = new Texture("Menu/periodico.3_0.png");
+                break;
+        }
+
+        Table table = new Table();
+        table.setFillParent(true);
+        table.setBackground(new NinePatchDrawable(new NinePatch(new Texture("Menu/blackBackground.png"), 12, 12, 12, 12)));
+        table.align(Align.center);
+        uiStage.addActor(table);
+
+        blackBackgroundActor = new Image();
+        blackBackgroundActor.setColor(Color.BLACK);
+        blackBackgroundActor.setFillParent(true);
+        table.add(blackBackgroundActor).expand().fill().pad(50f);
+
+        periodicoActor = new Image(periodico);
+        this.uiStage.addActor(periodicoActor);
+        desactivable=true;
+    }
+
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (button == Input.Buttons.LEFT && desactivable == true) {
+            periodicoActor.remove();
+            ResourceManager.musicaTitulo.stop();
+            game.setScreen(new FrontierScreen(game));
+        }
+
+        return false;
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+
+        uiStage.act();
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        uiStage.draw();
+        batch.end();
+
+        blackBackgroundActor.addAction(Actions.sequence(
+                Actions.fadeOut(1.5f),
+                Actions.run(() -> {
+                    blackBackgroundActor.remove();
+                })
+        ));
+    }
+}

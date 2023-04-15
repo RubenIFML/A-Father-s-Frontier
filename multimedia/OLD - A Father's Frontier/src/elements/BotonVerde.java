@@ -22,7 +22,7 @@ public class BotonVerde extends Actor {
     public void act(float delta) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true) {
             botonVerde = new Texture("elements/botonVerde_Pressed.png");
-            AudioManager.playSound("audio/sounds/boton.mp3");
+            AudioManager.playSound("audio/sounds/boton.wav");
         }
         
         else {
