@@ -30,6 +30,7 @@ public final class ResourceManager {
 		//Mapas
 		assets.setLoader(TiledMap.class, new TmxMapLoader());
 		assets.load("Mapas/PapersBackground.tmx", TiledMap.class);
+		assets.load("Mapas/OverWorld.tmx", TiledMap.class);
 		
         //Menú
 		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
@@ -38,6 +39,8 @@ public final class ResourceManager {
         assets.load("Menu/blackBackground.png", Texture.class);
         assets.load("Menu/menuBoton.png", Texture.class);
         assets.load("Menu/lluvia.png", Texture.class);
+        assets.load("Menu/raindrop.png", Texture.class);
+        assets.load("Menu/niebla.png", Texture.class);
         assets.load("Menu/periodico.0_0.png", Texture.class);
         assets.load("Menu/periodico.1_0.png", Texture.class);
         assets.load("Menu/periodico.2_0.png", Texture.class);
@@ -91,7 +94,7 @@ public final class ResourceManager {
         assets.load("01-FS/Objetos/objeto.sombrero.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.sopa.png", Texture.class);
         
-        //Personajes
+        //Personajes FS
         assets.load("01-FS/Personajes/FS.1_1.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_2.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_3.png", Texture.class);
@@ -104,6 +107,9 @@ public final class ResourceManager {
         assets.load("01-FS/Personajes/FS.3_2.png", Texture.class);
         assets.load("01-FS/Personajes/FS.3_3.png", Texture.class);
         assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
+        
+        //Personajes OW
+        assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
         
         //Sonidos
         assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);
@@ -121,13 +127,15 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/duxer.wav", Sound.class);
         assets.load("01-FS/Audio/sounds/llaves.wav", Sound.class);
         assets.load("01-FS/Audio/sounds/maletin.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/pasos.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
         assets.load("01-FS/Audio/music/final.wav", Music.class);
         assets.load("01-FS/Audio/music/lluvia.wav", Music.class);
         assets.load("01-FS/Audio/music/title_theme.wav", Music.class);
-	
+        assets.load("02-OW/Audio/music/ciudad_dia1.wav", Music.class);
+        assets.load("02-OW/Audio/music/ambiente.wav", Music.class);
 	}
 	
 	public static boolean update(){

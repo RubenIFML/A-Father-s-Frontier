@@ -63,7 +63,7 @@ private float fadeTimer = 0f;
         if (button == Input.Buttons.LEFT && desactivable == true) {
             periodicoActor.remove();
             ResourceManager.musicaTitulo.stop();
-            game.setScreen(new FrontierScreen(game));
+            game.setScreen(new OverWorldScreen(game));
         }
 
         return false;
