@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Screen"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.utils.viewport.ScreenViewport"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.RepeatAction"/>
-    <fullyQualifiedTypeName name="elements.Reloj"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.utils.TimeUtils"/>
     <fullyQualifiedTypeName name="elements.Persona1"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.TextureRegion"/>
@@ -47,7 +36,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Cell"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="managers.ResourceManager"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_1"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_2"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_3"/>
@@ -60,4 +48,16 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.NinePatch"/>
     <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.math.MathUtils"/>
+    <fullyQualifiedTypeName name="ow_elements.Element"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Interpolation"/>
+    <fullyQualifiedTypeName name="ow_elements.FadeInAction"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
+    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.maps.tiled.TiledMapTileLayer"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL20"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
 </qualifiedTypeNameHistroy>

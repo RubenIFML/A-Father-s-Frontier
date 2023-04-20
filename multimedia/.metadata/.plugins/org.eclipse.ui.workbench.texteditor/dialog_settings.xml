@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="lluvia"/>
+		<item key="selection" value="Start"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="lluvia"/>
-			<item value="addac"/>
-			<item value="periodico"/>
-			<item value="contador"/>
-			<item value="duxer"/>
-			<item value="platano"/>
-			<item value="sopa"/>
-			<item value="lata"/>
-			<item value="llave"/>
-			<item value="llaves"/>
-			<item value="sombrero"/>
-			<item value="sombrerp"/>
-			<item value="new fro"/>
-			<item value="desact"/>
-			<item value="music"/>
+			<item value="Start"/>
+			<item value="start"/>
+			<item value="superUk"/>
+			<item value="superuk"/>
+			<item value="superk"/>
+			<item value="superuk2"/>
+			<item value="poly2"/>
+			<item value="niebla"/>
+			<item value="-100"/>
+			<item value="createra"/>
+			<item value="zona"/>
+			<item value="inicioy"/>
+			<item value="system"/>
+			<item value="colide"/>
+			<item value="tsx"/>
 		</list>
 		<list key="replacehistory">
 		</list>

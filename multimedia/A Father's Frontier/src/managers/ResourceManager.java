@@ -31,6 +31,8 @@ public final class ResourceManager {
 		assets.setLoader(TiledMap.class, new TmxMapLoader());
 		assets.load("Mapas/PapersBackground.tmx", TiledMap.class);
 		assets.load("Mapas/OverWorld.tmx", TiledMap.class);
+		assets.load("Mapas/CasaProtagonista.tmx", TiledMap.class);
+		assets.load("Mapas/SuperUKMarket.tmx", TiledMap.class);
 		
         //Menú
 		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
@@ -45,6 +47,7 @@ public final class ResourceManager {
         assets.load("Menu/periodico.1_0.png", Texture.class);
         assets.load("Menu/periodico.2_0.png", Texture.class);
         assets.load("Menu/periodico.3_0.png", Texture.class);
+        assets.load("Menu/mapaEsquema.png", Texture.class);
         
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);

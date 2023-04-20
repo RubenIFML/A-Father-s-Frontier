@@ -38,6 +38,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="E:\Documents\GitHub\Demo22"/>
+			<item value="C:\Users\rmoya\Documents\Demo22"/>
 			<item value="D:\Desktop\multimedia\Demo22"/>
 		</list>
 	</section>
