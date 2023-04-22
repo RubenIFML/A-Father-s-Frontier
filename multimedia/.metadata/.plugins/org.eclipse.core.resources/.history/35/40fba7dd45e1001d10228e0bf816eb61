@@ -1,0 +1,85 @@
+package ow_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import game.Parametros;
+import screens.OverWorldScreen;
+
+public class NpcMovil extends Npc{
+	
+	private float velocidad;
+	private int direccionMovimiento;
+	private boolean enMovimiento = false;
+	
+	public NpcMovil(float x, float y, Stage s, OverWorldScreen nivel, String animacion) {
+		super(x,y,s,nivel);
+       
+		prepararAnimacion(animacion);
+		this.setPolygon(8, 32, 23, 5, 5);
+		
+		direccionMovimiento=-1;
+        velocidad=70;
+	}
+	
+	public void act(float delta) {
+        super.act(delta);    
+    	if(Parametros.controlesActivos=true) {
+            if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+                Vector2 clickPos = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+                Vector2 direction = new Vector2(clickPos).sub(getX(), getY());
+                direction.nor();
+                this.velocity.set(direction.scl(130));
+            } else {
+                this.velocity.y=0;
+                this.velocity.x=0;
+            }
+            animaciones();
+            this.applyPhysics(delta);
+    	}
+	}
+	
+	private void comprobarColisiones() {
+		for(Solid solido:this.nivel.solidos) {
+			if(this.overlaps(solido)) {
+				this.direccionMovimiento*=-1;
+			}
+		}
+	}
+	
+	private void animaciones() {
+		if (this.velocity.isZero()) {
+            Vector2 clickPos = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+            Vector2 direction = new Vector2(clickPos).sub(getX(), getY());
+            Vector2 up = new Vector2(0, 1);
+            float angleRad = direction.angleRad(up);
+
+            if (angleRad < -MathUtils.PI / 4f && angleRad > -3f * MathUtils.PI / 4f) {
+                this.setAnimation(idleIzquierda);
+            } else if (angleRad > MathUtils.PI / 4f && angleRad < 3f * MathUtils.PI / 4f) {
+                this.setAnimation(idleDerecha);
+            } else if (angleRad >= 3f * MathUtils.PI / 4f || angleRad <= -3f * MathUtils.PI / 4f) {
+                this.setAnimation(idleFrente);
+            } else {
+                this.setAnimation(idleEspaldas);
+            }
+        } else {
+            float angle = MathUtils.atan2(this.velocity.y, this.velocity.x) * MathUtils.radiansToDegrees;
+            if (angle < 0) {
+                angle += 360;
+            }
+            if (angle >= 45 && angle < 135) {
+                this.setAnimation(espalda);
+            } else if (angle >= 135 && angle < 225) {
+                this.setAnimation(izquierda);
+            } else if (angle >= 225 && angle < 315) {
+                this.setAnimation(frente);
+            } else {
+                this.setAnimation(derecha);
+            }
+        }
+	}
+}

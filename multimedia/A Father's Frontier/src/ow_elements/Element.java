@@ -209,7 +209,37 @@ public class Element extends Actor{
 	        return anim;
 	    }
 	  
-	public Array<TextureRegion>[] loadFullAnimation(String name, int rows, int cols, float frameDuration, boolean loop) { 
+	  public Animation<TextureRegion> loadFullAnimation(String name, int rows, int cols, float frameDuration, boolean loop)
+	    { 
+		  
+	        Texture texture = ResourceManager.getTexture(name);
+	       // texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	        int frameWidth = texture.getWidth() / cols;
+	        int frameHeight =texture.getHeight() / rows;
+
+	        TextureRegion[][] temp = TextureRegion.split(texture, frameWidth, frameHeight);
+	        
+	        Array<TextureRegion> textureArray = new Array<TextureRegion>();
+
+	        for (int r = 0; r < rows; r++)
+	            for (int c = 0; c < cols; c++)
+	                textureArray.add( temp[r][c] );
+
+	        Animation<TextureRegion> anim = new Animation<TextureRegion>(frameDuration, textureArray);
+
+	        if (loop)
+	            anim.setPlayMode(Animation.PlayMode.LOOP);
+	        else
+	            anim.setPlayMode(Animation.PlayMode.NORMAL);
+
+	        if (animation == null) {
+	            
+	        	 this.setAnimation(anim);}
+
+	        return anim;
+	    }
+	
+	public Array<TextureRegion>[] loadFullAnimationArray(String name, int rows, int cols, float frameDuration, boolean loop) { 
 	    Texture texture = ResourceManager.getTexture(name);
 	    int frameWidth = texture.getWidth() / cols;
 	    int frameHeight = texture.getHeight() / rows;
@@ -445,8 +475,8 @@ public class Element extends Actor{
 	  }
 	  
 	
-	public void prepararAnimacion(String spriteSheet) {
-        	animationArray = loadFullAnimation(spriteSheet, 4, 7, 0.2f, true);
+	public void prepararAnimacion(String spriteSheet, boolean loop) {
+        	animationArray = loadFullAnimationArray(spriteSheet, 4, 7, 0.2f, loop);
         
 	        idleArray = animationArray[0];
 	        frenteArray = animationArray[1];
@@ -459,10 +489,10 @@ public class Element extends Actor{
 	        idleDerecha = new Animation<TextureRegion>(0.15f, idleArray.get(2));
 	        idleEspaldas = new Animation<TextureRegion>(0.15f, idleArray.get(3));
 	        
-	        frente = loadAnimationFromArray(frenteArray, 0.15f, true);
-	        espalda = loadAnimationFromArray(espaldaArray, 0.15f, true);
-	        derecha = loadAnimationFromArray(derechaArray, 0.15f, true);
-	        izquierda = loadAnimationFromArray(izquierdaArray, 0.15f, true);
+	        frente = loadAnimationFromArray(frenteArray, 0.15f, loop);
+	        espalda = loadAnimationFromArray(espaldaArray, 0.15f, loop);
+	        derecha = loadAnimationFromArray(derechaArray, 0.15f, loop);
+	        izquierda = loadAnimationFromArray(izquierdaArray, 0.15f, loop);
 	}
 
 

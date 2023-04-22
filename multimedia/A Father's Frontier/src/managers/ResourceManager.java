@@ -113,6 +113,23 @@ public final class ResourceManager {
         
         //Personajes OW
         assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.ahorcado.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.chica_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.chica1_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.dependiente_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.detective_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.evans_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra1_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra2_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra3_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra4_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.herido_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.perro_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.policia_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.protagonista.final_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.secuestrador_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.viejo_ow.png", Texture.class);
         
         //Sonidos
         assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);

@@ -356,4 +356,19 @@
    <property name="name" value="over"/>
   </properties>
  </tile>
+ <tile id="575">
+  <properties>
+   <property name="npc" value="staticNpc"/>
+  </properties>
+ </tile>
+ <tile id="583">
+  <properties>
+   <property name="npc" value="misionNpc"/>
+  </properties>
+ </tile>
+ <tile id="591">
+  <properties>
+   <property name="npc" value="misionNpc"/>
+  </properties>
+ </tile>
 </tileset>

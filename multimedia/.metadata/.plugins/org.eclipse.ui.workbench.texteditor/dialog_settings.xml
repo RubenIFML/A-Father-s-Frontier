@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Start"/>
+		<item key="selection" value="prepararAnimacion"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="Start"/>
-			<item value="start"/>
-			<item value="superUk"/>
-			<item value="superuk"/>
-			<item value="superk"/>
-			<item value="superuk2"/>
-			<item value="poly2"/>
-			<item value="niebla"/>
-			<item value="-100"/>
-			<item value="createra"/>
-			<item value="zona"/>
-			<item value="inicioy"/>
-			<item value="system"/>
-			<item value="colide"/>
-			<item value="tsx"/>
+			<item value="prepararAnimacion"/>
+			<item value="loop"/>
+			<item value="02"/>
+			<item value="prepararan"/>
+			<item value="loadfullanimationa"/>
+			<item value="loadAnimationFromArray"/>
+			<item value="fromarr"/>
+			<item value="preparar"/>
+			<item value="movil"/>
+			<item value="dialo"/>
+			<item value="this.dia"/>
+			<item value="enemigo"/>
+			<item value="addActor"/>
+			<item value="add"/>
+			<item value="ene"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="8"/>
-		<item key="DIALOG_Y_ORIGIN" value="337"/>
+		<item key="DIALOG_Y_ORIGIN" value="564"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

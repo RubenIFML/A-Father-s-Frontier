@@ -1,0 +1,41 @@
+package ow_elements;
+
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import screens.OverWorldScreen;
+
+public class NpcMovil extends Npc{
+	
+	private float velocidad;
+	private int direccionMovimiento;
+	
+	public NpcMovil(float x, float y, Stage s, OverWorldScreen nivel, String animacion) {
+		super(x,y,s,nivel);
+       
+		prepararAnimacion(animacion);
+		this.setPolygon(8, 32, 23, 5, 5);
+        
+		direccionMovimiento=-1;
+        velocidad=70;
+	}
+	
+	public void act(float delta) {
+		super.act(delta);
+		moveBy(direccionMovimiento*velocidad*delta,0);
+		animaciones();
+		comprobarColisiones();
+	}
+	
+	private void comprobarColisiones() {
+
+	}
+	
+	private void animaciones() {
+        if (direccionMovimiento>0) {
+            this.setAnimation(derecha);
+        }
+        else if (direccionMovimiento<0){
+            this.setAnimation(izquierda);
+        }
+	}
+}

@@ -1,0 +1,68 @@
+package ow_elements;
+
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import screens.OverWorldScreen;
+
+public class Enemigo extends Element{
+	protected OverWorldScreen nivel;
+	public int vida;
+	public boolean invulnerable;
+	private float tInvulnerable;
+	private float duracionInvulnerable;
+	public int dano;
+	
+	
+	public Enemigo(float x, float y, Stage s, OverWorldScreen nivel) {
+		super(x,y,s);
+		this.nivel=nivel;
+		this.invulnerable=false;
+		this.duracionInvulnerable=0.75f;
+		this.tInvulnerable=0;
+		dano=10;
+		
+	}
+	
+	public void draw(Batch batch, float parentAlpha) {
+		if(this.invulnerable) {
+		
+		super.draw(batch, 0.5f);}
+		else
+		{super.draw(batch, parentAlpha);}
+		
+	}
+	
+	public void act(float delta) {
+		if(this.vida<=0) {
+			
+			this.setEnabled(false);
+		}
+		if(this.tInvulnerable>0) {
+			this.tInvulnerable-=delta;
+		}
+		else {
+			this.invulnerable=false;
+		}
+		colide();
+	}
+	
+	
+	public void dano(int dano) {
+		if(this.invulnerable==false)
+		this.vida-=dano;
+		
+		this.invulnerable=true;
+		this.tInvulnerable=this.duracionInvulnerable;
+		
+	}
+	
+	public void colide() {
+		if(this.getEnabled() && this.overlaps(this.nivel.prota)) {
+			this.nivel.prota.preventOverlap(this);
+		}
+		
+		
+	}
+
+}

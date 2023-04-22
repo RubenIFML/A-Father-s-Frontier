@@ -2,6 +2,7 @@ package screens;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -14,6 +15,8 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
@@ -23,7 +26,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
+import ow_elements.NpcStatic;
+import ow_elements.NpcMovil;
 import ow_elements.Solid;
+import ow_elements.Element;
 import ow_elements.Niebla;
 import ow_elements.RainDrop;
 import ow_elements.Protagonista;
@@ -41,6 +47,7 @@ OrthographicCamera camara;
 private TiledMap map;
 private OrthogonalTiledMapRenderer renderer;
 public Array<Solid> solidos;
+public Array<Element> enemigos;
 public float mouseX;
 public float mouseY;
 private Vector3 m3d;
@@ -82,16 +89,17 @@ private static boolean CalleASuper2 = false;
 		musica = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.wav"));
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
-	    
+		
+		if(musicaUnaVez==true) {
+			musica.play();
+	        musica.setVolume(0.2f);
+			musica.setLooping(true);
+			musicaUnaVez=false;
+		}
+		
 		switch (Parametros.zona) {
 			case 1:
 				map=ResourceManager.getMap("Mapas/CasaProtagonista.tmx");
-				if(musicaUnaVez==true) {
-					musica.play();
-			        musica.setVolume(0.2f);
-					musica.setLooping(true);
-					musicaUnaVez=false;
-				}
 				break;
 			case 2: 
 				map=ResourceManager.getMap("Mapas/OverWorld.tmx");
@@ -117,6 +125,31 @@ private static boolean CalleASuper2 = false;
 		mapWidthInPixels=tileWidth*mapWidthInTiles;
 		mapHeightInPixels=tileHeight*mapHeightInTiles;
 		
+		if(Parametros.zona==2) {
+			enemigos=new Array<Element>();
+			for(MapObject ene:getEnemyList()) {
+				props=ene.getProperties();
+				
+				//Dibujar NPC
+				switch(props.get("npc").toString()) {
+				case "staticNpc":
+					//Declaraciones de NPC
+					NpcStatic testStaticNpc=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+							"02-OW/Personajes/personaje.extra4_ow.png", "frente");
+					enemigos.add(testStaticNpc);
+					break;
+					
+				case "movilNpc":
+					//Declaraciones de NPC
+					NpcMovil testMovilNpc=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+							"02-OW/Personajes/personaje.extra1_ow.png");
+					enemigos.add(testMovilNpc);
+					break;
+				case "misionNpc":
+					break;
+				}
+			}
+		}
 		
 		ArrayList<MapObject> elementos;		
 
@@ -322,7 +355,7 @@ private static boolean CalleASuper2 = false;
 	}
 	
 	public void teletransporteFrontera() {
-		musica.stop();
+		musica.stop(); 
 		ambiente.stop();
 		prota.pasos.stop();
 		Parametros.frontera=true;
@@ -386,6 +419,42 @@ private static boolean CalleASuper2 = false;
 	
 	}
 	
+	public ArrayList<MapObject> getEnemyList(){
+		ArrayList<MapObject> list =new ArrayList<MapObject>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				if(!(obj instanceof TiledMapTileMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				
+				
+				TiledMapTileMapObject tmtmo=(TiledMapTileMapObject) obj;
+				TiledMapTile t=tmtmo.getTile();
+				MapProperties defaultProps=t.getProperties();
+				if(defaultProps.containsKey("npc")) {
+					list.add(obj);
+				}
+				
+				Iterator<String> propertyKeys=defaultProps.getKeys();
+				while(propertyKeys.hasNext()) {
+					String key =propertyKeys.next();
+					
+					if(props.containsKey(key))
+						continue;
+					else {
+						Object value=defaultProps.get(key);
+						props.put(key, value);
+					}
+						
+				}
+				
+			}
+			
+		}
+		
+		return list;
+	}
+	
 	public class ActorComparator implements Comparator<Actor>{
 
 		@Override
@@ -406,10 +475,10 @@ private static boolean CalleASuper2 = false;
 		// TODO Auto-generated method stub
 		super.render(delta);
 		
-	     mainStage.act();
+	   mainStage.act();
 	   uiStage.act();
 	   colide();
-	    
+	   
 	   centrarCamara();
 	   
 	   m3d.x=Gdx.input.getX();

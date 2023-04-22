@@ -1,0 +1,19 @@
+package ow_elements;
+
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import screens.OverWorldScreen;
+
+public class NpcStatic extends Npc{
+	
+	public NpcStatic(float x, float y, Stage s, OverWorldScreen nivel) {
+		super(x,y,s,nivel);
+        prepararAnimacion("02-OW/Personajes/personaje.chica1_ow.png");
+        setAnimation(idleFrente);
+        this.setPolygon(8, 32, 23, 5, 5);
+	}
+	
+	public void act(float delta) {
+		super.act(delta);
+	}
+}
