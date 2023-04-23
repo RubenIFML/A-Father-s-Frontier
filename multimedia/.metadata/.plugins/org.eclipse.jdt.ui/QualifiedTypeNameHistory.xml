@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="elements.Lluvia"/>
-    <fullyQualifiedTypeName name="elements.Mesa"/>
-    <fullyQualifiedTypeName name="elements.Pistola"/>
-    <fullyQualifiedTypeName name="elements.Botella"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Sound"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputProcessor"/>
     <fullyQualifiedTypeName name="elements.Persona2"/>
     <fullyQualifiedTypeName name="elements.Pasaporte2"/>
@@ -21,14 +16,11 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
     <fullyQualifiedTypeName name="managers.AudioManager"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="screens.GameScreen"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.SequenceAction"/>
     <fullyQualifiedTypeName name="javax.swing.text.TabExpander"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Table"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="managers.ResourceManager"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_1"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_2"/>
@@ -40,7 +32,6 @@
     <fullyQualifiedTypeName name="fs_elements.FS3_4"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.NinePatch"/>
     <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.MathUtils"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
@@ -56,8 +47,17 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Cell"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.MapObjects"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMovil"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
     <fullyQualifiedTypeName name="screens.OverWorldScreen"/>
     <fullyQualifiedTypeName name="ow_elements.Element"/>
+    <fullyQualifiedTypeName name="ow_elements.NpcMision"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.InputAdapter"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+    <fullyQualifiedTypeName name="java.text.Format"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
 </qualifiedTypeNameHistroy>

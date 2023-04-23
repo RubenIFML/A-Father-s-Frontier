@@ -21,3 +21,7 @@
 1682162987722	Rename type 'Enemigo'
 1682170903265	Copy compilation unit
 1682194366196	Delete element
+1682200984904	Copy compilation unit
+1682254639615	Rename field 'enemigos'
+1682254650750	Rename local variable 'ene'
+1682254661972	Rename method 'getEnemyList'

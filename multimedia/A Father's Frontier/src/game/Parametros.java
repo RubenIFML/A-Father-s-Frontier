@@ -23,7 +23,7 @@ public class Parametros {
  
  //Variables
  public static boolean frontera = false;
- public static boolean controlesActivos = false;
+ public static boolean controlesActivos = true;
  public static boolean lockClick = false;
  public static boolean comienzo = false;
  public static boolean analizar = false;

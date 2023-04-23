@@ -824,22 +824,17 @@
     <property name="npc" value="misionNpc"/>
    </properties>
   </object>
-  <object id="158" gid="584" x="1612" y="248" width="32" height="32">
+  <object id="158" gid="584" x="1364" y="248" width="32" height="32">
    <properties>
     <property name="npc" value="movilNpc"/>
    </properties>
   </object>
-  <object id="161" gid="576" x="1550" y="217" width="32" height="32">
+  <object id="161" gid="576" x="1643" y="248" width="32" height="32">
    <properties>
     <property name="npc" value="staticNpc"/>
    </properties>
   </object>
   <object id="162" gid="584" x="1612" y="1333" width="32" height="32">
-   <properties>
-    <property name="npc" value="movilNpc"/>
-   </properties>
-  </object>
-  <object id="163" gid="584" x="1612" y="341" width="32" height="32">
    <properties>
     <property name="npc" value="movilNpc"/>
    </properties>

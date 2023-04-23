@@ -1,0 +1,54 @@
+package ow_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
+public class Texto extends Actor {
+    private Texture caja;
+    private String text;
+    private Label texto;
+	public LabelStyle uiStyle;
+	private float textX;
+	private float textY;
+    
+    public Texto(String text, float textX, float textY) {
+        FreeTypeFontGenerator ftfg= new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
+		FreeTypeFontParameter ftfp= new FreeTypeFontParameter();
+		
+		BitmapFont fuentePropia=ftfg.generateFont(ftfp);
+		uiStyle=new LabelStyle();
+		fuentePropia.getData().setScale(0.5f);
+		uiStyle.font=fuentePropia;
+		
+    	this.text=text;
+    	this.textX=textX;
+    	this.textY=textY;
+    	
+    	setBounds(0, 150, 100, 30);
+        caja = new Texture("Menu/menuBoton.png");
+        
+		texto=new Label(this.text, uiStyle);
+        texto.setPosition(this.textX, this.textY);
+    }
+
+    @Override
+    public void act(float delta) {
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(caja, getX(), getY(), getWidth(), getHeight());
+        texto.draw(batch, parentAlpha);
+    }
+    
+    public void hide() {
+    	this.remove();
+    }
+}

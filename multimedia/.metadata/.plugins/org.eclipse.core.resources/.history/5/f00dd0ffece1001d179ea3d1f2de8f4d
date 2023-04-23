@@ -1,0 +1,54 @@
+package ow_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
+import game.Parametros;
+
+public class Texto extends Actor {
+    private Texture caja;
+    private String text;
+    private Label texto;
+	public LabelStyle uiStyle;
+	private float textX;
+	private float textY;
+    
+    public Texto(String text) {
+        FreeTypeFontGenerator ftfg= new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
+		FreeTypeFontParameter ftfp= new FreeTypeFontParameter();
+		
+		BitmapFont fuentePropia=ftfg.generateFont(ftfp);
+		uiStyle=new LabelStyle();
+		fuentePropia.getData().setScale(30f);
+		uiStyle.font=fuentePropia;
+		
+    	this.text=text;
+    	
+    	setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        caja = new Texture("Menu/dialogoOW.png");
+        
+		texto=new Label(this.text, uiStyle);
+        texto.setPosition(5, 20);
+    }
+
+    @Override
+    public void act(float delta) {
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(caja, getX(), getY(), getWidth(), getHeight());
+        texto.draw(batch, parentAlpha);
+    }
+    
+    public void hide() {
+    	this.remove();
+    }
+}

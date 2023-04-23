@@ -19,7 +19,7 @@ public class BScreen implements Screen, InputProcessor{
 	public Stage actualStage;
 	public LabelStyle uiStyle;
 	InputMultiplexer im;
-	Stage uiStage;
+	public Stage uiStage;
 	
 	public BScreen(Demo game){
         FreeTypeFontGenerator ftfg= new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));

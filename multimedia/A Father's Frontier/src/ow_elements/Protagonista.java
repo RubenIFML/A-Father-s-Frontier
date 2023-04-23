@@ -27,27 +27,27 @@ import screens.OverWorldScreen;
 
         @Override
         public void act(float delta) {
-            super.act(delta);    
-        	if(Parametros.controlesActivos=true) {
-	            if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
-	                Vector2 clickPos = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-	                Vector2 direction = new Vector2(clickPos).sub(getX(), getY());
-	                direction.nor();
-	                this.velocity.set(direction.scl(130));
-	                if (unaVez==true) {
-	                    pasos.play();
-	                    pasos.loop();    
-	                    unaVez=false;
-	                }
-	            } else {
-	                pasos.stop();
-	                this.velocity.y=0;
-	                this.velocity.x=0;
-	                unaVez=true;
-	            }
-	            animaciones();
-	            this.applyPhysics(delta);
-        	}
+        	if(Parametros.controlesActivos==true) {
+	            super.act(delta);    
+		            if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT)) {
+		                Vector2 clickPos = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+		                Vector2 direction = new Vector2(clickPos).sub(getX(), getY());
+		                direction.nor();
+		                this.velocity.set(direction.scl(130));
+		                if (unaVez==true) {
+		                    pasos.play();
+		                    pasos.loop();    
+		                    unaVez=false;
+		                }
+		            } else {
+		                pasos.stop();
+		                this.velocity.y=0;
+		                this.velocity.x=0;
+		                unaVez=true;
+		            }
+		            animaciones();
+		            this.applyPhysics(delta);
+	        }
         }
         
         private void animaciones() {
