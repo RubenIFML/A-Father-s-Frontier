@@ -9,7 +9,7 @@ public class Parametros {
  public static int zona = 1;
 
  //Debug
- public static boolean debug=true;
+ public static boolean debug=false;
  
  //Audio;
  public static float musicVolume = 1;
@@ -20,6 +20,7 @@ public class Parametros {
  public static int segundos = 100;
  public static int dineroAnterior = 0;
  public static int dinero = 1;
+ public static boolean haComidoHoy = false;
  
  //Variables
  public static boolean frontera = false;
@@ -32,6 +33,7 @@ public class Parametros {
  public static boolean analizado3 = false;
  public static boolean analizado4 = false;
  public static boolean correcto = false;
+ public static boolean musicaUnaVez = true;
  
  //Misiones
  public static boolean mision_una_lettera_d_amore = false;

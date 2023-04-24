@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="9" nextobjectid="164">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="9" nextobjectid="166">
  <tileset firstgid="1" source="OverWorld.tsx"/>
  <layer id="4" name="Capa de patrones 0" width="60" height="47">
   <data encoding="csv">
@@ -265,7 +265,7 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="9" x="0" y="434" width="93" height="837">
+  <object id="9" x="0" y="434" width="93" height="930.002">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -784,60 +784,15 @@
   </object>
  </objectgroup>
  <objectgroup id="8" name="npc">
-  <object id="144" gid="576" x="1643" y="744" width="32" height="32">
-   <properties>
-    <property name="npc" value="staticNpc"/>
-   </properties>
-  </object>
-  <object id="145" gid="576" x="1643" y="806" width="32" height="32">
-   <properties>
-    <property name="npc" value="staticNpc"/>
-   </properties>
-  </object>
-  <object id="147" gid="592" x="527" y="1302" width="32" height="32">
-   <properties>
-    <property name="npc" value="misionNpc"/>
-   </properties>
-  </object>
-  <object id="148" gid="592" x="558" y="186" width="32" height="32">
-   <properties>
-    <property name="npc" value="misionNpc"/>
-   </properties>
-  </object>
-  <object id="152" gid="576" x="837" y="868" width="32" height="32">
-   <properties>
-    <property name="npc" value="staticNpc"/>
-   </properties>
-  </object>
-  <object id="153" gid="576" x="961" y="682" width="32" height="32">
-   <properties>
-    <property name="npc" value="staticNpc"/>
-   </properties>
-  </object>
   <object id="155" gid="592" x="1581" y="434" width="32" height="32">
    <properties>
     <property name="npc" value="misionNpc"/>
    </properties>
   </object>
-  <object id="156" gid="592" x="1550" y="1116" width="32" height="32">
-   <properties>
-    <property name="npc" value="misionNpc"/>
-   </properties>
-  </object>
-  <object id="158" gid="584" x="1364" y="248" width="32" height="32">
-   <properties>
-    <property name="npc" value="movilNpc"/>
-   </properties>
-  </object>
-  <object id="161" gid="576" x="1643" y="248" width="32" height="32">
-   <properties>
-    <property name="npc" value="staticNpc"/>
-   </properties>
-  </object>
-  <object id="162" gid="584" x="1612" y="1333" width="32" height="32">
-   <properties>
-    <property name="npc" value="movilNpc"/>
-   </properties>
-  </object>
+  <object id="158" gid="584" x="1364" y="279" width="32" height="32"/>
+  <object id="161" gid="576" x="1643" y="248" width="32" height="32"/>
+  <object id="162" gid="584" x="1612" y="1333" width="32" height="32"/>
+  <object id="164" gid="470" x="1643" y="744" width="32" height="32"/>
+  <object id="165" gid="470" x="1643" y="837" width="32" height="32"/>
  </objectgroup>
 </map>

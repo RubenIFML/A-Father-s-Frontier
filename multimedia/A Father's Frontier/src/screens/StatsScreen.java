@@ -24,7 +24,7 @@ private boolean diaHabilitada = false;
 
 	public StatsScreen(Demo game) {
 	    super(game);
-		
+	    
 	    camera = new OrthographicCamera();
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 	    
@@ -61,7 +61,17 @@ private boolean diaHabilitada = false;
         	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			dia.remove();
 		    ResourceManager.musicaTitulo.play();
-			game.setScreen(new StartScreen(game));
+
+			if(Parametros.haComidoHoy == false) {
+				ResourceManager.musicaTitulo.stop();
+				game.setScreen(new DeathScreen(game));
+			}
+			else {
+				Parametros.haComidoHoy = false;
+				Parametros.zona=1;
+			    Parametros.controlesActivos=true;
+				game.setScreen(new StartScreen(game));
+			}
         }
         
 		 super.render(delta);

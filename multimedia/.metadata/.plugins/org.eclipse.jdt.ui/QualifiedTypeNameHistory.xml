@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Sound"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Keys"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input.Buttons"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputProcessor"/>
@@ -10,12 +7,8 @@
     <fullyQualifiedTypeName name="elements.Pasaporte2"/>
     <fullyQualifiedTypeName name="elements.Persona3"/>
     <fullyQualifiedTypeName name="elements.Pasaporte3"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
     <fullyQualifiedTypeName name="managers.AudioManager"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
     <fullyQualifiedTypeName name="screens.GameScreen"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.SequenceAction"/>
     <fullyQualifiedTypeName name="javax.swing.text.TabExpander"/>
@@ -38,7 +31,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Interpolation"/>
     <fullyQualifiedTypeName name="ow_elements.FadeInAction"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL20"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
@@ -53,11 +45,19 @@
     <fullyQualifiedTypeName name="ow_elements.NpcMision"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputAdapter"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="java.text.Format"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Polygon"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
+    <fullyQualifiedTypeName name="ow_elements.NpcDependiente"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
 </qualifiedTypeNameHistroy>

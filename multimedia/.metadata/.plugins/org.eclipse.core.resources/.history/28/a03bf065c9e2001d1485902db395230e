@@ -1,0 +1,87 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
+import game.Demo;
+import game.Parametros;
+import managers.AudioManager;
+import managers.ResourceManager;
+
+public class StatsScreen extends BScreen{
+private OrthographicCamera camera;
+private Batch batch;
+private Texture background;
+private Label estadisticas;
+private Label dia;
+private boolean estadisticasHabilitada = false;
+private boolean diaHabilitada = false;
+
+	public StatsScreen(Demo game) {
+	    super(game);
+		
+	    camera = new OrthographicCamera();
+	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+	    
+	    batch = new SpriteBatch();
+	    background = new Texture("Menu/blackBackground.png");
+	    
+		estadisticas=new Label("Estadísticas del día: \r\n\n"
+				+ "DINERO ANTES: £" + Parametros.dineroAnterior + " + £" + (Parametros.dinero-Parametros.dineroAnterior) + "\r\n"
+				+ "DINERO DESPUÉS: £"  + Parametros.dinero + "\r\n\n"
+				+ "Pulse ENTER para continuar"
+				, uiStyle);
+		estadisticas.setPosition(130,140);
+	    estadisticas.setAlignment(1, 2);
+	    
+		dia=new Label("DÍA " + Parametros.dia, uiStyle);
+		dia.setPosition(350,280);
+		dia.setAlignment(1, 2);
+	    
+		this.uiStage.addActor(estadisticas);
+		estadisticasHabilitada=true;
+	}
+	
+	@Override
+	public void render(float delta) {
+		
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && estadisticasHabilitada) {
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			estadisticas.remove();
+    		this.uiStage.addActor(dia);
+    		diaHabilitada=true;
+    		estadisticasHabilitada=false;
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (diaHabilitada)) {
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			dia.remove();
+		    ResourceManager.musicaTitulo.play();
+
+			if(Parametros.haComidoHoy == false) {
+				ResourceManager.musicaTitulo.stop();
+				game.setScreen(new DeathScreen(game));
+			}
+			else {
+				Parametros.haComidoHoy = false;
+				Parametros.zona=1;
+			    Parametros.controlesActivos=true;
+				game.setScreen(new StartScreen(game));
+			}
+        }
+        
+		 super.render(delta);
+	    
+	     uiStage.act();
+	     batch.begin();
+	     batch.draw(background, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	     batch.end();
+	     uiStage.draw();
+
+	}
+	
+}

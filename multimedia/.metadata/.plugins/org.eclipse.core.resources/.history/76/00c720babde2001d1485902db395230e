@@ -1,0 +1,81 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
+import game.Demo;
+import game.Parametros;
+import managers.AudioManager;
+import managers.ResourceManager;
+
+public class DeathScreen extends BScreen{
+private OrthographicCamera camera;
+private Batch batch;
+private Texture background;
+private Label causaDeLaMuerte;
+private Label dia;
+private boolean estadisticasHabilitada = false;
+private boolean diaHabilitada = false;
+
+	public DeathScreen(Demo game) {
+	    super(game);
+		
+	    camera = new OrthographicCamera();
+	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+	    
+	    batch = new SpriteBatch();
+	    background = new Texture("Menu/blackBackground.png");
+	    
+	    if(Parametros.haComidoHoy==false) {
+			causaDeLaMuerte=new Label("HAS MUERTO \r\n\n"
+					+ "El hambre se ha vuelto tan insoportable que le ha ido\n"
+					+ "matando sigilosamente como una serpiente...\n"
+					+ "Su remordimiento antes de morir fue uno solo:\\n"
+					+ "Nunca pudo volver a ver a su hijo.\n\\n"
+					+ "Pulse ENTER para volver"
+					, uiStyle);
+	    }
+		causaDeLaMuerte.setPosition(130,140);
+	    causaDeLaMuerte.setAlignment(1, 2);
+	    
+		dia=new Label("FINAL");
+		dia.setPosition(350,280);
+		dia.setAlignment(1, 2);
+	    
+		this.uiStage.addActor(causaDeLaMuerte);
+		estadisticasHabilitada=true;
+	}
+	
+	@Override
+	public void render(float delta) {
+		
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && estadisticasHabilitada) {
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			causaDeLaMuerte.remove();
+    		this.uiStage.addActor(dia);
+    		diaHabilitada=true;
+    		estadisticasHabilitada=false;
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (diaHabilitada)) {
+        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			dia.remove();
+		    ResourceManager.musicaTitulo.play();
+			game.setScreen(new StartScreen(game));
+        }
+        
+		 super.render(delta);
+	    
+	     uiStage.act();
+	     batch.begin();
+	     batch.draw(background, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	     batch.end();
+	     uiStage.draw();
+
+	}
+	
+}

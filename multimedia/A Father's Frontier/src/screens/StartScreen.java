@@ -1,6 +1,7 @@
 package screens;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -22,6 +23,7 @@ private Texture blackBackground;
 private Actor blackBackgroundActor;
 private boolean desactivable = false;
 private float fadeTimer = 0f;
+private Music musicaCiudad;
 
     public StartScreen(Demo game) {
         super(game);
@@ -46,7 +48,7 @@ private float fadeTimer = 0f;
             default:
                 periodico = new Texture("Menu/periodico.0_0.png");
                 ResourceManager.musicaTitulo.stop();
-                game.setScreen(new OverWorldScreen(game));
+                game.setScreen(new OverWorldScreen(game, musicaCiudad));
 		    }
         }
         
@@ -83,7 +85,7 @@ private float fadeTimer = 0f;
             periodicoActor.remove();
             ResourceManager.musicaTitulo.stop();
             Parametros.zoom=0.65f;
-            game.setScreen(new OverWorldScreen(game));
+            game.setScreen(new OverWorldScreen(game, musicaCiudad));
         }
         else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
             periodicoActor.remove();

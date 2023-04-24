@@ -35,6 +35,10 @@ private float elapsedTime=0;
 	public TitleScreen(Demo game) {
 	    super(game);
 		
+	    Parametros.dia=1;
+	    Parametros.controlesActivos=true;
+		Parametros.zona=1;
+	    
 	    camera = new OrthographicCamera();
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 	    

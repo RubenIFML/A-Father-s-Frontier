@@ -113,6 +113,7 @@ public final class ResourceManager {
         assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
         
         //Personajes OW
+        assets.load("02-OW/Personajes/bocadillo_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.ahorcado.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.chica_ow.png", Texture.class);
@@ -149,6 +150,7 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/llaves.wav", Sound.class);
         assets.load("01-FS/Audio/sounds/maletin.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/pasos.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/comprar.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
@@ -156,6 +158,8 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/music/lluvia.wav", Music.class);
         assets.load("01-FS/Audio/music/title_theme.wav", Music.class);
         assets.load("02-OW/Audio/music/ciudad_dia1.wav", Music.class);
+        assets.load("02-OW/Audio/music/ciudad_dia2.wav", Music.class);
+        assets.load("02-OW/Audio/music/ciudad_dia3.wav", Music.class);
         assets.load("02-OW/Audio/music/ambiente.wav", Music.class);
 	}
 	

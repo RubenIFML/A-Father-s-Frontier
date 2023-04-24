@@ -31,6 +31,7 @@ import ow_elements.NpcMovil;
 import ow_elements.Solid;
 import ow_elements.Element;
 import ow_elements.Niebla;
+import ow_elements.NpcDependiente;
 import ow_elements.NpcMision;
 import ow_elements.RainDrop;
 import ow_elements.Protagonista;
@@ -41,7 +42,7 @@ import managers.ResourceManager;
 
 public class OverWorldScreen extends BScreen{
 	
-Stage mainStage;
+public Stage mainStage;
 
 Solid frontera;
 OrthographicCamera camara;
@@ -53,9 +54,7 @@ public float mouseX;
 public float mouseY;
 private Vector3 m3d;
 private Niebla niebla;
-private Music musica;
 private Music ambiente;
-private static boolean musicaUnaVez = true;
 
 private Texture planoTexture;
 private Actor planoActor;
@@ -74,28 +73,40 @@ private Solid ow1;
 private Solid ow2;
 @SuppressWarnings("unused")
 private Solid start;
+private Music musicaCiudad;
 
 //TP
 private static boolean CasaACalle = false;
 private static boolean CalleASuper1 = false;
 private static boolean CalleASuper2 = false;
 
-	public OverWorldScreen(Demo game) {
-		
+	public OverWorldScreen(Demo game, Music musicaCiudad) {
 		super(game);
-
+		this.musicaCiudad=musicaCiudad;		
+		
 		comparator=new ActorComparator();
 		mainStage=new Stage();
 		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.wav"));
-		musica = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.wav"));
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
 		
-		if(musicaUnaVez==true) {
-			musica.play();
-	        musica.setVolume(0.2f);
-			musica.setLooping(true);
-			musicaUnaVez=false;
+		if(Parametros.musicaUnaVez==true) {
+
+			if(Parametros.dia==1) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.wav"));
+			}
+			else if(Parametros.dia==2) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia2.wav"));
+			}
+			else if(Parametros.dia==3) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia3.wav"));
+			}
+			
+			this.musicaCiudad.play();
+			this.musicaCiudad.setVolume(0.2f);
+			this.musicaCiudad.setLooping(true);
+			
+			Parametros.musicaUnaVez=false;
 		}
 		
 		switch (Parametros.zona) {
@@ -126,36 +137,46 @@ private static boolean CalleASuper2 = false;
 		mapWidthInPixels=tileWidth*mapWidthInTiles;
 		mapHeightInPixels=tileHeight*mapHeightInTiles;
 		
-		if(Parametros.zona==2) {
 			npcs=new Array<Element>();
 			for(MapObject npc:getNpcList()) {
 				props=npc.getProperties();
 				
 				switch(props.get("npc").toString()) {
 			
-					case "staticNpc":
-						//Declaraciones de NPC
-						NpcStatic testStaticNpc=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-								"02-OW/Personajes/personaje.extra2_ow.png", "derecha");
-						npcs.add(testStaticNpc);
+					case "NpcRio":
+						NpcStatic npcRio=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "El río Támesis esconde grandes secretos\nen su interior..."
+								, "En tiempos de guerra, la muerte puede\nsentirse desde su rivera...");
+						npcs.add(npcRio);
+						break;
+
+					case "NpcPolicia":
+						NpcStatic npcPolicia=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.policia_ow.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
+								, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
+						npcs.add(npcPolicia);
 						break;
 						
-					case "movilNpc":
-						//Declaraciones de NPC
-						NpcMovil testMovilNpc=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+					case "NpcDependiente":
+						NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
+								, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
+						npcs.add(npcDependiente);
+						break;
+						
+					case "NpcMovil1":
+						NpcMovil npcMovil1=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Personajes/personaje.extra1_ow.png");
-						npcs.add(testMovilNpc);
+						npcs.add(npcMovil1);
 						break;
 						
 					case "misionNpc":
-						//Declaraciones de NPC
 						NpcMision testMisionNpc=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda");
 						npcs.add(testMisionNpc);
 						break;
 				}
 			}
-		}
 		
 		ArrayList<MapObject> elementos;		
 
@@ -315,6 +336,7 @@ private static boolean CalleASuper2 = false;
 		if(Parametros.zona==1) {
 			if(this.owTp.overlaps(this.prota)) {
 				CasaACalle=true;
+				Parametros.haComidoHoy = false;
 				teletransporte(2);
 			}
 		}
@@ -361,10 +383,11 @@ private static boolean CalleASuper2 = false;
 	}
 	
 	public void teletransporteFrontera() {
-		musica.stop(); 
+		this.musicaCiudad.stop(); 
 		ambiente.stop();
 		prota.pasos.stop();
-		Parametros.frontera=true;
+		Parametros.musicaUnaVez=true;
+		Parametros.frontera = true;
 		game.setScreen(new StartScreen(game));
 	}
 	
@@ -372,7 +395,7 @@ private static boolean CalleASuper2 = false;
 		ambiente.stop();
 		prota.pasos.stop();
 		Parametros.zona=zona;
-		game.setScreen(new OverWorldScreen(game));
+		game.setScreen(new OverWorldScreen(game, this.musicaCiudad));
 	}
 	
 	public ArrayList<MapObject> getRectangleList(String propertyName){
@@ -408,7 +431,6 @@ private static boolean CalleASuper2 = false;
 		ArrayList<Polygon> list = new ArrayList<Polygon>();
 		for(MapLayer layer: map.getLayers()) {
 			for(MapObject obj: layer.getObjects()) {
-				
 				
 				if(!(obj instanceof PolygonMapObject))
 					continue;

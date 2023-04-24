@@ -301,6 +301,16 @@
    <property name="name" value="over"/>
   </properties>
  </tile>
+ <tile id="469">
+  <properties>
+   <property name="npc" value="NpcPolicia"/>
+  </properties>
+ </tile>
+ <tile id="470">
+  <properties>
+   <property name="npc" value="NpcDependiente"/>
+  </properties>
+ </tile>
  <tile id="493">
   <properties>
    <property name="name" value="over"/>
@@ -358,12 +368,12 @@
  </tile>
  <tile id="575">
   <properties>
-   <property name="npc" value="staticNpc"/>
+   <property name="npc" value="NpcRio"/>
   </properties>
  </tile>
  <tile id="583">
   <properties>
-   <property name="npc" value="misionNpc"/>
+   <property name="npc" value="NpcMovil1"/>
   </properties>
  </tile>
  <tile id="591">
