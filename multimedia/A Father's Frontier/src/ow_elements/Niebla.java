@@ -35,7 +35,7 @@ public class Niebla extends Actor {
   @Override
   public void draw(Batch batch, float parentAlpha) {
     batch.setColor(1, 1, 1, 0.3f); // Ajusta la opacidad según tu preferencia
-    batch.draw(texture, getX()-16 + x, getY()-16 + y, getWidth()+50, getHeight()+50);
+    batch.draw(texture, getX()-19 + x, getY()-16 + y, getWidth()+50, getHeight()+50);
     batch.setColor(1, 1, 1, 1);
   }
 

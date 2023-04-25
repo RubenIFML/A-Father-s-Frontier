@@ -12,30 +12,34 @@ import game.Parametros;
 import managers.AudioManager;
 
 public class Objeto extends Actor {
-    private static Objeto objetoArrastrado = null; // Objeto que está siendo arrastrado actualmente
+    static Objeto objetoArrastrado = null;
     private boolean isDragged = false;
     private float lastX, lastY;
     private Texture reglas;
     private float deltaX;
     private float deltaY;
     private boolean suena = true;
-    
+    private float gravity = -200f;
+    private float yVelocity = 0f;
+    @SuppressWarnings("unused")
+	private boolean isFalling = false;
+
     private float x;
     private float y;
     private float width;
     private float height;
     private String textura;
     private String sonido;
-    
+
     public Objeto(float x, float y, float width, float height, String textura, String sonido) {
-    	this.x = x;
-    	this.y = y;
-    	this.width = width;
-    	this.height = height;
-    	this.textura = textura;
-    	this.sonido = sonido;
-    	
-    	setBounds(this.x, this.y, this.width, this.height);
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.textura = textura;
+        this.sonido = sonido;
+
+        setBounds(this.x, this.y, this.width, this.height);
         reglas = new Texture("01-FS/Objetos/" + this.textura);
     }
 
@@ -44,28 +48,55 @@ public class Objeto extends Actor {
         Vector2 stageCoords = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true) {
-            if (getRectangle().contains(stageCoords.x, stageCoords.y) && objetoArrastrado == null) { // Verificar si otro objeto está siendo arrastrado
-                objetoArrastrado = this; // Establecer este objeto como el objeto que está siendo arrastrado
+            if (getRectangle().contains(stageCoords.x, stageCoords.y) && objetoArrastrado == null && Reglas.reglasArrastradas == null) {
+                objetoArrastrado = this;
                 isDragged = true;
                 if (suena == true) {
                     AudioManager.playSound("01-FS/Audio/sounds/" + this.sonido);
                     suena = false;
                 }
             }
-        }
-        
-        else {
+        } else {
             if (objetoArrastrado == this) {
-                objetoArrastrado = null; // Restablecer el objeto arrastrado a nulo
+                objetoArrastrado = null;
             }
-            
+
             isDragged = false;
             suena = true;
         }
         if (isDragged) {
             deltaX = stageCoords.x - lastX;
             deltaY = stageCoords.y - lastY;
-            setPosition(getX() + deltaX, getY() + deltaY);
+            float newX = getX() + deltaX;
+            float newY = getY() + deltaY;
+            // Comprobar límites de pantalla en X
+            if (newX < 0) {
+                newX = 0;
+            } else if (newX > 190) {
+                newX = 192;
+            }
+            // Comprobar límites de pantalla en Y
+            if (newY < 0) {
+                newY = 0;
+            } else if (newY > 150) {
+                newY = 152;
+            }
+            setPosition(newX, newY);
+        } else {
+            // Apply gravity
+            if (getY() > 60) {
+                yVelocity += gravity * delta;
+                float newY = getY() + yVelocity * delta;
+                if (newY <= 60) {
+                    newY = 60;
+                    yVelocity = 0;
+                    isFalling = false;
+                }
+                setPosition(getX(), newY);
+                isFalling = true;
+            } else {
+                isFalling = false;
+            }
         }
         lastX = stageCoords.x;
         lastY = stageCoords.y;

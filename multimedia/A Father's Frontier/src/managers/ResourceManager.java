@@ -85,7 +85,7 @@ public final class ResourceManager {
         assets.load("01-FS/Objetos/mesa.png", Texture.class);
         assets.load("01-FS/Objetos/maletin.png", Texture.class);
         
-        //Objetos
+        //Objetos FS
         assets.load("01-FS/Objetos/objeto.pistola.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.botella.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.carta.png", Texture.class);
@@ -97,6 +97,26 @@ public final class ResourceManager {
         assets.load("01-FS/Objetos/objeto.platano.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.sombrero.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.sopa.png", Texture.class);
+        
+        //Objetos OW
+        assets.load("02-OW/Objetos/objeto.bolsa.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.carta.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.collar.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.gafas.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.hueso.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.libra.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.libro.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.manzana.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.peluche.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.bolsa_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.carta_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.collar_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.gafas_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.hueso_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.libra_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.libro_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.manzana_glow.png", Texture.class);
+        assets.load("02-OW/Objetos/objeto.peluche_glow.png", Texture.class);
         
         //Personajes FS
         assets.load("01-FS/Personajes/FS.1_1.png", Texture.class);
@@ -132,6 +152,17 @@ public final class ResourceManager {
         assets.load("02-OW/Personajes/personaje.protagonista.final_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.secuestrador_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.viejo_ow.png", Texture.class);
+        
+        //Tiles
+        assets.load("02-OW/Tiles/tree.png", Texture.class);
+        assets.load("02-OW/Tiles/farolaA.png", Texture.class);
+        assets.load("02-OW/Tiles/farolaB.png", Texture.class);
+        assets.load("02-OW/Tiles/telephoneBox.png", Texture.class);
+        assets.load("02-OW/Tiles/semaforo.png", Texture.class);
+        assets.load("02-OW/Tiles/cedaSign.png", Texture.class);
+        assets.load("02-OW/Tiles/treintaSign.png", Texture.class);
+        assets.load("02-OW/Tiles/fuente.png", Texture.class);
+        assets.load("02-OW/Tiles/coche.png", Texture.class);
         
         //Sonidos
         assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);

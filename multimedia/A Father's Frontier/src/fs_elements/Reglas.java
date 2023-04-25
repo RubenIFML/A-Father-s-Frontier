@@ -12,6 +12,7 @@ import game.Parametros;
 import managers.AudioManager;
 
 public class Reglas extends Actor {
+    static Reglas reglasArrastradas = null;
     private boolean isDragged = false;
     private float lastX, lastY;
     private Texture reglas;
@@ -27,6 +28,10 @@ public class Reglas extends Actor {
     private String textura2;
     private String textura3;
     private int posicion=0;
+    private float gravity = -200f;
+    private float yVelocity = 0f;
+    @SuppressWarnings("unused")
+	private boolean isFalling = false;
     
     public Reglas(float x, float y, float width, float height, String textura1, String textura2, String textura3) {
     	this.x = x;
@@ -46,7 +51,8 @@ public class Reglas extends Actor {
         Vector2 stageCoords = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true) {
-            if (getRectangle().contains(stageCoords.x, stageCoords.y)) { // Usar las coordenadas de espacio de escena
+            if (getRectangle().contains(stageCoords.x, stageCoords.y) && Objeto.objetoArrastrado == null && reglasArrastradas == null) {
+                reglasArrastradas = this;
                 isDragged = true;
                 if (primeraVez == true) {
                 	
@@ -62,7 +68,7 @@ public class Reglas extends Actor {
                 			reglas = new Texture("01-FS/Objetos/" + this.textura1);
                 			posicion--;
                 		}
-                	}
+                    } 
                 	
                 	else {
                 		if(posicion == 0) {
@@ -84,13 +90,45 @@ public class Reglas extends Actor {
                 }
             }
         } else {
+            if (reglasArrastradas == this) {
+                reglasArrastradas = null;
+            }
             isDragged = false;
             primeraVez = true;
         }
         if (isDragged) {
             deltaX = stageCoords.x - lastX;
             deltaY = stageCoords.y - lastY;
-            setPosition(getX() + deltaX, getY() + deltaY);
+            float newX = getX() + deltaX;
+            float newY = getY() + deltaY;
+            // Comprobar límites de pantalla en X
+            if (newX < -5) {
+                newX = -5;
+            } else if (newX > 190) {
+                newX = 192;
+            }
+            // Comprobar límites de pantalla en Y
+            if (newY < -5) {
+                newY = -5;
+            } else if (newY > 150) {
+                newY = 152;
+            }
+            setPosition(newX, newY);
+        } else {
+            // Apply gravity
+            if (getY() > 60) {
+                yVelocity += gravity * delta;
+                float newY = getY() + yVelocity * delta;
+                if (newY <= 60) {
+                    newY = 60;
+                    yVelocity = 0;
+                    isFalling = false;
+                }
+                setPosition(getX(), newY);
+                isFalling = true;
+            } else {
+                isFalling = false;
+            }
         }
         lastX = stageCoords.x;
         lastY = stageCoords.y;

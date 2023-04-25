@@ -27,14 +27,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
 import ow_elements.NpcStatic;
+import ow_elements.Objeto;
 import ow_elements.NpcMovil;
 import ow_elements.Solid;
 import ow_elements.Element;
 import ow_elements.Niebla;
 import ow_elements.NpcDependiente;
 import ow_elements.NpcMision;
-import ow_elements.RainDrop;
+import ow_elements.Gota;
 import ow_elements.Protagonista;
+import ow_elements.Tile;
 import game.Demo;
 import game.Parametros;
 import managers.AudioManager;
@@ -74,6 +76,8 @@ private Solid ow2;
 @SuppressWarnings("unused")
 private Solid start;
 private Music musicaCiudad;
+
+private Array<Element> overs;
 
 //TP
 private static boolean CasaACalle = false;
@@ -137,6 +141,59 @@ private static boolean CalleASuper2 = false;
 		mapWidthInPixels=tileWidth*mapWidthInTiles;
 		mapHeightInPixels=tileHeight*mapHeightInTiles;
 		
+			overs=new Array<Element>();
+			for(MapObject over:getOverList()) {
+				props=over.getProperties();
+
+				switch(props.get("over").toString()) {
+					case "tree":
+						Tile tree=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/tree.png", 31);
+						overs.add(tree);
+					break;
+					case "farolaA":
+						Tile farolaA=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/farolaA.png", 0);
+						overs.add(farolaA);
+					break;
+					case "farolaB":
+						Tile farolaB=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/farolaB.png", 0);
+						overs.add(farolaB);
+					break;
+					case "telephoneBox":
+						Tile telephoneBox=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/telephoneBox.png", 31);
+						overs.add(telephoneBox);
+					break;
+					case "semaforo":
+						Tile semaforo=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/semaforo.png", 0);
+						overs.add(semaforo);
+					break;
+					case "cedaSign":
+						Tile cedaSign=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/cedaSign.png", 0);
+						overs.add(cedaSign);
+					break;
+					case "treintaSign":
+						Tile treintaSign=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/treintaSign.png", 0);
+						overs.add(treintaSign);
+					break;
+					case "fuente":
+						Tile fuente=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/fuente.png", 0);
+						overs.add(fuente);
+					break;
+					case "coche":
+						Tile coche=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/coche.png", 0);
+						overs.add(coche);
+					break;
+				}
+			}
+					
 			npcs=new Array<Element>();
 			for(MapObject npc:getNpcList()) {
 				props=npc.getProperties();
@@ -174,6 +231,12 @@ private static boolean CalleASuper2 = false;
 						NpcMision testMisionNpc=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda");
 						npcs.add(testMisionNpc);
+						break;
+						
+					case "peluche":
+						Objeto peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Objetos/objeto.peluche.png", "02-OW/Objetos/objeto.peluche_glow.png", "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.");
+						npcs.add(peluche);
 						break;
 				}
 			}
@@ -416,12 +479,12 @@ private static boolean CalleASuper2 = false;
 	}
 	
 	private void createRainDrops() {
-	    for (int i = 0; i < 10; i++) {
-	        float x = MathUtils.random(0, mapWidthInPixels + 1500);
-	        float y = MathUtils.random(mapHeightInPixels, mapHeightInPixels + 200);
+	    for (int i = 0; i < 2; i++) {
+	        float x = MathUtils.random(prota.getX()-290, prota.getX()+880);
+	        float y = MathUtils.random(prota.getY()+270, prota.getY()+300);
 	        float speed = MathUtils.random(200, 400);
-	        RainDrop drop = new RainDrop(x, y, speed);
-	        mainStage.addActor(drop);
+	        Gota gota = new Gota(x, y, speed, prota);
+	        mainStage.addActor(gota);
 	    }
 	}
 	
@@ -483,24 +546,64 @@ private static boolean CalleASuper2 = false;
 		return list;
 	}
 	
+	public ArrayList<MapObject> getOverList(){
+		ArrayList<MapObject> list =new ArrayList<MapObject>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				if(!(obj instanceof TiledMapTileMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				
+				
+				TiledMapTileMapObject tmtmo=(TiledMapTileMapObject) obj;
+				TiledMapTile t=tmtmo.getTile();
+				MapProperties defaultProps=t.getProperties();
+				if(defaultProps.containsKey("over")) {
+					list.add(obj);
+				}
+				
+				Iterator<String> propertyKeys=defaultProps.getKeys();
+				while(propertyKeys.hasNext()) {
+					String key =propertyKeys.next();
+					
+					if(props.containsKey(key))
+						continue;
+					else {
+						Object value=defaultProps.get(key);
+						props.put(key, value);
+					}
+						
+				}
+				
+			}
+			
+		}
+		
+		return list;
+	}
+	
 	public class ActorComparator implements Comparator<Actor>{
 
 		@Override
 		public int compare(Actor a1, Actor a2) {
-			if(a1.getY()==a2.getY()) {
-				return 0;
+			if(a1.getName()=="bocadillo") {
+				return 1;
 			}
-			if(a1.getY()>a2.getY()) {
-				return -1;
+			else {
+				if(a1.getY()==a2.getY()) {
+					return 0;
+				}
+				if(a1.getY()>a2.getY()) {
+					return -1;
+				}
 			}
 			return 1;
-			
 		}
 	}
 	
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
+		
 		super.render(delta);
 		
 	   mainStage.act();
@@ -536,7 +639,9 @@ private static boolean CalleASuper2 = false;
 	    renderer.render(new int[]{0, 1, 2, 3});
 	    mainStage.getActors().sort(comparator);
 	        mainStage.draw();
-		    renderer.render(new int[]{4});
+	        if(Parametros.zona==1 || Parametros.zona==3) {
+	        	renderer.render(new int[]{4});	
+	        }
 		    
 			if(Parametros.zona==2) {
 			    createRainDrops();

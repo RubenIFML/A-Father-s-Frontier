@@ -1,0 +1,88 @@
+package ow_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
+import game.Parametros;
+import managers.AudioManager;
+import screens.OverWorldScreen;
+
+public class Objeto extends Element {
+	private OverWorldScreen nivel;
+	private Texto interaccion;
+	private int siguienteInteraccion = 0;
+	private Image bocadillo;
+	private Element dialogBox;
+	private String dialogo1;
+	private String sprite2;
+	private String sprite1;
+
+	public Objeto(float x, float y, Stage s, OverWorldScreen nivel, String sprite1, String sprite2, String dialogo1) {
+		super(x, y, s);
+		this.nivel = nivel;
+		this.dialogo1 = dialogo1;
+		this.sprite2 = sprite2;
+		this.sprite1 = sprite1;
+		
+		loadFullAnimation(sprite1, 1, 1, 0.1f,false);
+		
+		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight());
+		dialogBox.setPosition(this.getX(),this.getY());
+		dialogBox.setRectangle();
+	}
+
+	public void act(float delta) {
+	    super.act(delta);
+	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
+	    float distanciaY = Math.abs(nivel.prota.getY() - getY());
+
+	    glow(distanciaX, distanciaY);
+	    
+	    if (Gdx.input.justTouched()) {
+	        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+	        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+	            interactuar();
+	        }
+	    }
+	}
+	
+	private void glow(float distanciaX, float distanciaY) {
+		if (distanciaX < 60 && distanciaY < 60 &&
+		        ((nivel.prota.getX() < getX() && nivel.prota.getY() < getY()) ||
+		         (nivel.prota.getX() >= getX() && nivel.prota.getY() < getY()) ||
+		         (nivel.prota.getX() < getX() && nivel.prota.getY() >= getY()) ||
+		         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
+		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
+		    if (bocadillo == null) {
+				loadFullAnimation(sprite2, 1, 1, 0.1f,false);
+		    }
+		} else {
+		    // el personaje se alejó o no está en la dirección correcta, eliminamos el actor bocadillo
+		    if (bocadillo != null) {
+				loadFullAnimation(sprite1, 1, 1, 0.1f,false);
+		        bocadillo = null;
+		    }
+		}
+	}
+	
+	private void interactuar() {
+	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
+		    switch (siguienteInteraccion) {
+	        case 0:
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            interaccion = new Texto(this.dialogo1);
+	            this.nivel.uiStage.addActor(interaccion);
+	            siguienteInteraccion++;
+	            break;
+	        case 1:
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            interaccion.hide();
+	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	            break;
+		    }
+	}
+}

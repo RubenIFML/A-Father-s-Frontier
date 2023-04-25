@@ -4,3 +4,11 @@
 1682354117042	Rename field 'dia'
 1682356366532	Rename field 'musica'
 1682357285044	Rename field 'musicaCiudad1'
+1682409403204	Copy compilation unit
+1682409428549	Rename local variable 'animacion'
+1682415055799	Rename type 'RainDrop'
+1682415066226	Rename local variable 'drop'
+1682448816157	Copy compilation unit
+1682449170257	Rename local variable 'animacion'
+1682449512009	Rename method 'bocadillo'
+1682449519803	Rename field 'bocadillo'
