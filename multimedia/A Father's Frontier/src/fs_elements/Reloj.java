@@ -19,7 +19,7 @@ public class Reloj extends Actor {
 
     public Reloj() {
         this.font = new BitmapFont();
-        this.tiempoRestante = Parametros.segundos;
+        this.tiempoRestante = Parametros.segundosFS;
         this.tiempoTexto = "" + (int)tiempoRestante;
         
         setBounds(178, 158, 62, 23);
@@ -52,11 +52,11 @@ public class Reloj extends Actor {
 	        tiempoTexto = "" + tiempo;
         }
         else {
-        	if(Parametros.segundos>=100) {
-        		tiempoTexto = Parametros.segundos + ":00";	
+        	if(Parametros.segundosFS>=100) {
+        		tiempoTexto = Parametros.segundosFS + ":00";	
         	}
-        	else if(Parametros.segundos<100) {
-        		tiempoTexto = Parametros.segundos + ":000";	
+        	else if(Parametros.segundosFS<100) {
+        		tiempoTexto = Parametros.segundosFS + ":000";	
         	}
         }
     }

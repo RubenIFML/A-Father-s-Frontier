@@ -59,11 +59,11 @@ private int estadoActual = 0;
 		        dificultad.setText(estados[estadoActual]);
 		        
 		        if (estadoActual == 0) {
-		            Parametros.segundos = 100;
+		            Parametros.segundosFS = 100;
 		        } else if (estadoActual == 1) {
-		            Parametros.segundos = 40;
+		            Parametros.segundosFS = 40;
 		        } else if (estadoActual == 2) {
-		            Parametros.segundos = 130;
+		            Parametros.segundosFS = 130;
 		        }
 		    }
 		});

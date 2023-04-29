@@ -1,0 +1,152 @@
+/*package ow_elements;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import game.Parametros;
+import screens.OverWorldScreen;
+
+public class Reloj extends Actor {
+
+    private BitmapFont font;
+    private String tiempoTexto;
+    private Texture reloj;
+    private float textX;
+    private float textY;
+    private boolean empezar = false;
+
+    public Reloj(Stage s, OverWorldScreen nivel) {
+        this.font = new BitmapFont();
+        this.font.getData().setScale(2);
+        this.tiempoTexto = formatTiempo(Parametros.minutosRestantesOW, Parametros.segundosRestantesOW);
+
+        textX = 677;
+        textY = 577;
+        setBounds(680, 540, 110, 50);
+        
+        this.reloj = new Texture("Menu/menuBoton.png");
+    }
+
+    public void act(float delta) {
+        super.act(delta);
+        if(empezar == true) {
+            Parametros.segundosRestantesOW -= delta;
+            if (Parametros.segundosRestantesOW <= 0 && Parametros.minutosRestantesOW > 0) {
+                Parametros.minutosRestantesOW -= 1;
+                Parametros.segundosRestantesOW += 60;
+            }
+            tiempoTexto = formatTiempo(Parametros.minutosRestantesOW, Parametros.segundosRestantesOW);
+        }
+    }
+
+    private String formatTiempo(int minutosRestantesOW, float segundosRestantesOW) {
+        int minutos = minutosRestantesOW;
+        int segundos = (int) segundosRestantesOW;
+        int milisegundos = (int) ((segundosRestantesOW - (int) segundosRestantesOW) * 1000);
+        return String.format("%02d:%02d:%03d", minutos, segundos, milisegundos);
+    }
+
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(reloj, getX(), getY(), getWidth(), getHeight());
+        font.draw(batch, tiempoTexto, textX, textY);
+    }
+
+    public void start() {
+        empezar = true;
+    }
+
+    public void stop() {
+        empezar = false;
+    }
+
+    public void modTiempo(float tiempo) {
+        Parametros.segundosRestantesOW += tiempo;
+    }
+}
+*/
+
+package ow_elements;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+import game.Parametros;
+
+public class Reloj extends Actor {
+
+    private BitmapFont font;
+    public float tiempoRestante;
+    private String tiempoTexto;
+    private Texture reloj;
+    private float textX;
+    private float textY;
+    private boolean empezar = false;
+
+    public Reloj() {
+        this.font = new BitmapFont();
+        this.tiempoRestante = Parametros.segundosFS;
+        this.tiempoTexto = "" + (int)tiempoRestante;
+        
+        setBounds(178, 158, 62, 23);
+        
+        this.reloj = new Texture("Menu/menuBoton.png");
+    }
+
+    public void act(float delta) {
+        super.act(delta);
+        
+        if(tiempoRestante>100) {
+            textX = 182;
+            textY = 175;
+        }
+        else {
+            textX = 187;
+            textY = 175;
+        }
+        
+        if(empezar == true) {
+	        tiempoRestante -= delta;
+	        
+	        if (tiempoRestante <= 0) {
+	            tiempoRestante = 0;
+	        }
+	        
+	        int segundos = (int) tiempoRestante;
+	        int milisegundos = (int) ((tiempoRestante - segundos) * 1000);
+	        String tiempo = String.format("%02d:%03d", segundos, milisegundos);
+	        tiempoTexto = "" + tiempo;
+        }
+        else {
+        	if(Parametros.segundosFS>=100) {
+        		tiempoTexto = Parametros.segundosFS + ":00";	
+        	}
+        	else if(Parametros.segundosFS<100) {
+        		tiempoTexto = Parametros.segundosFS + ":000";	
+        	}
+        }
+    }
+
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(reloj, getX(), getY(), getWidth(), getHeight());
+        font.draw(batch, tiempoTexto, textX, textY);
+     }
+
+	public void start() {
+		empezar = true;
+	}
+	
+	public void stop() {
+		empezar = false;
+	}
+	
+	public void modTiempo(float tiempo) {
+		tiempoRestante+=tiempo;
+	}
+}

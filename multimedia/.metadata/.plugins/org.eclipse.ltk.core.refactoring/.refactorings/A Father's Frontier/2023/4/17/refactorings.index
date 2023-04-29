@@ -12,3 +12,11 @@
 1682449170257	Rename local variable 'animacion'
 1682449512009	Rename method 'bocadillo'
 1682449519803	Rename field 'bocadillo'
+1682526196382	Copy compilation unit
+1682606369646	Rename field 'segundos'
+1682609349891	Rename field 'tiempoRestanteOW'
+1682609362391	Rename field 'segundosRestanteOW'
+1682609658429	Rename local variable 'tiempoRestante'
+1682793594813	Copy compilation unit
+1682795504462	Rename field 'mision_unExtranoMuneco'
+1682798473474	Rename field 'reloj'

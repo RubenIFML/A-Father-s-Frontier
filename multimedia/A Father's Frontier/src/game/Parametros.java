@@ -9,7 +9,7 @@ public class Parametros {
  public static int zona = 1;
 
  //Debug
- public static boolean debug=true;
+ public static boolean debug=false;
  
  //Audio;
  public static float musicVolume = 1;
@@ -17,7 +17,10 @@ public class Parametros {
  
  //Estadísticas
  public static int dia = 1;
- public static int segundos = 100;
+ public static int segundosFS = 100;
+ public static int segundosOW = 300;
+ public static int segundosRestantesOW = segundosOW;
+ public static int minutosOW = 5;
  public static int dineroAnterior = 0;
  public static int dinero = 1;
  public static boolean haComidoHoy = false;
@@ -36,6 +39,7 @@ public class Parametros {
  public static boolean musicaUnaVez = true;
  
  //Misiones
+ public static boolean mision_un_extrano_muneco = true;
  public static boolean mision_una_lettera_d_amore = false;
  public static boolean mision_un_encuentro_agridulce = false;
  public static boolean mision_dein_kampf = false;

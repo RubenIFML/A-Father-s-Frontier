@@ -1,0 +1,83 @@
+package ow_elements;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import game.Parametros;
+import screens.OverWorldScreen;
+
+public class Reloj extends Actor {
+
+    private BitmapFont font;
+    public float tiempoRestante;
+    private String tiempoTexto;
+    private Texture reloj;
+    private float textX;
+    private float textY;
+    private boolean empezar = false;
+
+    public Reloj(Stage s, OverWorldScreen nivel) {
+        this.font = new BitmapFont();
+        this.tiempoRestante = Parametros.segundos;
+        this.tiempoTexto = "" + (int)tiempoRestante;
+        
+        setBounds(680, 540, 110, 50);
+        
+        this.reloj = new Texture("Menu/menuBoton.png");
+    }
+
+    public void act(float delta) {
+        super.act(delta);
+        
+        if(tiempoRestante>100) {
+            textX = 680;
+            textY = 540;
+        }
+        else {
+            textX = 680;
+            textY = 540;
+        }
+        
+        if(empezar == true) {
+	        tiempoRestante -= delta;
+	        
+	        if (tiempoRestante <= 0) {
+	            tiempoRestante = 0;
+	        }
+	        
+	        int segundos = (int) tiempoRestante;
+	        int milisegundos = (int) ((tiempoRestante - segundos) * 1000);
+	        String tiempo = String.format("%02d:%03d", segundos, milisegundos);
+	        tiempoTexto = "" + tiempo;
+        }
+        else {
+        	if(Parametros.segundos>=100) {
+        		tiempoTexto = Parametros.segundos + ":00";	
+        	}
+        	else if(Parametros.segundos<100) {
+        		tiempoTexto = Parametros.segundos + ":000";	
+        	}
+        }
+    }
+
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(reloj, getX(), getY(), getWidth(), getHeight());
+        font.draw(batch, tiempoTexto, textX, textY);
+     }
+
+	public void start() {
+		empezar = true;
+	}
+	
+	public void stop() {
+		empezar = false;
+	}
+	
+	public void modTiempo(float tiempo) {
+		tiempoRestante+=tiempo;
+	}
+}

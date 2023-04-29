@@ -26,10 +26,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
+import ow_elements.Reloj;
 import ow_elements.NpcStatic;
 import ow_elements.Objeto;
 import ow_elements.NpcMovil;
 import ow_elements.Solid;
+import ow_elements.Tareas;
 import ow_elements.Element;
 import ow_elements.Niebla;
 import ow_elements.NpcDependiente;
@@ -76,8 +78,12 @@ private Solid ow2;
 @SuppressWarnings("unused")
 private Solid start;
 private Music musicaCiudad;
+private Reloj reloj;
+private Tareas tareas;
 
 private Array<Element> overs;
+
+private boolean listaTareas;
 
 //TP
 private static boolean CasaACalle = false;
@@ -93,6 +99,9 @@ private static boolean CalleASuper2 = false;
 		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.wav"));
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
+		reloj = new Reloj();
+		tareas = new Tareas();
+		
 		
 		if(Parametros.musicaUnaVez==true) {
 
@@ -129,6 +138,7 @@ private static boolean CalleASuper2 = false;
 		}
 		
 
+		reloj.start();
 		m3d=new Vector3();
 		renderer=new OrthogonalTiledMapRenderer(map,mainStage.getBatch());
 	    
@@ -229,7 +239,10 @@ private static boolean CalleASuper2 = false;
 						
 					case "misionNpc":
 						NpcMision testMisionNpc=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda");
+								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda", "Parece usted una bellísima persona...\n¿Me haría un favor?"
+								, "Mi nieto ha perdido su peluche. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
+								"¿Ha encontrado ya el peluche de mi nieto?\nEra un juguete bastante extraño...",
+								"¡Muchas gracias por recuperarlo!\nAquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
 						npcs.add(testMisionNpc);
 						break;
 						
@@ -619,6 +632,8 @@ private static boolean CalleASuper2 = false;
 	   mouseX=m3d.x;
 	   mouseY=m3d.y;
 	   
+	uiStage.addActor(reloj);
+	   
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
 		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 	       	if(planoActivo==false) {
@@ -632,6 +647,19 @@ private static boolean CalleASuper2 = false;
 	       		planoActor.remove();
 	      				Parametros.controlesActivos=true;
 	      				planoActivo=false;
+	      	}
+	    }
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+	       	if(listaTareas==false) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	        	uiStage.addActor(tareas);
+	   				listaTareas=true;
+	       	}
+	       	else if (listaTareas==true) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	           	tareas.remove();
+	      		listaTareas=false;
 	      	}
 	    }
 	   

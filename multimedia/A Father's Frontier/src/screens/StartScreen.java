@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Align;
 import game.Demo;
 import game.Parametros;
 import managers.ResourceManager;
+import ow_elements.Reloj;
 
 public class StartScreen extends BScreen {
 private OrthographicCamera camera;
@@ -35,6 +36,7 @@ private Music musicaCiudad;
 	    
         if (Parametros.frontera==false) {
         	ResourceManager.musicaTitulo.play();
+        	Reloj.tiempoRestante = 300;
 	        switch (Parametros.dia) {
             case 1:
                 periodico = new Texture("Menu/periodico.0_0.png");
