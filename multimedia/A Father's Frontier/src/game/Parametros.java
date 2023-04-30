@@ -23,7 +23,6 @@ public class Parametros {
  public static int minutosOW = 5;
  public static int dineroAnterior = 0;
  public static int dinero = 1;
- public static boolean haComidoHoy = false;
  
  //Variables
  public static boolean frontera = false;
@@ -39,10 +38,57 @@ public class Parametros {
  public static boolean musicaUnaVez = true;
  
  //Misiones
+ public static boolean haComidoHoy = false;
+ public static boolean haPagadoDeuda = false;
+ 
  public static boolean mision_un_extrano_muneco = true;
- public static boolean mision_una_lettera_d_amore = false;
- public static boolean mision_un_encuentro_agridulce = false;
- public static boolean mision_dein_kampf = false;
+ public static boolean mision_un_extrano_muneco_item = false;
+ public static boolean mision_un_extrano_muneco_completada = true;
+ 
+ public static boolean mision_una_lettera_d_amore = true;
+ public static boolean mision_una_lettera_d_amore_completada = true;
+ 
+ public static boolean mision_un_encuentro_agridulce = true;
+ public static boolean mision_un_encuentro_agridulce_completada = true;
+ 
+ public static boolean mision_dein_kampf = true;
+ public static boolean mision_dein_kampf_completada = true;
+
+ public static boolean mision_0 = true;
+ public static boolean mision_0_completada = true;
+ 
+ public static boolean mision_1 = true;
+ public static boolean mision_1_completada = true;
+ 
+ public static boolean mision_2 = true;
+ public static boolean mision_2_completada = true;
+ 
+ public static boolean mision_3 = true;
+ public static boolean mision_3_completada = true;
+ 
+ public static boolean mision_4 = true;
+ public static boolean mision_4_completada = true;
+ 
+ public static boolean mision_5 = true;
+ public static boolean mision_5_completada = true;
+ 
+ public static boolean mision_6 = true;
+ public static boolean mision_6_completada = true;
+ 
+ public static boolean mision_7 = true;
+ public static boolean mision_7_completada = true;
+ 
+ public static boolean mision_8 = true;
+ public static boolean mision_8_completada = true;
+ 
+ public static boolean mision_9 = true;
+ public static boolean mision_9_completada = true;
+ 
+ public static boolean mision_10 = true;
+ public static boolean mision_10_completada = true;
+ 
+ public static boolean mision_11 = true;
+ public static boolean mision_11_completada = true;
  
 public static int getAnchoPantalla() {
 	return anchoPantalla;

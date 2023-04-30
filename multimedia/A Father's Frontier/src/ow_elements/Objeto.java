@@ -16,13 +16,16 @@ public class Objeto extends Element {
 	private String dialogo1;
 	private String sprite2;
 	private String sprite1;
+	private int mision;
 	
-	public Objeto(float x, float y, Stage s, OverWorldScreen nivel, String sprite1, String sprite2, String dialogo1) {
+	
+	public Objeto(float x, float y, Stage s, OverWorldScreen nivel, String sprite1, String sprite2, String dialogo1, int mision) {
 		super(x, y, s);
 		this.nivel = nivel;
 		this.dialogo1 = dialogo1;
 		this.sprite2 = sprite2;
 		this.sprite1 = sprite1;
+		this.mision = mision;
 		
 		loadFullAnimation(sprite1, 1, 1, 0.1f,false);
 		
@@ -49,30 +52,35 @@ public class Objeto extends Element {
 	private void glow() {
 	    Vector2 cursorCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
 	    if (this.getBoundaryPolygon().contains(cursorCoords.x, cursorCoords.y)) {
-	        loadFullAnimation(sprite2, 1, 1, 0.1f, false);
+	        loadFullAnimation(this.sprite2, 1, 1, 0.1f, false);
 	    } else {
-	        loadFullAnimation(sprite1, 1, 1, 0.1f, false);
+	        loadFullAnimation(this.sprite1, 1, 1, 0.1f, false);
 	    }
 	}
 
 	
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
-		    switch (siguienteInteraccion) {
-	        case 0:
-	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto(this.dialogo1);
-	            this.nivel.uiStage.addActor(interaccion);
-	            siguienteInteraccion++;
-	            break;
-	        case 1:
-	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion.hide();
-	            Parametros.mision_un_extrano_muneco = false;
-	            Parametros.controlesActivos = true; // se activan los controles del personaje
-	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
-	            this.remove();
-	            break;
-		    }
+		
+	    switch(this.mision) {
+	    	case 0:
+		    	switch (siguienteInteraccion) {
+		        case 0:
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo1);
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 1:
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion.hide();
+		            Parametros.mision_un_extrano_muneco_completada = false;
+		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+		            this.remove();
+		            break;
+			    }
+		    	break;
+	    }
 	}
 }

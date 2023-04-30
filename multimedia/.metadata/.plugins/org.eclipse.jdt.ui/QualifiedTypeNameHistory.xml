@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.InputProcessor"/>
-    <fullyQualifiedTypeName name="elements.Persona2"/>
-    <fullyQualifiedTypeName name="elements.Pasaporte2"/>
-    <fullyQualifiedTypeName name="elements.Persona3"/>
-    <fullyQualifiedTypeName name="elements.Pasaporte3"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
     <fullyQualifiedTypeName name="managers.AudioManager"/>
     <fullyQualifiedTypeName name="screens.GameScreen"/>
@@ -43,21 +38,26 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputAdapter"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
     <fullyQualifiedTypeName name="java.text.Format"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Polygon"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
     <fullyQualifiedTypeName name="ow_elements.NpcDependiente"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
     <fullyQualifiedTypeName name="ow_elements.Objeto"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
     <fullyQualifiedTypeName name="fs_elements.Reloj"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
+    <fullyQualifiedTypeName name="ow_elements.Reloj"/>
+    <fullyQualifiedTypeName name="ow_elements.Tareas"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
+    <fullyQualifiedTypeName name="ow_elements.TareasSinExpandir"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
 </qualifiedTypeNameHistroy>

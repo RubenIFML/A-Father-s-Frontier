@@ -32,6 +32,7 @@ import ow_elements.Objeto;
 import ow_elements.NpcMovil;
 import ow_elements.Solid;
 import ow_elements.Tareas;
+import ow_elements.TareasSinExpandir;
 import ow_elements.Element;
 import ow_elements.Niebla;
 import ow_elements.NpcDependiente;
@@ -80,6 +81,7 @@ private Solid start;
 private Music musicaCiudad;
 private Reloj reloj;
 private Tareas tareas;
+private TareasSinExpandir tareasSinExpandir;
 
 private Array<Element> overs;
 
@@ -89,6 +91,9 @@ private boolean listaTareas;
 private static boolean CasaACalle = false;
 private static boolean CalleASuper1 = false;
 private static boolean CalleASuper2 = false;
+
+//objetos
+private Objeto peluche;
 
 	public OverWorldScreen(Demo game, Music musicaCiudad) {
 		super(game);
@@ -100,8 +105,7 @@ private static boolean CalleASuper2 = false;
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
 		reloj = new Reloj();
-		tareas = new Tareas();
-		
+		tareasSinExpandir = new TareasSinExpandir();
 		
 		if(Parametros.musicaUnaVez==true) {
 
@@ -210,6 +214,8 @@ private static boolean CalleASuper2 = false;
 				
 				switch(props.get("npc").toString()) {
 			
+					//NPC
+				
 					case "NpcRio":
 						NpcStatic npcRio=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "El río Támesis esconde grandes secretos\nen su interior..."
@@ -246,9 +252,11 @@ private static boolean CalleASuper2 = false;
 						npcs.add(testMisionNpc);
 						break;
 						
+						//OBJETOS
+						
 					case "peluche":
-						Objeto peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this,
-								"02-OW/Objetos/objeto.peluche.png", "02-OW/Objetos/objeto.peluche_glow.png", "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.");
+						peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.peluche.png",
+								"02-OW/Objetos/objeto.peluche_glow.png", "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.",0);
 						npcs.add(peluche);
 						break;
 				}
@@ -632,7 +640,8 @@ private static boolean CalleASuper2 = false;
 	   mouseX=m3d.x;
 	   mouseY=m3d.y;
 	   
-	uiStage.addActor(reloj);
+	   uiStage.addActor(reloj);
+	   uiStage.addActor(tareasSinExpandir);
 	   
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
 		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
@@ -649,9 +658,9 @@ private static boolean CalleASuper2 = false;
 	      				planoActivo=false;
 	      	}
 	    }
-	   
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
 	       	if(listaTareas==false) {
+				tareas = new Tareas();
 	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
 	        	uiStage.addActor(tareas);
 	   				listaTareas=true;

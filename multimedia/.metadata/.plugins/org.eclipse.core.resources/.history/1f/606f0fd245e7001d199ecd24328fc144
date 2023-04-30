@@ -1,0 +1,44 @@
+package ow_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+import game.Parametros;
+
+public class TareasSinExpandir extends Actor {
+
+    private BitmapFont font;
+    public static float tiempoRestante = 300;
+    private String titulo;
+    private String lista = "";
+    private Texture tareas;
+
+    public TareasSinExpandir() {
+        // Cargar la fuente desde el archivo Peepo.ttf
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 17; // Tamaño de la fuente
+        this.font = generator.generateFont(parameter);
+        generator.dispose();
+        
+        // Configurar el resto de los atributos
+        this.titulo = "- LISTA DE TAREAS -";
+        setBounds(10, 300, 232, 290);
+        this.tareas = new Texture("Menu/listaTareas_sinExpandir.png");
+    }
+
+    public void act(float delta) {
+        super.act(delta);
+    }
+
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(tareas, getX(), getY(), getWidth(), getHeight());
+        font.draw(batch, titulo, 43, 556);
+        font.draw(batch, lista, 22, 505);
+    }
+}
