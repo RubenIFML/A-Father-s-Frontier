@@ -74,7 +74,9 @@ public class Objeto extends Element {
 		        case 1:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion.hide();
+    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 		            Parametros.mision_un_extrano_muneco_completada = false;
+		            Parametros.mision_un_extrano_muneco_item = true;
 		            Parametros.controlesActivos = true; // se activan los controles del personaje
 		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 		            this.remove();

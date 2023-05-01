@@ -50,10 +50,15 @@ public class Tareas extends Actor {
     
     private void actualizarLista() {
         lista = "";
+        boolean hayMisiones = false;
         for (int i = 0; i < tareasBoolean.length; i++) {
             if (tareasBoolean[i] == false) {
                 lista += tareasStrings[i] + "\n";
+                hayMisiones = true;
             }
+        }
+        if (!hayMisiones) {
+            lista = "No tienes más misiones...";
         }
     }
 

@@ -41,6 +41,11 @@
    <property name="over" value="telephoneBox"/>
   </properties>
  </tile>
+ <tile id="487">
+  <properties>
+   <property name="npc" value="mailBox"/>
+  </properties>
+ </tile>
  <tile id="525">
   <properties>
    <property name="over" value="semaforo"/>

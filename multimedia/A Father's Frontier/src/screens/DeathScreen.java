@@ -38,16 +38,42 @@ private boolean diaHabilitada = false;
 	    batch = new SpriteBatch();
 	    background = new Texture("Menu/blackBackground.png");
 	    
-	    if(Parametros.haComidoHoy==false) {
-			causaDeLaMuerte=new Label("ESTÁ MUERTO\r\n\n"
-					+ "El hambre se ha vuelto tan\n"
-					+ "insoportable que le ha ido matando\n"
-					+ "lentamente como un cancer...\n"
-					+ "Su remordimiento antes de morir,\n"
-					+ "nunca pudo volver a ver a su hijo.\n\n"
-					+ "Pulse ENTER para volver"
-					, uiStyle);
+	    if(Parametros.haComidoHoy == false) {
+	    	if(Parametros.haPagadoDeuda==false) {
+				causaDeLaMuerte=new Label("ESTÁ MUERTO\r\n\n"
+						+ "El hambre se ha vuelto tan\n"
+						+ "insoportable que le ha ido matando\n"
+						+ "lentamente como un cancer...\n"
+						+ "Su remordimiento antes de morir,\n"
+						+ "nunca pudo volver a ver a su hijo.\n\n"
+						+ "Pulse ENTER para volver"
+						, uiStyle);
+	    	}
+	    	else {
+				causaDeLaMuerte=new Label("ESTÁ MUERTO\r\n\n"
+						+ "El hambre se ha vuelto tan\n"
+						+ "insoportable que le ha ido matando\n"
+						+ "lentamente como un cancer...\n"
+						+ "Su remordimiento antes de morir,\n"
+						+ "nunca pudo volver a ver a su hijo.\n\n"
+						+ "Pulse ENTER para volver"
+						, uiStyle);
+	    	}
 	    }
+	    
+	    else if (Parametros.haPagadoDeuda == false) {
+	    	if(Parametros.haComidoHoy==true) {
+				causaDeLaMuerte=new Label("BIENVENIDO A LA CARCEL\r\n\n"
+						+ "El gobierno ha tomado represalias\n"
+						+ "contra usted debido a que no ha\n"
+						+ "pagado sus impuestos y deudas...\n"
+						+ "Ha acabado solo en la carcel, pero\n"
+						+ "sobretodo, sin su hijo.\n\n"
+						+ "Pulse ENTER para volver"
+						, uiStyle);
+	    	}
+		}
+	    
 		causaDeLaMuerte.setPosition(75,50);
 	    causaDeLaMuerte.setAlignment(1, 2);
 	    

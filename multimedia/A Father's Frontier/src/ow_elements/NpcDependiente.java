@@ -94,7 +94,12 @@ public class NpcDependiente extends Element {
 		         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
-		        bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		    	if(Parametros.haComidoHoy == true) {
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		        }
+		    	else {
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+		    	}
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        nivel.mainStage.addActor(bocadillo);
 		    }
@@ -110,57 +115,85 @@ public class NpcDependiente extends Element {
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    
-
-	    if(Parametros.haComidoHoy == false) {
-		    switch (siguienteInteraccion) {
-		        case 0:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto(this.dialogo1);
-		            this.nivel.uiStage.addActor(interaccion);
-		            siguienteInteraccion++;
-		            break;
-		        case 1:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
-		            interaccion.hide();
-		            Parametros.dinero-=3;
-		            interaccion = new Texto(this.dialogo2);
-		            this.nivel.uiStage.addActor(interaccion);
-		            siguienteInteraccion++;
-		            break;
-		        case 2:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-					setAnimation(idleIzquierda);
-		            interaccion.hide();
-		            interaccion = new Texto(this.dialogo3);
-		            this.nivel.uiStage.addActor(interaccion);
-		            siguienteInteraccion++;
-		            break;
-		        case 3:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-					setAnimation(idleFrente);
-		            interaccion.hide();
-		            Parametros.haComidoHoy = true;
-		            Parametros.controlesActivos = true; // se activan los controles del personaje
-		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
-		            break;
+	    if(Parametros.dinero > 2) {
+	    	
+		    if (Parametros.haComidoHoy == true){
+			    switch (siguienteInteraccion) {
+			        case 0:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			            interaccion = new Texto("Lo siento mucho, esa era la última existencia.\nÚltimamente nos llegan muy pocas raciones...");
+			            this.nivel.uiStage.addActor(interaccion);
+			            siguienteInteraccion++;
+			            break;
+			        case 1:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			            interaccion.hide();
+			            Parametros.controlesActivos = true; // se activan los controles del personaje
+			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+			            break;
+			    }
 		    }
-	    }
+		    
+		    else if(Parametros.haComidoHoy == false) {
+			    switch (siguienteInteraccion) {
+			        case 0:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			            interaccion = new Texto(this.dialogo1);
+			            this.nivel.uiStage.addActor(interaccion);
+			            siguienteInteraccion++;
+			            break;
+			        case 1:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+			            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+			            interaccion.hide();
+			            interaccion = new Texto(this.dialogo2);
+			            this.nivel.uiStage.addActor(interaccion);
+			            siguienteInteraccion++;
+			            break;
+			        case 2:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+						setAnimation(idleIzquierda);
+			            interaccion.hide();
+			            interaccion = new Texto(this.dialogo3);
+			            this.nivel.uiStage.addActor(interaccion);
+			            siguienteInteraccion++;
+			            break;
+			        case 3:
+			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+						setAnimation(idleFrente);
+			            interaccion.hide();
+			            Parametros.controlesActivos = true; // se activan los controles del personaje
+			            Parametros.dinero-=3;
+			            Parametros.haComidoHoy = true;
+			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+			            break;
+			    }
+		    }
+		}
+	    
 	    else {
 		    switch (siguienteInteraccion) {
-		        case 0:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto("Lo siento mucho, esa era la última existencia.\nÚltimamente nos llegan muy pocas raciones...");
-		            this.nivel.uiStage.addActor(interaccion);
-		            siguienteInteraccion++;
-		            break;
-		        case 1:
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion.hide();
-		            Parametros.controlesActivos = true; // se activan los controles del personaje
-		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
-		            break;
+	        case 0:
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            interaccion = new Texto("Lo siento, pero si no tiene al menos tres libras\nno puedo venderle Fish & Chips...");
+	            this.nivel.uiStage.addActor(interaccion);
+	            siguienteInteraccion++;
+	            break;
+	        case 1:
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            interaccion.hide();
+	            interaccion = new Texto("No puedo darle la comida sin el dinero.\nVuelva cuando lo haya conseguido...");
+	            this.nivel.uiStage.addActor(interaccion);
+	            siguienteInteraccion++;
+	            break;
+	        case 2:
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            interaccion.hide();
+	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	            break;
 		    }
 	    }
+	    
 	}
 }

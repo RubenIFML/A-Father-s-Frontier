@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="mision"/>
+		<item key="selection" value="sounds"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="mision"/>
+			<item value="sounds"/>
+			<item value="recupera"/>
 			<item value="item"/>
-			<item value="peluche"/>
-			<item value="pelu"/>
-			<item value="muneco"/>
-			<item value="mision = 0"/>
-			<item value=" mision = 0"/>
-			<item value="false"/>
-			<item value="tareas"/>
-			<item value="tare"/>
-			<item value="un_ex"/>
-			<item value="unex"/>
-			<item value="case 0:"/>
-			<item value="misione"/>
-			<item value="misiones"/>
+			<item value="mision_un_extrano_muneco_item"/>
+			<item value="centra"/>
+			<item value="bocadillo"/>
+			<item value="haComi"/>
+			<item value="h"/>
+			<item value="haComidoHoy"/>
+			<item value="dinero"/>
+			<item value="dinerop"/>
+			<item value="Para"/>
+			<item value="Parametros.haCo"/>
+			<item value="tiles"/>
+			<item value="npcde"/>
 		</list>
 		<list key="replacehistory">
 		</list>

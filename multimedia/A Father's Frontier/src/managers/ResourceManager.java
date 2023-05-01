@@ -135,6 +135,8 @@ public final class ResourceManager {
         
         //Personajes OW
         assets.load("02-OW/Personajes/bocadillo_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/bocadillo_mision_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/bocadillo_mail_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.ahorcado.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.chica_ow.png", Texture.class);
@@ -164,6 +166,7 @@ public final class ResourceManager {
         assets.load("02-OW/Tiles/treintaSign.png", Texture.class);
         assets.load("02-OW/Tiles/fuente.png", Texture.class);
         assets.load("02-OW/Tiles/coche.png", Texture.class);
+        assets.load("02-OW/Tiles/mailBox.png", Texture.class);
         
         //Sonidos
         assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);
@@ -183,6 +186,7 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/maletin.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/pasos.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/comprar.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/mision.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);

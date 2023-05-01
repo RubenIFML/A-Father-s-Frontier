@@ -62,12 +62,13 @@ private boolean diaHabilitada = false;
 			dia.remove();
 		    ResourceManager.musicaTitulo.play();
 
-			if(Parametros.haComidoHoy == false) {
+			if(Parametros.haComidoHoy == false || Parametros.haPagadoDeuda == false) {
 				ResourceManager.musicaTitulo.stop();
 				game.setScreen(new DeathScreen(game));
 			}
 			else {
 				Parametros.haComidoHoy = false;
+				Parametros.haPagadoDeuda = false;
 				Parametros.zona=1;
 			    Parametros.controlesActivos=true;
 				game.setScreen(new StartScreen(game));

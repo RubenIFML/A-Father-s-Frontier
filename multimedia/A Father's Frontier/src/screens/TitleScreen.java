@@ -65,6 +65,9 @@ private float elapsedTime=0;
 		boton.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
+				Parametros.dinero=1;
+				Parametros.haComidoHoy = false;
+				Parametros.haPagadoDeuda = false;
 				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				this.dispose();
 

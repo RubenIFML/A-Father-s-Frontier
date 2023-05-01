@@ -1,8 +1,10 @@
 package ow_elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Reloj extends Actor {
@@ -16,13 +18,17 @@ public class Reloj extends Actor {
     private boolean empezar = false;
 
     public Reloj() {
-        this.font = new BitmapFont();
-        this.font.getData().setScale(2);
+    	
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 29; // Tamaño de la fuente
+        this.font = generator.generateFont(parameter);
+        generator.dispose();
         this.tiempoTexto = "" + convertirTiempo(tiempoRestante);
         
-        textX = 661;
+        textX = 656;
         textY = 577;
-        setBounds(652, 540, 143, 50);
+        setBounds(647, 540, 143, 50);
         
         this.reloj = new Texture("Menu/menuBoton.png");
     }

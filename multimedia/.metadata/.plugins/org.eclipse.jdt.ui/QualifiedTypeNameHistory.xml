@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Rectangle"/>
-    <fullyQualifiedTypeName name="managers.AudioManager"/>
     <fullyQualifiedTypeName name="screens.GameScreen"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.SequenceAction"/>
     <fullyQualifiedTypeName name="javax.swing.text.TabExpander"/>
@@ -42,7 +40,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Polygon"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
     <fullyQualifiedTypeName name="ow_elements.NpcDependiente"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
     <fullyQualifiedTypeName name="ow_elements.Objeto"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
     <fullyQualifiedTypeName name="ow_elements.TareasSinExpandir"/>
     <fullyQualifiedTypeName name="game.Parametros"/>
+    <fullyQualifiedTypeName name="ow_elements.Dinero"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
+    <fullyQualifiedTypeName name="ow_elements.NpcMailBox"/>
 </qualifiedTypeNameHistroy>

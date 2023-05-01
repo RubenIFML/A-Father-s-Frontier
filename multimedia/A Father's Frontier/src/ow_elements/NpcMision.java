@@ -101,7 +101,14 @@ public class NpcMision extends Element {
 		         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
-		        bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		    	
+		    	if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		        }
+		    	else {
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+		    	}
+		    	
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        bocadillo.setName("bocadillo");
 		        nivel.mainStage.addActor(bocadillo);
@@ -138,6 +145,7 @@ public class NpcMision extends Element {
 	    	        case 2:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_un_extrano_muneco = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
@@ -174,14 +182,16 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.mision_un_extrano_muneco = true;
-	    	            Parametros.dinero+=2;
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_un_extrano_muneco_item=false;
+	    	            Parametros.dinero+=3;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
 	    	    }
 	    	    
-	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
+	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
@@ -192,6 +202,27 @@ public class NpcMision extends Element {
 	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4);
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_un_extrano_muneco = true;
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_un_extrano_muneco_item=false;
+	    	            Parametros.dinero+=3;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;

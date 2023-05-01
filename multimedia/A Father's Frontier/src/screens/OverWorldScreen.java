@@ -33,9 +33,11 @@ import ow_elements.NpcMovil;
 import ow_elements.Solid;
 import ow_elements.Tareas;
 import ow_elements.TareasSinExpandir;
+import ow_elements.Dinero;
 import ow_elements.Element;
 import ow_elements.Niebla;
 import ow_elements.NpcDependiente;
+import ow_elements.NpcMailBox;
 import ow_elements.NpcMision;
 import ow_elements.Gota;
 import ow_elements.Protagonista;
@@ -80,9 +82,12 @@ private Solid ow2;
 private Solid start;
 private Music musicaCiudad;
 private Reloj reloj;
+private Dinero dinero;
 private Tareas tareas;
 private TareasSinExpandir tareasSinExpandir;
-
+final float MAX_CAM_SPEED = 200f;
+final float MIN_CAM_SPEED = 50f;
+final float MAX_CAM_OFFSET = 100f;
 private Array<Element> overs;
 
 private boolean listaTareas;
@@ -105,6 +110,7 @@ private Objeto peluche;
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
 		reloj = new Reloj();
+		dinero = new Dinero();
 		tareasSinExpandir = new TareasSinExpandir();
 		
 		if(Parametros.musicaUnaVez==true) {
@@ -248,8 +254,15 @@ private Objeto peluche;
 								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda", "Parece usted una bellísima persona...\n¿Me haría un favor?"
 								, "Mi nieto ha perdido su peluche. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
 								"¿Ha encontrado ya el peluche de mi nieto?\nEra un juguete bastante extraño...",
-								"¡Muchas gracias por recuperarlo!\nAquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
+								"¡Muchas gracias por recuperar el muñeco\nde mi nieto! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
 						npcs.add(testMisionNpc);
+						break;
+						
+					case "mailBox":
+						NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
+								, "(Has pagado £1 al gobierno por\ntus deudas e impuestos)");
+						npcs.add(npcMailBox);
 						break;
 						
 						//OBJETOS
@@ -420,7 +433,6 @@ private Objeto peluche;
 		if(Parametros.zona==1) {
 			if(this.owTp.overlaps(this.prota)) {
 				CasaACalle=true;
-				Parametros.haComidoHoy = false;
 				teletransporte(2);
 			}
 		}
@@ -458,12 +470,59 @@ private Objeto peluche;
 		}
 	}
 	
-	public void centrarCamara() {
-		
-		this.camara.position.x=MathUtils.clamp(prota.getX()+15,this.camara.viewportWidth/2,this.mapWidthInPixels-this.camara.viewportWidth/2);
-		this.camara.position.y=MathUtils.clamp(prota.getY()+30,this.camara.viewportHeight/2,this.mapHeightInPixels-this.camara.viewportHeight/2);
-		camara.update();
-		
+	public void centrarCamara(float delta) {
+
+	    float targetX = MathUtils.clamp(prota.getX()+40, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
+	    float targetY = MathUtils.clamp(prota.getY()+40, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
+	    float lerp = Math.min(1, delta * 10f);
+
+	    float protaX = prota.getX();
+	    float protaY = prota.getY();
+	    float cursorX = mouseX;
+	    float cursorY = mouseY;
+
+	    float distX = cursorX - protaX;
+	    float distY = cursorY - protaY;
+	    float dist = (float) Math.sqrt(distX * distX + distY * distY);
+	    float maxDist = 50; // reduce la distancia máxima
+
+	    if (dist > maxDist) {
+	        float angle = MathUtils.atan2(distY, distX);
+	        cursorX = protaX + MathUtils.cos(angle) * maxDist;
+	        cursorY = protaY + MathUtils.sin(angle) * maxDist;
+	        dist = maxDist;
+	    }
+
+	    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist)); // cambia la interpolación
+	    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist)); // cambia la interpolación
+
+	    float halfViewportWidth = camara.viewportWidth / 2;
+	    float halfViewportHeight = camara.viewportHeight / 2;
+
+	    // calcula los límites de la cámara
+	    float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
+	    float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
+	    float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
+	    float minCameraY = Math.max(protaY - maxDist, halfViewportWidth);
+
+	    // comprueba si la posición de la cámara está dentro de los límites del mapa
+	    if (cameraX <= minCameraX) {
+	        cameraX = minCameraX;
+	    } else if (cameraX >= maxCameraX) {
+	        cameraX = maxCameraX;
+	    }
+
+	    if (cameraY <= minCameraY) {
+	        cameraY = minCameraY;
+	    } else if (cameraY >= maxCameraY) {
+	        cameraY = maxCameraY;
+	    }
+
+	    camara.position.x = cameraX;
+	    camara.position.y = cameraY;
+	    camara.position.x += (targetX - camara.position.x) * lerp;
+	    camara.position.y += (targetY - camara.position.y) * lerp;
+	    camara.update();
 	}
 	
 	public void teletransporteFrontera() {
@@ -631,7 +690,7 @@ private Objeto peluche;
 	   uiStage.act();
 	   colide();
 	   
-	   centrarCamara();
+	   centrarCamara(delta);
 	   
 	   m3d.x=Gdx.input.getX();
 	   m3d.y=Gdx.input.getY();
@@ -641,6 +700,7 @@ private Objeto peluche;
 	   mouseY=m3d.y;
 	   
 	   uiStage.addActor(reloj);
+	   uiStage.addActor(dinero);
 	   uiStage.addActor(tareasSinExpandir);
 	   
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
