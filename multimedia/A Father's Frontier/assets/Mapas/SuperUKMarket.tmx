@@ -240,27 +240,27 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="102" x="248" y="589" width="62" height="31">
+  <object id="102" x="248" y="589" width="30.9947" height="31">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="103" x="341" y="589" width="248" height="31">
+  <object id="103" x="372" y="589" width="186.002" height="31">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="104" x="620" y="589" width="62" height="31">
+  <object id="104" x="651.004" y="589" width="30.9961" height="31">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="105" x="310" y="589" width="31" height="31">
+  <object id="105" x="279" y="589" width="92.9922" height="31">
    <properties>
     <property name="name" value="ow2"/>
    </properties>
   </object>
-  <object id="106" x="589" y="589" width="31" height="31">
+  <object id="106" x="558.005" y="589" width="92.9996" height="31">
    <properties>
     <property name="name" value="ow1"/>
    </properties>

@@ -57,11 +57,18 @@ public class NpcMailBox extends Element {
 		    }
 	    }
 	    
-	    if (Gdx.input.justTouched()) {
-	        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-	        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
-	            interactuar();
-	        }
+	    if(siguienteInteraccion==0) {
+		    if (Gdx.input.justTouched()) {
+		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		            interactuar();
+		        }
+		    }
+	    }
+	    else {
+	    	if (Gdx.input.justTouched()) {
+	    		interactuar();
+	    		}
 	    }
 	}
 

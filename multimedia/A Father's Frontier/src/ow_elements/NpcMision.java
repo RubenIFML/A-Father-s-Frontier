@@ -79,11 +79,18 @@ public class NpcMision extends Element {
 		    }
 	    }
 	    
-	    if (Gdx.input.justTouched()) {
-	        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-	        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
-	            interactuar();
-	        }
+	    if(siguienteInteraccion==0) {
+		    if (Gdx.input.justTouched()) {
+		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		            interactuar();
+		        }
+		    }
+	    }
+	    else {
+	    	if (Gdx.input.justTouched()) {
+	    		interactuar();
+	    		}
 	    }
 	}
 
@@ -130,6 +137,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1);
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -170,7 +178,7 @@ public class NpcMision extends Element {
 	    		    }
 	    	    }
 	    	    
-	    	    else if (Parametros.mision_un_extrano_muneco == false && Parametros.mision_un_extrano_muneco_completada == false) {
+	    	    else if (Parametros.mision_un_extrano_muneco == false && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
@@ -186,12 +194,34 @@ public class NpcMision extends Element {
 	    	            Parametros.mision_un_extrano_muneco_item=false;
 	    	            Parametros.dinero+=3;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_un_extrano_muneco_finalizada=true;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
 	    	    }
 	    	    
-	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false) {
+	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4);
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_un_extrano_muneco = true;
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.dinero+=3;
+	    	            Parametros.mision_un_extrano_muneco_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
@@ -207,28 +237,7 @@ public class NpcMision extends Element {
 	    	            break;
 	    		    }
 	    	    }
-	    	    
-	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==true) {
-	    		    switch (siguienteInteraccion) {
-	    	        case 0:
-	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo4);
-	    	            this.nivel.uiStage.addActor(interaccion);
-	    	            siguienteInteraccion++;
-	    	            break;
-	    	        case 1:
-	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion.hide();
-	    	            Parametros.mision_un_extrano_muneco = true;
-	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
-	    	            Parametros.mision_un_extrano_muneco_item=false;
-	    	            Parametros.dinero+=3;
-	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
-	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
-	    	            break;
-	    		    }
-	    	    }
-	    		break;
+	    	break;
 	    }
 	}
 }

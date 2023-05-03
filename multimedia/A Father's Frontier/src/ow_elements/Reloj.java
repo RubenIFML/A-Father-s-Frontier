@@ -11,7 +11,7 @@ public class Reloj extends Actor {
 
     private BitmapFont font;
     public static float tiempoRestante = 300;
-    private String tiempoTexto;
+    public static String tiempoTexto;
     private Texture reloj;
     private float textX;
     private float textY;
@@ -24,7 +24,7 @@ public class Reloj extends Actor {
         parameter.size = 29; // Tamaño de la fuente
         this.font = generator.generateFont(parameter);
         generator.dispose();
-        this.tiempoTexto = "" + convertirTiempo(tiempoRestante);
+        Reloj.tiempoTexto = "" + convertirTiempo(tiempoRestante);
         
         textX = 656;
         textY = 577;

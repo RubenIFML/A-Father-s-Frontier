@@ -11,7 +11,7 @@ public class Reloj extends Actor {
 
     private BitmapFont font;
     public float tiempoRestante;
-    private String tiempoTexto;
+    public String tiempoTexto;
     private Texture reloj;
     private float textX;
     private float textY;

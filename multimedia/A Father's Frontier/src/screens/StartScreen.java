@@ -1,5 +1,6 @@
 package screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -25,10 +26,12 @@ private Actor blackBackgroundActor;
 private boolean desactivable = false;
 private float fadeTimer = 0f;
 private Music musicaCiudad;
+private Music tiktak;
 
     public StartScreen(Demo game) {
         super(game);
 
+		this.tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.wav"));
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 
@@ -36,7 +39,7 @@ private Music musicaCiudad;
 	    
         if (Parametros.frontera==false) {
         	ResourceManager.musicaTitulo.play();
-        	Reloj.tiempoRestante = 300;
+        	Reloj.tiempoRestante = 180;
 	        switch (Parametros.dia) {
             case 1:
                 periodico = new Texture("Menu/periodico.0_0.png");
@@ -50,7 +53,7 @@ private Music musicaCiudad;
             default:
                 periodico = new Texture("Menu/periodico.0_0.png");
                 ResourceManager.musicaTitulo.stop();
-                game.setScreen(new OverWorldScreen(game, musicaCiudad));
+                game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
 		    }
         }
         
@@ -87,7 +90,7 @@ private Music musicaCiudad;
             periodicoActor.remove();
             ResourceManager.musicaTitulo.stop();
             Parametros.zoom=0.65f;
-            game.setScreen(new OverWorldScreen(game, musicaCiudad));
+            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
         }
         else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
             periodicoActor.remove();

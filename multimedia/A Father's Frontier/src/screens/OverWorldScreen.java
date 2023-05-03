@@ -65,12 +65,16 @@ private Music ambiente;
 
 private Texture planoTexture;
 private Actor planoActor;
+private Texture controlesTexture;
+private Actor controlesActor;
 private boolean planoActivo=false;
+private boolean controlesActivo=false;
 
 private int tileWidth, tileHeight, mapWidthInTiles, mapHeightInTiles,mapWidthInPixels, mapHeightInPixels;
 private ActorComparator comparator;
 
 public Protagonista prota;
+//private WIPNombreZona nz;
 private Solid solido;
 private Solid casa;
 private Solid superUk;
@@ -81,6 +85,7 @@ private Solid ow2;
 @SuppressWarnings("unused")
 private Solid start;
 private Music musicaCiudad;
+private Music tiktak;
 private Reloj reloj;
 private Dinero dinero;
 private Tareas tareas;
@@ -100,15 +105,18 @@ private static boolean CalleASuper2 = false;
 //objetos
 private Objeto peluche;
 
-	public OverWorldScreen(Demo game, Music musicaCiudad) {
+	public OverWorldScreen(Demo game, Music musicaCiudad, Music tiktak) {
 		super(game);
-		this.musicaCiudad=musicaCiudad;		
+		this.musicaCiudad=musicaCiudad;
+		this.tiktak=tiktak;
 		
 		comparator=new ActorComparator();
 		mainStage=new Stage();
 		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.wav"));
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		planoActor = new Image(planoTexture);
+		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesOw.png"));
+		controlesActor = new Image(controlesTexture);
 		reloj = new Reloj();
 		dinero = new Dinero();
 		tareasSinExpandir = new TareasSinExpandir();
@@ -151,7 +159,23 @@ private Objeto peluche;
 		reloj.start();
 		m3d=new Vector3();
 		renderer=new OrthogonalTiledMapRenderer(map,mainStage.getBatch());
-	    
+	   
+		/*
+		switch(Parametros.zona) {
+			case 1:
+				nz = new NombreZona("CASA", 40, 10, 1, 3, 1);
+			break;
+			
+			case 2:
+				nz = new NombreZona("GREENWICH", 30, 10, 1, 3, 1);
+			break;
+			
+			case 3:
+				nz = new NombreZona("SUPER UK MARKET", 20, 10, 1, 3, 1);
+			break;
+		}
+		*/
+		
 		MapProperties props;
 		props=map.getProperties();
 		tileWidth=props.get("tilewidth",Integer.class);
@@ -268,9 +292,11 @@ private Objeto peluche;
 						//OBJETOS
 						
 					case "peluche":
-						peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.peluche.png",
-								"02-OW/Objetos/objeto.peluche_glow.png", "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.",0);
-						npcs.add(peluche);
+						if(Parametros.mision_un_extrano_muneco_item) {
+							peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.peluche.png",
+									"02-OW/Objetos/objeto.peluche_glow.png", "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.",0);
+							npcs.add(peluche);
+						}
 						break;
 				}
 			}
@@ -472,8 +498,8 @@ private Objeto peluche;
 	
 	public void centrarCamara(float delta) {
 
-	    float targetX = MathUtils.clamp(prota.getX()+40, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
-	    float targetY = MathUtils.clamp(prota.getY()+40, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
+	    float targetX = MathUtils.clamp(prota.getX()+45, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
+	    float targetY = MathUtils.clamp(prota.getY()+45, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
 	    float lerp = Math.min(1, delta * 10f);
 
 	    float protaX = prota.getX();
@@ -487,14 +513,14 @@ private Objeto peluche;
 	    float maxDist = 50; // reduce la distancia máxima
 
 	    if (dist > maxDist) {
-	        float angle = MathUtils.atan2(distY, distX);
+	        float angle = MathUtils.atan2(cursorY - protaY, cursorX - protaX); // calcula el ángulo correctamente
 	        cursorX = protaX + MathUtils.cos(angle) * maxDist;
 	        cursorY = protaY + MathUtils.sin(angle) * maxDist;
 	        dist = maxDist;
 	    }
 
-	    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist)); // cambia la interpolación
-	    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist)); // cambia la interpolación
+	    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist));
+	    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist));
 
 	    float halfViewportWidth = camara.viewportWidth / 2;
 	    float halfViewportHeight = camara.viewportHeight / 2;
@@ -503,7 +529,7 @@ private Objeto peluche;
 	    float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
 	    float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
 	    float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
-	    float minCameraY = Math.max(protaY - maxDist, halfViewportWidth);
+	    float minCameraY = Math.max(protaY - maxDist, halfViewportHeight); // corrige la restricción del límite inferior
 
 	    // comprueba si la posición de la cámara está dentro de los límites del mapa
 	    if (cameraX <= minCameraX) {
@@ -538,7 +564,8 @@ private Objeto peluche;
 		ambiente.stop();
 		prota.pasos.stop();
 		Parametros.zona=zona;
-		game.setScreen(new OverWorldScreen(game, this.musicaCiudad));
+		game.setScreen(new OverWorldScreen(game, this.musicaCiudad, this.tiktak));
+       	AudioManager.playSound("02-OW/Audio/sounds/cerrarPuerta.wav");
 	}
 	
 	public ArrayList<MapObject> getRectangleList(String propertyName){
@@ -702,8 +729,9 @@ private Objeto peluche;
 	   uiStage.addActor(reloj);
 	   uiStage.addActor(dinero);
 	   uiStage.addActor(tareasSinExpandir);
+//	   uiStage.addActor(nz);
 	   
-	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && controlesActivo == false) {
 		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 	       	if(planoActivo==false) {
 	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
@@ -718,20 +746,51 @@ private Objeto peluche;
 	      				planoActivo=false;
 	      	}
 	    }
-	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && planoActivo == false) {
+		   controlesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	       	if(controlesActivo==false) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	       		uiStage.addActor(controlesActor);
+	   			Parametros.controlesActivos=false;
+	   			controlesActivo=true;
+	       	}
+	       	else if (controlesActivo==true) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	           	controlesActor.remove();
+	      				Parametros.controlesActivos=true;
+	      				controlesActivo=false;
+	      	}
+	    }
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && controlesActivo == false && planoActivo == false) {
 	       	if(listaTareas==false) {
 				tareas = new Tareas();
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	        	uiStage.addActor(tareas);
 	   				listaTareas=true;
 	       	}
 	       	else if (listaTareas==true) {
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	           	tareas.remove();
 	      		listaTareas=false;
 	      	}
-	    }
+	   }
 	   
+	   	if (Reloj.tiempoRestante<=10) {
+			this.tiktak.play();
+	   	}
+	   	
+	   	if (Reloj.tiempoRestante == 0) {
+			this.musicaCiudad.stop(); 
+			ambiente.stop();
+			prota.pasos.stop();
+			tiktak.stop();
+			Parametros.musicaUnaVez=true;
+			Parametros.dia++;
+			game.setScreen(new StatsScreen(game));
+	   	}
+	   	
 	    renderer.setView(camara);
 	    renderer.render(new int[]{0, 1, 2, 3});
 	    mainStage.getActors().sort(comparator);
@@ -747,3 +806,53 @@ private Objeto peluche;
 	        uiStage.draw();
 	}
 }
+
+//Centrar cámara v2
+//Deadzone de 10 píxeles alrededor del centro de la pantalla
+//float deadzoneX = camara.viewportWidth / 2 - 10;
+//float deadzoneY = camara.viewportHeight / 2 - 10;
+//float targetX = MathUtils.clamp(prota.getX() + 40, camara.position.x - deadzoneX, camara.position.x + deadzoneX);
+//float targetY = MathUtils.clamp(prota.getY() + 40, camara.position.y - deadzoneY, camara.position.y + deadzoneY);
+//
+//float lerp = Math.min(1, delta * 10f);
+//
+//float protaX = prota.getX();
+//float protaY = prota.getY();
+//float cursorX = mouseX;
+//float cursorY = mouseY;
+//
+//float distX = cursorX - protaX;
+//float distY = cursorY - protaY;
+//float dist = (float) Math.sqrt(distX * distX + distY * distY);
+//
+////Distancia máxima ajustada con función lineal
+//float maxDist = MathUtils.lerp(50, 10, MathUtils.clamp(dist / (mapWidthInPixels / 2), 0, 1));
+//
+//if (dist > maxDist) {
+// float angle = MathUtils.atan2(distY, distX);
+// cursorX = protaX + MathUtils.cos(angle) * maxDist;
+// cursorY = protaY + MathUtils.sin(angle) * maxDist;
+// dist = maxDist;
+//}
+//
+////Ajuste de la interpolación
+//float interpolation = MathUtils.lerp(0.07f, 0.2f, MathUtils.clamp(dist / maxDist, 0, 1));
+//
+//float cameraX = MathUtils.lerp(camara.position.x, cursorX, interpolation);
+//float cameraY = MathUtils.lerp(camara.position.y, cursorY, interpolation);
+//
+////Límites de la cámara ajustados con la distancia máxima
+//float halfViewportWidth = camara.viewportWidth / 2;
+//float halfViewportHeight = camara.viewportHeight / 2;
+//float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
+//float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
+//float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
+//float minCameraY = Math.max(protaY - maxDist, halfViewportWidth);
+//
+////Comprobación de los límites de la cámara
+//cameraX = MathUtils.clamp(cameraX, minCameraX, maxCameraX);
+//cameraY = MathUtils.clamp(cameraY, minCameraY, maxCameraY);
+//
+//camara.position.x += (cameraX - camara.position.x) * lerp;
+//camara.position.y += (cameraY - camara.position.y) * lerp;
+//camara.update();

@@ -18,7 +18,7 @@ public class Parametros {
  //Estadísticas
  public static int dia = 1;
  public static int segundosFS = 100;
- public static int segundosOW = 300;
+ public static int segundosOW = 180;
  public static int segundosRestantesOW = segundosOW;
  public static int minutosOW = 5;
  public static int dineroAnterior = 0;
@@ -42,8 +42,9 @@ public class Parametros {
  public static boolean haPagadoDeuda = false;
  
  public static boolean mision_un_extrano_muneco = true;
- public static boolean mision_un_extrano_muneco_item = false;
+ public static boolean mision_un_extrano_muneco_item = true;
  public static boolean mision_un_extrano_muneco_completada = true;
+ public static boolean mision_un_extrano_muneco_finalizada = false;
  
  public static boolean mision_una_lettera_d_amore = true;
  public static boolean mision_una_lettera_d_amore_completada = true;

@@ -1,0 +1,33 @@
+public void centrarCamara(float delta) {
+
+    float targetX = MathUtils.clamp(prota.getX()+40, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
+    float targetY = MathUtils.clamp(prota.getY()+40, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
+    float lerp = Math.min(1, delta * 10f);
+
+    float protaX = prota.getX();
+    float protaY = prota.getY();
+    float cursorX = mouseX;
+    float cursorY = mouseY;
+
+    float distX = cursorX - protaX;
+    float distY = cursorY - protaY;
+    float distSquared = distX * distX + distY * distY; // compara la distancia al cuadrado con la distancia máxima al cuadrado
+    float maxDistSquared = 2500; // reduce la distancia máxima al cuadrado
+
+    if (distSquared > maxDistSquared) {
+        float angle = MathUtils.atan2(cursorY - protaY, cursorX - protaX); // calcula el ángulo correctamente
+        cursorX = protaX + MathUtils.cos(angle) * 50;
+        cursorY = protaY + MathUtils.sin(angle) * 50;
+    }
+
+    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (distSquared / maxDistSquared));
+    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (distSquared / maxDistSquared));
+
+    float halfViewportWidth = camara.viewportWidth / 2;
+    float halfViewportHeight = camara.viewportHeight / 2;
+
+    // calcula los límites de la cámara
+    float maxCameraX = Math.min(protaX + 50, mapWidthInPixels - halfViewportWidth);
+    float minCameraX = Math.max(protaX - 50, halfViewportWidth);
+    float maxCameraY = Math.min(protaY + 50, mapHeightInPixels - halfViewportHeight);
+    float minCameraY = Math.max(protaY - 50, halfViewportHeight); // corrige la restricción del límite inferior

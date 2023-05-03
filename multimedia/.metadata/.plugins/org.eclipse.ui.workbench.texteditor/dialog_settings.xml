@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="sounds"/>
+		<item key="selection" value="==0"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="sounds"/>
-			<item value="recupera"/>
-			<item value="item"/>
-			<item value="mision_un_extrano_muneco_item"/>
+			<item value="==0"/>
+			<item value="=0"/>
+			<item value="f==0"/>
+			<item value="tiktak"/>
+			<item value="tiktat"/>
+			<item value="musica"/>
+			<item value="== 0"/>
+			<item value="teletra"/>
+			<item value="tele"/>
+			<item value="menub"/>
+			<item value="lette"/>
+			<item value="encue"/>
+			<item value="dein"/>
+			<item value="e"/>
 			<item value="centra"/>
-			<item value="bocadillo"/>
-			<item value="haComi"/>
-			<item value="h"/>
-			<item value="haComidoHoy"/>
-			<item value="dinero"/>
-			<item value="dinerop"/>
-			<item value="Para"/>
-			<item value="Parametros.haCo"/>
-			<item value="tiles"/>
-			<item value="npcde"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="973"/>
-		<item key="DIALOG_Y_ORIGIN" value="132"/>
+		<item key="DIALOG_X_ORIGIN" value="1021"/>
+		<item key="DIALOG_Y_ORIGIN" value="72"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

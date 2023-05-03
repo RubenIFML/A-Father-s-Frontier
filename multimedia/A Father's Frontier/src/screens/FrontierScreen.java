@@ -66,6 +66,7 @@ private Maletin maletin;
 //Música
 private Music musica;
 private Music musica2;
+private Music tiktak;
 
 //Sistema
 private int contador = 0;
@@ -137,6 +138,7 @@ private Objeto duxer;
 		musica2.play();
         musica2.setVolume(0.4f);
 		musica2.setLooping(true);
+		tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.wav"));
 		
 	    //Mapa
 		map=ResourceManager.getMap("Mapas/PapersBackground.tmx");
@@ -676,7 +678,7 @@ private Objeto duxer;
 			        	pintalabios.remove();
 			        	
 			        	if(contador != 19) {carta.remove();}
-			        	else {Parametros.mision_una_lettera_d_amore=true;}
+			        	else {Parametros.mision_una_lettera_d_amore=false;}
 			        	
 						Parametros.analizar=false;
 						Parametros.analizado4=false;
@@ -1041,7 +1043,7 @@ private Objeto duxer;
 			        	sopa.remove();
 			        	botella.remove();
 
-						Parametros.mision_un_encuentro_agridulce=true;
+						Parametros.mision_un_encuentro_agridulce=false;
 						Parametros.analizar=false;
 						Parametros.analizado4=false;	
 						terminado = true;
@@ -1450,7 +1452,7 @@ private Objeto duxer;
 		        		
 		        		mainStage.addActor(texto);
 
-						Parametros.mision_dein_kampf=true;
+						Parametros.mision_dein_kampf=false;
 						Parametros.analizar=false;
 						Parametros.analizado4=false;	
 						terminado = true;
@@ -1541,11 +1543,16 @@ private Objeto duxer;
     	}
     	
     	*/
+
+	    if(reloj.tiempoRestante<=10) {
+			tiktak.play();
+	    }
 	    
 	    if(reloj.tiempoRestante==0) {
 			Parametros.dia++;	
 			contador=0;
 			game.setScreen(new StatsScreen(game));
+			tiktak.stop();
 		    musica.stop();
 		    musica2.stop();
 	    }

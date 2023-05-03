@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="screens.GameScreen"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.SequenceAction"/>
     <fullyQualifiedTypeName name="javax.swing.text.TabExpander"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Table"/>
@@ -34,7 +33,6 @@
     <fullyQualifiedTypeName name="ow_elements.Element"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMision"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputAdapter"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
     <fullyQualifiedTypeName name="java.text.Format"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
@@ -46,11 +44,8 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
     <fullyQualifiedTypeName name="fs_elements.Reloj"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
     <fullyQualifiedTypeName name="ow_elements.Reloj"/>
     <fullyQualifiedTypeName name="ow_elements.Tareas"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="ow_elements.Dinero"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMailBox"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+    <fullyQualifiedTypeName name="ow_elements.NombreZona"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Touchable"/>
 </qualifiedTypeNameHistroy>

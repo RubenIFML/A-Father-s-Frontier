@@ -50,6 +50,7 @@ public final class ResourceManager {
         assets.load("Menu/mapaEsquema.png", Texture.class);
         assets.load("Menu/dialogoOW.png", Texture.class);
         assets.load("Menu/listaTareas_sinExpandir.png", Texture.class);
+        assets.load("Menu/controlesOw.png", Texture.class);
        
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
@@ -187,6 +188,8 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/pasos.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/comprar.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/mision.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/cerrarPuerta.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/item.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
@@ -197,6 +200,7 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/music/ciudad_dia2.wav", Music.class);
         assets.load("02-OW/Audio/music/ciudad_dia3.wav", Music.class);
         assets.load("02-OW/Audio/music/ambiente.wav", Music.class);
+        assets.load("02-OW/Audio/music/tiktak.wav", Sound.class);
 	}
 	
 	public static boolean update(){

@@ -38,6 +38,12 @@ private float elapsedTime=0;
 	    Parametros.dia=1;
 	    Parametros.controlesActivos=true;
 		Parametros.zona=1;
+		Parametros.haComidoHoy = false;
+		Parametros.haPagadoDeuda = false;
+		 
+		Parametros.mision_un_extrano_muneco = true;
+		Parametros.mision_un_extrano_muneco_item = true;
+		Parametros.mision_un_extrano_muneco_completada = true;
 	    
 	    camera = new OrthographicCamera();
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
