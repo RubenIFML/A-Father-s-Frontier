@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="==0"/>
+		<item key="selection" value="sombra"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="sombra"/>
+			<item value="bocadillo"/>
+			<item value="elap"/>
+			<item value="sprite1"/>
+			<item value="mouse"/>
+			<item value="white"/>
+			<item value="boton"/>
+			<item value="peepo.ttf"/>
+			<item value="prota"/>
+			<item value="dinero"/>
 			<item value="==0"/>
 			<item value="=0"/>
 			<item value="f==0"/>
 			<item value="tiktak"/>
 			<item value="tiktat"/>
-			<item value="musica"/>
-			<item value="== 0"/>
-			<item value="teletra"/>
-			<item value="tele"/>
-			<item value="menub"/>
-			<item value="lette"/>
-			<item value="encue"/>
-			<item value="dein"/>
-			<item value="e"/>
-			<item value="centra"/>
 		</list>
 		<list key="replacehistory">
 		</list>

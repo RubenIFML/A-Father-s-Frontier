@@ -135,9 +135,11 @@ public final class ResourceManager {
         assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
         
         //Personajes OW
+        assets.load("02-OW/Personajes/sombra_ow.png", Texture.class);
         assets.load("02-OW/Personajes/bocadillo_ow.png", Texture.class);
         assets.load("02-OW/Personajes/bocadillo_mision_ow.png", Texture.class);
         assets.load("02-OW/Personajes/bocadillo_mail_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/bocadillo_objeto_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.ahorcado.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.chica_ow.png", Texture.class);

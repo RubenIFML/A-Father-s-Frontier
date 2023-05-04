@@ -5,3 +5,6 @@
 1682966746935	Rename type 'NpcStatic2'
 1682967248210	Rename local variable 'animacion'
 1683017548633	Rename type 'NombreZona'
+1683216514023	Copy compilation unit
+1683216802806	Rename field 'dineroActual'
+1683216814220	Rename field 'label'

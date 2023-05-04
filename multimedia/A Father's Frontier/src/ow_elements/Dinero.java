@@ -12,7 +12,6 @@ import game.Parametros;
 public class Dinero extends Actor {
 
     private BitmapFont font;
-    public static float tiempoRestante = 300;
     private String dineroActual;
     private Texture dinero;
     private int textX;
