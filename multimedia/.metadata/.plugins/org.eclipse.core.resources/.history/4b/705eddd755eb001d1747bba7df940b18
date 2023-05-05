@@ -1,0 +1,19 @@
+package game;
+
+public class Productos {
+	String receta;
+	int precio;
+	String nombre;
+	int cantidad;
+	
+	public Productos(String receta, int precio, String nombre, int cantidad) {
+		super();
+		this.receta = receta;
+		this.precio = precio;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+	}
+	
+	
+	
+}

@@ -1,0 +1,13 @@
+package game;
+
+public class Postre extends Productos{
+
+	String ingredientes;
+	int tiempoPreparacion;
+	
+	public Postre(String receta, int precio, String nombre, int cantidad) {
+		super(receta, precio, nombre, cantidad);
+		this.ingredientes = ingredientes;
+	}
+	
+}

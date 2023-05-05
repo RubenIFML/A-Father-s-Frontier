@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Table"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell"/>
     <fullyQualifiedTypeName name="managers.ResourceManager"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_1"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="screens.OverWorldScreen"/>
+    <fullyQualifiedTypeName name="game.Postre"/>
 </qualifiedTypeNameHistroy>

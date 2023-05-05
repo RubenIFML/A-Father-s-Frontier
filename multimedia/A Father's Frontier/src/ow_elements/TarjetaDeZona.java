@@ -24,7 +24,7 @@ public class TarjetaDeZona extends Actor {
         // Cargar la fuente desde el archivo Peepo.ttf
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 45; // Tamaño de la fuente
+        parameter.size = 35; // Tamaño de la fuente
 		parameter.borderWidth=2;
         
 		switch(this.color) {

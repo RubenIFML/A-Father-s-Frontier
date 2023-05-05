@@ -1,0 +1,55 @@
+package game;
+
+public class Productos {
+	String receta;
+	int precio;
+	String nombre;
+	int cantidad;
+	
+	public Productos(String receta, int precio, String nombre, int cantidad) {
+		super();
+		this.receta = receta;
+		this.precio = precio;
+		this.nombre = nombre;
+		this.cantidad = cantidad;
+	}
+
+	public String getReceta() {
+		return receta;
+	}
+
+	public void setReceta(String receta) {
+		this.receta = receta;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	@Override
+	public String toString() {
+		return "Productos [receta=" + receta + ", precio=" + precio + ", nombre=" + nombre + ", cantidad=" + cantidad
+				+ "]";
+	}
+	
+}

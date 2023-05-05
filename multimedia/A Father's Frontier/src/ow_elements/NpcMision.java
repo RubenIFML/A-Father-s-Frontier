@@ -90,7 +90,13 @@ public class NpcMision extends Element {
 	    }
 	    else {
 	    	if (Gdx.input.justTouched()) {
-	    		interactuar();
+		    		if(interaccion.completo==true) {
+			    		interactuar();
+		    		}
+		    		else {
+		    			interaccion.completo=true;
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		    		}
 	    		}
 	    }
 	}

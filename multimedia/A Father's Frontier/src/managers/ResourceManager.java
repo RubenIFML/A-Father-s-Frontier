@@ -192,6 +192,7 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/mision.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/cerrarPuerta.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/item.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/talk.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);

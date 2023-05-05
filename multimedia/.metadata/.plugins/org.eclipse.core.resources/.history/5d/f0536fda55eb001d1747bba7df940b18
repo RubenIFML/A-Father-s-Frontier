@@ -1,0 +1,13 @@
+package game;
+
+public class Tienda {
+	
+	static Productos producto;
+	
+	public static void main(String[] args) {
+		
+		producto = new Productos("Harina, Levadura, Huevos", 3, "Bizcocho", 1);
+		
+		System.out.println(producto.receta);
+	}
+}
