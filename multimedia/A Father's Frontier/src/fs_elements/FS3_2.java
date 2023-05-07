@@ -33,7 +33,7 @@ public class FS3_2 extends Actor {
         	
         	//Texto
         	texto = new Texto("Razvan: Parecer que yo\n"
-        					+ "ser bienvenido aquí...", 7, 154);
+        					+ "ser bienvenido aquí...", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
@@ -52,7 +52,7 @@ public class FS3_2 extends Actor {
         	
         	//Texto
         	texto = new Texto("Razvan: Una nación tan\n"
-        					+ "racista no merecerme...", 7, 154);
+        					+ "racista no merecerme...", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido

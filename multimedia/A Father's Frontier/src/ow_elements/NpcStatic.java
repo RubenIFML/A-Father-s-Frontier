@@ -124,14 +124,14 @@ public class NpcStatic extends Element {
 		    switch (siguienteInteraccion) {
 	        case 0:
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto(this.dialogo1);
+	            interaccion = new Texto(this.dialogo1, "talk1");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;
 	        case 1:
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion.hide();
-	            interaccion = new Texto(this.dialogo2);
+	            interaccion = new Texto(this.dialogo2, "talk1");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;

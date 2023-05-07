@@ -134,7 +134,7 @@ public class NpcDependiente extends Element {
 			    switch (siguienteInteraccion) {
 			        case 0:
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-			            interaccion = new Texto("Lo siento mucho, esa era la última existencia.\nÚltimamente nos llegan muy pocas raciones...");
+			            interaccion = new Texto("Lo siento mucho, esa era la última existencia.\nÚltimamente nos llegan muy pocas raciones...", "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
 			            siguienteInteraccion++;
 			            break;
@@ -151,7 +151,7 @@ public class NpcDependiente extends Element {
 			    switch (siguienteInteraccion) {
 			        case 0:
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-			            interaccion = new Texto(this.dialogo1);
+			            interaccion = new Texto(this.dialogo1, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
 			            siguienteInteraccion++;
 			            break;
@@ -159,7 +159,7 @@ public class NpcDependiente extends Element {
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
 			            interaccion.hide();
-			            interaccion = new Texto(this.dialogo2);
+			            interaccion = new Texto(this.dialogo2, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
 			            siguienteInteraccion++;
 			            break;
@@ -167,7 +167,7 @@ public class NpcDependiente extends Element {
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 						setAnimation(idleIzquierda);
 			            interaccion.hide();
-			            interaccion = new Texto(this.dialogo3);
+			            interaccion = new Texto(this.dialogo3, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
 			            siguienteInteraccion++;
 			            break;
@@ -188,14 +188,14 @@ public class NpcDependiente extends Element {
 		    switch (siguienteInteraccion) {
 	        case 0:
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto("Lo siento, pero si no tiene al menos tres libras\nno puedo venderle Fish & Chips...");
+	            interaccion = new Texto("Lo siento, pero si no tiene al menos tres libras\nno puedo venderle Fish & Chips...", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;
 	        case 1:
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion.hide();
-	            interaccion = new Texto("No puedo darle la comida sin el dinero.\nVuelva cuando lo haya conseguido...");
+	            interaccion = new Texto("No puedo darle la comida sin el dinero.\nVuelva cuando lo haya conseguido...", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;

@@ -213,7 +213,7 @@ private Objeto duxer;
 				
 				//Diálogo
 				texto = new Texto("¿?: Que pase el primero,\n"
-								+ "por favor.", 7, 154);
+								+ "por favor.", 7, 154, "talk1");
 				mainStage.addActor(texto);
 			       
 				//Variables
@@ -265,7 +265,7 @@ private Objeto duxer;
 				
 				//Diálogo
 				texto = new Texto("¿?: Que pase el si-\n"
-								+ "guiente, por favor.", 7, 154);
+								+ "guiente, por favor.", 7, 154, "talk1");
 				mainStage.addActor(texto);
 			       
 				//Variables
@@ -317,7 +317,7 @@ private Objeto duxer;
 				
 				//Diálogo
 				texto = new Texto("¿?: Siguiente...\n"
-								+ "Vamos...", 7, 154);
+								+ "Vamos...", 7, 154, "talk1");
 				mainStage.addActor(texto);
 			       
 				//Variables
@@ -359,7 +359,7 @@ private Objeto duxer;
 			    			
 			    			fs1_1.show();
 			    			texto = new Texto("¿?: El pasaporte y el\n"
-			    							+ "equipaje, por favor.", 7, 154);
+			    							+ "equipaje, por favor.", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 			    			
 			    			contador++;
@@ -371,7 +371,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Comprobaré las reglas\n"
-			    							+ "y decidiré qué hacer)", 7, 154);
+			    							+ "y decidiré qué hacer)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			maletin.show();
 			    			
@@ -400,7 +400,7 @@ private Objeto duxer;
 			            	FS1_1.texto.remove();
 			            	
 			    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 	
 			            	fs1_1.fadeOut();
@@ -421,7 +421,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Que pase el\n"
-											+ "siguiente, gracias.", 7, 154);
+											+ "siguiente, gracias.", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -432,7 +432,7 @@ private Objeto duxer;
 							texto.remove();
 							
 			    			texto = new Texto("¿?: El pasaporte y el\n"
-			    							+ "equipaje sobre la mesa.", 7, 154);
+			    							+ "equipaje sobre la mesa.", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 			    			
 			    			fs1_2.show();
@@ -445,7 +445,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Puedo... Debo hacer\n"
-			    							+ "esto bien...)", 7, 154);
+			    							+ "esto bien...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -472,7 +472,7 @@ private Objeto duxer;
 				        	FS1_2.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs1_2.fadeOut();
@@ -492,8 +492,8 @@ private Objeto duxer;
 			            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			    			texto.remove();
 			    			
-			        		texto = new Texto("Siguiente por aquí,\n"
-											+ "si es tan amable.", 7, 154);
+			        		texto = new Texto("¿?: Pase por aquí,\n"
+											+ "si es tan amable.", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -503,8 +503,8 @@ private Objeto duxer;
 			        		AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			    			texto.remove();
 							
-			    			texto = new Texto("Pasaporte y equipaje,\n"
-											+ "sobre la mesa.", 7, 154);
+			    			texto = new Texto("¿?: Pasaporte e inven-\n"
+											+ "tario sobre la mesa.", 7, 154, "talk1");
 							mainStage.addActor(texto);
 							
 							fs1_3.show();
@@ -517,7 +517,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Recuerda por quién\n"
-			    							+ "estás aquí...)", 7, 154);
+			    							+ "estás aquí...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -546,7 +546,7 @@ private Objeto duxer;
 				        	FS1_3.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-											+ "(Pulsa CLICK)", 10, 154);
+											+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs1_3.fadeOut();
@@ -568,7 +568,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Por aquí si es\n"
-											+ "tan amable, señorita.", 7, 154);
+											+ "tan amable, señorita.", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -579,7 +579,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 							texto = new Texto("¿?: Pasaporte y objetos\n"
-											+ "sobre la mesa, gracias.", 7, 154);
+											+ "sobre la mesa, gracias.", 7, 154, "talk1");
 							mainStage.addActor(texto);
 							
 							fs1_4.show();
@@ -592,7 +592,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(No puedo dejar que\n"
-			    							+ "el miedo me supere...)", 7, 154);
+			    							+ "el miedo me supere...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -621,7 +621,7 @@ private Objeto duxer;
 				        	FS1_4.texto.remove();
 				        	
 				        	texto = new Texto("por favor, lleva esta.\n"
-		        							+ "carta a mi marido...", 7, 154);
+		        							+ "carta a mi marido...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 							Parametros.controlesActivos=false;
@@ -636,7 +636,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("Es un hombre italiano\n"
-				        					+ "de buen vestir, estoy", 7, 154);
+				        					+ "de buen vestir, estoy", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -647,7 +647,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("segura de que podrás\n"
-				        					+ "encontrarlo...", 7, 154);
+				        					+ "encontrarlo...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -658,7 +658,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("Desiree: Muchísimas\n"
-				        					+ "gracias...", 7, 154);
+				        					+ "gracias...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -669,7 +669,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("¿?: ...\n"
-			        						+ "(Seguiré mañana...)", 7, 154);
+			        						+ "(Seguiré mañana...)", 7, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs1_4.fadeOut();
@@ -714,7 +714,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("¿?: Su pasaporte y\n"
-			    							+ "sus pertenencias.", 7, 154);
+			    							+ "sus pertenencias.", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 			    			
 			    			fs2_1.show();
@@ -728,7 +728,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Estoy agotado... Pero\n"
-			    							+ "no debo detenerme...)", 7, 154);
+			    							+ "no debo detenerme...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -757,7 +757,7 @@ private Objeto duxer;
 			            	FS2_1.texto.remove();
 			            	
 			    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs2_1.fadeOut();
@@ -779,7 +779,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Siguiente, por\n"
-											+ "favor...", 7, 154);
+											+ "favor...", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -790,7 +790,7 @@ private Objeto duxer;
 							texto.remove();
 							
 			    			texto = new Texto("¿?: Si es tan amable, su\n"
-			    							+ "pasaporte y equipaje.", 7, 154);
+			    							+ "pasaporte y equipaje.", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 	
 			    			fs2_2.show();
@@ -803,7 +803,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(No puedo quitármelo\n"
-			    							+ "de la cabeza...)", 7, 154);
+			    							+ "de la cabeza...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -832,7 +832,7 @@ private Objeto duxer;
 				        	FS2_2.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs2_2.fadeOut();
@@ -854,7 +854,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: ¿Usted es el si-\n"
-											+ "guiente? Pase por aquí.", 7, 154);
+											+ "guiente? Pase por aquí.", 7, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -865,7 +865,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 							texto = new Texto("¿?: Su pasaporte y sus\n"
-											+ "bienes sobre la mesa.", 7, 154);
+											+ "bienes sobre la mesa.", 7, 154, "talk1");
 							mainStage.addActor(texto);
 							
 							fs2_3.show();
@@ -878,7 +878,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Cada segundo, esto\n"
-			    							+ "solo empeora...)", 7, 154);
+			    							+ "solo empeora...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -907,7 +907,7 @@ private Objeto duxer;
 				        	FS2_3.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-											+ "(Pulsa CLICK)", 10, 154);
+											+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs2_3.fadeOut();
@@ -929,7 +929,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Si... Siguiente,\n"
-											+ "por aquí.", 7, 154);
+											+ "por aquí.", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -940,7 +940,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: E... Equipaje y...\n"
-											+ "Pasaporte, por favor.", 7, 154);
+											+ "Pasaporte, por favor.", 7, 154, "talk1");
 							mainStage.addActor(texto);
 	
 							fs2_4.show();
@@ -953,7 +953,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Esta chica... Me\n"
-			    							+ "resulta familiar...)", 7, 154);
+			    							+ "resulta familiar...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -985,7 +985,7 @@ private Objeto duxer;
 			            	fs2_4.fadeOut();
 				        	
 				        	texto = new Texto("(La chica ha salido\n"
-		        							+ "corriendo con una ", 7, 154);
+		        							+ "corriendo con una ", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 	
 							Parametros.controlesActivos=false;
@@ -998,7 +998,7 @@ private Objeto duxer;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	
 				        	texto = new Texto("expresión terrible en\n"
-				        					+ "su rostro...)", 7, 154);
+				        					+ "su rostro...)", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	reloj.stop();
@@ -1010,7 +1010,7 @@ private Objeto duxer;
 				        	texto.remove();
 	
 				        	texto = new Texto("(No sé qué está su-\n"
-											+ "cediendo... Pero", 7, 154);
+											+ "cediendo... Pero", 7, 154, "talk2");
 				    		
 				    		mainStage.addActor(blackBackgroundActor);
 				    		blackBackgroundActor.setSize(240,180);
@@ -1024,7 +1024,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("debo averiguar qué\n"
-				        					+ "se esconde detrás", 7, 154);
+				        					+ "se esconde detrás", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1035,7 +1035,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("de todo esto... Cues-\n"
-			        						+ "te lo que cueste...)", 7, 154);
+			        						+ "te lo que cueste...)", 7, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 				        	pasaporte.remove();
@@ -1077,7 +1077,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("¿?: Equipaje y \n"
-			    							+ "documentación...", 7, 154);
+			    							+ "documentación...", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 			    			
 			    			fs3_1.show();
@@ -1091,7 +1091,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Hoy es el último día...\n"
-			    							+ "he de darlo todo...)", 7, 154);
+			    							+ "he de darlo todo...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -1122,7 +1122,7 @@ private Objeto duxer;
 			            	FS3_1.texto.remove();
 			            	
 			    			texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs3_1.fadeOut();
@@ -1145,7 +1145,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Usted, el que\n"
-											+ "está ahí...", 7, 154);
+											+ "está ahí...", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1156,7 +1156,7 @@ private Objeto duxer;
 							texto.remove();
 							
 			    			texto = new Texto("¿?: Pasaporte en regla\n"
-			    							+ "y equipaje, vamos...", 7, 154);
+			    							+ "y equipaje, vamos...", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 	
 			    			fs3_2.show();
@@ -1169,7 +1169,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			    			texto = new Texto("(Eso es... ¿Un preser-\n"
-			    							+ "vativo?...)", 7, 154);
+			    							+ "vativo?...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -1200,7 +1200,7 @@ private Objeto duxer;
 				        	FS3_2.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-			        						+ "(Pulsa CLICK)", 10, 154);
+			        						+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs3_2.fadeOut();
@@ -1223,7 +1223,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Por aquí, es por\n"
-											+ "aquí, por favor...", 7, 154);
+											+ "aquí, por favor...", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1234,7 +1234,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 							texto = new Texto("¿?: Todo lo que tenga\n"
-											+ "sobre la mesa.", 7, 154);
+											+ "sobre la mesa.", 7, 154, "talk1");
 							mainStage.addActor(texto);
 							
 							fs3_3.show();
@@ -1248,11 +1248,11 @@ private Objeto duxer;
 			    			
 			    			if (Parametros.dinero>=14) {
 			    				texto = new Texto("(Según mis cálculos...\n"
-		    							+ "Todavía puedo conseguirlo)", 7, 154);
+		    							+ "Todavía puedo conseguirlo)", 7, 154, "talk2");
 			    			}
 			    			else {
 			    				texto = new Texto("(Según mis cálculos...\n"
-		    									+ "Estoy perdido...)", 7, 154);
+		    									+ "Estoy perdido...)", 7, 154, "talk2");
 			    			}
 			    			mainStage.addActor(texto);
 			    			
@@ -1282,7 +1282,7 @@ private Objeto duxer;
 				        	FS3_3.texto.remove();
 				        	
 							texto = new Texto("LLAMAR AL SIGUIENTE\n"
-											+ "(Pulsa CLICK)", 10, 154);
+											+ "(Pulsa CLICK)", 10, 154, "talk2");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs3_3.fadeOut();
@@ -1304,7 +1304,7 @@ private Objeto duxer;
 			    			texto.remove();
 			    			
 			        		texto = new Texto("¿?: Siguien...\n"
-			        						+ " ", 7, 154);
+			        						+ " ", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1316,7 +1316,7 @@ private Objeto duxer;
 						    musica.stop();
 						    
 			        		texto = new Texto("Rudolf: ...\n"
-			        						+ " ", 7, 154);
+			        						+ " ", 7, 154, "talk1");
 							mainStage.addActor(texto);
 	
 							fs3_4.show();
@@ -1329,7 +1329,7 @@ private Objeto duxer;
 			    			texto.remove();
 	
 			        		texto = new Texto("¿?: ...\n"
-			        						+ " ", 7, 154);
+			        						+ " ", 7, 154, "talk1");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -1362,7 +1362,7 @@ private Objeto duxer;
 						    musica.stop();
 				        	
 				        	texto = new Texto("...Volker Schwartz?\n"
-		        							+ " ", 7, 154);
+		        							+ " ", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 	
 							Parametros.controlesActivos=false;
@@ -1376,7 +1376,7 @@ private Objeto duxer;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	
 				        	texto = new Texto("¿?:...\n"
-				        					+ " ", 7, 154);
+				        					+ " ", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1387,7 +1387,7 @@ private Objeto duxer;
 				        	texto.remove();
 	
 				        	texto = new Texto("Rudolf: No hay tiempo,\n"
-											+ "Te sacaré de esta.", 7, 154);
+											+ "Te sacaré de esta.", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1398,7 +1398,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("Toma esta llave, y\n"
-				        					+ "dirígete al sur de", 7, 154);
+				        					+ "dirígete al sur de", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1409,7 +1409,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("Londres... Allí encon-\n"
-			        						+ "trarás lo que", 7, 154);
+			        						+ "trarás lo que", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1420,7 +1420,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("necesitas para acabar\n"
-			        						+ "con todo esto...)", 7, 154);
+			        						+ "con todo esto...", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1431,7 +1431,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("...Hail Hitler...\n"
-			        						+ " ", 7, 154);
+			        						+ " ", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			            	fs3_4.fadeOut();
@@ -1448,7 +1448,7 @@ private Objeto duxer;
 				        	texto.remove();
 				        	
 			        		texto = new Texto("Volker: ...\n"
-			        						+ "Voy por tí, Evans...", 7, 154);
+			        						+ "Voy por tí, Evans...", 7, 154, "talk1");
 			        		
 			        		mainStage.addActor(texto);
 	

@@ -34,6 +34,7 @@ import ow_elements.Solid;
 import ow_elements.Tareas;
 import ow_elements.TareasSinExpandir;
 import ow_elements.TarjetaDeZona;
+import ow_elements.Texto;
 import ow_elements.Dinero;
 import ow_elements.Element;
 import ow_elements.Niebla;
@@ -68,14 +69,16 @@ private Texture planoTexture;
 private Actor planoActor;
 private Texture controlesTexture;
 private Actor controlesActor;
+private Texture controlesInicialesTexture;
+private Actor controlesInicialesActor;
 private boolean planoActivo=false;
 private boolean controlesActivo=false;
+private Texto texto;
 
 private int tileWidth, tileHeight, mapWidthInTiles, mapHeightInTiles,mapWidthInPixels, mapHeightInPixels;
 private ActorComparator comparator;
 
 public Protagonista prota;
-//private WIPNombreZona nz;
 private Solid solido;
 private Solid casa;
 private Solid superUk;
@@ -96,6 +99,7 @@ final float MAX_CAM_SPEED = 200f;
 final float MIN_CAM_SPEED = 50f;
 final float MAX_CAM_OFFSET = 100f;
 private Array<Element> overs;
+private int progresion = 0;
 
 private boolean listaTareas;
 
@@ -119,6 +123,8 @@ private Objeto peluche;
 		planoActor = new Image(planoTexture);
 		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesOw.png"));
 		controlesActor = new Image(controlesTexture);
+		controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesInicialesOw.png"));
+		controlesInicialesActor = new Image(controlesInicialesTexture);
 		reloj = new Reloj();
 		dinero = new Dinero();
 		tareasSinExpandir = new TareasSinExpandir();
@@ -135,11 +141,6 @@ private Objeto peluche;
 				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia3.wav"));
 			}
 			
-			this.musicaCiudad.play();
-			this.musicaCiudad.setVolume(0.2f);
-			this.musicaCiudad.setLooping(true);
-			
-			Parametros.musicaUnaVez=false;
 		}
 		
 		switch (Parametros.zona) {
@@ -161,7 +162,6 @@ private Objeto peluche;
 		}
 		
 
-		reloj.start();
 		m3d=new Vector3();
 		renderer=new OrthogonalTiledMapRenderer(map,mainStage.getBatch());
 	   		
@@ -248,6 +248,13 @@ private Objeto peluche;
 								, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
 						npcs.add(npcPolicia);
 						break;
+
+					case "NpcPolicia2":
+						NpcStatic npcPolicia2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.policia_ow.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
+								, "No sabemos cuando volverá a estar permitido.\nLe recomiendo esperar con paciencia.");
+						npcs.add(npcPolicia2);
+						break;
 						
 					case "NpcDependiente":
 						NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
@@ -255,13 +262,59 @@ private Objeto peluche;
 								, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 						npcs.add(npcDependiente);
 						break;
+				
+					case "NpcTenderete":
+						NpcStatic npcTenderete=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra8_ow.png", "frente", "¿Viene usted buscando...? Je, je, ya sabe... ¿No?\nLa magia blanca, si sabe a qué me refiero..."
+								, "Por su cara diría que no tiene ni idea de a qué me\ndedico... En fin, ¡No importa! ¡Muévase, y no moleste!");
+						npcs.add(npcTenderete);
+						break;
+						
+					case "NpcMarket":
+						NpcStatic npcMarket=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Tengo frío... No tengo dinero, ¡Lo he perdido todo!\nMi mujer me odia, mis hijos no me quieren..."
+								, "Solo quiero un poco de paz... Solo necesito que\nla vida me recompense... No puedo más...");
+						npcs.add(npcMarket);
+						break;
+						
+					case "NpcPlaza":
+						NpcStatic npcPlaza=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra5_ow.png", "derecha", "Esos Nazis... Las fuerzas de nustra nación\nestán acabando con ellos como si fueran nenazas."
+								, "¡Están desquiciados, su única cura es la muerte!\n");
+						npcs.add(npcPlaza);
+						break;
+						
+					case "NpcCasaSur":
+						NpcStatic npcCasaSur=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "Siento que una sensación extraña rodea este\nlugar. Me pregunto quién vivirá aquí..."
+								, "¿Será el fantasma de Jack el destripador?\n¡Ja, ja, ja, ja!");
+						npcs.add(npcCasaSur);
+						break;
 						
 					case "NpcMovil1":
 						NpcMovil npcMovil1=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-								"02-OW/Personajes/personaje.extra1_ow.png");
+								"02-OW/Personajes/personaje.extra1_ow.png", 1);
 						npcs.add(npcMovil1);
 						break;
 						
+					case "NpcMovil2":
+						NpcMovil npcMovil2=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.chica_ow.png", 2);
+						npcs.add(npcMovil2);
+						break;
+						
+					case "NpcMovil3":
+						NpcMovil npcMovil3=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra3_ow.png", 1);
+						npcs.add(npcMovil3);
+						break;
+						
+					case "NpcMovil4":
+						NpcMovil npcMovil4=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.chica1_ow.png", 2);
+						npcs.add(npcMovil4);
+						break;
+							
 					case "misionNpc":
 						NpcMision testMisionNpc=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda", "Parece usted una bellísima persona...\n¿Me haría un favor?"
@@ -433,9 +486,78 @@ private Objeto peluche;
 		camara.setToOrtho(false, Parametros.getAnchoPantalla()*Parametros.zoom, Parametros.getAltoPantalla()*Parametros.zoom);
 		renderer.setView(camara);
 		
-			prota=new Protagonista(inicioX-5,inicioY,mainStage, this);
-			uiStage=new Stage();
-			uiStage.addActor(tarjeta);
+		prota=new Protagonista(inicioX-5,inicioY,mainStage, this);
+		uiStage=new Stage();
+		uiStage.addActor(tarjeta);
+		
+		if(Parametros.musicaUnaVez==false) {
+			reloj.start();
+		}
+		
+		if(Parametros.musicaUnaVez==true) {
+			switch(Parametros.dia) {
+				case 1:
+					Parametros.controlesActivos=false;
+					texto = new Texto("(No he podido dormir en toda la noche...\nEstoy aterrado, esas palabras todavía", "talk2");
+					uiStage.addActor(texto);
+					break;
+			}
+				
+		}
+		
+	}
+	
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(Parametros.musicaUnaVez==true) {
+			switch(Parametros.dia) {
+			case 1:
+				if (button == Input.Buttons.LEFT) {
+		    		if(texto.completo==true) {
+						switch(progresion) {
+						case 0:
+							texto.remove();
+							texto = new Texto("resuenan por toda mi alma... Sin embargo,\nno puedo dejar que el miedo me frene...)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 1:
+							texto.remove();
+							texto = new Texto("(He de salvar a mi hijo, pero hace días que\nno como, debo devolver mis deudas, y", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 2:
+							texto.remove();
+							texto = new Texto("he de trabajar mucho para pagar el rescate...)\n(No hay tiempo que perder.)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 3:
+							texto.remove();
+							controlesInicialesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+							uiStage.addActor(controlesInicialesActor);
+				           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+							progresion++;
+							break;
+						case 4:
+							controlesInicialesActor.remove();
+							this.musicaCiudad.play();
+							this.musicaCiudad.setVolume(0.2f);
+							this.musicaCiudad.setLooping(true);
+							reloj.start();
+							Parametros.musicaUnaVez=false;
+							Parametros.controlesActivos=true;
+							break;
+						}
+		    		} else {
+		    			texto.completo=true;
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		    		}
+				}
+			break;
+			}
+		}
+		return false;
 	}
 
 	
@@ -542,7 +664,7 @@ private Objeto peluche;
 	}
 	
 	public void teletransporteFrontera() {
-		this.musicaCiudad.stop(); 
+		this.musicaCiudad.stop();
 		ambiente.stop();
 		prota.pasos.stop();
 		Parametros.musicaUnaVez=true;
@@ -719,11 +841,11 @@ private Objeto peluche;
 	   uiStage.addActor(reloj);
 	   uiStage.addActor(dinero);
 	   uiStage.addActor(tareasSinExpandir);
-//	   uiStage.addActor(nz);
 	   
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && controlesActivo == false) {
 		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 	       	if(planoActivo==false) {
+	       		prota.pasos.stop();
 	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
 	       		uiStage.addActor(planoActor);
 	   			Parametros.controlesActivos=false;
@@ -740,6 +862,7 @@ private Objeto peluche;
 	   if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && planoActivo == false) {
 		   controlesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 	       	if(controlesActivo==false) {
+	       		prota.pasos.stop();
 	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
 	       		uiStage.addActor(controlesActor);
 	   			Parametros.controlesActivos=false;
@@ -796,53 +919,3 @@ private Objeto peluche;
 	        uiStage.draw();
 	}
 }
-
-//Centrar cámara v2
-//Deadzone de 10 píxeles alrededor del centro de la pantalla
-//float deadzoneX = camara.viewportWidth / 2 - 10;
-//float deadzoneY = camara.viewportHeight / 2 - 10;
-//float targetX = MathUtils.clamp(prota.getX() + 40, camara.position.x - deadzoneX, camara.position.x + deadzoneX);
-//float targetY = MathUtils.clamp(prota.getY() + 40, camara.position.y - deadzoneY, camara.position.y + deadzoneY);
-//
-//float lerp = Math.min(1, delta * 10f);
-//
-//float protaX = prota.getX();
-//float protaY = prota.getY();
-//float cursorX = mouseX;
-//float cursorY = mouseY;
-//
-//float distX = cursorX - protaX;
-//float distY = cursorY - protaY;
-//float dist = (float) Math.sqrt(distX * distX + distY * distY);
-//
-////Distancia máxima ajustada con función lineal
-//float maxDist = MathUtils.lerp(50, 10, MathUtils.clamp(dist / (mapWidthInPixels / 2), 0, 1));
-//
-//if (dist > maxDist) {
-// float angle = MathUtils.atan2(distY, distX);
-// cursorX = protaX + MathUtils.cos(angle) * maxDist;
-// cursorY = protaY + MathUtils.sin(angle) * maxDist;
-// dist = maxDist;
-//}
-//
-////Ajuste de la interpolación
-//float interpolation = MathUtils.lerp(0.07f, 0.2f, MathUtils.clamp(dist / maxDist, 0, 1));
-//
-//float cameraX = MathUtils.lerp(camara.position.x, cursorX, interpolation);
-//float cameraY = MathUtils.lerp(camara.position.y, cursorY, interpolation);
-//
-////Límites de la cámara ajustados con la distancia máxima
-//float halfViewportWidth = camara.viewportWidth / 2;
-//float halfViewportHeight = camara.viewportHeight / 2;
-//float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
-//float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
-//float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
-//float minCameraY = Math.max(protaY - maxDist, halfViewportWidth);
-//
-////Comprobación de los límites de la cámara
-//cameraX = MathUtils.clamp(cameraX, minCameraX, maxCameraX);
-//cameraY = MathUtils.clamp(cameraY, minCameraY, maxCameraY);
-//
-//camara.position.x += (cameraX - camara.position.x) * lerp;
-//camara.position.y += (cameraY - camara.position.y) * lerp;
-//camara.update();

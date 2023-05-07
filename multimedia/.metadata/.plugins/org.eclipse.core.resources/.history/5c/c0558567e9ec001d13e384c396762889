@@ -1,0 +1,849 @@
+package screens;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Array;
+
+import ow_elements.Reloj;
+import ow_elements.NpcStatic;
+import ow_elements.Objeto;
+import ow_elements.NpcMovil;
+import ow_elements.Solid;
+import ow_elements.Tareas;
+import ow_elements.TareasSinExpandir;
+import ow_elements.TarjetaDeZona;
+import ow_elements.Texto;
+import ow_elements.Dinero;
+import ow_elements.Element;
+import ow_elements.Niebla;
+import ow_elements.NpcDependiente;
+import ow_elements.NpcMailBox;
+import ow_elements.NpcMision;
+import ow_elements.Gota;
+import ow_elements.Protagonista;
+import ow_elements.Tile;
+import game.Demo;
+import game.Parametros;
+import managers.AudioManager;
+import managers.ResourceManager;
+
+public class OverWorldScreen extends BScreen{
+	
+public Stage mainStage;
+
+Solid frontera;
+OrthographicCamera camara;
+private TiledMap map;
+private OrthogonalTiledMapRenderer renderer;
+public Array<Solid> solidos;
+public Array<Element> npcs;
+public float mouseX;
+public float mouseY;
+private Vector3 m3d;
+private Niebla niebla;
+private Music ambiente;
+
+private Texture planoTexture;
+private Actor planoActor;
+private Texture controlesTexture;
+private Actor controlesActor;
+private boolean planoActivo=false;
+private boolean controlesActivo=false;
+private Texto texto;
+
+private int tileWidth, tileHeight, mapWidthInTiles, mapHeightInTiles,mapWidthInPixels, mapHeightInPixels;
+private ActorComparator comparator;
+
+public Protagonista prota;
+//private WIPNombreZona nz;
+private Solid solido;
+private Solid casa;
+private Solid superUk;
+private Solid owTp;
+private Solid superUk2;
+private Solid ow1;
+private Solid ow2;
+@SuppressWarnings("unused")
+private Solid start;
+private Music musicaCiudad;
+private Music tiktak;
+private Reloj reloj;
+private Dinero dinero;
+private TarjetaDeZona tarjeta;
+private Tareas tareas;
+private TareasSinExpandir tareasSinExpandir;
+final float MAX_CAM_SPEED = 200f;
+final float MIN_CAM_SPEED = 50f;
+final float MAX_CAM_OFFSET = 100f;
+private Array<Element> overs;
+private int progresion = 0;
+
+private boolean listaTareas;
+
+//TP
+private static boolean CasaACalle = false;
+private static boolean CalleASuper1 = false;
+private static boolean CalleASuper2 = false;
+
+//objetos
+private Objeto peluche;
+
+	public OverWorldScreen(Demo game, Music musicaCiudad, Music tiktak) {
+		super(game);
+		this.musicaCiudad=musicaCiudad;
+		this.tiktak=tiktak;
+		
+		comparator=new ActorComparator();
+		mainStage=new Stage();
+		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.wav"));
+		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
+		planoActor = new Image(planoTexture);
+		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesOw.png"));
+		controlesActor = new Image(controlesTexture);
+		reloj = new Reloj();
+		dinero = new Dinero();
+		tareasSinExpandir = new TareasSinExpandir();
+		
+		if(Parametros.musicaUnaVez==true) {
+
+			if(Parametros.dia==1) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.wav"));
+			}
+			else if(Parametros.dia==2) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia2.wav"));
+			}
+			else if(Parametros.dia==3) {
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia3.wav"));
+			}
+			
+		}
+		
+		switch (Parametros.zona) {
+			case 1:
+				map=ResourceManager.getMap("Mapas/CasaProtagonista.tmx");
+				tarjeta = new TarjetaDeZona("Casa de ¿?",0);
+				break;
+			case 2: 
+				map=ResourceManager.getMap("Mapas/OverWorld.tmx");
+				ambiente.play();
+				ambiente.setVolume(0.8f);
+				ambiente.setLooping(true);
+				tarjeta = new TarjetaDeZona("Distrito de Greenwich",0);
+				break;
+			case 3:
+				map=ResourceManager.getMap("Mapas/SuperUKMarket.tmx");
+				tarjeta = new TarjetaDeZona("Super UK Market",0);
+				break;
+		}
+		
+
+		m3d=new Vector3();
+		renderer=new OrthogonalTiledMapRenderer(map,mainStage.getBatch());
+	   		
+		MapProperties props;
+		props=map.getProperties();
+		tileWidth=props.get("tilewidth",Integer.class);
+		tileHeight=props.get("tileheight",Integer.class);
+		mapWidthInTiles=props.get("width", Integer.class);
+		mapHeightInTiles=props.get("height", Integer.class);
+		mapWidthInPixels=tileWidth*mapWidthInTiles;
+		mapHeightInPixels=tileHeight*mapHeightInTiles;
+		
+			overs=new Array<Element>();
+			for(MapObject over:getOverList()) {
+				props=over.getProperties();
+
+				switch(props.get("over").toString()) {
+					case "tree":
+						Tile tree=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/tree.png", 31);
+						overs.add(tree);
+					break;
+					case "farolaA":
+						Tile farolaA=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/farolaA.png", 0);
+						overs.add(farolaA);
+					break;
+					case "farolaB":
+						Tile farolaB=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/farolaB.png", 0);
+						overs.add(farolaB);
+					break;
+					case "telephoneBox":
+						Tile telephoneBox=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/telephoneBox.png", 31);
+						overs.add(telephoneBox);
+					break;
+					case "semaforo":
+						Tile semaforo=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/semaforo.png", 0);
+						overs.add(semaforo);
+					break;
+					case "cedaSign":
+						Tile cedaSign=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/cedaSign.png", 0);
+						overs.add(cedaSign);
+					break;
+					case "treintaSign":
+						Tile treintaSign=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/treintaSign.png", 0);
+						overs.add(treintaSign);
+					break;
+					case "fuente":
+						Tile fuente=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/fuente.png", 0);
+						overs.add(fuente);
+					break;
+					case "coche":
+						Tile coche=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/coche.png", 0);
+						overs.add(coche);
+					break;
+				}
+			}
+					
+			npcs=new Array<Element>();
+			for(MapObject npc:getNpcList()) {
+				props=npc.getProperties();
+				
+				switch(props.get("npc").toString()) {
+			
+					//NPC
+				
+					case "NpcRio":
+						NpcStatic npcRio=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "El río Támesis esconde grandes secretos\nen su interior..."
+								, "En tiempos de guerra, la muerte puede\nsentirse desde su rivera...");
+						npcs.add(npcRio);
+						break;
+
+					case "NpcPolicia":
+						NpcStatic npcPolicia=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.policia_ow.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
+								, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
+						npcs.add(npcPolicia);
+						break;
+						
+					case "NpcDependiente":
+						NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
+								, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
+						npcs.add(npcDependiente);
+						break;
+						
+					case "NpcMovil1":
+						NpcMovil npcMovil1=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.extra1_ow.png");
+						npcs.add(npcMovil1);
+						break;
+						
+					case "misionNpc":
+						NpcMision testMisionNpc=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Personajes/personaje.viejo_ow.png", "izquierda", "Parece usted una bellísima persona...\n¿Me haría un favor?"
+								, "Mi nieto ha perdido su peluche. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
+								"¿Ha encontrado ya el peluche de mi nieto?\nEra un juguete bastante extraño...",
+								"¡Muchas gracias por recuperar el muñeco\nde mi nieto! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
+						npcs.add(testMisionNpc);
+						break;
+						
+					case "mailBox":
+						NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
+								, "(Has pagado £1 al gobierno por\ntus deudas e impuestos)");
+						npcs.add(npcMailBox);
+						break;
+						
+						//OBJETOS
+						
+					case "peluche":
+						if(Parametros.mision_un_extrano_muneco_item) {
+							peluche=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.peluche.png"
+								, "Un peluche... ¿De quién será?\nQuizás deba encontrar al dueño.",0);
+							npcs.add(peluche);
+						}
+						break;
+				}
+			}
+		
+		ArrayList<MapObject> elementos;		
+
+		if(Parametros.zona==2) {
+			niebla = new Niebla(mapWidthInPixels, mapHeightInPixels);
+		    mainStage.addActor(niebla);
+		}
+		    
+		elementos=getRectangleList("Solid");
+		solidos = new Array<Solid>();
+		
+		for(MapObject solid:elementos) {
+			props=solid.getProperties();
+			solido=new Solid((float)props.get("x"), (float)props.get("y"), mainStage,
+					(float)props.get("width"), (float)props.get("height"));
+			solidos.add(solido);
+		}
+		for(Polygon poli:getPolygonList("poligono")) {
+			solidos.add(new Solid(poli.getX(), poli.getY(), mainStage, poli));
+		}
+		
+		float inicioX = 0;
+		float inicioY = 0;
+		
+		if(Parametros.zona==1) {
+			if(CasaACalle==false) {
+				elementos=getRectangleList("Start");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+			}
+			else {
+				elementos=getRectangleList("StartCalle");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CasaACalle=false;
+			}
+		}
+		
+		else if(Parametros.zona==2) {
+			if (CalleASuper1==true){
+				elementos=getRectangleList("StartSuper1");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CalleASuper1=false;
+			}
+			else if (CalleASuper2==true){
+				elementos=getRectangleList("StartSuper2");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CalleASuper2=false;
+			}
+			else {
+				elementos=getRectangleList("Start");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+				
+				CasaACalle=false;
+			}
+		}
+		
+		else if (Parametros.zona==3) {
+			if (CalleASuper1==true){
+				elementos=getRectangleList("Start1");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CalleASuper1=false;
+			}
+			else if (CalleASuper2==true){
+				elementos=getRectangleList("Start2");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CalleASuper2=false;
+			}
+		}
+		
+		if(Parametros.zona==1) {
+			elementos=getRectangleList("Ow");
+			props=elementos.get(0).getProperties();
+			owTp=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+			(float)props.get("width"),(float) props.get("height"));
+		}
+		else if(Parametros.zona==2) {
+			elementos=getRectangleList("frontera");
+			props=elementos.get(0).getProperties();
+			frontera=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+					(float)props.get("width"),(float) props.get("height"));
+			
+			elementos=getRectangleList("casa");
+			props=elementos.get(0).getProperties();
+			casa=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+					(float)props.get("width"),(float) props.get("height"));
+			
+			elementos=getRectangleList("superUk");
+			props=elementos.get(0).getProperties();
+			superUk=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+					(float)props.get("width"),(float) props.get("height"));
+			
+			elementos=getRectangleList("superUk2");
+			props=elementos.get(0).getProperties();
+			superUk2=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+					(float)props.get("width"),(float) props.get("height"));
+		}
+		else if(Parametros.zona==3) {
+			elementos=getRectangleList("ow1");
+			props=elementos.get(0).getProperties();
+			ow1=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+			(float)props.get("width"),(float) props.get("height"));
+			
+			elementos=getRectangleList("ow2");
+			props=elementos.get(0).getProperties();
+			ow2=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+			(float)props.get("width"),(float) props.get("height"));
+		}
+		
+		camara=(OrthographicCamera) mainStage.getCamera();
+		camara.setToOrtho(false, Parametros.getAnchoPantalla()*Parametros.zoom, Parametros.getAltoPantalla()*Parametros.zoom);
+		renderer.setView(camara);
+		
+		prota=new Protagonista(inicioX-5,inicioY,mainStage, this);
+		uiStage=new Stage();
+		uiStage.addActor(tarjeta);
+		
+		if(Parametros.musicaUnaVez=true) {
+			switch(Parametros.dia) {
+				case 1:
+					Parametros.controlesActivos=false;
+					texto = new Texto("(No he podido dormir en toda la noche...\nEstoy aterrado, esas palabras todavía", "talk2");
+					uiStage.addActor(texto);
+					break;
+			}
+				
+		}
+		
+	}
+	
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(Parametros.musicaUnaVez=true) {
+			switch(Parametros.dia) {
+			case 1:
+				if (button == Input.Buttons.LEFT) {
+					switch(progresion) {
+						case 0:
+							texto.remove();
+							texto = new Texto("resuenan por toda mi alma... Sin embargo,\nno puedo dejar que el miedo me frene...)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 1:
+							texto.remove();
+							texto = new Texto("(He de salvar a mi hijo, pero hace días que\nno como, debo devolver mis deudas, y", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 2:
+							texto.remove();
+							texto = new Texto("he de trabajar mucho para pagar el rescate...)\n(No hay tiempo que perder.)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 3:
+							texto.remove();
+							reloj.start();
+							this.musicaCiudad.play();
+							this.musicaCiudad.setVolume(0.2f);
+							this.musicaCiudad.setLooping(true);
+							Parametros.musicaUnaVez=false;
+							Parametros.controlesActivos=true;
+							break;
+					}
+				}
+			
+			break;
+			}
+		}
+		return false;
+	}
+
+	
+	public void colide() {
+		for(Solid s:solidos) {
+			if(s.overlaps(prota)) {
+				prota.preventOverlap(s);
+			}
+		}
+		
+		if(Parametros.zona==1) {
+			if(this.owTp.overlaps(this.prota)) {
+				CasaACalle=true;
+				teletransporte(2);
+			}
+		}
+		
+		else if(Parametros.zona==2) {
+			if(this.frontera.overlaps(this.prota)) {
+				teletransporteFrontera();
+			}
+			if(this.casa.overlaps(this.prota)) {
+				CasaACalle=true;
+				teletransporte(1);
+			}
+		
+			if(this.superUk.overlaps(this.prota)) {
+				CalleASuper1=true;
+				teletransporte(3);
+			}
+			
+			if(this.superUk2.overlaps(this.prota)) {
+				CalleASuper2=true;
+				teletransporte(3);
+			}
+		}
+		
+		else if(Parametros.zona==3) {
+			if(this.ow1.overlaps(this.prota)) {
+				CalleASuper1=true;
+				teletransporte(2);
+			}
+			
+			if(this.ow2.overlaps(this.prota)) {
+				CalleASuper2=true;
+				teletransporte(2);
+			}
+		}
+	}
+	
+	public void centrarCamara(float delta) {
+
+	    float targetX = MathUtils.clamp(prota.getX()+45, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
+	    float targetY = MathUtils.clamp(prota.getY()+45, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
+	    float lerp = Math.min(1, delta * 10f);
+
+	    float protaX = prota.getX();
+	    float protaY = prota.getY();
+	    float cursorX = mouseX;
+	    float cursorY = mouseY;
+
+	    float distX = cursorX - protaX;
+	    float distY = cursorY - protaY;
+	    float dist = (float) Math.sqrt(distX * distX + distY * distY);
+	    float maxDist = 50; // reduce la distancia máxima
+
+	    if (dist > maxDist) {
+	        float angle = MathUtils.atan2(cursorY - protaY, cursorX - protaX); // calcula el ángulo correctamente
+	        cursorX = protaX + MathUtils.cos(angle) * maxDist;
+	        cursorY = protaY + MathUtils.sin(angle) * maxDist;
+	        dist = maxDist;
+	    }
+
+	    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist));
+	    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist));
+
+	    float halfViewportWidth = camara.viewportWidth / 2;
+	    float halfViewportHeight = camara.viewportHeight / 2;
+
+	    // calcula los límites de la cámara
+	    float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
+	    float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
+	    float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
+	    float minCameraY = Math.max(protaY - maxDist, halfViewportHeight); // corrige la restricción del límite inferior
+
+	    // comprueba si la posición de la cámara está dentro de los límites del mapa
+	    if (cameraX <= minCameraX) {
+	        cameraX = minCameraX;
+	    } else if (cameraX >= maxCameraX) {
+	        cameraX = maxCameraX;
+	    }
+
+	    if (cameraY <= minCameraY) {
+	        cameraY = minCameraY;
+	    } else if (cameraY >= maxCameraY) {
+	        cameraY = maxCameraY;
+	    }
+
+	    camara.position.x = cameraX;
+	    camara.position.y = cameraY;
+	    camara.position.x += (targetX - camara.position.x) * lerp;
+	    camara.position.y += (targetY - camara.position.y) * lerp;
+	    camara.update();
+	}
+	
+	public void teletransporteFrontera() {
+		this.musicaCiudad.stop();
+		ambiente.stop();
+		prota.pasos.stop();
+		Parametros.musicaUnaVez=true;
+		Parametros.frontera = true;
+		game.setScreen(new StartScreen(game));
+	}
+	
+	public void teletransporte(int zona) {
+		ambiente.stop();
+		prota.pasos.stop();
+		Parametros.zona=zona;
+		game.setScreen(new OverWorldScreen(game, this.musicaCiudad, this.tiktak));
+       	AudioManager.playSound("02-OW/Audio/sounds/cerrarPuerta.wav");
+	}
+	
+	public ArrayList<MapObject> getRectangleList(String propertyName){
+		ArrayList<MapObject> list =new ArrayList<MapObject>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				if(!(obj instanceof RectangleMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				if(props.containsKey("name") &&  props.get("name").equals(propertyName))
+				{
+					list.add(obj);
+				}	
+			}
+		}
+		
+		return list;
+	}
+	
+	private void createRainDrops() {
+	    for (int i = 0; i < 2; i++) {
+	        float x = MathUtils.random(prota.getX()-290, prota.getX()+880);
+	        float y = MathUtils.random(prota.getY()+270, prota.getY()+300);
+	        float speed = MathUtils.random(200, 400);
+	        Gota gota = new Gota(x, y, speed, prota);
+	        mainStage.addActor(gota);
+	    }
+	}
+	
+	public ArrayList<Polygon> getPolygonList(String propertyName){
+		
+		Polygon poly;
+		ArrayList<Polygon> list = new ArrayList<Polygon>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				
+				if(!(obj instanceof PolygonMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				if(props.containsKey("name") &&  props.get("name").equals(propertyName))
+				{			
+					poly=((PolygonMapObject)obj).getPolygon();
+					list.add(poly);
+				}
+			}
+		}
+		
+		return list;
+	
+	}
+	
+	public ArrayList<MapObject> getNpcList(){
+		ArrayList<MapObject> list =new ArrayList<MapObject>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				if(!(obj instanceof TiledMapTileMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				
+				
+				TiledMapTileMapObject tmtmo=(TiledMapTileMapObject) obj;
+				TiledMapTile t=tmtmo.getTile();
+				MapProperties defaultProps=t.getProperties();
+				if(defaultProps.containsKey("npc")) {
+					list.add(obj);
+				}
+				
+				Iterator<String> propertyKeys=defaultProps.getKeys();
+				while(propertyKeys.hasNext()) {
+					String key =propertyKeys.next();
+					
+					if(props.containsKey(key))
+						continue;
+					else {
+						Object value=defaultProps.get(key);
+						props.put(key, value);
+					}
+						
+				}
+				
+			}
+			
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<MapObject> getOverList(){
+		ArrayList<MapObject> list =new ArrayList<MapObject>();
+		for(MapLayer layer: map.getLayers()) {
+			for(MapObject obj: layer.getObjects()) {
+				if(!(obj instanceof TiledMapTileMapObject))
+					continue;
+				MapProperties props= obj.getProperties();
+				
+				
+				TiledMapTileMapObject tmtmo=(TiledMapTileMapObject) obj;
+				TiledMapTile t=tmtmo.getTile();
+				MapProperties defaultProps=t.getProperties();
+				if(defaultProps.containsKey("over")) {
+					list.add(obj);
+				}
+				
+				Iterator<String> propertyKeys=defaultProps.getKeys();
+				while(propertyKeys.hasNext()) {
+					String key =propertyKeys.next();
+					
+					if(props.containsKey(key))
+						continue;
+					else {
+						Object value=defaultProps.get(key);
+						props.put(key, value);
+					}
+						
+				}
+				
+			}
+			
+		}
+		
+		return list;
+	}
+	
+	public class ActorComparator implements Comparator<Actor>{
+
+		@Override
+		public int compare(Actor a1, Actor a2) {
+			if(a1.getName()=="bocadillo") {
+				return 1;
+			}
+			else {
+				if(a1.getY()==a2.getY()) {
+					return 0;
+				}
+				if(a1.getY()>a2.getY()) {
+					return -1;
+				}
+			}
+			return 1;
+		}
+	}
+	
+	@Override
+	public void render(float delta) {
+		
+		super.render(delta);
+		
+	   mainStage.act();
+	   uiStage.act();
+	   colide();
+	   
+	   centrarCamara(delta);
+	   
+	   m3d.x=Gdx.input.getX();
+	   m3d.y=Gdx.input.getY();
+	   m3d.z=0;
+	   camara.unproject(m3d);
+	   mouseX=m3d.x;
+	   mouseY=m3d.y;
+	   
+	   uiStage.addActor(reloj);
+	   uiStage.addActor(dinero);
+	   uiStage.addActor(tareasSinExpandir);
+//	   uiStage.addActor(nz);
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && controlesActivo == false) {
+		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	       	if(planoActivo==false) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	       		uiStage.addActor(planoActor);
+	   			Parametros.controlesActivos=false;
+	      			planoActivo=true;
+	       	}
+	       	else if (planoActivo==true) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	       		planoActor.remove();
+	      				Parametros.controlesActivos=true;
+	      				planoActivo=false;
+	      	}
+	    }
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && planoActivo == false) {
+		   controlesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	       	if(controlesActivo==false) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	       		uiStage.addActor(controlesActor);
+	   			Parametros.controlesActivos=false;
+	   			controlesActivo=true;
+	       	}
+	       	else if (controlesActivo==true) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	           	controlesActor.remove();
+	      				Parametros.controlesActivos=true;
+	      				controlesActivo=false;
+	      	}
+	    }
+	   
+	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && controlesActivo == false && planoActivo == false) {
+	       	if(listaTareas==false) {
+				tareas = new Tareas();
+	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	        	uiStage.addActor(tareas);
+	   				listaTareas=true;
+	       	}
+	       	else if (listaTareas==true) {
+	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	           	tareas.remove();
+	      		listaTareas=false;
+	      	}
+	   }
+	   
+	   	if (Reloj.tiempoRestante<=10) {
+			this.tiktak.play();
+	   	}
+	   	
+	   	if (Reloj.tiempoRestante == 0) {
+			this.musicaCiudad.stop(); 
+			ambiente.stop();
+			prota.pasos.stop();
+			tiktak.stop();
+			Parametros.musicaUnaVez=true;
+			Parametros.dia++;
+			game.setScreen(new StatsScreen(game));
+	   	}
+	   	
+	    renderer.setView(camara);
+	    renderer.render(new int[]{0, 1, 2, 3});
+	    mainStage.getActors().sort(comparator);
+	        mainStage.draw();
+	        if(Parametros.zona==1 || Parametros.zona==3) {
+	        	renderer.render(new int[]{4});	
+	        }
+		    
+			if(Parametros.zona==2) {
+			    createRainDrops();
+			}
+			
+	        uiStage.draw();
+	}
+}

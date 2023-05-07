@@ -15,6 +15,7 @@ import managers.AudioManager;
 public class Texto extends Actor {
     private Texture caja;
     private String text;
+    private String voice;
     private Label texto;
 	public LabelStyle uiStyle;
 	private float textX;
@@ -24,7 +25,7 @@ public class Texto extends Actor {
 	private int contador = 0;
 	private char letraActual;
     
-    public Texto(String text, float textX, float textY) {
+    public Texto(String text, float textX, float textY, String voice) {
         FreeTypeFontGenerator ftfg= new FreeTypeFontGenerator(Gdx.files.internal("Peepo.ttf"));
 		FreeTypeFontParameter ftfp= new FreeTypeFontParameter();
 		
@@ -34,6 +35,7 @@ public class Texto extends Actor {
 		uiStyle.font=fuentePropia;
 		
     	this.text=text;
+    	this.voice=voice;
     	this.textX=textX;
     	this.textY=textY;
     	
@@ -52,14 +54,30 @@ public class Texto extends Actor {
                 letraActual = text.charAt(contador);
                 texto.setText(text.substring(0, contador+1));
                 switch(letraActual) {
-	            	case ' ':
-	            		break;
-	            	case '.':
-	            		break;
-	            	case ',':
-	            		break;
+            	case ' ':
+            		break;
+            	case '.':
+            		break;
+            	case ',':
+            		break;
+            	case ':':
+            		break;
+            	case '¡':
+            		break;
+            	case '!':
+            		break;
+            	case '¿':
+            		break;
+            	case '?':
+            		break;
+            	case '£':
+            		break;
+            	case '(':
+            		break;
+            	case ')':
+            		break;
 	            	default:
-	    	            AudioManager.playSound("02-OW/Audio/sounds/talk.wav");
+	    	            AudioManager.playSound("02-OW/Audio/sounds/" + this.voice + ".wav");
 	            		break;
                 }
                 contador ++;

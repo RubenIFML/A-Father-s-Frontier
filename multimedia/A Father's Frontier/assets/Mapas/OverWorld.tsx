@@ -136,9 +136,49 @@
    <property name="npc" value="NpcDependiente"/>
   </properties>
  </tile>
+ <tile id="611">
+  <properties>
+   <property name="npc" value="NpcTenderete"/>
+  </properties>
+ </tile>
+ <tile id="612">
+  <properties>
+   <property name="npc" value="NpcPlaza"/>
+  </properties>
+ </tile>
+ <tile id="613">
+  <properties>
+   <property name="npc" value="NpcMarket"/>
+  </properties>
+ </tile>
+ <tile id="614">
+  <properties>
+   <property name="npc" value="NpcPolicia2"/>
+  </properties>
+ </tile>
+ <tile id="615">
+  <properties>
+   <property name="npc" value="NpcCasaSur"/>
+  </properties>
+ </tile>
  <tile id="616">
   <properties>
    <property name="npc" value="NpcMovil1"/>
+  </properties>
+ </tile>
+ <tile id="617">
+  <properties>
+   <property name="npc" value="NpcMovil2"/>
+  </properties>
+ </tile>
+ <tile id="618">
+  <properties>
+   <property name="npc" value="NpcMovil3"/>
+  </properties>
+ </tile>
+ <tile id="619">
+  <properties>
+   <property name="npc" value="NpcMovil4"/>
   </properties>
  </tile>
  <tile id="624">

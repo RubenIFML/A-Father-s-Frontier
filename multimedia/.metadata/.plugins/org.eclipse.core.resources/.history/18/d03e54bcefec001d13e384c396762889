@@ -1,0 +1,22 @@
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+public class Launcher {
+    public static void main (String[] args) {
+        Game myGame = new Demo(); 
+
+        // Define el tamaño de la pantalla
+        int screenWidth = 800;
+        int screenHeight = 600;
+
+        // Configura la aplicación libGDX
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        config.title = "A Father's Frontier";
+        config.width = screenWidth;
+        config.height = screenHeight;
+        config.resizable = true; // Permite que la ventana sea redimensionable
+
+        // Inicia la aplicación
+        LwjglApplication launcher = new LwjglApplication(myGame, config);
+    }
+}

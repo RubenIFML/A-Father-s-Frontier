@@ -33,7 +33,7 @@ public class FS2_1 extends Actor {
         	
         	//Texto
         	texto = new Texto("Darío: Le doy las gra-\n"
-        					+ "cias en nombre de Dios.", 7, 154);
+        					+ "cias en nombre de Dios.", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
@@ -52,7 +52,7 @@ public class FS2_1 extends Actor {
         	
         	//Texto
         	texto = new Texto("Darío: ¿¡Cómo que no se\n"
-        					+ "permiten pistolas!?", 7, 154);
+        					+ "permiten pistolas!?", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido

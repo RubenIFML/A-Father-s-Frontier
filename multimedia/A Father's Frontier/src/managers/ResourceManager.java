@@ -51,6 +51,7 @@ public final class ResourceManager {
         assets.load("Menu/dialogoOW.png", Texture.class);
         assets.load("Menu/listaTareas_sinExpandir.png", Texture.class);
         assets.load("Menu/controlesOw.png", Texture.class);
+        assets.load("Menu/controlesInicialesOw.png", Texture.class);
        
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
@@ -152,6 +153,11 @@ public final class ResourceManager {
         assets.load("02-OW/Personajes/personaje.extra2_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra3_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra4_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra5_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra6_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra7_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra8_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra9_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.herido_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.perro_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.policia_ow.png", Texture.class);
@@ -192,7 +198,8 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/mision.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/cerrarPuerta.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/item.wav", Sound.class);
-        assets.load("02-OW/Audio/sounds/talk.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/talk1.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/talk2.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);

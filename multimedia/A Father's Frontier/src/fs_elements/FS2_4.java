@@ -33,7 +33,7 @@ public class FS2_4 extends Actor {
         	
         	//Texto
         	texto = new Texto("Abella: Un momento...\n"
-        					+ "E... ¡E-Eres tú!...", 7, 154);
+        					+ "E... ¡E-Eres tú!...", 7, 154, "talk2");
         	mainStage.addActor(texto);
         	
         	//Sonido
@@ -52,7 +52,7 @@ public class FS2_4 extends Actor {
         	
         	//Texto
         	texto = new Texto("Abella: Un momento...\n"
-        					+ "E... ¡E-Eres tú!...", 7, 154);
+        					+ "E... ¡E-Eres tú!...", 7, 154, "talk2");
         	mainStage.addActor(texto);
         	
         	//Sonido

@@ -33,7 +33,7 @@ public class FS1_3 extends Actor {
         	
         	//Texto
         	texto = new Texto("Miles: Espero poder\n"
-        					+ "verte más adelante.)", 7, 154);
+        					+ "verte más adelante.)", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
@@ -52,7 +52,7 @@ public class FS1_3 extends Actor {
         	
         	//Texto
         	texto = new Texto("Miles: No tienes ni idea\n"
-							+ "de lo que haces.", 7, 154);
+							+ "de lo que haces.", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido

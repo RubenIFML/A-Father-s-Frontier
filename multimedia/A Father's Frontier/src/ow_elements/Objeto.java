@@ -109,7 +109,7 @@ public class Objeto extends Element {
 		    	switch (siguienteInteraccion) {
 		        case 0:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto(this.dialogo1);
+		            interaccion = new Texto(this.dialogo1, "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;

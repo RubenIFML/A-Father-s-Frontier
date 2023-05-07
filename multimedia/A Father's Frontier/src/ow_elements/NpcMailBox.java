@@ -119,14 +119,14 @@ public class NpcMailBox extends Element {
 			    switch (siguienteInteraccion) {
 		        case 0:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto(this.dialogo1);
+		            interaccion = new Texto(this.dialogo1, "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;
 		        case 1:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion.hide();
-		            interaccion = new Texto(this.dialogo2);
+		            interaccion = new Texto(this.dialogo2, "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
 		            siguienteInteraccion++;
@@ -145,7 +145,7 @@ public class NpcMailBox extends Element {
 			    switch (siguienteInteraccion) {
 		        case 0:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto("(Ya he pagado mi deuda de hoy,\ndebo recordar volver mañana.)");
+		            interaccion = new Texto("(Ya he pagado mi deuda de hoy,\ndebo recordar volver mañana.)", "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;
@@ -163,7 +163,7 @@ public class NpcMailBox extends Element {
 		    switch (siguienteInteraccion) {
 	        case 0:
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto("(Necesito al menos £1 para pagar mis deudas\ne impuestos... Llevo meses de retraso)");
+	            interaccion = new Texto("(Necesito al menos £1 para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;

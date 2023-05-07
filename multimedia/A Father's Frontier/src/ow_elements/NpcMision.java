@@ -146,14 +146,14 @@ public class NpcMision extends Element {
 	    	        case 0:
 	    	        
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo1);
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
 	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
-	    	            interaccion = new Texto(this.dialogo2);
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -174,7 +174,7 @@ public class NpcMision extends Element {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo3);
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -191,7 +191,7 @@ public class NpcMision extends Element {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo4);
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -215,7 +215,7 @@ public class NpcMision extends Element {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo4);
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -238,7 +238,7 @@ public class NpcMision extends Element {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto(this.dialogo5);
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
