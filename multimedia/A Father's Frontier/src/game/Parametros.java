@@ -46,15 +46,16 @@ public class Parametros {
  public static boolean mision_un_extrano_muneco_completada = true;
  public static boolean mision_un_extrano_muneco_finalizada = false;
  
- public static boolean mision_una_lettera_d_amore = true;
- public static boolean mision_una_lettera_d_amore_completada = true;
- 
- public static boolean mision_un_encuentro_agridulce = true;
- public static boolean mision_un_encuentro_agridulce_completada = true;
- 
- public static boolean mision_dein_kampf = true;
- public static boolean mision_dein_kampf_completada = true;
+ public static boolean mision_el_tesoro_perdido = true;
+ public static boolean mision_el_tesoro_perdido_item = true;
+ public static boolean mision_el_tesoro_perdido_completada = true;
+ public static boolean mision_el_tesoro_perdido_finalizada = false;
 
+ public static boolean mision_el_viejo_general = true;
+ public static boolean mision_el_viejo_general_item = true;
+ public static boolean mision_el_viejo_general_completada = true;
+ public static boolean mision_el_viejo_general_finalizada = false;
+ 
  public static boolean mision_0 = true;
  public static boolean mision_0_completada = true;
  
@@ -90,6 +91,15 @@ public class Parametros {
  
  public static boolean mision_11 = true;
  public static boolean mision_11_completada = true;
+ 
+ public static boolean mision_una_lettera_d_amore = true;
+ public static boolean mision_una_lettera_d_amore_completada = true;
+ 
+ public static boolean mision_un_encuentro_agridulce = true;
+ public static boolean mision_un_encuentro_agridulce_completada = true;
+ 
+ public static boolean mision_dein_kampf = true;
+ public static boolean mision_dein_kampf_completada = true;
  
 public static int getAnchoPantalla() {
 	return anchoPantalla;

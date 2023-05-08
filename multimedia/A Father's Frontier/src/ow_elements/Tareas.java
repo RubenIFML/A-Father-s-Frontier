@@ -20,6 +20,8 @@ public class Tareas extends Actor {
     private String[] tareasStrings = {"He de comer algo.",
                                       "He de pagar mis deudas.",
                                       "Un extraño muñeco.",
+                                      "El tesoro perdido.",
+                                      "El viejo general.",
                                       "Un encuentro agridulce.",
                                       "Dein Kampf.",
                                       "Lettera d'amore."};
@@ -27,6 +29,8 @@ public class Tareas extends Actor {
     private static boolean[] tareasBoolean = {Parametros.haComidoHoy,
                                               Parametros.haPagadoDeuda,
                                               Parametros.mision_un_extrano_muneco,
+                                              Parametros.mision_el_tesoro_perdido,
+                                              Parametros.mision_el_viejo_general,
                                               Parametros.mision_un_encuentro_agridulce,
                                               Parametros.mision_dein_kampf,
                                               Parametros.mision_una_lettera_d_amore};
@@ -81,9 +85,11 @@ public class Tareas extends Actor {
             case 0: valor = Parametros.haComidoHoy; break;
             case 1: valor = Parametros.haPagadoDeuda; break;
             case 2: valor = Parametros.mision_un_extrano_muneco; break;
-            case 3: valor = Parametros.mision_un_encuentro_agridulce; break;
-            case 4: valor = Parametros.mision_dein_kampf; break;
-            case 5: valor = Parametros.mision_una_lettera_d_amore; break;
+            case 3: valor = Parametros.mision_el_tesoro_perdido; break;
+            case 4: valor = Parametros.mision_el_viejo_general; break;
+            case 5: valor = Parametros.mision_un_encuentro_agridulce; break;
+            case 6: valor = Parametros.mision_dein_kampf; break;
+            case 7: valor = Parametros.mision_una_lettera_d_amore; break;
             default: break;
         }
         return valor;

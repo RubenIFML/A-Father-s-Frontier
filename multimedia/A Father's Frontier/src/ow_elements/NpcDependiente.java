@@ -114,6 +114,7 @@ public class NpcDependiente extends Element {
 		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
 		    	}
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        bocadillo.setName("bocadillo");
 		        nivel.mainStage.addActor(bocadillo);
 		    }
 		} else {

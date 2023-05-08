@@ -10,9 +10,10 @@ public class NpcMovil extends Element {
     private OverWorldScreen nivel;
     private int direccion;
 
-    public NpcMovil(float x, float y, Stage s, OverWorldScreen nivel, String animacion, int direccion) {
+    public NpcMovil(float x, float y, Stage s, OverWorldScreen nivel, String animacion, int direccion, float velocidad) {
         super(x, y, s);
-
+        
+        this.velocidad = velocidad;
         this.direccion = direccion;
         this.nivel = nivel;
         prepararAnimacion(animacion, true);
@@ -20,19 +21,17 @@ public class NpcMovil extends Element {
 
         if (direccion == 1) {
             direccionMovimiento = -1;
-            velocidad = 70;
         } else if (direccion == 2) {
             direccionMovimiento = 1;
-            velocidad = 70;
         }
     }
 
     public void act(float delta) {
         super.act(delta);
         if (direccion == 1) {
-            moveBy(direccionMovimiento * velocidad * delta, 0);
+            moveBy(direccionMovimiento * this.velocidad * delta, 0);
         } else if (direccion == 2) {
-            moveBy(0, direccionMovimiento * velocidad * delta);
+            moveBy(0, direccionMovimiento * this.velocidad * delta);
         }
         animaciones();
         comprobarColisiones();

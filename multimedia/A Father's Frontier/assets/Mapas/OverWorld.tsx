@@ -181,9 +181,39 @@
    <property name="npc" value="NpcMovil4"/>
   </properties>
  </tile>
+ <tile id="620">
+  <properties>
+   <property name="npc" value="NpcMovil5"/>
+  </properties>
+ </tile>
  <tile id="624">
   <properties>
    <property name="npc" value="misionNpc"/>
+  </properties>
+ </tile>
+ <tile id="625">
+  <properties>
+   <property name="npc" value="misionNpc1"/>
+  </properties>
+ </tile>
+ <tile id="626">
+  <properties>
+   <property name="npc" value="misionNpc2"/>
+  </properties>
+ </tile>
+ <tile id="627">
+  <properties>
+   <property name="npc" value="misionNpc3"/>
+  </properties>
+ </tile>
+ <tile id="628">
+  <properties>
+   <property name="npc" value="misionNpc4"/>
+  </properties>
+ </tile>
+ <tile id="629">
+  <properties>
+   <property name="npc" value="misionNpc5"/>
   </properties>
  </tile>
 </tileset>

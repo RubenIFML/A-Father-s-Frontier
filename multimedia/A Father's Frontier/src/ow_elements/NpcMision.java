@@ -80,6 +80,10 @@ public class NpcMision extends Element {
 		    }
 	    }
 	    
+	    if(mision == 3 && Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
+	    	this.remove();
+	    }
+	    
 	    if(siguienteInteraccion==0) {
 		    if (Gdx.input.justTouched()) {
 		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
@@ -116,16 +120,44 @@ public class NpcMision extends Element {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
 		    	
-		    	if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
-		        }
-		    	else {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+		    	switch(this.mision) {
+			    	case 0:
+				    	if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 1:
+				    	if(Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 2:
+				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 3:
+				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
 		    	}
 		    	
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        bocadillo.setName("bocadillo");
-		        nivel.mainStage.addActor(bocadillo);
+		    	nivel.mainStage.addActor(bocadillo);
 		    }
 		} else {
 		    // el personaje se alejó o no está en la dirección correcta, eliminamos el actor bocadillo
@@ -140,6 +172,9 @@ public class NpcMision extends Element {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    
 	    switch(this.mision) {
+	    
+    	// MISIÓN 0
+	    
 	    	case 0:
 	    	    if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == true) {
 	    		    switch (siguienteInteraccion) {
@@ -251,6 +286,267 @@ public class NpcMision extends Element {
 	    		    }
 	    	    }
 	    	break;
+	    	
+	    	// MISIÓN 1
+	    	
+	    	case 1:
+	    	    if(Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- El tesoro perdido -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_el_tesoro_perdido = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_el_tesoro_perdido == false && Parametros.mision_el_tesoro_perdido_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_tesoro_perdido == false && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_el_tesoro_perdido = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/item.wav");
+	    	            Parametros.mision_el_tesoro_perdido_item=false;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_el_tesoro_perdido_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_el_tesoro_perdido = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/item.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_el_tesoro_perdido_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+		    	    }
+	    		}
+	    		    break;
+	    	    
+	    	//MISION 2
+	    	    
+	    	case 2:
+	    	    if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- El viejo general -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_el_viejo_general = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_el_viejo_general == false && Parametros.mision_el_viejo_general_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_viejo_general == false && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_el_viejo_general = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.dinero+=2;
+	    	            Parametros.mision_el_viejo_general_item=false;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_el_viejo_general_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_el_viejo_general = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_el_viejo_general_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    break;
+	    	case 3:
+		    	switch (siguienteInteraccion) {
+		        case 0:
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo1, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 1:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo2, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 2:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo3, "talk2");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 3:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion.hide();
+		            if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == false) {}
+		            else {AudioManager.playSound("02-OW/Audio/sounds/item.wav");}
+		            Parametros.mision_el_viejo_general_completada = false;
+		            Parametros.mision_el_viejo_general_item = false;
+		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+		            break;
+	    		}
+	    		break;
 	    }
 	}
 }

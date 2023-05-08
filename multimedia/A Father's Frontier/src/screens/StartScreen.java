@@ -32,6 +32,8 @@ private Music ruido;
 private Music tiktak;
 private int contador = 0;
 private Texto texto;
+private Texture siluetaTexture;
+private Actor silueta;
 
     public StartScreen(Demo game) {
         super(game);
@@ -84,6 +86,10 @@ private Texto texto;
                 game.setScreen(new FrontierScreen(game));
 		    }
         }
+
+        siluetaTexture = new Texture("02-OW/personajes/personaje.silueta_ow.png");
+        silueta = new Image(siluetaTexture);
+        silueta.setBounds(362, 240, 76, 164);
         
         blackBackground = new Texture("Menu/blackBackground.png");
         blackBackgroundActor = new Image(blackBackground);
@@ -106,6 +112,7 @@ private Texto texto;
     	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==0 && texto.completo==true) {
     	        	texto.completo=false;
     	            periodicoActor.remove();
+    	            this.uiStage.addActor(silueta);
     	            Parametros.zoom=0.65f;
     	            ResourceManager.musicaTitulo.stop();
     	            ruido.play();
@@ -138,6 +145,7 @@ private Texto texto;
     	        }
     	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==5 && texto.completo==true) {
     	        	texto.remove();
+    	        	silueta.remove();
     	        	ruido.stop();
     	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
     	            contador ++;

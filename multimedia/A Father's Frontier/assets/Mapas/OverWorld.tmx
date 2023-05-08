@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="10" nextobjectid="376">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="10" nextobjectid="386">
  <tileset firstgid="1" source="OverWorld.tsx"/>
  <layer id="4" name="Capa de patrones 0" width="60" height="47">
   <data encoding="csv">
@@ -214,7 +214,7 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="9" x="0" y="434" width="93" height="930.002">
+  <object id="9" x="0" y="434" width="93" height="959.986">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -672,15 +672,19 @@
   <object id="357" gid="625" x="1581" y="434" width="32" height="32"/>
   <object id="358" gid="593" x="651" y="496" width="32" height="32"/>
   <object id="362" gid="488" x="1023" y="682" width="32" height="32"/>
-  <object id="365" gid="618" x="527" y="186" width="32" height="32"/>
+  <object id="365" gid="618" x="527" y="217" width="32" height="32"/>
   <object id="366" gid="619" x="248" y="1364" width="32" height="32"/>
   <object id="367" gid="620" x="899" y="1054" width="32" height="32"/>
-  <object id="368" gid="617" x="155" y="806" width="32" height="32"/>
   <object id="369" gid="612" x="558" y="186" width="32" height="32"/>
   <object id="370" gid="613" x="837" y="899" width="32" height="32"/>
   <object id="371" gid="614" x="310" y="744" width="32" height="32"/>
   <object id="372" gid="615" x="93" y="1302" width="32" height="32"/>
   <object id="373" gid="615" x="93" y="1364" width="32" height="32"/>
+  <object id="376" gid="621" x="155" y="806" width="32" height="32"/>
+  <object id="377" gid="626" x="1271" y="744" width="32" height="32"/>
+  <object id="380" gid="596" x="496" y="1302" width="32" height="32"/>
+  <object id="384" gid="627" x="1550" y="1085" width="32" height="32"/>
+  <object id="385" gid="628" x="93" y="465" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="9" name="over">
   <object id="286" gid="333" x="713" y="341" width="32" height="32"/>
