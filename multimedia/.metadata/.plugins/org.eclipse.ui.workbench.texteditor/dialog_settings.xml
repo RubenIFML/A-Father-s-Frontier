@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="comprar"/>
+		<item key="selection" value="Rudolf"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="comprar"/>
-			<item value="dinero+=3"/>
-			<item value="muneco"/>
-			<item value="item.wav"/>
-			<item value="item"/>
-			<item value="dinero"/>
-			<item value="pelu"/>
-			<item value="peluche"/>
-			<item value="mision"/>
-			<item value="nieto"/>
-			<item value="nieta"/>
-			<item value="extra1"/>
-			<item value="extra"/>
-			<item value="controlesInicialesActor"/>
-			<item value="controlesin"/>
+			<item value="rudolf"/>
+			<item value="encontraré"/>
+			<item value="tranquilo"/>
+			<item value="brindar"/>
+			<item value="2"/>
+			<item value="loop"/>
+			<item value="guau"/>
+			<item value="extrao"/>
+			<item value="vuelva"/>
+			<item value="rio"/>
+			<item value="glow"/>
+			<item value="gloe"/>
+			<item value="system."/>
+			<item value="comp"/>
+			<item value="silueta"/>
 		</list>
 		<list key="replacehistory">
 		</list>

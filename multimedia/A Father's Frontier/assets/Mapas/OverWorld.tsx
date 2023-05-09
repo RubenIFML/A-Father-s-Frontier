@@ -186,6 +186,21 @@
    <property name="npc" value="NpcMovil5"/>
   </properties>
  </tile>
+ <tile id="621">
+  <properties>
+   <property name="npc" value="NpcMovil6"/>
+  </properties>
+ </tile>
+ <tile id="622">
+  <properties>
+   <property name="npc" value="NpcMovil7"/>
+  </properties>
+ </tile>
+ <tile id="623">
+  <properties>
+   <property name="npc" value="NpcMovil8"/>
+  </properties>
+ </tile>
  <tile id="624">
   <properties>
    <property name="npc" value="misionNpc"/>
@@ -214,6 +229,76 @@
  <tile id="629">
   <properties>
    <property name="npc" value="misionNpc5"/>
+  </properties>
+ </tile>
+ <tile id="630">
+  <properties>
+   <property name="npc" value="misionNpc6"/>
+  </properties>
+ </tile>
+ <tile id="631">
+  <properties>
+   <property name="npc" value="misionNpc7"/>
+  </properties>
+ </tile>
+ <tile id="640">
+  <properties>
+   <property name="npc" value="NpcSuper1"/>
+  </properties>
+ </tile>
+ <tile id="641">
+  <properties>
+   <property name="npc" value="NpcSuper2"/>
+  </properties>
+ </tile>
+ <tile id="642">
+  <properties>
+   <property name="npc" value="NpcFarolaB"/>
+  </properties>
+ </tile>
+ <tile id="643">
+  <properties>
+   <property name="npc" value="NpcPerro"/>
+  </properties>
+ </tile>
+ <tile id="644">
+  <properties>
+   <property name="npc" value="NpcPlaza1"/>
+  </properties>
+ </tile>
+ <tile id="645">
+  <properties>
+   <property name="npc" value="NpcPlaza2"/>
+  </properties>
+ </tile>
+ <tile id="656">
+  <properties>
+   <property name="npc" value="misionNpc8"/>
+  </properties>
+ </tile>
+ <tile id="657">
+  <properties>
+   <property name="npc" value="misionNpc9"/>
+  </properties>
+ </tile>
+ <tile id="658">
+  <properties>
+   <property name="npc" value="misionNpc10"/>
+  </properties>
+ </tile>
+ <tile id="659">
+  <properties>
+   <property name="npc" value="misionNpc11"/>
+  </properties>
+ </tile>
+ <tile id="660">
+  <properties>
+   <property name="npc" value="misionNpc12"/>
+  </properties>
+ </tile>
+ <tile id="661">
+  <properties>
+   <property name="npc" value="misionNpc13"/>
   </properties>
  </tile>
 </tileset>

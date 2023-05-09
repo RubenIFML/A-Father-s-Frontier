@@ -112,15 +112,6 @@ public final class ResourceManager {
         assets.load("02-OW/Objetos/objeto.libro.png", Texture.class);
         assets.load("02-OW/Objetos/objeto.manzana.png", Texture.class);
         assets.load("02-OW/Objetos/objeto.peluche.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.bolsa_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.carta_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.collar_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.gafas_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.hueso_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.libra_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.libro_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.manzana_glow.png", Texture.class);
-        assets.load("02-OW/Objetos/objeto.peluche_glow.png", Texture.class);
         
         //Personajes FS
         assets.load("01-FS/Personajes/FS.1_1.png", Texture.class);
@@ -160,12 +151,16 @@ public final class ResourceManager {
         assets.load("02-OW/Personajes/personaje.extra8_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra9_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra10_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra11_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.herido_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.perro_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.policia_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.protagonista.final_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.secuestrador_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.silueta_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.recuerdos_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.viejo_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.viejo1_ow.png", Texture.class);
         
         //Tiles
         assets.load("02-OW/Tiles/tree.png", Texture.class);

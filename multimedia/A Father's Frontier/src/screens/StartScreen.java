@@ -38,7 +38,7 @@ private Actor silueta;
     public StartScreen(Demo game) {
         super(game);
 
-        texto = new Texto("¿?: Si quiere recuperar a su hijo, deberá brindar\nconsigo veinte libras esterlinas al sur del distrito.", "talk1");
+        texto = new Texto("¿?: Si quiere recuperar a su hijo, ha de traer\nconsigo veinte libras esterlinas al sur del distrito.", "talk1");
         texto.completo=true;
 		this.tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.wav"));
 		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.wav"));
@@ -50,22 +50,22 @@ private Actor silueta;
         batch = new SpriteBatch();
 	    
         if (Parametros.frontera==false) {
-        	ResourceManager.musicaTitulo.play();
         	Reloj.tiempoRestante = 180;
 	        switch (Parametros.dia) {
-            case 1:
-                periodico = new Texture("Menu/periodico.0_0.png");
-                break;
-            case 2:
-                periodico = new Texture("Menu/periodico.0_0.png");
-                break;
-            case 3:
-                periodico = new Texture("Menu/periodico.0_0.png");
-                break;
+	            case 1:
+	                periodico = new Texture("Menu/periodico.0_0.png");
+	                siluetaTexture = new Texture("02-OW/personajes/personaje.silueta_ow.png");
+	                silueta = new Image(siluetaTexture);
+	                silueta.setBounds(362, 240, 76, 164);
+	                break;
+	            case 2:
+	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos_ow.png");
+	                silueta = new Image(siluetaTexture);
+	                silueta.setBounds(342, 250, 100, 158);
+	                ResourceManager.musicaTitulo.stop();
+	                break;
             default:
-                periodico = new Texture("Menu/periodico.0_0.png");
                 ResourceManager.musicaTitulo.stop();
-                game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
 		    }
         }
         
@@ -86,117 +86,154 @@ private Actor silueta;
                 game.setScreen(new FrontierScreen(game));
 		    }
         }
-
-        siluetaTexture = new Texture("02-OW/personajes/personaje.silueta_ow.png");
-        silueta = new Image(siluetaTexture);
-        silueta.setBounds(362, 240, 76, 164);
         
         blackBackground = new Texture("Menu/blackBackground.png");
         blackBackgroundActor = new Image(blackBackground);
         this.uiStage.addActor(blackBackgroundActor);
         
-        periodicoActor = new Image(periodico);
-        this.uiStage.addActor(periodicoActor);
-        periodicoActor.getColor().a = 0f; // set initial opacity to 0
-        periodicoActor.setPosition(Parametros.getAnchoPantalla() / 2f, Parametros.getAltoPantalla() / 2f, Align.center);
+
+       if((Parametros.dia==2 || Parametros.dia==3) && Parametros.frontera == false) {
+            this.uiStage.addActor(silueta);
+            texto = new Texto("Pero papi, yo no quiero irme de casa...\n¿A dónde vamos? Tengo miedo...", "talk2");
+            texto.completo=true;
+        	if(texto.completo==true) {
+	            Parametros.zoom=0.65f;
+        		texto.completo=false;
+	            ruido.play();
+	            this.uiStage.addActor(texto);
+        	}
+        }
+       else {
+           periodicoActor = new Image(periodico);
+           this.uiStage.addActor(periodicoActor);
+           periodicoActor.getColor().a = 0f; // set initial opacity to 0
+           periodicoActor.setPosition(Parametros.getAnchoPantalla() / 2f, Parametros.getAltoPantalla() / 2f, Align.center);
+       }
     }
 
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-    	
-    	switch(Parametros.dia) {
-    	
-    		case 1:
-    			
-    			//OW
-    			
-    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==0 && texto.completo==true) {
-    	        	texto.completo=false;
-    	            periodicoActor.remove();
-    	            this.uiStage.addActor(silueta);
-    	            Parametros.zoom=0.65f;
-    	            ResourceManager.musicaTitulo.stop();
-    	            ruido.play();
-    	            this.uiStage.addActor(texto);
-    	            contador ++;
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==1 && texto.completo==true) {
-    	        	texto.remove();
-    	            texto = new Texto("Tiene un límite de tres días, considere mañana\ncomo el primero, le aconsejo no perder el tiempo...", "talk1");
-    	            this.uiStage.addActor(texto);
-    	            contador ++;
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==2 && texto.completo==true) {
-    	        	texto.remove();
-    	            texto = new Texto("De lo contrario... No le ocurrirá nada agradable\na su preciada criatura... Evans, ¿Cierto?", "talk1");
-    	            this.uiStage.addActor(texto);
-    	            contador ++;
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==3 && texto.completo==true) {
-    	        	texto.remove();
-    	            texto = new Texto("Si intenta contactar a la policía, tenga claro que\nlo sabré, así que no tiene por qué molestarse.", "talk1");
-    	            this.uiStage.addActor(texto);
-    	            contador ++;
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==4 && texto.completo==true) {
-    	        	texto.remove();
-    	            texto = new Texto("Mucha suerte, y buena vida. Confío en sus\ncapacidades... Le veré en unos días.", "talk1");
-    	            this.uiStage.addActor(texto);
-    	            contador ++;
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==5 && texto.completo==true) {
-    	        	texto.remove();
-    	        	silueta.remove();
-    	        	ruido.stop();
-    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
-    	            contador ++;
-    	        }
-    	        
-    	        //FS
-    	        
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
-    	            periodicoActor.remove();
-    	            ResourceManager.musicaTitulo.stop();
-    	            Parametros.zoom=0.30f;
-    	            game.setScreen(new FrontierScreen(game));
-    	        }
-    	        else if(texto.completo==false) {
-	    			texto.completo=true;
-    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-    	        }
-    	        break;
-    	        
-    		case 2:
-    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false) {
-    	            periodicoActor.remove();
-    	            ResourceManager.musicaTitulo.stop();
-    	            Parametros.zoom=0.65f;
-    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
-    	            periodicoActor.remove();
-    	            ResourceManager.musicaTitulo.stop();
-    	            Parametros.zoom=0.30f;
-    	            game.setScreen(new FrontierScreen(game));
-    	        }
-    	        break;
-    	        
-    		case 3:
-    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false) {
-    	            periodicoActor.remove();
-    	            ResourceManager.musicaTitulo.stop();
-    	            Parametros.zoom=0.65f;
-    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
-    	        }
-    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
-    	            periodicoActor.remove();
-    	            ResourceManager.musicaTitulo.stop();
-    	            Parametros.zoom=0.30f;
-    	            game.setScreen(new FrontierScreen(game));
-    	        }
-    	        break;
-    			
-    	}
 
+		if(texto.completo==true) {
+	    	switch(Parametros.dia) {
+	    	
+	    		case 1:
+	    			
+	    			//OW
+	    			
+	    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==0 && texto.completo==true) {
+	    	        	texto.completo=false;
+	    	            periodicoActor.remove();
+	    	            this.uiStage.addActor(silueta);
+	    	            Parametros.zoom=0.65f;
+	    	            ResourceManager.musicaTitulo.stop();
+	    	            ruido.play();
+	    	            this.uiStage.addActor(texto);
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==1 && texto.completo==true) {
+	    	        	texto.remove();
+	    	            texto = new Texto("Tiene un límite de tres días, considere mañana\ncomo el primero, le aconsejo no perder el tiempo...", "talk1");
+	    	            this.uiStage.addActor(texto);
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==2 && texto.completo==true) {
+	    	        	texto.remove();
+	    	            texto = new Texto("De lo contrario... No le ocurrirá nada agradable\na su preciada criatura... Evans, ¿Cierto?", "talk1");
+	    	            this.uiStage.addActor(texto);
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==3 && texto.completo==true) {
+	    	        	texto.remove();
+	    	            texto = new Texto("Si intenta contactar a la policía, tenga claro que\nlo sabré, así que no tiene por qué molestarse.", "talk1");
+	    	            this.uiStage.addActor(texto);
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==4 && texto.completo==true) {
+	    	        	texto.remove();
+	    	            texto = new Texto("Mucha suerte, y buena vida. Confío en sus\ncapacidades... Le veré en unos días.", "talk1");
+	    	            this.uiStage.addActor(texto);
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==5 && texto.completo==true) {
+	    	        	texto.remove();
+	    	        	silueta.remove();
+	    	        	ruido.stop();
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            contador ++;
+	    	        }
+	    	        
+	    	        //FS
+	    	        
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
+	    	            periodicoActor.remove();
+	    	            ResourceManager.musicaTitulo.stop();
+	    	            Parametros.zoom=0.30f;
+	    	            game.setScreen(new FrontierScreen(game));
+	    	        }
+	    	        break;
+	    	        
+	    		case 2:
+	    			if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==0 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("Ya te lo dije, Evans... No podemos quedarnos,\nAlemania ya no es un lugar seguro para nosotros.", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==1 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("Debes ser paciente, ¿Vale? Te prometo\nque mientras estemos juntos, todo irá bien.", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==2 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("Está bien, pero...\n¿No vamos a volver nunca más?", "talk2");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==3 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("Quizás... Dentro de mucho, mucho tiempo...\nVamos, tenemos un largo camino por delante...", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==4 && texto.completo==true) {
+	    	        	texto.remove();
+	    	        	silueta.remove();
+	    	        	ruido.stop();
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            contador ++;
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==true) {
+	    	            periodicoActor.remove();
+	    	            ResourceManager.musicaTitulo.stop();
+	    	            Parametros.zoom=0.30f;
+	    	            game.setScreen(new FrontierScreen(game));
+	    	        }
+	    	        break;
+	    	        
+	    		case 3:
+	    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false) {
+	    	            periodicoActor.remove();
+	    	            ResourceManager.musicaTitulo.stop();
+	    	            Parametros.zoom=0.65f;
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	        }
+	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
+	    	            periodicoActor.remove();
+	    	            ResourceManager.musicaTitulo.stop();
+	    	            Parametros.zoom=0.30f;
+	    	            game.setScreen(new FrontierScreen(game));
+	    	        }
+	    	        break;
+	    			
+	    	}
+    	
+		} else {
+    		texto.completo=true;
+            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+    	}
+    	
         return false;
     }
 
@@ -207,9 +244,29 @@ private Actor silueta;
         uiStage.act();
         
         fadeTimer += delta;
-        if (fadeTimer < 1f) {
-            periodicoActor.getColor().a = fadeTimer;
-            desactivable = true;
+        switch(Parametros.dia) {
+        	case 1:
+                if (fadeTimer < 1f) {
+                    periodicoActor.getColor().a = fadeTimer;
+                    desactivable = true;
+                }
+        		break;
+        	case 2:
+        		if(Parametros.frontera==true) {
+	                if (fadeTimer < 1f) {
+	                    periodicoActor.getColor().a = fadeTimer;
+	                    desactivable = true;
+	                }
+        		}
+        		break;
+        	case 3:
+        		if(Parametros.frontera==true) {
+	                if (fadeTimer < 1f) {
+	                    periodicoActor.getColor().a = fadeTimer;
+	                    desactivable = true;
+	                }
+        		}
+        		break;
         }
 
         batch.begin();
