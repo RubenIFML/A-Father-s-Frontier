@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="10" nextobjectid="395">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="60" height="47" tilewidth="31" tileheight="31" infinite="0" nextlayerid="10" nextobjectid="407">
  <tileset firstgid="1" source="OverWorld.tsx"/>
  <layer id="4" name="Capa de patrones 0" width="60" height="47">
   <data encoding="csv">
@@ -624,7 +624,11 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="375" gid="616" x="1085" y="1302" width="32" height="32"/>
+  <object id="396" x="93" y="1271" width="47.5" height="93">
+   <properties>
+    <property name="name" value="Solid"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="Teletransportes">
   <object id="127" name="frontera" x="1686.5" y="712" width="31" height="93">
@@ -690,6 +694,12 @@
   <object id="390" gid="644" x="341" y="744" width="32" height="32"/>
   <object id="392" gid="645" x="961" y="775" width="32" height="32"/>
   <object id="394" gid="646" x="837" y="682" width="32" height="32"/>
+  <object id="397" gid="616" x="1088.5" y="1305.5" width="32" height="32"/>
+  <object id="400" gid="629" x="930" y="186" width="32" height="32"/>
+  <object id="401" gid="632" x="186" y="1302" width="32" height="32"/>
+  <object id="402" gid="598" x="1457" y="310" width="32" height="32"/>
+  <object id="405" gid="597" x="1488" y="899" width="32" height="32"/>
+  <object id="406" gid="657" x="1023" y="868" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="9" name="over">
   <object id="286" gid="333" x="713" y="341" width="32" height="32"/>

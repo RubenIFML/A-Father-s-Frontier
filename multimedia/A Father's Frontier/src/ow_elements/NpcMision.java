@@ -153,6 +153,22 @@ public class NpcMision extends Element {
 				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
 				    	}
 				    	break;
+			    	case 4:
+				    	if(Parametros.mision_una_lettera_d_amore == true) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 5:
+				    	if(Parametros.mision_buen_chico == true) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
 		    	}
 		    	
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
@@ -547,6 +563,180 @@ public class NpcMision extends Element {
 		            break;
 	    		}
 	    		break;
+	    		
+	    	case 4:
+	    	    if(Parametros.mision_una_lettera_d_amore == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- ¡Misión completada! -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.dinero+=2;
+	    	            Parametros.mision_una_lettera_d_amore=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_una_lettera_d_amore == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    break;
+	    	    
+	    	case 5:
+	    	    if(Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Buen chico -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_buen_chico = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_buen_chico == false && Parametros.mision_buen_chico_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_buen_chico == false && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_buen_chico = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_buen_chico_item=false;
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_buen_chico_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_buen_chico = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.dinero+=2;
+	    	            Parametros.mision_buen_chico_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	break;
 	    }
 	}
 }

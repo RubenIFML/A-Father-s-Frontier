@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Rudolf"/>
+		<item key="selection" value="ueso"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="rudolf"/>
-			<item value="encontraré"/>
-			<item value="tranquilo"/>
-			<item value="brindar"/>
-			<item value="2"/>
+			<item value="ueso"/>
+			<item value="compañía"/>
+			<item value="compañia"/>
+			<item value="un_extrano_muneco"/>
+			<item value="extra9"/>
+			<item value="hijos"/>
+			<item value="arruin"/>
+			<item value="arruinado"/>
+			<item value="-50"/>
+			<item value="3.5"/>
+			<item value="-40"/>
+			<item value="dialogb"/>
+			<item value="dialog"/>
+			<item value="dialo"/>
 			<item value="loop"/>
-			<item value="guau"/>
-			<item value="extrao"/>
-			<item value="vuelva"/>
-			<item value="rio"/>
-			<item value="glow"/>
-			<item value="gloe"/>
-			<item value="system."/>
-			<item value="comp"/>
-			<item value="silueta"/>
 		</list>
 		<list key="replacehistory">
+			<item value="buen_chico"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

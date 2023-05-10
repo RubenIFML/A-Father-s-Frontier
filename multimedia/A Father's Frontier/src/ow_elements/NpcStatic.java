@@ -2,6 +2,7 @@ package ow_elements;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -19,15 +20,17 @@ public class NpcStatic extends Element {
 	private Element dialogBox;
 	private String dialogo1;
 	private String dialogo2;
+	private String direccion;
 
 	public NpcStatic(float x, float y, Stage s, OverWorldScreen nivel, String animacion, String direccion, String dialogo1, String dialogo2) {
 		super(x, y, s);
 		this.nivel = nivel;
 		this.dialogo1 = dialogo1;
 		this.dialogo2 = dialogo2;
+		this.direccion = direccion;
 		
 		prepararAnimacion(animacion, false);
-		switch (direccion) {
+		switch (this.direccion) {
 		case "frente":
 			setAnimation(idleFrente);
 			break;
@@ -42,11 +45,20 @@ public class NpcStatic extends Element {
 			break;
 		case "cola":
 			setAnimation(izquierda);
+            this.animation.setPlayMode(Animation.PlayMode.LOOP);
 			break;
 		}
 		this.setPolygon(8, 32, 23, 5, 5);
+
+        switch (this.direccion) {
+        	case "cola":
+        		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight()/3);
+        		break;
+        	default:
+        		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight());
+        		break;
+        }
 		
-		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight());
 		dialogBox.setPosition(this.getX(),this.getY());
 		dialogBox.setRectangle();
 	}
@@ -109,7 +121,14 @@ public class NpcStatic extends Element {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
 		        bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
-		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        switch (this.direccion) {
+		        	case "cola":
+		        		bocadillo.setPosition(getX()+10, getY()-62 + getHeight() + 10); // ajustar la posición del bocadillo
+		        		break;
+		        	default:
+		        		bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        		break;
+		        }
 		        bocadillo.setName("bocadillo");
 		        nivel.mainStage.addActor(bocadillo);
 		    }

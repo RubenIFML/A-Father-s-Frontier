@@ -111,6 +111,7 @@ private static boolean CalleASuper2 = false;
 //objetos
 private Objeto peluche;
 private Objeto moneda;
+private Objeto hueso;
 
 	public OverWorldScreen(Demo game, Music musicaCiudad, Music tiktak) {
 		super(game);
@@ -280,7 +281,7 @@ private Objeto moneda;
 								
 							case "NpcMarket":
 								NpcStatic npcMarket=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Tengo frío... No tengo dinero, ¡Lo he perdido todo!\nMi mujer me odia, mis hijos no me quieren..."
+										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Tengo frío... No tengo casa... ¡Lo he perdido todo!\nMi mujer me odia, mis hijos no me quieren..."
 										, "Solo quiero un poco de paz... Solo necesito que\nla vida me recompense... No puedo más...");
 								npcs.add(npcMarket);
 								break;
@@ -377,7 +378,6 @@ private Objeto moneda;
 										"(Parece una persona trastornada... Será mejor\nque me vaya cuanto antes...)",
 										"", "", 3);
 								npcs.add(misionNpc3);
-								
 								break;
 								
 							case "mailBox":
@@ -493,10 +493,27 @@ private Objeto moneda;
 								npcs.add(npcSuper2);
 								break;
 								
-							case "NpcMarket":
 
-								// MISION 5
+							case "misionNpc4":
+								if(Parametros.mision_una_lettera_d_amore == false) {
+									NpcMision misionNpc4=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+											"02-OW/Personajes/personaje.viejo_ow.png", "frente", "¿Sabe? Mon amour debería haber llegado\na casa ayer, y sin embargo..."
+											, "Parece que después de todo no ha logrado\npasar la frontera... ¡Dannazione!",
+											"Un secondo... Quella lettera que lleva ahí...\n¡Esa es la firma de la mia amata!",
+											"¿Es para mí? ¡Mamma mia! ¡Grazie mille!\nSei un angelo, tenga esto como propina.", "No la tengo cerca, pero ahora sé que...\nNon importa quanto siamo lontani, ci amiamo.", 4);
+									npcs.add(misionNpc4);
+								}else {}
+									break;
 								
+							case "NpcMarket":
+								if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
+								} else {NpcMision misionNpc5=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
+										, "Ojalá poder hacerle quedarse... Pero no tengo\nnada para alimentarle... ¿Usted tiene algo?",
+										"Si tuviera algo para hacer que el perro se\nquedara conmigo, me sentiría menos solo...",
+										"¿Un hueso? ¡Genial! Así podré hacer que el perro\nse quede conmigo... Tome, como agradecimiento.", "Te llamaré... ¡Kuro! ¿Te gusta?\nAl fin alguien que me aprecia...", 5);
+								npcs.add(misionNpc5);
+								}
 								break;
 								
 								
@@ -571,7 +588,7 @@ private Objeto moneda;
 										"", "", 3);
 								npcs.add(misionNpc3);
 								
-								break;
+								break;								
 
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
@@ -602,6 +619,14 @@ private Objeto moneda;
 									moneda=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.libra.png"
 										, "(¿Dos libras? Vaya, parece que al fin tengo\nun golpe de suerte...)",1);
 									npcs.add(moneda);
+								}
+								break;
+
+							case "hueso":
+								if(Parametros.mision_buen_chico_item) {
+									hueso=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.hueso.png"
+										, "(Vaya, un hueso. ¿Será de humano?\nEn fin, quizás pueda ser útil...)",2);
+									npcs.add(hueso);
 								}
 								break;
 						}
@@ -1127,23 +1152,15 @@ private Objeto moneda;
 	
 	public class ActorComparator implements Comparator<Actor>{
 
-		@Override
-		public int compare(Actor a1, Actor a2) {
-			if(a1.getName()=="bocadillo") {
-				return 2;
-			}
-			else {
-				if(a1.getY()==a2.getY()) {
-					return 0;
-				}
-				if(a1.getY()>a2.getY()) {
-					return -1;
-				}
-				else {
-					return 1;
-				}
-			}
-		}
+	    @Override
+	    public int compare(Actor a1, Actor a2) {
+            int result = Float.compare(a2.getY(), a1.getY());
+            if (result == 0) {
+                return a1.hashCode() - a2.hashCode(); // en caso de empate, se utiliza hashCode()
+            } else {
+                return result;
+            }
+	    }
 	}
 	
 	@Override

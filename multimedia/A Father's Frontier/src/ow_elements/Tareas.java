@@ -22,18 +22,26 @@ public class Tareas extends Actor {
                                       "Un extraño muñeco.",
                                       "El tesoro perdido.",
                                       "El viejo general.",
+                                      "Lettera d'amore.",
+                                      "Buen chico.",
+                                      "Malas vistas.",
+                                      "Busca y captura.",
                                       "Un encuentro agridulce.",
                                       "Dein Kampf.",
-                                      "Lettera d'amore."};
+                                      };
     
     private static boolean[] tareasBoolean = {Parametros.haComidoHoy,
                                               Parametros.haPagadoDeuda,
                                               Parametros.mision_un_extrano_muneco,
                                               Parametros.mision_el_tesoro_perdido,
                                               Parametros.mision_el_viejo_general,
+                                              Parametros.mision_una_lettera_d_amore,
+                                              Parametros.mision_buen_chico,
+                                              Parametros.mision_malas_vistas,
+                                              Parametros.mision_busca_y_captura,
                                               Parametros.mision_un_encuentro_agridulce,
                                               Parametros.mision_dein_kampf,
-                                              Parametros.mision_una_lettera_d_amore};
+                                              };
 
     public Tareas() {
         // Cargar la fuente desde el archivo Peepo.ttf
@@ -87,9 +95,12 @@ public class Tareas extends Actor {
             case 2: valor = Parametros.mision_un_extrano_muneco; break;
             case 3: valor = Parametros.mision_el_tesoro_perdido; break;
             case 4: valor = Parametros.mision_el_viejo_general; break;
-            case 5: valor = Parametros.mision_un_encuentro_agridulce; break;
-            case 6: valor = Parametros.mision_dein_kampf; break;
-            case 7: valor = Parametros.mision_una_lettera_d_amore; break;
+            case 5: valor = Parametros.mision_una_lettera_d_amore; break;
+            case 6: valor = Parametros.mision_buen_chico; break;
+            case 7: valor = Parametros.mision_malas_vistas; break;
+            case 8: valor = Parametros.mision_busca_y_captura; break;
+            case 9: valor = Parametros.mision_un_encuentro_agridulce; break;
+            case 10: valor = Parametros.mision_dein_kampf; break;
             default: break;
         }
         return valor;

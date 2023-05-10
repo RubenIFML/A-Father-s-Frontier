@@ -36,6 +36,7 @@ public class Parametros {
  public static boolean analizado4 = false;
  public static boolean correcto = false;
  public static boolean musicaUnaVez = true;
+// public static boolean interactuandoNpc = false;
  
  //Misiones
  public static boolean haComidoHoy = false;
@@ -55,15 +56,23 @@ public class Parametros {
  public static boolean mision_el_viejo_general_item = true;
  public static boolean mision_el_viejo_general_completada = true;
  public static boolean mision_el_viejo_general_finalizada = false;
+
+ public static boolean mision_una_lettera_d_amore = true;
  
- public static boolean mision_0 = true;
- public static boolean mision_0_completada = true;
- 
- public static boolean mision_1 = true;
- public static boolean mision_1_completada = true;
- 
- public static boolean mision_2 = true;
- public static boolean mision_2_completada = true;
+ public static boolean mision_buen_chico = true;
+ public static boolean mision_buen_chico_item = true;
+ public static boolean mision_buen_chico_completada = true;
+ public static boolean mision_buen_chico_finalizada = false;
+
+ public static boolean mision_malas_vistas = true;
+ public static boolean mision_malas_vistas_item = true;
+ public static boolean mision_malas_vistas_completada = true;
+ public static boolean mision_malas_vistas_finalizada = false;
+
+ public static boolean mision_busca_y_captura = true;
+ public static boolean mision_busca_y_captura_item = true;
+ public static boolean mision_busca_y_captura_completada = true;
+ public static boolean mision_busca_y_captura_finalizada = false;
  
  public static boolean mision_3 = true;
  public static boolean mision_3_completada = true;
@@ -91,9 +100,7 @@ public class Parametros {
  
  public static boolean mision_11 = true;
  public static boolean mision_11_completada = true;
- 
- public static boolean mision_una_lettera_d_amore = true;
- public static boolean mision_una_lettera_d_amore_completada = true;
+
  
  public static boolean mision_un_encuentro_agridulce = true;
  public static boolean mision_un_encuentro_agridulce_completada = true;
