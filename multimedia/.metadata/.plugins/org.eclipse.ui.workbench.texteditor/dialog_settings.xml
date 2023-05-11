@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="ueso"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="ueso"/>
-			<item value="compañía"/>
-			<item value="compañia"/>
-			<item value="un_extrano_muneco"/>
-			<item value="extra9"/>
-			<item value="hijos"/>
-			<item value="arruin"/>
-			<item value="arruinado"/>
-			<item value="-50"/>
-			<item value="3.5"/>
-			<item value="-40"/>
-			<item value="dialogb"/>
-			<item value="dialog"/>
-			<item value="dialo"/>
-			<item value="loop"/>
+			<item value="elemental "/>
+			<item value="buena persona"/>
+			<item value="el_viejo_general"/>
+			<item value="malas_vistas"/>
+			<item value="está"/>
+			<item value="esta"/>
+			<item value="UK Market"/>
+			<item value="uk market"/>
+			<item value="super uk"/>
+			<item value="super"/>
+			<item value="no veo nada"/>
+			<item value="buen chico"/>
+			<item value="buen_chico"/>
+			<item value="misionnpc6"/>
+			<item value="Sur"/>
 		</list>
 		<list key="replacehistory">
+			<item value="elemental_mi_querido_simon"/>
+			<item value="malas_vistas"/>
 			<item value="buen_chico"/>
 		</list>
 	</section>

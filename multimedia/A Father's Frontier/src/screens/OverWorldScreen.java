@@ -506,21 +506,22 @@ private Objeto hueso;
 									break;
 								
 							case "NpcMarket":
-								if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
-								} else {NpcMision misionNpc5=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								NpcMision misionNpc5=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
 										, "Ojalá poder hacerle quedarse... Pero no tengo\nnada para alimentarle... ¿Usted tiene algo?",
 										"Si tuviera algo para hacer que el perro se\nquedara conmigo, me sentiría menos solo...",
 										"¿Un hueso? ¡Genial! Así podré hacer que el perro\nse quede conmigo... Tome, como agradecimiento.", "Te llamaré... ¡Kuro! ¿Te gusta?\nAl fin alguien que me aprecia...", 5);
 								npcs.add(misionNpc5);
-								}
 								break;
 								
 								
 							case "NpcCasaSur":
-								
-								// MISION 6
-								
+								NpcMision misionNpc6=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.extra12_ow.png", "frente", "¡Por la reina Isabel II! ¡No veo un pimiento!\n¡Me estoy quedando ciego, dios santo!"
+										, "¡Si hay alguien ahí, ayúdeme por favor!\n¡Le prometo que le pagaré!",
+										"¿Hay alguien ahí? ¡Que alguien me ayude,\nme he quedado ciego!",
+										"¿Q-qué es esto? ¡No bromee conmigo, no veo!\n¿Unas gafas? ¡Gracias! ¡Por fin puedo ver!", "Así que usted es quien me ha salvado de\nese calvario... Le imaginaba distinto.", 6);
+								npcs.add(misionNpc6);
 								break;
 								
 							case "NpcMovil2":
@@ -575,7 +576,7 @@ private Objeto hueso;
 										"02-OW/Personajes/personaje.extra10_ow.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
 										, "Parezco ser el único que se preocupa por él...\n¿Por qué no vas a comprobar si está bien?",
 										"Hoy he estado en la calle, pero no he visto al viejo\npor ninguna parte... Si lo encuentras, dímelo.",
-										"¿Que Jericho estaba detrás del Super UK? ¡Dios!\nVaya susto me he llevado... ¡Te recompensaré!", "El viejo Jericho cuidaba de mí hace años, pero\ndesde la Gran Guerra, ya no parece ser el mismo...", 2);
+										"¿Que Jericho estaba en la zona suroeste?\nVaya susto me he llevado... ¡Te recompensaré!", "El viejo Jericho cuidaba de mí hace años, pero\ndesde la Gran Guerra, ya no parece ser el mismo...", 2);
 								npcs.add(misionNpc2);
 					    	    }
 								break;
@@ -590,6 +591,28 @@ private Objeto hueso;
 								
 								break;								
 
+							case "misionNpc7":
+					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
+						    	    NpcMision misionNpc7=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+											"02-OW/Personajes/personaje.detective_ow.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
+											, "Pues bien, ¿ha visto al viejo loco que\nvaga por las calles de Greenwich?",
+											"Las piezas de puzle encajan solas...\n¿No cree?",
+											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda\nde una persona como usted para", 7);
+									npcs.add(misionNpc7);
+					    	    } else {}
+					    	    break;
+					    	    
+							case "misionNpc8":
+					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
+						    	    NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.viejo1_ow.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
+										, "El alcohol me está matando... Solo quiero que\nlas voces paren de una vez por todas...",
+										"Tengo mucho miedo... Tengo mucho miedo...\nTengo mucho miedo... Tengo mucho miedo...",
+										"(Así que este es el verdadero Jericho\ndespués de todo...)", "(Un pobre hombre traumatizado que\nha acabado solo en la calle...)", 3);
+								npcs.add(misionNpc8);
+					    	    } else {}
+					    	    break;
+								
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
@@ -626,6 +649,14 @@ private Objeto hueso;
 								if(Parametros.mision_buen_chico_item) {
 									hueso=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.hueso.png"
 										, "(Vaya, un hueso. ¿Será de humano?\nEn fin, quizás pueda ser útil...)",2);
+									npcs.add(hueso);
+								}
+								break;
+
+							case "gafas":
+								if(Parametros.mision_malas_vistas_item) {
+									hueso=new Objeto((float)props.get("x"), (float)props.get("y"),mainStage, this, "02-OW/Objetos/objeto.gafas.png"
+										, "(Parecen unas gafas de baja calidad...\nQuizás les encuentre alguna utilidad)",3);
 									npcs.add(hueso);
 								}
 								break;

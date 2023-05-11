@@ -152,6 +152,7 @@ public final class ResourceManager {
         assets.load("02-OW/Personajes/personaje.extra9_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra10_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.extra11_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.extra12_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.herido_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.perro_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.policia_ow.png", Texture.class);

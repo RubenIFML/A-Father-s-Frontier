@@ -169,9 +169,40 @@ public class NpcMision extends Element {
 				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
 				    	}
 				    	break;
+			    	case 6:
+				    	if(Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 7:
+				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 8:
+				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
 		    	}
 		    	
-		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		    	switch(this.mision) {
+		    		case 6:
+	    				bocadillo.setPosition(getX()+17, getY()-40 + getHeight() + 10); // ajustar la posición del bocadillo
+	    				break;
+		    		default:
+				        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		    			break;
+		    	}
 		        bocadillo.setName("bocadillo");
 		    	nivel.mainStage.addActor(bocadillo);
 		    }
@@ -736,7 +767,351 @@ public class NpcMision extends Element {
 	    	            break;
 	    		    }
 	    	    }
+	    	    break;
+	    	    
+	    	case 6:
+	    	    if(Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Malas vistas -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_malas_vistas = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_malas_vistas == false && Parametros.mision_malas_vistas_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_malas_vistas == false && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_malas_vistas = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_malas_vistas_item=false;
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_malas_vistas_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_item==false && Parametros.mision_malas_vistas_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_malas_vistas = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.dinero+=2;
+	    	            Parametros.mision_malas_vistas_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_item==false && Parametros.mision_malas_vistas_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
 	    	break;
+	    	case 7:
+	    	    if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 5:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("encontrar a ese degenerado, ya que cambia\nde localización todos los días.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 6:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("¿Qué me dice? ¿Lo encontrará por mí?\nLe recompensaré con cuatro jugosas libras.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 7:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Elemental, querido Simon -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_elemental_mi_querido_simon = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Simon: ¿Dónde estará ese anciano loco\nespero que lo encuentre pronto, amigo.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Simon: Ese viejo secuestra-niños tiene\nque andar por alguna parte...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_elemental_mi_querido_simon = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_elemental_mi_querido_simon_item=false;
+	    	            Parametros.dinero+=4;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_elemental_mi_querido_simon_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Simon: Ese viejo secuestra-niños tiene\nque andar por alguna parte...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_elemental_mi_querido_simon = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_elemental_mi_querido_simon_item=false;
+	    	            Parametros.dinero+=4;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_elemental_mi_querido_simon_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Simon: Podría haberlo hecho sin usted,\nsin embargo, he de admitir que ha ayudado.", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	break;
+	    	case 8:
+		    	switch (siguienteInteraccion) {
+		        case 0:
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo1, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 1:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo2, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 2:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo3, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 3:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo4, "talk2");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 4:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo5, "talk2");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 5:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion.hide();
+		            if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {}
+		            else {AudioManager.playSound("02-OW/Audio/sounds/item.wav");}
+		            Parametros.mision_elemental_mi_querido_simon_completada = false;
+		            Parametros.mision_elemental_mi_querido_simon_item = false;
+		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+		            break;
+	    		}
+	    		break;
 	    }
 	}
 }

@@ -25,7 +25,7 @@ public class Tareas extends Actor {
                                       "Lettera d'amore.",
                                       "Buen chico.",
                                       "Malas vistas.",
-                                      "Busca y captura.",
+                                      "Elemental, querido Simon.",
                                       "Un encuentro agridulce.",
                                       "Dein Kampf.",
                                       };
@@ -38,7 +38,7 @@ public class Tareas extends Actor {
                                               Parametros.mision_una_lettera_d_amore,
                                               Parametros.mision_buen_chico,
                                               Parametros.mision_malas_vistas,
-                                              Parametros.mision_busca_y_captura,
+                                              Parametros.mision_elemental_mi_querido_simon,
                                               Parametros.mision_un_encuentro_agridulce,
                                               Parametros.mision_dein_kampf,
                                               };
@@ -98,7 +98,7 @@ public class Tareas extends Actor {
             case 5: valor = Parametros.mision_una_lettera_d_amore; break;
             case 6: valor = Parametros.mision_buen_chico; break;
             case 7: valor = Parametros.mision_malas_vistas; break;
-            case 8: valor = Parametros.mision_busca_y_captura; break;
+            case 8: valor = Parametros.mision_elemental_mi_querido_simon; break;
             case 9: valor = Parametros.mision_un_encuentro_agridulce; break;
             case 10: valor = Parametros.mision_dein_kampf; break;
             default: break;
