@@ -18,7 +18,7 @@ public class Parametros {
  //Estadísticas
  public static int dia = 1;
  public static int segundosFS = 100;
- public static int segundosOW = 180;
+ public static int segundosOW = 240;
  public static int segundosRestantesOW = segundosOW;
  public static int minutosOW = 5;
  public static int dineroAnterior = 0;

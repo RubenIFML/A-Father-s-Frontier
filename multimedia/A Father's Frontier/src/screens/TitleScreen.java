@@ -35,7 +35,7 @@ private float elapsedTime=0;
 	public TitleScreen(Demo game) {
 	    super(game);
 		
-	    Parametros.dia=2;
+	    Parametros.dia=3;
 	    Parametros.controlesActivos=true;
 		Parametros.zona=1;
 		Parametros.haComidoHoy = false;

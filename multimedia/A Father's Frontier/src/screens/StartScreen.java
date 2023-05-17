@@ -50,7 +50,7 @@ private Actor silueta;
         batch = new SpriteBatch();
 	    
         if (Parametros.frontera==false) {
-        	Reloj.tiempoRestante = 180;
+        	Reloj.tiempoRestante = 240;
 	        switch (Parametros.dia) {
 	            case 1:
 	                periodico = new Texture("Menu/periodico.0_0.png");
@@ -62,6 +62,12 @@ private Actor silueta;
 	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos_ow.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(342, 250, 100, 158);
+	                ResourceManager.musicaTitulo.stop();
+	                break;
+	            case 3:
+	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos1_ow.png");
+	                silueta = new Image(siluetaTexture);
+	                silueta.setBounds(362, 240, 76, 164);
 	                ResourceManager.musicaTitulo.stop();
 	                break;
             default:
@@ -93,9 +99,16 @@ private Actor silueta;
         
 
        if((Parametros.dia==2 || Parametros.dia==3) && Parametros.frontera == false) {
-            this.uiStage.addActor(silueta);
-            texto = new Texto("Pero papi, yo no quiero irme de casa...\n¿A dónde vamos? Tengo miedo...", "talk2");
-            texto.completo=true;
+    	    if(Parametros.dia==2) {
+                this.uiStage.addActor(silueta);
+                texto = new Texto("Pero papi, yo no quiero irme de casa...\n¿A dónde vamos? Tengo miedo...", "talk2");
+                texto.completo=true;
+    	    }
+    	    if(Parametros.dia==3) {
+                texto = new Texto("¡SOCORROOOOOOOOOO!\n¡QUE ALGUIEN ME AYUDE!", "talk2");
+                texto.completo=true;
+	           	AudioManager.playSound("02-OW/Audio/sounds/grito.wav");
+    	    }
         	if(texto.completo==true) {
 	            Parametros.zoom=0.65f;
         		texto.completo=false;
@@ -213,20 +226,46 @@ private Actor silueta;
 	    	        break;
 	    	        
 	    		case 3:
-	    	        if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false) {
-	    	            periodicoActor.remove();
-	    	            ResourceManager.musicaTitulo.stop();
-	    	            Parametros.zoom=0.65f;
+	    			if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==0 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("...", "talk1");
+			           	AudioManager.playSound("02-OW/Audio/sounds/disparo.wav");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==1 && texto.completo==true) {
+	     	        	texto.remove();
+	                    this.uiStage.addActor(silueta);
+	     	            texto = new Texto("¡Ja, ja, ja! ¡Justo en la cabeza! ¡Serás cabrón!\n¡Con ese van al menos cinco!", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==2 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("Céntrate, Rudolf. Todavía no hemos terminado.\nMataremos al menos a diez más antes de irnos.", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==3 && texto.completo==true) {
+	     	        	texto.remove();
+	     	            texto = new Texto("¡Ja! Si algo me gusta más que escuchar a los\njudíos gritar, ha de ser tu sadismo, amigo.", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==4 && texto.completo==true) {
+	    	        	texto.remove();
+	    	        	silueta.remove();
+	    	        	ruido.stop();
 	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            contador ++;
 	    	        }
-	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==true) {
+	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==true) {
 	    	            periodicoActor.remove();
 	    	            ResourceManager.musicaTitulo.stop();
 	    	            Parametros.zoom=0.30f;
 	    	            game.setScreen(new FrontierScreen(game));
 	    	        }
 	    	        break;
-	    			
 	    	}
     	
 		} else {

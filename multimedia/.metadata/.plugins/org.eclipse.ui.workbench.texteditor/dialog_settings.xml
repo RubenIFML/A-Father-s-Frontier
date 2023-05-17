@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="corren"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="corren"/>
+			<item value="judíos"/>
+			<item value="silueta"/>
+			<item value="sound"/>
+			<item value="mailbo"/>
+			<item value="buzon"/>
+			<item value="mailbox"/>
+			<item value="t"/>
+			<item value="podría"/>
+			<item value="hija"/>
+			<item value="perro"/>
 			<item value="elemental "/>
 			<item value="buena persona"/>
 			<item value="el_viejo_general"/>
 			<item value="malas_vistas"/>
-			<item value="está"/>
-			<item value="esta"/>
-			<item value="UK Market"/>
-			<item value="uk market"/>
-			<item value="super uk"/>
-			<item value="super"/>
-			<item value="no veo nada"/>
-			<item value="buen chico"/>
-			<item value="buen_chico"/>
-			<item value="misionnpc6"/>
-			<item value="Sur"/>
 		</list>
 		<list key="replacehistory">
 			<item value="elemental_mi_querido_simon"/>

@@ -347,7 +347,7 @@ private Objeto hueso;
 							case "misionNpc":
 								NpcMision misionNpc0=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.extra6_ow.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
-										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
+										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo?Le prometo una jugosa recompensa.",
 										"¿Ha encontrado ya el muñeco de mi hija?\nEra un juguete bastante extraño...",
 										"¡Muchas gracias por recuperar el muñeco\nde mi hija! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
 								npcs.add(misionNpc0);
@@ -383,7 +383,7 @@ private Objeto hueso;
 							case "mailBox":
 								NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-										, "(Has pagado £1 al gobierno por\ntus deudas e impuestos)");
+										, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
 								npcs.add(npcMailBox);
 								break;
 								
@@ -623,7 +623,7 @@ private Objeto hueso;
 							case "mailBox":
 								NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-										, "(Has pagado £1 al gobierno por\ntus deudas e impuestos)");
+										, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
 								npcs.add(npcMailBox);
 								break;
 								
@@ -833,6 +833,12 @@ private Objeto hueso;
 					texto = new Texto("(Todo esto es mi culpa...\nSi hubiésemos permanecido allí...)", "talk2");
 					uiStage.addActor(texto);
 					break;
+				case 3:
+		           	AudioManager.playSound("02-OW/Audio/sounds/respiracion.wav");
+					Parametros.controlesActivos=false;
+					texto = new Texto("(¿Q-qué ha sido todo eso...?\n¿Q-quién es ese Rudolf?)", "talk2");
+					uiStage.addActor(texto);
+					break;
 			}
 		}
 	}
@@ -916,6 +922,45 @@ private Objeto hueso;
 						case 2:
 							texto.remove();
 							texto = new Texto("(Prometo rescatarte, Evans... No importa cómo,\nno permitiré que nada nos separe.)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 3:
+							texto.remove();
+							this.musicaCiudad.play();
+							this.musicaCiudad.setVolume(0.2f);
+							this.musicaCiudad.setLooping(true);
+							reloj.start();
+							Parametros.musicaUnaVez=false;
+							Parametros.controlesActivos=true;
+							break;
+						}
+		    		} else {
+		    			texto.completo=true;
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		    		}
+				}
+			break;
+
+			case 3:
+				if (button == Input.Buttons.LEFT) {
+		    		if(texto.completo==true) {
+						switch(progresion) {
+						case 0:
+							texto.remove();
+							texto = new Texto("(Mi miedo se está volviendo tan intenso que estoy\nempezando a tener visiones extrañas...)", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 1:
+							texto.remove();
+							texto = new Texto("(Es la primera vez en días que no sueño contigo,\nEvans... El último día que tengo para rescatarte...", "talk2");
+							uiStage.addActor(texto);
+							progresion++;
+							break;
+						case 2:
+							texto.remove();
+							texto = new Texto("(Ha de ser hoy, o de lo contrario no será nunca...\nHe de dar todo lo que tengo...)", "talk2");
 							uiStage.addActor(texto);
 							progresion++;
 							break;

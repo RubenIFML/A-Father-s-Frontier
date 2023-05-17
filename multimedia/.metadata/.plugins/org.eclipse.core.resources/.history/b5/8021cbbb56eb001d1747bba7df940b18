@@ -1,7 +1,0 @@
-package game;
-
-public class Postre {
-	String ingredientes;
-	int tiempoPreparacion;
-	
-}

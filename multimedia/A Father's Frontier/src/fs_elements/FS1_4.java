@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import game.Parametros;
 import managers.AudioManager;
-import screens.FrontierScreen;
 
 public class FS1_4 extends Actor {
     private Texture persona4;
@@ -41,7 +40,6 @@ public class FS1_4 extends Actor {
             
             //Estadísticas
             Parametros.dinero-=3;
-            FrontierScreen.reloj.modTiempo(-10);
             
             //Variables
         	Parametros.analizar=false;
@@ -60,7 +58,6 @@ public class FS1_4 extends Actor {
             
             //Estadísticas
             Parametros.dinero+=3;
-            FrontierScreen.reloj.modTiempo(20);
             //Variables
         	Parametros.analizar=false;
         	Parametros.analizado4=true;

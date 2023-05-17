@@ -168,6 +168,7 @@ public class Objeto extends Element {
 		            this.remove();
 		            break;
 			    }
+	            break;
 		    case 3:
 			    switch (siguienteInteraccion) {
 			    case 0:
