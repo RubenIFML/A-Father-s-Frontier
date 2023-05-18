@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="31" tileheight="31" infinite="0" nextlayerid="8" nextobjectid="52">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="31" tileheight="31" infinite="0" nextlayerid="9" nextobjectid="54">
  <tileset firstgid="1" source="OverWorld.Interiores.tsx"/>
+ <tileset firstgid="321" source="OverWorld.tsx"/>
  <layer id="1" name="Capa de patrones 0" width="25" height="25">
   <data encoding="csv">
 206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,
@@ -147,6 +148,9 @@
 </data>
  </layer>
  <objectgroup id="6" name="Teletransportes"/>
+ <objectgroup id="8" name="npc">
+  <object id="53" gid="979" x="248" y="372" width="32" height="32"/>
+ </objectgroup>
  <objectgroup id="5" name="Sólidos">
   <properties>
    <property name="name" value="Solid"/>

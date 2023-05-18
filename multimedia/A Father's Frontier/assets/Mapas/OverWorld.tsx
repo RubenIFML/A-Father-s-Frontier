@@ -271,6 +271,36 @@
    <property name="npc" value="NpcPlaza2"/>
   </properties>
  </tile>
+ <tile id="646">
+  <properties>
+   <property name="npc" value="NpcBox"/>
+  </properties>
+ </tile>
+ <tile id="647">
+  <properties>
+   <property name="npc" value="NpcTree"/>
+  </properties>
+ </tile>
+ <tile id="648">
+  <properties>
+   <property name="npc" value="NpcMovil9"/>
+  </properties>
+ </tile>
+ <tile id="649">
+  <properties>
+   <property name="npc" value="NpcMovil10"/>
+  </properties>
+ </tile>
+ <tile id="650">
+  <properties>
+   <property name="npc" value="NpcPlaza3"/>
+  </properties>
+ </tile>
+ <tile id="651">
+  <properties>
+   <property name="npc" value="NpcSur"/>
+  </properties>
+ </tile>
  <tile id="656">
   <properties>
    <property name="npc" value="misionNpc8"/>
