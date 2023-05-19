@@ -1042,8 +1042,6 @@ private Objeto duxer;
 				        	maletin.hide();
 				        	sopa.remove();
 				        	botella.remove();
-	
-							Parametros.mision_un_encuentro_agridulce=false;
 							Parametros.analizar=false;
 							Parametros.analizado4=false;	
 							terminado = true;

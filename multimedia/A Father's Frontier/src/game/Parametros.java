@@ -73,37 +73,21 @@ public class Parametros {
  public static boolean mision_elemental_mi_querido_simon_item = true;
  public static boolean mision_elemental_mi_querido_simon_completada = true;
  public static boolean mision_elemental_mi_querido_simon_finalizada = false;
- 
- public static boolean mision_3 = true;
- public static boolean mision_3_completada = true;
- 
- public static boolean mision_4 = true;
- public static boolean mision_4_completada = true;
- 
- public static boolean mision_5 = true;
- public static boolean mision_5_completada = true;
- 
- public static boolean mision_6 = true;
- public static boolean mision_6_completada = true;
- 
- public static boolean mision_7 = true;
- public static boolean mision_7_completada = true;
- 
- public static boolean mision_8 = true;
- public static boolean mision_8_completada = true;
- 
- public static boolean mision_9 = true;
- public static boolean mision_9_completada = true;
- 
- public static boolean mision_10 = true;
- public static boolean mision_10_completada = true;
- 
- public static boolean mision_11 = true;
- public static boolean mision_11_completada = true;
 
- 
- public static boolean mision_un_encuentro_agridulce = true;
- public static boolean mision_un_encuentro_agridulce_completada = true;
+ public static boolean mision_magia_blanca = true;
+ public static boolean mision_magia_blanca_item = true;
+ public static boolean mision_magia_blanca_completada = true;
+ public static boolean mision_magia_blanca_finalizada = false;
+
+ public static boolean mision_caos_en_la_ciudad = true;
+ public static boolean mision_caos_en_la_ciudad_item = true;
+ public static boolean mision_caos_en_la_ciudad_completada = true;
+ public static boolean mision_caos_en_la_ciudad_finalizada = false;
+
+ public static boolean mision_un_glamuroso_collar = true;
+ public static boolean mision_un_glamuroso_collar_item = true;
+ public static boolean mision_un_glamuroso_collar_completada = true;
+ public static boolean mision_un_glamuroso_collar_finalizada = false;
  
  public static boolean mision_dein_kampf = true;
  public static boolean mision_dein_kampf_completada = true;

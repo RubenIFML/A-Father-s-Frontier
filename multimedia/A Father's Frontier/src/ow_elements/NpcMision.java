@@ -193,6 +193,38 @@ public class NpcMision extends Element {
 				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
 				    	}
 				    	break;
+			    	case 9:
+				    	if(Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 10:
+				    	if(Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 11:
+				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
+			    	case 12:
+				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    	}
+				    	else {
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    	}
+				    	break;
 		    	}
 		    	
 		    	switch(this.mision) {
@@ -1112,6 +1144,255 @@ public class NpcMision extends Element {
 		            break;
 	    		}
 	    		break;
+	    	
+	    	case 9:
+	    	    if(Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Magia blanca -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_magia_blanca = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_magia_blanca == false && Parametros.mision_magia_blanca_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_magia_blanca == false && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¡Esa es mi...! Digo... Esa es mi bolsa...\nMuchas gracias, amigo... No lo cuente...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_magia_blanca = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_magia_blanca_item=false;
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_magia_blanca_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_item==false && Parametros.mision_magia_blanca_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¡Esa es mi...! Digo... Esa es mi bolsa...\nMuchas gracias, amigo... No lo cuente...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_magia_blanca = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.dinero+=2;
+	    	            Parametros.mision_magia_blanca_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_item==false && Parametros.mision_magia_blanca_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Ni una palabra a nadie de lo que ha\nsucedido entre nosotros, ¿Entendido?", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	break;
+	    	case 10:
+	    	    if(Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo3, "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo4, "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Un glamuroso collar -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_un_glamuroso_collar = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_un_glamuroso_collar == false && Parametros.mision_un_glamuroso_collar_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo5, "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_un_glamuroso_collar == false && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Es ese mi collar? ¡Entréguemelo de inmediato!\nAquí tiene su recompensa, no se muera de hambre.", "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_un_glamuroso_collar = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_un_glamuroso_collar_item=false;
+	    	            Parametros.dinero+=4;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_un_glamuroso_collar_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_item==false && Parametros.mision_un_glamuroso_collar_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Es ese mi collar? ¡Entréguemelo de inmediato!\nTome su recompensa, no muera de hambre.", "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_un_glamuroso_collar = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.dinero+=4;
+	    	            Parametros.mision_un_glamuroso_collar_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_item==false && Parametros.mision_un_glamuroso_collar_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Haber encontrado este collar no le hace menos\npordiosero de lo que es, ¿Sabe?", "talk2");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	break;
 	    }
 	}
 }

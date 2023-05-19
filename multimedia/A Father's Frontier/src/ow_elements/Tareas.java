@@ -26,7 +26,9 @@ public class Tareas extends Actor {
                                       "Buen chico.",
                                       "Malas vistas.",
                                       "Elemental, querido Simon.",
-                                      "Un encuentro agridulce.",
+                                      "Magia blanca.",
+                                      "Un glamuroso collar.",
+                                      "Caos en la ciudad.",
                                       "Dein Kampf.",
                                       };
     
@@ -39,7 +41,9 @@ public class Tareas extends Actor {
                                               Parametros.mision_buen_chico,
                                               Parametros.mision_malas_vistas,
                                               Parametros.mision_elemental_mi_querido_simon,
-                                              Parametros.mision_un_encuentro_agridulce,
+                                              Parametros.mision_magia_blanca,
+                                              Parametros.mision_un_glamuroso_collar,
+                                              Parametros.mision_caos_en_la_ciudad,
                                               Parametros.mision_dein_kampf,
                                               };
 
@@ -99,8 +103,10 @@ public class Tareas extends Actor {
             case 6: valor = Parametros.mision_buen_chico; break;
             case 7: valor = Parametros.mision_malas_vistas; break;
             case 8: valor = Parametros.mision_elemental_mi_querido_simon; break;
-            case 9: valor = Parametros.mision_un_encuentro_agridulce; break;
-            case 10: valor = Parametros.mision_dein_kampf; break;
+            case 9: valor = Parametros.mision_magia_blanca; break;
+            case 10: valor = Parametros.mision_un_glamuroso_collar; break;
+            case 11: valor = Parametros.mision_caos_en_la_ciudad; break;
+            case 12: valor = Parametros.mision_dein_kampf; break;
             default: break;
         }
         return valor;
