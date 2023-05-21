@@ -149,7 +149,7 @@
  </layer>
  <objectgroup id="6" name="Teletransportes"/>
  <objectgroup id="8" name="npc">
-  <object id="53" gid="979" x="248" y="372" width="32" height="32"/>
+  <object id="53" gid="979" x="248.75" y="435.75" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="5" name="Sólidos">
   <properties>

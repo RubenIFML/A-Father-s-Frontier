@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="pordio"/>
+		<item key="selection" value="loadFu"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="pordio"/>
-			<item value="pordiosero"/>
-			<item value="misionNpc9"/>
-			<item value="talk1"/>
-			<item value="magia_blanca"/>
-			<item value="npc9"/>
-			<item value="pasado1"/>
-			<item value="pasado"/>
-			<item value="malas_vistas"/>
-			<item value="npcsur"/>
-			<item value="actual"/>
-			<item value="vergü"/>
-			<item value="movil5"/>
-			<item value="11"/>
-			<item value="plaza3"/>
+			<item value="loadfu"/>
+			<item value="silue"/>
+			<item value="mailbo"/>
+			<item value="casa del sur"/>
+			<item value="casa"/>
+			<item value="tension"/>
+			<item value="loadfull"/>
+			<item value="ruido"/>
+			<item value="protagonista.final"/>
+			<item value="protagonista_final"/>
+			<item value="personajes."/>
+			<item value="personajes"/>
+			<item value="190"/>
+			<item value="personaje.recuerdos1_ow"/>
+			<item value="recuerdos1"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value="caos_en_la_ciudad"/>
 			<item value="talk2"/>
 			<item value="un_glamuroso_collar"/>
 			<item value="magia_blanca"/>
@@ -34,10 +36,10 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1021"/>
-		<item key="DIALOG_Y_ORIGIN" value="134"/>
-		<item key="DIALOG_WIDTH" value="322"/>
-		<item key="DIALOG_HEIGHT" value="329"/>
+		<item key="DIALOG_X_ORIGIN" value="1171"/>
+		<item key="DIALOG_Y_ORIGIN" value="527"/>
+		<item key="DIALOG_WIDTH" value="504"/>
+		<item key="DIALOG_HEIGHT" value="413"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>

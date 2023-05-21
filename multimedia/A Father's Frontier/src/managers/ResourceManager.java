@@ -33,6 +33,8 @@ public final class ResourceManager {
 		assets.load("Mapas/OverWorld.tmx", TiledMap.class);
 		assets.load("Mapas/CasaProtagonista.tmx", TiledMap.class);
 		assets.load("Mapas/SuperUKMarket.tmx", TiledMap.class);
+		assets.load("Mapas/CasaSur.tmx", TiledMap.class);
+		assets.load("Mapas/Habitacion.tmx", TiledMap.class);
 		
         //Menú
 		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
@@ -51,8 +53,10 @@ public final class ResourceManager {
         assets.load("Menu/dialogoOW.png", Texture.class);
         assets.load("Menu/listaTareas_sinExpandir.png", Texture.class);
         assets.load("Menu/controlesOw.png", Texture.class);
+        assets.load("Menu/controlesFs.png", Texture.class);
         assets.load("Menu/controlesInicialesOw.png", Texture.class);
         assets.load("Menu/controlesIniciales1Ow.png", Texture.class);
+        assets.load("Menu/controlesInicialesFs.png", Texture.class);
        
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
@@ -93,7 +97,8 @@ public final class ResourceManager {
         assets.load("01-FS/Objetos/objeto.pistola.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.botella.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.carta.png", Texture.class);
-        assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);
+        assets.load("01-FS/Objetos/objeto.cuchillo.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.duxer.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.hucha.png", Texture.class);
         assets.load("01-FS/Objetos/objeto.llave.png", Texture.class);
@@ -162,6 +167,10 @@ public final class ResourceManager {
         assets.load("02-OW/Personajes/personaje.recuerdos_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.viejo_ow.png", Texture.class);
         assets.load("02-OW/Personajes/personaje.viejo1_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.final1_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.final2_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.final3_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/personaje.recuerdos1_ow.png", Texture.class);
         
         //Tiles
         assets.load("02-OW/Tiles/tree.png", Texture.class);
@@ -191,6 +200,7 @@ public final class ResourceManager {
         assets.load("01-FS/Audio/sounds/duxer.wav", Sound.class);
         assets.load("01-FS/Audio/sounds/llaves.wav", Sound.class);
         assets.load("01-FS/Audio/sounds/maletin.wav", Sound.class);
+        assets.load("01-FS/Audio/sounds/tension.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/pasos.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/comprar.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/mision.wav", Sound.class);
@@ -201,6 +211,10 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/respiracion.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/grito.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/disparo.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/forzarPuerta.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/romperPuerta.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/policia.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/apunalar.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);

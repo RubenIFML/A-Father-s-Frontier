@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="fs_elements.FS2_3"/>
     <fullyQualifiedTypeName name="fs_elements.FS2_4"/>
     <fullyQualifiedTypeName name="fs_elements.FS3_1"/>
     <fullyQualifiedTypeName name="fs_elements.FS3_2"/>
@@ -40,7 +39,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
     <fullyQualifiedTypeName name="ow_elements.TareasSinExpandir"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="ow_elements.Dinero"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMailBox"/>
@@ -58,6 +56,8 @@
     <fullyQualifiedTypeName name="game.Postre"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.AlphaAction"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Animation"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.TextureRegion"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g3d.model.Animation"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Animation"/>
 </qualifiedTypeNameHistroy>

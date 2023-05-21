@@ -35,7 +35,7 @@ public class NpcStatic extends Element {
 			setAnimation(idleFrente);
 			break;
 		case "izquierda":
-			setAnimation(idleIzquierda);
+			setAnimation(getIdleIzquierda());
 			break;
 		case "derecha":
 			setAnimation(idleDerecha);

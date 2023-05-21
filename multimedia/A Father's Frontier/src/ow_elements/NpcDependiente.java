@@ -34,7 +34,7 @@ public class NpcDependiente extends Element {
 			setAnimation(idleFrente);
 			break;
 		case "izquierda":
-			setAnimation(idleIzquierda);
+			setAnimation(getIdleIzquierda());
 			break;
 		case "derecha":
 			setAnimation(idleDerecha);
@@ -166,7 +166,7 @@ public class NpcDependiente extends Element {
 			            break;
 			        case 2:
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-						setAnimation(idleIzquierda);
+						setAnimation(getIdleIzquierda());
 			            interaccion.hide();
 			            interaccion = new Texto(this.dialogo3, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);

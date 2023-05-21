@@ -41,7 +41,7 @@ public class NpcMision extends Element {
 			setAnimation(idleFrente);
 			break;
 		case "izquierda":
-			setAnimation(idleIzquierda);
+			setAnimation(getIdleIzquierda());
 			break;
 		case "derecha":
 			setAnimation(idleDerecha);
@@ -981,7 +981,7 @@ public class NpcMision extends Element {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto("Simon: ¿Dónde estará ese anciano loco\nespero que lo encuentre pronto, amigo.", "talk1");
+	    	            interaccion = new Texto("Simon: ¿Dónde estará ese anciano loco?\nEspero que lo encuentre pronto, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -1124,7 +1124,7 @@ public class NpcMision extends Element {
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;
-		        case 4:
+		        case 4:	
 		        	interaccion.remove();
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion = new Texto(this.dialogo5, "talk2");
@@ -1393,6 +1393,195 @@ public class NpcMision extends Element {
 	    		    }
 	    	    }
 	    	break;
+	    	case 11:
+	    	    if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	        
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto(this.dialogo1, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo2, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo3, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 3:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo4, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 4:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto(this.dialogo5, "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 5:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            tarjeta = new TarjetaDeZona("- Caos en la ciudad -",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
+	    	            Parametros.mision_caos_en_la_ciudad = false;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if(Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("Espero que no le moleste que no vaya a verle...\n¿Ha ido a avisarle ya? Puedo recomensarle...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Ha hablado con mi \"amigo\"?\nS-se ha enfadado, ¿Verdad?", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("E-en f-f-f-fin... No pasa nada...\nA-aquí tiene su recompensa...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_caos_en_la_ciudad = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_caos_en_la_ciudad_item=false;
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_caos_en_la_ciudad_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_finalizada == false) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("¿Ha hablado con mi \"amigo\"?\nS-se ha enfadado, ¿Verdad?", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("E-en f-f-f-fin... No pasa nada...\nA-aquí tiene su recompensa...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 2:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.mision_caos_en_la_ciudad = true;
+	    	            tarjeta = new TarjetaDeZona("¡Misión completada!",1);
+	    	            nivel.uiStage.addActor(tarjeta);
+	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
+	    	            Parametros.mision_caos_en_la_ciudad_item=false;
+	    	            Parametros.dinero+=2;
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.mision_caos_en_la_ciudad_finalizada=true;
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	    
+	    	    else if (Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_item==false && Parametros.mision_caos_en_la_ciudad_finalizada == true) {
+	    		    switch (siguienteInteraccion) {
+	    	        case 0:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion = new Texto("C-creo que soy hombre muerto...\nDebí haberme presentado...", "talk1");
+	    	            this.nivel.uiStage.addActor(interaccion);
+	    	            siguienteInteraccion++;
+	    	            break;
+	    	        case 1:
+	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
+	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+	    	            break;
+	    		    }
+	    	    }
+	    	break;
+	    	case 12:
+		    	switch (siguienteInteraccion) {
+		        case 0:
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo1, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 1:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo2, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 2:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo3, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 3:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion = new Texto(this.dialogo4, "talk1");
+		            this.nivel.uiStage.addActor(interaccion);
+		            siguienteInteraccion++;
+		            break;
+		        case 4:
+		        	interaccion.remove();
+		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+		            interaccion.hide();
+		            if (Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_item==false && Parametros.mision_caos_en_la_ciudad_finalizada == false) {}
+		            else {AudioManager.playSound("02-OW/Audio/sounds/item.wav");}
+		            Parametros.mision_caos_en_la_ciudad_completada = false;
+		            Parametros.mision_caos_en_la_ciudad_item = false;
+		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
+		            break;
+	    		}
+	    		break;
 	    }
 	}
 }

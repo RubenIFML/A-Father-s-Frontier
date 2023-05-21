@@ -23,7 +23,7 @@ import managers.ResourceManager;
 public class Element extends Actor{
 	protected Animation<TextureRegion> animation;
 	protected float animationTime;
-	protected Vector2 velocity;
+	public Vector2 velocity;
 	protected Vector2 acceleration;
 	protected float deceleration;
 	protected float maxSpeed;
@@ -40,14 +40,14 @@ public class Element extends Actor{
     private Array<TextureRegion> espaldaArray;
     private Array<TextureRegion> derechaArray;
     private Array<TextureRegion> izquierdaArray;
-    protected Animation<TextureRegion> idleFrente;
-    protected Animation<TextureRegion> idleIzquierda;
-    protected Animation<TextureRegion> idleDerecha;
-    protected Animation<TextureRegion> idleEspaldas;
-    protected Animation<TextureRegion> frente;
-    protected Animation<TextureRegion> espalda;
-    protected Animation<TextureRegion> derecha;
-    protected Animation<TextureRegion> izquierda;
+    public Animation<TextureRegion> idleFrente;
+    public Animation<TextureRegion> idleIzquierda;
+    public Animation<TextureRegion> idleDerecha;
+    public Animation<TextureRegion> idleEspaldas;
+    public Animation<TextureRegion> frente;
+    public Animation<TextureRegion> espalda;
+    public Animation<TextureRegion> derecha;
+    public Animation<TextureRegion> izquierda;
 	
 	
 	
@@ -485,7 +485,7 @@ public class Element extends Actor{
 	        espaldaArray = animationArray[4];
 	
 	        idleFrente = new Animation<TextureRegion>(0.15f, idleArray.get(0));
-	        idleIzquierda = new Animation<TextureRegion>(0.15f, idleArray.get(1));
+	        setIdleIzquierda(new Animation<TextureRegion>(0.15f, idleArray.get(1)));
 	        idleDerecha = new Animation<TextureRegion>(0.15f, idleArray.get(2));
 	        idleEspaldas = new Animation<TextureRegion>(0.15f, idleArray.get(3));
 	        
@@ -508,5 +508,15 @@ public class Element extends Actor{
 	
 	public void reanimate() {
 		this.setEnabled(true);
+	}
+
+
+	public Animation<TextureRegion> getIdleIzquierda() {
+		return idleIzquierda;
+	}
+
+
+	public void setIdleIzquierda(Animation<TextureRegion> idleIzquierda) {
+		this.idleIzquierda = idleIzquierda;
 	}
 }
