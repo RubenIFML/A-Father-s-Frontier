@@ -534,7 +534,7 @@
     <property name="name" value="Solid"/>
    </properties>
   </object>
-  <object id="139" x="217" y="651" width="217" height="31">
+  <object id="139" x="185.5" y="651" width="279.833" height="31">
    <properties>
     <property name="name" value="Solid"/>
    </properties>
@@ -666,17 +666,17 @@
     <property name="name" value="casa"/>
    </properties>
   </object>
-  <object id="132" name="superUk2" x="186" y="651" width="31" height="31">
+  <object id="132" name="superUk2" x="185.75" y="661.75" width="31" height="31">
    <properties>
     <property name="name" value="superUk2"/>
    </properties>
   </object>
-  <object id="133" name="superUk" x="434" y="651" width="31" height="31">
+  <object id="133" name="superUk" x="434" y="662" width="31" height="31">
    <properties>
     <property name="name" value="superUk"/>
    </properties>
   </object>
-  <object id="134" x="1178" y="1302" width="31" height="31">
+  <object id="134" x="1643" y="744" width="31" height="31">
    <properties>
     <property name="name" value="StartTrabajo"/>
    </properties>

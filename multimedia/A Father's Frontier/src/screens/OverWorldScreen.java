@@ -65,11 +65,14 @@ public float mouseX;
 public float mouseY;
 private Vector3 m3d;
 private Niebla niebla;
+private Niebla oscuridad;
 private Music ambiente;
 private Music ruido;
 
 private Texture blackBackgroundTexture;
 private Actor blackBackgroundActor;
+private Texture periodicoFinalTextura;
+private Actor periodicoFinalActor;
 private Texture planoTexture;
 private Actor planoActor;
 private Texture controlesTexture;
@@ -96,7 +99,6 @@ private Solid ow2;
 private Solid start;
 private Music musicaCiudad;
 private Music tiktak;
-private Music muerte;
 private Reloj reloj;
 private Dinero dinero;
 private TarjetaDeZona tarjeta;
@@ -120,6 +122,10 @@ private static boolean CalleASuper2 = false;
 private Objeto peluche;
 private Objeto moneda;
 private Objeto hueso;
+private Music policia;
+private Music lloros;
+private Music risa;
+private Music scary;
 
 private Element bolsa;
 
@@ -160,6 +166,9 @@ private Animation<TextureRegion> anim;
 		blackBackgroundTexture = new Texture(Gdx.files.internal("Menu/blackBackground.png"));
 		blackBackgroundActor = new Image(blackBackgroundTexture);
 		blackBackgroundActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+		periodicoFinalTextura = new Texture(Gdx.files.internal("Menu/periodico.0_1.png"));
+		periodicoFinalActor = new Image(periodicoFinalTextura);
+		periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 		planoActor = new Image(planoTexture);
 		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesOw.png"));
 		controlesActor = new Image(controlesTexture);
@@ -168,7 +177,6 @@ private Animation<TextureRegion> anim;
 		reloj = new Reloj();
 		dinero = new Dinero();
 		tareasSinExpandir = new TareasSinExpandir();
-		muerte = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/muerte.wav"));
         
 		escena1T = new Texture("02-OW/personajes/personaje.final1_ow.png");
 		escena1 = new Image(escena1T);
@@ -195,6 +203,15 @@ private Animation<TextureRegion> anim;
 			}
 			else if(Parametros.dia==4) {
 				this.musicaCiudad = ruido;
+				policia = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/policia.wav"));
+				policia.setLooping(true);
+				lloros = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/lloros.wav"));
+				lloros.setLooping(true);
+				risa = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/risa.wav"));
+				risa.setLooping(true);
+				scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.wav"));
+				scary.setLooping(true);
+				TrabajoACalle=true;
 			}
 			
 		}
@@ -330,7 +347,7 @@ private Animation<TextureRegion> anim;
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
-										, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
+										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
 						
@@ -409,7 +426,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc":
 								NpcMision misionNpc0=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.extra6_ow.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
-										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo?Le prometo una jugosa recompensa.",
+										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo? Le prometo que le recompensaré.",
 										"¿Ha encontrado ya el muñeco de mi hija?\nEra un juguete bastante extraño...",
 										"¡Muchas gracias por recuperar el muñeco\nde mi hija! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
 								npcs.add(misionNpc0);
@@ -445,7 +462,7 @@ private Animation<TextureRegion> anim;
 							case "mailBox":
 								NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-										, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
+										, "(Ha pagado £" + Parametros.precioImpuestos + " al gobierno por\ntus deudas e impuestos)");
 								npcs.add(npcMailBox);
 								break;
 								
@@ -541,18 +558,18 @@ private Animation<TextureRegion> anim;
 								npcs.add(npcPerro);
 								break;
 								
-							case "NpcSuper1":
-								NpcStatic npcSuper1=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "Hacía años que no veía un supermercado\ntan vacío... No hay prácticamente nada."
-										, "Parece que vienen unos años duros...\nLe recomiendo prepararse para lo peor...");
-								npcs.add(npcSuper1);
+							case "NpcSuper3":
+								NpcStatic npcSuper3=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "A penas hay comida en buen estado en este\nsupermercado... Es un sitio horrible."
+										, "Cualquier día de estos van a dejar que\nnos muramos de hambre, ya verá...");
+								npcs.add(npcSuper3);
 								break;
 								
-							case "NpcSuper2":
-								NpcStatic npcSuper2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Mi mujer insiste en que sea yo quien haga\nlas compras de la casa..."
-										, "¿¡Qué va a ser lo próximo!? ¿¡Ponerme un delantal\ny limpiar la casa!? ¡Por dios!");
-								npcs.add(npcSuper2);
+							case "NpcSuper4":
+								NpcStatic npcSuper4=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Todos estos inmigrantes judíos que están llegando\nal país... No me dan buena espina..."
+										, "De aquí a unos meses este sitio se va a\nconvertir en un parque para delincuentes.");
+								npcs.add(npcSuper4);
 								break;
 								
 
@@ -659,16 +676,18 @@ private Animation<TextureRegion> anim;
 											"02-OW/Personajes/personaje.detective_ow.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
 											, "Pues bien, ¿ha visto al viejo loco que\nvaga por las calles de Greenwich?",
 											"Las piezas de puzle encajan solas...\n¿No cree?",
-											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda\nde una persona como usted para", 7);
+											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda de una\npersona como usted para encontrar a ese", 7);
 									npcs.add(misionNpc7);
 					    	    } else {}
 					    	    break;
 
 							case "misionNpc8":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
-						    	     if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {}
+						    	    System.out.println("Se cumple 1"); 
+					    	    	if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {System.out.println("No se cumple 2");}
 					    	    	 else {
-						    	    	NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+					    	    		 System.out.println("Se cumple 2");
+					    	    		 NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 												"02-OW/Personajes/personaje.viejo1_ow.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
 												, "El alcohol me está matando... Solo quiero que\nlas voces paren de una vez por todas...",
 												"Tengo mucho miedo... Tengo mucho miedo...\nTengo mucho miedo... Tengo mucho miedo...",
@@ -681,14 +700,14 @@ private Animation<TextureRegion> anim;
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
-										, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
+										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
 								
 							case "mailBox":
 								NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-										, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
+										, "(Ha pagado £" + Parametros.precioImpuestos + " al gobierno por\ntus deudas e impuestos)");
 								npcs.add(npcMailBox);
 								break;
 								
@@ -800,17 +819,17 @@ private Animation<TextureRegion> anim;
 								npcs.add(npcPerro);
 								break;
 								
-							case "NpcSuper1":
-								NpcStatic npcSuper1=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "Hacía años que no veía un supermercado\ntan vacío... No hay prácticamente nada."
-										, "Parece que vienen unos años duros...\nLe recomiendo prepararse para lo peor...");
-								npcs.add(npcSuper1);
+							case "NpcSuper3":
+								NpcStatic npcSuper3=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "¡Apártese de mi comida! ¡Ni se le ocurra\ncogerla, la he visto yo primero!"
+										, "¿Qué se ha creído?\n¡Tengo hijos a los que alimentar!");
+								npcs.add(npcSuper3);
 								break;
 								
 							case "NpcSuper2":
 								NpcStatic npcSuper2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Mi mujer insiste en que sea yo quien haga\nlas compras de la casa..."
-										, "¿¡Qué va a ser lo próximo!? ¿¡Ponerme un delantal\ny limpiar la casa!? ¡Por dios!");
+										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Están cayendo bombas... BOMBAS encima de\nnuestro país..."
+										, "Si esto no acaba pronto, no se va a salvar\nni un alma...");
 								npcs.add(npcSuper2);
 								break;
 
@@ -927,20 +946,22 @@ private Animation<TextureRegion> anim;
 											"02-OW/Personajes/personaje.detective_ow.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
 											, "Pues bien, ¿ha visto al viejo loco que\nvaga por las calles de Greenwich?",
 											"Las piezas de puzle encajan solas...\n¿No cree?",
-											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda\nde una persona como usted para", 7);
+											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda de una\npersona como usted para encontrar a ese", 7);
 									npcs.add(misionNpc7);
 					    	    } else {}
 					    	    break;
 					    	    
 							case "misionNpc8":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
-					    	    	 if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {}
+						    	    System.out.println("Se cumple 1"); 
+					    	    	if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {System.out.println("No se cumple 2");}
 					    	    	 else {
-						    	    	NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
+					    	    		 System.out.println("Se cumple 2");
+					    	    		 NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
 												"02-OW/Personajes/personaje.viejo1_ow.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
 												, "El alcohol me está matando... Solo quiero que\nlas voces paren de una vez por todas...",
 												"Tengo mucho miedo... Tengo mucho miedo...\nTengo mucho miedo... Tengo mucho miedo...",
-												"(Así que este es el verdadero Jericho\ndespués de todo...)", "(Un pobre hombre traumatizado que\nha acabado solo en la calle...)", 3);
+												"(Así que este es el verdadero Jericho\ndespués de todo...)", "(Un pobre hombre traumatizado que\nha acabado solo en la calle...)", 8);
 									    npcs.add(misionNpc8);
 					    	    	 }
 					    	    } else {}
@@ -979,14 +1000,14 @@ private Animation<TextureRegion> anim;
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
-										, "Serán 3 libras, si es tan amable.\n(Pones las tres libras encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
+										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
 								
 							case "mailBox":
 								NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-										, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
+										, "(Ha pagado £" + Parametros.precioImpuestos + " al gobierno por\ntus deudas e impuestos)");
 								npcs.add(npcMailBox);
 								break;
 								
@@ -1048,20 +1069,23 @@ private Animation<TextureRegion> anim;
 						case "mailBox":
 							NpcMailBox npcMailBox=new NpcMailBox((float)props.get("x"), (float)props.get("y"),mainStage, this,
 									"02-OW/Tiles/mailBox.png", "(He de pagar mis deudas, de lo contrario\nme echarán de casa...)"
-									, "(Ha pagado £1 al gobierno por\ntus deudas e impuestos)");
+									, "(Ha pagado £" + Parametros.precioImpuestos + " al gobierno por\ntus deudas e impuestos)");
 							npcs.add(npcMailBox);
 							break;
 						}
 					}
-					TrabajoACalle=true;
 					break;
 			}
 		
 		ArrayList<MapObject> elementos;		
 
 		if(Parametros.zona==2) {
-			niebla = new Niebla(mapWidthInPixels, mapHeightInPixels);
+			niebla = new Niebla(mapWidthInPixels, mapHeightInPixels, "Menu/niebla.png");
 		    mainStage.addActor(niebla);
+		    if(Parametros.dia==4){
+				oscuridad = new Niebla(mapWidthInPixels, mapHeightInPixels, "Menu/oscuridad.png");
+			    mainStage.addActor(oscuridad);
+			}
 		}
 		    
 		elementos=getRectangleList("Solid");
@@ -1102,16 +1126,6 @@ private Animation<TextureRegion> anim;
 		}
 		
 		else if(Parametros.zona==2) {
-			if (CalleASuper1==true){
-				elementos=getRectangleList("StartSuper1");
-				props=elementos.get(0).getProperties();
-				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
-				(float)props.get("width"),(float) props.get("height"));
-				inicioX=(float)props.get("x");
-				inicioY=(float)props.get("y");	
-
-				CalleASuper1=false;
-			}
 			if (TrabajoACalle==true){
 				elementos=getRectangleList("StartTrabajo");
 				props=elementos.get(0).getProperties();
@@ -1121,6 +1135,16 @@ private Animation<TextureRegion> anim;
 				inicioY=(float)props.get("y");	
 
 				TrabajoACalle=false;
+			}
+			else if (CalleASuper1==true){
+				elementos=getRectangleList("StartSuper1");
+				props=elementos.get(0).getProperties();
+				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
+				(float)props.get("width"),(float) props.get("height"));
+				inicioX=(float)props.get("x");
+				inicioY=(float)props.get("y");	
+
+				CalleASuper1=false;
 			}
 			else if (CalleASuper2==true){
 				elementos=getRectangleList("StartSuper2");
@@ -1132,7 +1156,7 @@ private Animation<TextureRegion> anim;
 
 				CalleASuper2=false;
 			}
-			else {
+			else if (CasaACalle==true){
 				elementos=getRectangleList("Start");
 				props=elementos.get(0).getProperties();
 				start=new Solid((float)props.get("x"), (float)props.get("y"), mainStage, 
@@ -1297,18 +1321,21 @@ private Animation<TextureRegion> anim;
 		    		if(texto.completo==true) {
 						switch(progresion) {
 						case 0:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							texto = new Texto("(No puedo rendirme ahora, no me importa que\nlos vecinos llamen a la policía...)", "talk2");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 1:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							texto = new Texto("(Voy a por tí, Evans, no pienso dejarte solo\nnunca más...)", "talk2");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 2:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							uiStage.addActor(blackBackgroundActor);
 							texto.remove();
 				           	AudioManager.playSound("02-OW/Audio/sounds/romperPuerta.wav");
@@ -1317,6 +1344,7 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 3:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							Parametros.controlesActivos=true;
 							texto.remove();
 							teletransporte(4);
@@ -1329,30 +1357,44 @@ private Animation<TextureRegion> anim;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				}
 			}
-			
+						
 			else if (tocaCinematica  == true && Parametros.dia==4) {
+				
 				if (button == Input.Buttons.LEFT) {
+					policia = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/policia.wav"));
+					policia.setLooping(true);
+					lloros = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/lloros.wav"));
+					lloros.setLooping(true);
+					risa = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/risa.wav"));
+					risa.setLooping(true);
+					scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.wav"));
+					scary.setLooping(true);
+					
 		    		if(texto.completo==true) {
 						switch(progresion) {
 						case 0:
 							texto.remove();
+				        	AudioManager.playSound("02-OW/Audio/sounds/drama.wav");
 							texto = new Texto("N-no puede ser...\n¿¡QUÉ HE HECHO!?", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 1:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
-							texto = new Texto("(...)\n", "talk2");
+							texto = new Texto("(Un momento...)\n", "talk2");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 2:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
-							texto = new Texto("Volker: Al fin lo recuerdo todo...\n", "talk1");
+							texto = new Texto("Volker: Ahora lo recuerdo...\n", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 3:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							uiStage.addActor(blackBackgroundActor);
 				           	AudioManager.playSound("02-OW/Audio/sounds/apunalar.wav");
@@ -1361,18 +1403,18 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 4:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							ruido.play();
 							ruido.setVolume(0.2f);
-							texto = new Texto("No te preocupes, Evans...\nEstaremos juntos para siempre...)", "talk1");
+							texto = new Texto("No te preocupes, mi pequeño...\nEstaremos juntos para siempre...)", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 5:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
-							muerte.play();
-							muerte.setVolume(0.2f);
-							muerte.setLooping(true);
+							scary.play();
 							uiStage.addActor(escena1);
 							
 							texto = new Texto("Está todo bien, hijo... No hace falta que te\npreocupes por nada ahora...", "talk1");
@@ -1380,6 +1422,7 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 6:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							escena1.remove();
 							uiStage.addActor(escena2);
@@ -1389,6 +1432,7 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 7:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							escena2.remove();
 				           	AudioManager.playSound("02-OW/Audio/sounds/cerrarPuerta.wav");
@@ -1398,6 +1442,7 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 8:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							uiStage.addActor(escena3);
 							texto = new Texto("Ya pasó lo peor, Evans... Ahora solo te espera la\npreciosa inmensidad del cielo...", "talk1");
@@ -1405,54 +1450,63 @@ private Animation<TextureRegion> anim;
 							progresion++;
 							break;
 						case 9:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
 							escena3.remove();
-							blackBackgroundActor.remove();
-							muerte.stop();
-							ruido.stop();
-				           	AudioManager.playSound("02-OW/Audio/sounds/policia.wav");
-							texto = new Texto("Volker: Fui yo. Todo este tiempo fui YO.\n", "talk1");
+							texto = new Texto("Vuela alto y sé libre... Es hora de descansar...\nShh... Ya todo se acabó...", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 10:
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
-							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.silueta_ow.png", 1, 1, 0.1f, true);
-							prota.setAnimation(anim);
-							texto = new Texto("¡JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA,\nJA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA, JA!", "talk1");
+							blackBackgroundActor.remove();
+							policia.play();
+							lloros.play();
+							texto = new Texto("Volker: Solo quería protegerle...\nSOLO QUERÍA PROTEGERLE DE MÍ MISMO.", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
-						case 11:
-							texto.remove();
+		                case 11:
+		                    texto.remove();
+							risa.play();
+		                    anim = prota.loadFullAnimation("02-OW/Personajes/personaje.silueta_ow.png", 1, 1, 0.1f, true);
+		                    prota.setAnimation(anim);
+		                    progresion++;
+		                    break;
+
+						case 12:
+		                    texto.remove();
+							risa.play();
+				        	AudioManager.playSound("02-OW/Audio/sounds/respiracion.wav");
 							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.recuerdos1_ow.png", 1, 1, 0.1f, true);
 							prota.setAnimation(anim);
-							texto = new Texto("UND ICH WÜRDE ES FÜR MEIN LAND WIEDER TUN.\nHAIL HITLER!", "talk1");
-							uiStage.addActor(texto);
 							progresion++;
-							break;
-						case 12:
-							texto.remove();
-				           	AudioManager.playSound("01-FS/Audio/sounds/tension.wav");
-							prota.setAnimation(prota.idleFrente);
-							texto = new Texto("(...)", "talk2");
-							uiStage.addActor(texto);
-							progresion++;
-							break;
+		                    break;
 						case 13:
+							Parametros.zoom+=0.20f;
+				        	AudioManager.playSound("02-OW/Audio/sounds/drama.wav");
 							texto.remove();
-							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.protagonista.final_ow.png", 1, 7, 0.5f, false);
+							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.protagonista.final_ow.png", 1, 7, 2, true);
 							prota.setAnimation(anim);
-							texto = new Texto("(...)", "talk2");
-							uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 14:
-							texto.remove();
 							uiStage.addActor(blackBackgroundActor);
+							scary.stop();
+							risa.stop();
+							lloros.stop();
+							policia.stop();
+							ruido.stop();
 							progresion++;
 							break;
 						case 15:
+							uiStage.addActor(periodicoFinalActor);
+							progresion++;
+							break;
+						case 16:
+							periodicoFinalActor.remove();
+		    	            game.setScreen(new TitleScreen(game));
 							progresion++;
 							break;
 						}
@@ -1468,24 +1522,28 @@ private Animation<TextureRegion> anim;
     			    		if(texto.completo==true) {
     							switch(progresion) {
     							case 0:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("resuenan por toda mi alma... Sin embargo,\nno puedo dejar que el miedo me frene...)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 1:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(He de salvar a mi hijo, pero hace días que\nno como, debo devolver mis deudas, y", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 2:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("he de trabajar mucho para pagar el rescate...)\n(No hay tiempo que perder.)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 3:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								controlesInicialesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
     								uiStage.addActor(controlesInicialesActor);
@@ -1493,6 +1551,7 @@ private Animation<TextureRegion> anim;
     								progresion++;
     								break;
     							case 4:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								controlesInicialesActor.remove();
     								controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesIniciales1Ow.png"));
@@ -1525,24 +1584,28 @@ private Animation<TextureRegion> anim;
     			    		if(texto.completo==true) {
     							switch(progresion) {
     							case 0:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Si no hubiese hecho lo que hice, él estaría\nsano y salvo...)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 1:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Desde que llegamos a Londres, mi vida ha sido un\nmaldito infierno, este país es horrible...)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 2:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Prometo rescatarte, Evans... No importa cómo,\nno permitiré que nada nos separe.)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 3:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								this.musicaCiudad.play();
     								this.musicaCiudad.setVolume(0.2f);
@@ -1564,24 +1627,28 @@ private Animation<TextureRegion> anim;
     			    		if(texto.completo==true) {
     							switch(progresion) {
     							case 0:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Mi miedo se está volviendo tan intenso que estoy\nempezando a tener visiones extrañas...)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 1:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Es la primera vez en días que no sueño contigo,\nEvans... El último día que tengo para rescatarte...", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 2:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Ha de ser hoy, o de lo contrario no será nunca...\nHe de dar todo lo que tengo...)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 3:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								this.musicaCiudad.play();
     								this.musicaCiudad.setVolume(0.2f);
@@ -1603,18 +1670,21 @@ private Animation<TextureRegion> anim;
     			    		if(texto.completo==true) {
     							switch(progresion) {
     							case 0:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(He logrado recaudar el dinero...\nAsí que he de dirigirme a la casa del sur.)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 1:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								texto = new Texto("(Estoy aterrorizado, pero me niego a retroceder.\nEvans... Voy a por tí.)", "talk2");
     								uiStage.addActor(texto);
     								progresion++;
     								break;
     							case 2:
+    					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								Parametros.musicaUnaVez=false;
     								Parametros.controlesActivos=true;
@@ -1672,6 +1742,7 @@ private Animation<TextureRegion> anim;
 		           	AudioManager.playSound("02-OW/Audio/sounds/forzarPuerta.wav");
 					Parametros.controlesActivos=false;
 					texto = new Texto("(Es aquí, tiene que ser aquí...)\n(La puerta está cerrada...)", "talk2");
+					progresion=0;
 					uiStage.addActor(texto);
 					tocaPuertaSur=true;
 					touchDown(mapWidthInTiles, mapWidthInPixels, mapHeightInTiles, mapHeightInPixels);
@@ -1679,22 +1750,6 @@ private Animation<TextureRegion> anim;
 				}
 			}
 		}
-			if(Parametros.zona==5) {
-				if(this.cinematica.overlaps(this.prota) && unaVez==true) {
-					atravesable=true;
-					prota.pasos.stop();
-					Parametros.controlesActivos=false;
-					System.out.println("Pisado 2");
-			       	prota.setAnimation(prota.idleEspaldas);
-					prota.velocity.y=0;
-			       	texto = new Texto("Volker: ¿E-Evans?...\n", "talk2");
-			       	uiStage.addActor(texto);
-			       	tocaPuertaSur=false;
-			       	tocaCinematica=true;
-					touchDown(mapWidthInTiles, mapWidthInPixels, mapHeightInTiles, mapHeightInPixels);
-					unaVez=false;
-				}
-			}
 		
 		else if(Parametros.zona==3) {
 			if(this.ow1.overlaps(this.prota)) {
@@ -1714,11 +1769,29 @@ private Animation<TextureRegion> anim;
 				unaVez=true;
 			}
 		}
+		
+		else if(Parametros.zona==5) {
+			if(this.cinematica.overlaps(this.prota) && unaVez==true) {
+				atravesable=true;
+				prota.pasos.stop();
+				Parametros.controlesActivos=false;
+				System.out.println("Pisado 2");
+			    prota.setAnimation(prota.idleEspaldas);
+				prota.velocity.y=0;
+	        	AudioManager.playSound("02-OW/Audio/sounds/respiracion.wav");
+			    texto = new Texto("Volker: ¿E-Evans?...\n", "talk2");
+			    uiStage.addActor(texto);
+			  	tocaPuertaSur=false;
+			   	tocaCinematica=true;
+			   	touchDown(mapWidthInTiles, mapWidthInPixels, mapHeightInTiles, mapHeightInPixels);
+			   	unaVez=false;
+			}
+		}
 	}
 	
 	public void centrarCamara(float delta) {
-	    float targetX = MathUtils.clamp(prota.getX()+45, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
-	    float targetY = MathUtils.clamp(prota.getY()+45, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
+	    float targetX = clamp(prota.getX() + 45, camara.viewportWidth / 2, mapWidthInPixels - camara.viewportWidth / 2);
+	    float targetY = clamp(prota.getY() + 45, camara.viewportHeight / 2, mapHeightInPixels - camara.viewportHeight / 2);
 	    float lerp = Math.min(1, delta * 10f);
 
 	    float protaX = prota.getX();
@@ -1726,29 +1799,39 @@ private Animation<TextureRegion> anim;
 	    float cursorX = mouseX;
 	    float cursorY = mouseY;
 
-	    float distX = cursorX - protaX;
-	    float distY = cursorY - protaY;
+	    float distX = Math.abs(cursorX - protaX);
+	    float distY = Math.abs(cursorY - protaY);
 	    float dist = (float) Math.sqrt(distX * distX + distY * distY);
 	    float maxDist = 50; // reduce la distancia máxima
 
 	    if (dist > maxDist) {
-	        float angle = MathUtils.atan2(cursorY - protaY, cursorX - protaX); // calcula el ángulo correctamente
-	        cursorX = protaX + MathUtils.cos(angle) * maxDist;
-	        cursorY = protaY + MathUtils.sin(angle) * maxDist;
+	        float angle = atan2(cursorY - protaY, cursorX - protaX); // calcula el ángulo correctamente
+	        cursorX = protaX + cos(angle) * maxDist;
+	        cursorY = protaY + sin(angle) * maxDist;
 	        dist = maxDist;
 	    }
-
-	    float cameraX = MathUtils.lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist));
-	    float cameraY = MathUtils.lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist));
+	    
+	    float cameraX = lerp(camara.position.x, cursorX, 0.0f + 0.07f * (dist / maxDist));
+	    float cameraY = lerp(camara.position.y, cursorY, 0.0f + 0.07f * (dist / maxDist));
 
 	    float halfViewportWidth = camara.viewportWidth / 2;
 	    float halfViewportHeight = camara.viewportHeight / 2;
 
-	    // calcula los límites de la cámara
+	    // calcula los límites de la cámara teniendo en cuenta el tamaño de la ventana
 	    float maxCameraX = Math.min(protaX + maxDist, mapWidthInPixels - halfViewportWidth);
 	    float minCameraX = Math.max(protaX - maxDist, halfViewportWidth);
 	    float maxCameraY = Math.min(protaY + maxDist, mapHeightInPixels - halfViewportHeight);
-	    float minCameraY = Math.max(protaY - maxDist, halfViewportHeight); // corrige la restricción del límite inferior
+	    float minCameraY = Math.max(protaY - maxDist, halfViewportHeight);
+
+	    // ajusta los límites de la cámara si el mapa es más pequeño que la ventana
+	    if (mapWidthInPixels < camara.viewportWidth) {
+	        maxCameraX = mapWidthInPixels / 2;
+	        minCameraX = mapWidthInPixels / 2;
+	    }
+	    if (mapHeightInPixels < camara.viewportHeight) {
+	        maxCameraY = mapHeightInPixels / 2;
+	        minCameraY = mapHeightInPixels / 2;
+	    }
 
 	    // comprueba si la posición de la cámara está dentro de los límites del mapa
 	    if (cameraX <= minCameraX) {
@@ -1768,6 +1851,31 @@ private Animation<TextureRegion> anim;
 	    camara.position.x += (targetX - camara.position.x) * lerp;
 	    camara.position.y += (targetY - camara.position.y) * lerp;
 	    camara.update();
+	}
+
+	// Función de pinza (clamp) para limitar un valor dentro de un rango específico
+	private float clamp(float value, float min, float max) {
+	    return Math.max(min, Math.min(max, value));
+	}
+
+	// Función de interpolación lineal (lerp) para obtener un valor intermedio entre dos valores dados
+	private float lerp(float start, float end, float alpha) {
+	    return start + alpha * (end - start);
+	}
+
+	// Función arcotangente (atan2) para calcular el ángulo a partir de las diferencias en coordenadas X e Y
+	private float atan2(float y, float x) {
+	    return (float) Math.atan2(y, x);
+	}
+
+	// Función coseno (cos) para calcular la componente X de un vector a partir de un ángulo
+	private float cos(float angle) {
+	    return (float) Math.cos(angle);
+	}
+
+	// Función seno (sin) para calcular la componente Y de un vector a partir de un ángulo
+	private float sin(float angle) {
+	    return (float) Math.sin(angle);
 	}
 	
 	public void teletransporteFrontera() {

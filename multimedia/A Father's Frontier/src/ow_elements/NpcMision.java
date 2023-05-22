@@ -232,7 +232,14 @@ public class NpcMision extends Element {
 	    				bocadillo.setPosition(getX()+17, getY()-40 + getHeight() + 10); // ajustar la posición del bocadillo
 	    				break;
 		    		default:
-				        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        		switch(this.dialogo1) {
+		        		case "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!":
+			        		bocadillo.setPosition(getX()+18, getY()-30 + getHeight() + 10); // ajustar la posición del bocadillo
+		        			break;
+		        		default:
+			        		bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        			break;
+		        		}
 		    			break;
 		    	}
 		        bocadillo.setName("bocadillo");
@@ -953,7 +960,7 @@ public class NpcMision extends Element {
 	    	        case 5:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
-	    	            interaccion = new Texto("encontrar a ese degenerado, ya que cambia\nde localización todos los días.", "talk1");
+	    	            interaccion = new Texto("degenerado, ya que cambia de localización\ndtodos los días.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -1002,25 +1009,25 @@ public class NpcMision extends Element {
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 2:
+	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 3:
+	    	        case 2:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 4:
+	    	        case 3:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 1:
+	    	        case 4:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.mision_elemental_mi_querido_simon = true;
@@ -1036,7 +1043,7 @@ public class NpcMision extends Element {
 	    		    }
 	    	    }
 	    	    
-	    	    else if (Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
+	    	    else if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
@@ -1044,25 +1051,25 @@ public class NpcMision extends Element {
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 2:
+	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 3:
+	    	        case 2:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 4:
+	    	        case 3:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
-	    	        case 1:
+	    	        case 4:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.mision_elemental_mi_querido_simon = true;

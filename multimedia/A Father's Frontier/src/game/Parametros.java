@@ -19,7 +19,10 @@ public class Parametros {
  public static int dia = 1;
  public static int segundosFS = 100;
  public static int segundosOW = 240;
- public static int segundosRestantesOW = segundosOW;
+ public static int segundosBaseOW = 240;
+ public static int gananciasFS = 3;
+ public static int precioComida = 3;
+ public static int precioImpuestos = 1;
  public static int minutosOW = 5;
  public static int dineroAnterior = 0;
  public static int dinero = 1;
@@ -36,6 +39,7 @@ public class Parametros {
  public static boolean analizado4 = false;
  public static boolean correcto = false;
  public static boolean musicaUnaVez = true;
+ public static boolean pierdes = false;
 // public static boolean interactuandoNpc = false;
  
  //Misiones
@@ -88,9 +92,6 @@ public class Parametros {
  public static boolean mision_un_glamuroso_collar_item = true;
  public static boolean mision_un_glamuroso_collar_completada = true;
  public static boolean mision_un_glamuroso_collar_finalizada = false;
- 
- public static boolean mision_dein_kampf = true;
- public static boolean mision_dein_kampf_completada = true;
  
 public static int getAnchoPantalla() {
 	return anchoPantalla;

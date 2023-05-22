@@ -35,15 +35,7 @@ private float elapsedTime=0;
 	public TitleScreen(Demo game) {
 	    super(game);
 		
-	    Parametros.dia=4;
-	    Parametros.controlesActivos=true;
-		Parametros.zona=1;
-		Parametros.haComidoHoy = false;
-		Parametros.haPagadoDeuda = false;
-		 
-		Parametros.mision_un_extrano_muneco = true;
-		Parametros.mision_un_extrano_muneco_item = true;
-		Parametros.mision_un_extrano_muneco_completada = true;
+	    resetear();        
 	    
 	    camera = new OrthographicCamera();
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
@@ -71,9 +63,6 @@ private float elapsedTime=0;
 		boton.addListener(
 				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
 					return false;
-				Parametros.dinero=1;
-				Parametros.haComidoHoy = false;
-				Parametros.haPagadoDeuda = false;
 				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				this.dispose();
 
@@ -107,6 +96,65 @@ private float elapsedTime=0;
 		tabla.add(botonSalir).space(10).width(200).height(110);
 
 		this.uiStage.addActor(tabla);
+	}
+
+	private void resetear() {
+		Parametros.dinero=100;
+	    Parametros.dia=4;
+	    Parametros.controlesActivos=true;
+		Parametros.zona=1;
+		Parametros.haComidoHoy = false;
+		Parametros.haPagadoDeuda = false;
+		 
+		Parametros.haComidoHoy = false;                                    
+		Parametros.haPagadoDeuda = false;
+		
+		Parametros.mision_un_extrano_muneco = true;                        
+		Parametros.mision_un_extrano_muneco_item = true;                   
+		Parametros.mision_un_extrano_muneco_completada = true;             
+		Parametros.mision_un_extrano_muneco_finalizada = false;            
+                                     
+		Parametros.mision_el_tesoro_perdido = true;                        
+		Parametros.mision_el_tesoro_perdido_item = true;                   
+		Parametros.mision_el_tesoro_perdido_completada = true;             
+		Parametros.mision_el_tesoro_perdido_finalizada = false;            
+                                   
+		Parametros.mision_el_viejo_general = true;                         
+		Parametros.mision_el_viejo_general_item = true;                    
+		Parametros.mision_el_viejo_general_completada = true;              
+		Parametros.mision_el_viejo_general_finalizada = false;             
+                                                      
+		Parametros.mision_una_lettera_d_amore = true;                      
+                                                   
+		Parametros.mision_buen_chico = true;                               
+		Parametros.mision_buen_chico_item = true;                          
+		Parametros.mision_buen_chico_completada = true;                    
+		Parametros.mision_buen_chico_finalizada = false;                   
+                                                  
+		Parametros.mision_malas_vistas = true;                             
+		Parametros.mision_malas_vistas_item = true;                        
+		Parametros.mision_malas_vistas_completada = true;                  
+		Parametros.mision_malas_vistas_finalizada = false;                 
+                                                  
+		Parametros.mision_elemental_mi_querido_simon = true;               
+		Parametros.mision_elemental_mi_querido_simon_item = true;          
+		Parametros.mision_elemental_mi_querido_simon_completada = true;    
+		Parametros.mision_elemental_mi_querido_simon_finalizada = false;   
+                                                 
+		Parametros.mision_magia_blanca = true;                             
+		Parametros.mision_magia_blanca_item = true;                        
+		Parametros.mision_magia_blanca_completada = true;                  
+		Parametros.mision_magia_blanca_finalizada = false;                 
+                                          
+		Parametros.mision_caos_en_la_ciudad = true;                        
+		Parametros.mision_caos_en_la_ciudad_item = true;                   
+		Parametros.mision_caos_en_la_ciudad_completada = true;             
+		Parametros.mision_caos_en_la_ciudad_finalizada = false;            
+                                               
+		Parametros.mision_un_glamuroso_collar = true;                      
+		Parametros.mision_un_glamuroso_collar_item = true;                 
+		Parametros.mision_un_glamuroso_collar_completada = true;           
+		Parametros.mision_un_glamuroso_collar_finalizada = false;
 	}
 
 	@Override

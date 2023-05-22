@@ -20,11 +20,13 @@ public class NpcStatic extends Element {
 	private Element dialogBox;
 	private String dialogo1;
 	private String dialogo2;
+	private String animacion;
 	private String direccion;
 
 	public NpcStatic(float x, float y, Stage s, OverWorldScreen nivel, String animacion, String direccion, String dialogo1, String dialogo2) {
 		super(x, y, s);
 		this.nivel = nivel;
+		this.animacion = animacion;
 		this.dialogo1 = dialogo1;
 		this.dialogo2 = dialogo2;
 		this.direccion = direccion;
@@ -126,7 +128,14 @@ public class NpcStatic extends Element {
 		        		bocadillo.setPosition(getX()+10, getY()-62 + getHeight() + 10); // ajustar la posición del bocadillo
 		        		break;
 		        	default:
-		        		bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        		switch(this.animacion) {
+		        		case "02-OW/Personajes/personaje.herido_ow.png":
+			        		bocadillo.setPosition(getX()+22, getY()-52 + getHeight() + 10); // ajustar la posición del bocadillo
+		        			break;
+		        		default:
+			        		bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
+		        			break;
+		        		}
 		        		break;
 		        }
 		        bocadillo.setName("bocadillo");

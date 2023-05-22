@@ -21,7 +21,7 @@ import managers.ResourceManager;
 ;
 
 public class Element extends Actor{
-	protected Animation<TextureRegion> animation;
+	public Animation<TextureRegion> animation;
 	protected float animationTime;
 	public Vector2 velocity;
 	protected Vector2 acceleration;

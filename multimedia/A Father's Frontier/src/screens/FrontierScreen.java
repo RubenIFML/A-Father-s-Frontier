@@ -638,6 +638,8 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	FS1_4.texto.remove();
 				        	
+				        	reloj.stop();
+				        	
 				        	texto = new Texto("por favor, lleva esta.\n"
 		        							+ "carta a mi marido...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
@@ -1377,7 +1379,7 @@ private Image controlesActor;
 				        	
 						    musica.stop();
 				        	
-				        	texto = new Texto("...Volker Schwartz?\n"
+				        	texto = new Texto("...¿Volker Schwartz?\n"
 		        							+ " ", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 	
@@ -1403,7 +1405,7 @@ private Image controlesActor;
 				        	texto.remove();
 	
 				        	texto = new Texto("Rudolf: No hay tiempo,\n"
-											+ "Te sacaré de esta.", 7, 154, "talk1");
+											+ "solo he venido para", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1413,8 +1415,8 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
 				        	
-				        	texto = new Texto("Toma esta llave, y\n"
-				        					+ "dirígete al sur de", 7, 154, "talk1");
+				        	texto = new Texto("advertirle...\n"
+				        					+ "Desde que usted se", 7, 154, "talk1");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -1424,8 +1426,8 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
 				        	
-			        		texto = new Texto("Londres... Allí encon-\n"
-			        						+ "trarás lo que", 7, 154, "talk1");
+			        		texto = new Texto("fue, de Alemania,\n"
+			        						+ "no han parado de", 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
@@ -1435,13 +1437,46 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
 				        	
-			        		texto = new Texto("necesitas para acabar\n"
-			        						+ "con todo esto...", 7, 154, "talk1");
+			        		texto = new Texto("buscarle, así que\n"
+			        						+ "ándese con ojo por", 7, 154, "talk1");
+			        		mainStage.addActor(texto);
+			        		
+			        		contador++;
+
+				        } else if (contador==21) {
+				        	
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+				        	
+			        		texto = new Texto("Londres, nunca sabe\n"
+			        						+ "quién anda por ahí.", 7, 154, "talk1");
+			        		mainStage.addActor(texto);
+			        		
+			        		contador++;
+
+				        } else if (contador==22) {
+				        	
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+				        	
+			        		texto = new Texto("Me alegro de ver que\n"
+			        						+ "está bien, siga así.", 7, 154, "talk1");
+			        		mainStage.addActor(texto);
+			        		
+			        		contador++;
+
+				        } else if (contador==23) {
+				        	
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+				        	
+			        		texto = new Texto("Nos vemos, Volker.\n"
+			        					, 7, 154, "talk1");
 			        		mainStage.addActor(texto);
 			        		
 			        		contador++;
 			        		
-				        } else if (contador==21) {
+				        } else if (contador==24) {
 				        
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
@@ -1453,27 +1488,60 @@ private Image controlesActor;
 			            	fs3_4.fadeOut();
 				        	pasaporte.remove();
 				        	permiso.remove();
+				        	llave.remove();
 				        	maletin.hide();
 				        	botella.remove();
 			        		
 			        		contador++;
 			        	
-				        } else if (contador==22) {
+				        } else if (contador==25) {
 					        
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
 				        	
-			        		texto = new Texto("Volker: ...\n"
-			        						+ "Voy por tí, Evans...", 7, 154, "talk1");
+			        		texto = new Texto("(Era el hombre de\n"
+	        								+ "mi pesadilla...)", 7, 154, "talk2");
 			        		
 			        		mainStage.addActor(texto);
-	
-							Parametros.mision_dein_kampf=false;
+			        		contador++;
+			        		
+				        } else if (contador==26) {
+					        
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+				        	
+			        		texto = new Texto("(M-me ha llamado...\n"
+			        						+ "¿Volker?)", 7, 154, "talk2");
+			        		
+			        		mainStage.addActor(texto);
+			        		contador++;
+
+				        } else if (contador==27) {
+					        
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+
+			        		texto = new Texto("(No hay tiempo para\n"
+	        								+ "pensar en eso.)", 7, 154, "talk2");
+			        		
+			        		mainStage.addActor(texto);
+			        		contador++;
+			        		
+				        } else if (contador==28) {
+					        
+				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+				        	texto.remove();
+				        	
+			        		texto = new Texto("(He de salvar a\n"
+	        								+ "Evans.)", 7, 154, "talk2");
+			        		
+			        		mainStage.addActor(texto);
+			        		contador++;
 							Parametros.analizar=false;
 							Parametros.analizado4=false;	
 							terminado = true;
 							contador=0;
-						
+			        	
 						//Final del día 3
 							
 				        } else if (terminado==true) {
@@ -1481,6 +1549,9 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							Parametros.dia++;
 							Parametros.frontera=false;
+							if(Parametros.dinero<20) {
+								Parametros.pierdes=true;
+							}
 							game.setScreen(new StatsScreen(game));
 						    musica2.stop();
 						    
@@ -1595,6 +1666,7 @@ private Image controlesActor;
 	    if(reloj.tiempoRestante==0) {
 			Parametros.dia++;	
 			contador=0;
+			Parametros.frontera=false;
 			game.setScreen(new StatsScreen(game));
 			tiktak.stop();
 		    musica.stop();

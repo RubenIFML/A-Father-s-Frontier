@@ -133,7 +133,7 @@ public class NpcMailBox extends Element {
 			
 		default:
 		    Parametros.controlesActivos = false; // se desactivan los controles del personaje
-		    if(Parametros.dinero>0) {
+		    if(Parametros.dinero >= Parametros.precioImpuestos) {
 		    	if(Parametros.haPagadoDeuda == false) {
 				    switch (siguienteInteraccion) {
 			        case 0:
@@ -156,7 +156,7 @@ public class NpcMailBox extends Element {
 			            Parametros.haPagadoDeuda = true;
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
-			            Parametros.dinero-=1;
+			            Parametros.dinero-=Parametros.precioImpuestos;
 			            break;
 				    }
 		    	}
@@ -182,7 +182,7 @@ public class NpcMailBox extends Element {
 			    switch (siguienteInteraccion) {
 		        case 0:
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto("(Necesito al menos £1 para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
+		            interaccion = new Texto("(Necesito al menos £" + Parametros.precioImpuestos + " para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;

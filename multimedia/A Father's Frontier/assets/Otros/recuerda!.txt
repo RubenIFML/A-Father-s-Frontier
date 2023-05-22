@@ -1,0 +1,3 @@
+- ERROR BOCADILLOS POR ENCIMA DE PERSONAJES
+- ARREGLAR ANIMACIÓN FINAL
+- No poder hablar con varios NPC a la vez

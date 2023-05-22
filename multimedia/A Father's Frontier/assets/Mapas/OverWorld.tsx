@@ -301,6 +301,16 @@
    <property name="npc" value="NpcSur"/>
   </properties>
  </tile>
+ <tile id="652">
+  <properties>
+   <property name="npc" value="NpcSuper3"/>
+  </properties>
+ </tile>
+ <tile id="653">
+  <properties>
+   <property name="npc" value="NpcSuper4"/>
+  </properties>
+ </tile>
  <tile id="656">
   <properties>
    <property name="npc" value="misionNpc8"/>

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="fs_elements.FS2_4"/>
-    <fullyQualifiedTypeName name="fs_elements.FS3_1"/>
-    <fullyQualifiedTypeName name="fs_elements.FS3_2"/>
-    <fullyQualifiedTypeName name="fs_elements.FS3_3"/>
-    <fullyQualifiedTypeName name="fs_elements.FS3_4"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.NinePatch"/>
-    <fullyQualifiedTypeName name="fs_elements.Lluvia"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.MathUtils"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Interpolation"/>
     <fullyQualifiedTypeName name="ow_elements.FadeInAction"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
@@ -57,7 +48,16 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.AlphaAction"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.TextureRegion"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g3d.model.Animation"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.utils.Timer.Task"/>
+    <fullyQualifiedTypeName name="java.util.TimerTask"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.utils.Timer"/>
+    <fullyQualifiedTypeName name="java.util.Timer"/>
+    <fullyQualifiedTypeName name="javax.management.timer.Timer"/>
+    <fullyQualifiedTypeName name="javax.swing.Timer"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Animation"/>
+    <fullyQualifiedTypeName name="managers.ResourceManager"/>
 </qualifiedTypeNameHistroy>

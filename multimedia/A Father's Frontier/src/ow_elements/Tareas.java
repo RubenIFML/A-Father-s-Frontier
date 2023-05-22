@@ -29,7 +29,6 @@ public class Tareas extends Actor {
                                       "Magia blanca.",
                                       "Un glamuroso collar.",
                                       "Caos en la ciudad.",
-                                      "Dein Kampf.",
                                       };
     
     private static boolean[] tareasBoolean = {Parametros.haComidoHoy,
@@ -44,7 +43,6 @@ public class Tareas extends Actor {
                                               Parametros.mision_magia_blanca,
                                               Parametros.mision_un_glamuroso_collar,
                                               Parametros.mision_caos_en_la_ciudad,
-                                              Parametros.mision_dein_kampf,
                                               };
 
     public Tareas() {
@@ -74,7 +72,7 @@ public class Tareas extends Actor {
             }
         }
         if (!hayMisiones) {
-            lista = "No tienes más misiones...";
+            lista = "No tiene más misiones...";
         }
     }
 
@@ -106,7 +104,6 @@ public class Tareas extends Actor {
             case 9: valor = Parametros.mision_magia_blanca; break;
             case 10: valor = Parametros.mision_un_glamuroso_collar; break;
             case 11: valor = Parametros.mision_caos_en_la_ciudad; break;
-            case 12: valor = Parametros.mision_dein_kampf; break;
             default: break;
         }
         return valor;

@@ -10,9 +10,11 @@ public class Niebla extends Actor {
   private float x;
   private float y;
   private float elapsedTime; // variable para almacenar el tiempo transcurrido
-
-  public Niebla(float width, float height) {
-    texture = new Texture("Menu/niebla.png"); // Asegúrate de tener una textura con el efecto de niebla
+  private String textura;
+  
+  public Niebla(float width, float height, String textura) {
+	this.textura = textura;
+    texture = new Texture(this.textura); // Asegúrate de tener una textura con el efecto de niebla
     setWidth(width);
     setHeight(height);
   }

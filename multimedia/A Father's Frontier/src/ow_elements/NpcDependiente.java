@@ -129,7 +129,7 @@ public class NpcDependiente extends Element {
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    
-	    if(Parametros.dinero > 2) {
+	    if(Parametros.dinero >= Parametros.precioComida) {
 	    	
 		    if (Parametros.haComidoHoy == true){
 			    switch (siguienteInteraccion) {
@@ -177,7 +177,7 @@ public class NpcDependiente extends Element {
 						setAnimation(idleFrente);
 			            interaccion.hide();
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
-			            Parametros.dinero-=3;
+			            Parametros.dinero-=Parametros.precioComida;
 			            Parametros.haComidoHoy = true;
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 			            break;

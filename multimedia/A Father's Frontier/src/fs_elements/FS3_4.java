@@ -32,14 +32,14 @@ public class FS3_4 extends Actor {
         	
         	//Texto
         	texto = new Texto("Rudolf: ¿No me recuer-\n"
-        					+ "das, viejo amigo...", 7, 154, "talk1");
+        					+ "das, viejo amigo?...", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.wav");
         	
         	//Estadísticas
-        	Parametros.dinero-=4;
+        	Parametros.dinero-=Parametros.gananciasFS;
         	
         	//Variables
         	Parametros.analizar=false;
@@ -50,14 +50,14 @@ public class FS3_4 extends Actor {
         	
         	//Texto
         	texto = new Texto("Rudolf: ¿No me recuer-\n"
-        					+ "das, viejo amigo...", 7, 154, "talk1");
+        					+ "das, viejo amigo?...", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
             AudioManager.playSound("01-FS/Audio/sounds/correcto.wav");
             
             //Estadísticas
-        	Parametros.dinero+=3;
+        	Parametros.dinero+=Parametros.gananciasFS;
             
             //Variables
         	Parametros.analizado4=true;

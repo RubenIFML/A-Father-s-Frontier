@@ -39,7 +39,11 @@ private boolean diaHabilitada = false;
 		estadisticas.setPosition(130,140);
 	    estadisticas.setAlignment(1, 2);
 	    
-		dia=new Label("DÍA " + Parametros.dia, uiStyle);
+	    if(Parametros.dia==4) {
+			dia=new Label("TARDE", uiStyle);
+	    }else {
+			dia=new Label("DÍA " + Parametros.dia, uiStyle);
+	    }
 		dia.setPosition(350,280);
 		dia.setAlignment(1, 2);
 	    
@@ -49,16 +53,15 @@ private boolean diaHabilitada = false;
 	
 	@Override
 	public void render(float delta) {
-		
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && estadisticasHabilitada) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	     if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && estadisticasHabilitada) {
+	     	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			estadisticas.remove();
-    		this.uiStage.addActor(dia);
-    		diaHabilitada=true;
-    		estadisticasHabilitada=false;
-        }
-        else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (diaHabilitada)) {
-        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	this.uiStage.addActor(dia);
+	    	diaHabilitada=true;
+	    	estadisticasHabilitada=false;
+	     }
+	     else if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && (diaHabilitada)) {
+	     	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			dia.remove();
 		    ResourceManager.musicaTitulo.play();
 
@@ -67,13 +70,18 @@ private boolean diaHabilitada = false;
 				game.setScreen(new DeathScreen(game));
 			}
 			else {
-				Parametros.haComidoHoy = false;
-				Parametros.haPagadoDeuda = false;
-				Parametros.zona=1;
-			    Parametros.controlesActivos=true;
-				game.setScreen(new StartScreen(game));
+			    if(Parametros.pierdes == false) {
+					Parametros.haComidoHoy = false;
+					Parametros.haPagadoDeuda = false;
+					Parametros.zona=1;
+				    Parametros.controlesActivos=true;
+					game.setScreen(new StartScreen(game));
+			    }
+			    else if(Parametros.pierdes == true) {
+			    	game.setScreen(new FinalScreen(game));
+			    }
 			}
-        }
+	     }
         
 		 super.render(delta);
 	    

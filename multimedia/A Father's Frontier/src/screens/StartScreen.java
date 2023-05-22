@@ -48,7 +48,7 @@ private Actor silueta;
         batch = new SpriteBatch();
 	    
         if (Parametros.frontera==false) {
-        	Reloj.tiempoRestante = 240;
+        	Reloj.tiempoRestante = Parametros.segundosBaseOW;
 	        switch (Parametros.dia) {
 	            case 1:
 	                periodico = new Texture("Menu/periodico.0_0.png");
@@ -154,30 +154,35 @@ private Actor silueta;
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==1 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	            texto = new Texto("Tiene un límite de tres días, considere mañana\ncomo el primero, le aconsejo no perder el tiempo...", "talk1");
 	    	            this.uiStage.addActor(texto);
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==2 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	            texto = new Texto("De lo contrario... No le ocurrirá nada agradable\na su preciada criatura... Evans, ¿Cierto?", "talk1");
 	    	            this.uiStage.addActor(texto);
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==3 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	            texto = new Texto("Si intenta contactar a la policía, tenga claro que\nlo sabré, así que no tiene por qué molestarse.", "talk1");
 	    	            this.uiStage.addActor(texto);
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==4 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	            texto = new Texto("Mucha suerte, y buena vida. Confío en sus\ncapacidades... Le veré en unos días.", "talk1");
 	    	            this.uiStage.addActor(texto);
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && desactivable == true && Parametros.frontera==false && contador==5 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
@@ -197,30 +202,35 @@ private Actor silueta;
 	    	        
 	    		case 2:
 	    			if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==0 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Ya te lo dije, Evans... No podemos quedarnos,\nAlemania ya no es un lugar seguro para nosotros.", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==1 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Debes ser paciente, ¿Vale? Te prometo\nque mientras estemos juntos, todo irá bien.", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==2 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Está bien, pero...\n¿No vamos a volver nunca más?", "talk2");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==3 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Quizás... Dentro de mucho, mucho tiempo...\nVamos, tenemos un largo camino por delante...", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==4 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
@@ -237,6 +247,7 @@ private Actor silueta;
 	    	        
 	    		case 3:
 	    			if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==0 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("...", "talk1");
 			           	AudioManager.playSound("02-OW/Audio/sounds/disparo.wav");
@@ -244,6 +255,7 @@ private Actor silueta;
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==1 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	                    this.uiStage.addActor(silueta);
 	     	            texto = new Texto("¡Ja, ja, ja! ¡Justo en la cabeza! ¡Serás cabrón!\n¡Con ese van al menos cinco!", "talk1");
@@ -251,18 +263,21 @@ private Actor silueta;
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==2 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Céntrate, Rudolf. Todavía no hemos terminado.\nMataremos al menos a diez más antes de irnos.", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==3 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("¡Ja! Si algo me gusta más que escuchar a los\njudíos gritar, ha de ser tu sadismo, amigo.", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==4 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
@@ -279,6 +294,7 @@ private Actor silueta;
 	    	        
 	    		case 4:
 	    			if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==0 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
 	     	            texto = new Texto("Pienso sacar a mi hijo de dondequiera que esté...\nY lo haré a toda costa.", "talk1");
 	     	            Parametros.zona=2;

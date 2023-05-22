@@ -213,8 +213,9 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/disparo.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/forzarPuerta.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/romperPuerta.wav", Sound.class);
-        assets.load("02-OW/Audio/sounds/policia.wav", Sound.class);
         assets.load("02-OW/Audio/sounds/apunalar.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/muerte.wav", Sound.class);
+        assets.load("02-OW/Audio/sounds/drama.wav", Sound.class);
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
@@ -226,6 +227,10 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/music/ciudad_dia3.wav", Music.class);
         assets.load("02-OW/Audio/music/ambiente.wav", Music.class);
         assets.load("02-OW/Audio/music/tiktak.wav", Sound.class);
+        assets.load("02-OW/Audio/music/policia.wav", Sound.class);
+        assets.load("02-OW/Audio/music/lloros.wav", Sound.class);
+        assets.load("02-OW/Audio/music/risa.wav", Sound.class);
+        assets.load("02-OW/Audio/music/scary.wav", Sound.class);
 	}
 	
 	public static boolean update(){

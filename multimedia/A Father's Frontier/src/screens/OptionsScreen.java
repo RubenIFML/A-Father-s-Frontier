@@ -60,10 +60,25 @@ private int estadoActual = 0;
 		        
 		        if (estadoActual == 0) {
 		            Parametros.segundosFS = 100;
+		            Parametros.segundosOW = 240;
+		            Parametros.segundosBaseOW = 240;
+		            Parametros.gananciasFS = 3;
+		            Parametros.precioComida = 3;
+		            Parametros.precioImpuestos = 1;
 		        } else if (estadoActual == 1) {
-		            Parametros.segundosFS = 40;
+		            Parametros.segundosFS = 60;
+		            Parametros.segundosOW = 180;
+		            Parametros.segundosBaseOW = 180;
+		            Parametros.gananciasFS = 2;
+		            Parametros.precioComida = 4;
+		            Parametros.precioImpuestos = 2;
 		        } else if (estadoActual == 2) {
 		            Parametros.segundosFS = 130;
+		            Parametros.segundosOW = 260;
+		            Parametros.segundosBaseOW = 260;
+		            Parametros.gananciasFS = 4;
+		            Parametros.precioComida = 2;
+		            Parametros.precioImpuestos = 1;
 		        }
 		    }
 		});

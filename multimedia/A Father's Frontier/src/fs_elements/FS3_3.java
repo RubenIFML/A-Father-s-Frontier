@@ -39,7 +39,7 @@ public class FS3_3 extends Actor {
             AudioManager.playSound("01-FS/Audio/sounds/incorrecto.wav");
         	
         	//Estadísticas
-        	Parametros.dinero-=4;
+        	Parametros.dinero-=Parametros.gananciasFS;
         	
         	//Variables
         	Parametros.analizar=false;
@@ -57,7 +57,7 @@ public class FS3_3 extends Actor {
             AudioManager.playSound("01-FS/Audio/sounds/correcto.wav");
             
             //Estadísticas
-        	Parametros.dinero+=3;
+        	Parametros.dinero+=Parametros.gananciasFS;
             
             //Variables
         	Parametros.analizado3=true;
