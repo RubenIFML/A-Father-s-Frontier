@@ -57,6 +57,8 @@ private Texture periodicoTexture;
 private Actor backgroundActor;
 private Texture controlesInicialesTexture;
 private Actor controlesInicialesActor;
+private Texture controlesIniciales1Texture;
+private Actor controlesIniciales1Actor;
 private Actor blackBackgroundActor;
 private Actor periodicoActor;
 private Lluvia lluvia;
@@ -136,7 +138,19 @@ private Image controlesActor;
 		blackBackgroundActor = new Image(blackBackground);
 		
 		//Música
-		musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor.wav"));
+		switch(Parametros.dia) {
+			case 1:
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor.wav"));
+				break;
+				
+			case 2:
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor_2.wav"));
+				break;
+				
+			case 3:
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor_3.wav"));
+				break;
+		}
         musica.setVolume(0.3f);
 		musica.setLooping(true);
 		musica2 = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/lluvia.wav"));
@@ -220,6 +234,9 @@ private Image controlesActor;
 
 				controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesInicialesFs.png"));
 				controlesInicialesActor = new Image(controlesInicialesTexture);
+
+				controlesIniciales1Texture = new Texture(Gdx.files.internal("Menu/controlesIniciales1Fs.png"));
+				controlesIniciales1Actor = new Image(controlesIniciales1Texture);
 				
 				//Diálogo
 				texto = new Texto("¿?: Que pase el primero,\n"
@@ -368,12 +385,21 @@ private Image controlesActor;
 							controlesInicialesActor.setSize(240,180);
 							mainStage.addActor(controlesInicialesActor);
 							
+							contador++;
+
+			        	} else if(contador==31) {
+			    			controlesInicialesActor.remove();
+				           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+							
+							controlesIniciales1Actor.setSize(240,180);
+							mainStage.addActor(controlesIniciales1Actor);
+								
 							contador=1;
-			        	
+				        	
 			        	} else if (contador==1) {
 
 				           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
-			    			controlesInicialesActor.remove();
+			    			controlesIniciales1Actor.remove();
 			    			
 			    			fs1_1.show();
 			    			texto = new Texto("¿?: El pasaporte y el\n"
@@ -1266,7 +1292,7 @@ private Image controlesActor;
 			    			
 			    			if (Parametros.dinero>=14) {
 			    				texto = new Texto("(Según mis cálculos...\n"
-		    							+ "Todavía puedo conseguirlo)", 7, 154, "talk2");
+		    							+ "Puedo conseguirlo.)", 7, 154, "talk2");
 			    			}
 			    			else {
 			    				texto = new Texto("(Según mis cálculos...\n"

@@ -1,4 +1,3 @@
-
 package screens;
 
 import com.badlogic.gdx.Gdx;
@@ -12,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -22,85 +22,66 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
-public class TitleScreen extends BScreen{
-private Table tabla;
-private OrthographicCamera camera;
-private Batch batch;
-private Texture background;
-private Actor titleActor;
-private Texture title;
-private Lluvia lluvia;
-private float elapsedTime=0;
+public class TitleScreen extends BScreen {
+    private boolean ejecutarResto = false;
+    private boolean fadeOutCompleto = false;
+    private float elapsedTime = 0;
+    private Table tabla;
+    private OrthographicCamera camera;
+    private Batch batch;
+    private Texture background;
+    private Actor titleActor;
+    private Texture advertenciaTexture;
+    private Actor advertenciaActor;
+    private Texture title;
+    private Lluvia lluvia;
+	private boolean ejecutarAnimacion;
 
-	public TitleScreen(Demo game) {
-	    super(game);
-		
-	    resetear();        
-	    
-	    camera = new OrthographicCamera();
-	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
-	    
-	    batch = new SpriteBatch();
-	    background = new Texture("Menu/titleBackground.jpg");
-	    title = new Texture("Menu/titleTitle.png");
-		titleActor = new Image(title);
-		lluvia = new Lluvia();
-		
-		this.uiStage.addActor(lluvia);
-		lluvia.setScaleY(Parametros.getAltoPantalla()/125);
-		lluvia.setScaleX(Parametros.getAnchoPantalla()/125);
-		this.uiStage.addActor(titleActor);
-		titleActor.setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
-		
-		tabla = new Table();
-		tabla.setFillParent(true);
-		
-		tabla.setPosition(0, -170);	
-		tabla.pad(60);
-		
-		TextButton boton=new TextButton("Jugar",ResourceManager.textButtonStyle);
-		
-		boton.addListener(
-				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
-					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-				this.dispose();
+    public TitleScreen(Demo game) {
+        super(game);
 
-				game.setScreen(new StartScreen(game));
-				
-				return false;
-				});
-		TextButton botonOpciones=new TextButton("Dificultad",ResourceManager.textButtonStyle);
-		botonOpciones.addListener(
-				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
-					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-				this.dispose();
+        resetear();
 
-				game.setScreen(new OptionsScreen(game));
-				
-				return false;
-				});
-		TextButton botonSalir=new TextButton("Salir", ResourceManager.textButtonStyle);
-		botonSalir.addListener(
-				(Event e)->{if(!(e instanceof InputEvent)|| !((InputEvent)e).getType().equals(Type.touchDown))
-					return false;
-				AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-				this.dispose();
-			Gdx.app.exit();
-				return false;
-				});
-		
-		tabla.add(botonOpciones).padRight(10).space(10).width(200).height(110);
-		tabla.add(boton).padRight(10).width(200).height(110);
-		tabla.add(botonSalir).space(10).width(200).height(110);
+        background = new Texture("Menu/titleBackground.jpg");
+        title = new Texture("Menu/titleTitle.png");
+        lluvia = new Lluvia();
+        this.uiStage.addActor(lluvia);
+        lluvia.setScaleY(Parametros.getAltoPantalla() / 125);
+        lluvia.setScaleX(Parametros.getAnchoPantalla() / 125);
+        advertenciaTexture = new Texture("Menu/advertencia.png");
+        advertenciaActor = new Image(advertenciaTexture);
+        advertenciaActor.getColor().a = 0f; // Inicialmente establecemos la transparencia en 0
+        advertenciaActor.setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 
-		this.uiStage.addActor(tabla);
-	}
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+        batch = new SpriteBatch();
 
-	private void resetear() {
-		Parametros.dinero=100;
-	    Parametros.dia=4;
+        // Aplicar fade in de 2 segundos al advertenciaActor
+        if(Parametros.titlePrimeraVez==false) {
+            advertenciaActor.addAction(Actions.sequence(
+                    Actions.fadeIn(2f),
+                    Actions.delay(9f),
+                    Actions.fadeOut(2f),
+                    new com.badlogic.gdx.scenes.scene2d.Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            fadeOutCompleto = true;
+                            return true;
+                        }
+                    }
+            ));
+            uiStage.addActor(advertenciaActor);
+        }
+        else {
+            fadeOutCompleto = true;
+        }
+    }
+
+    private void resetear() {
+		Parametros.dinero=1;
+	    Parametros.dia=1;
+	    Parametros.frontera=false;
 	    Parametros.controlesActivos=true;
 		Parametros.zona=1;
 		Parametros.haComidoHoy = false;
@@ -157,34 +138,93 @@ private float elapsedTime=0;
 		Parametros.mision_un_glamuroso_collar_finalizada = false;
 	}
 
-	@Override
-	public void render(float delta) {
-		// TODO Auto-generated method stub
-		
-	    Pixmap pixmap = new Pixmap(Gdx.files.internal("01-FS/Objetos/cursor.png"));
-		int xHotspot = 15, yHotspot = 15;
-		Cursor cursor = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
-		Gdx.graphics.setCursor(cursor);
-		
-		super.render(delta);
-		
-	    // Mueve el actor titleActor en función del tiempo transcurrido
-	    if (elapsedTime < 1) {
-	        titleActor.setY(titleActor.getY() + 7 * delta);
-	    } else if (elapsedTime < 4) {
-	        titleActor.setY(titleActor.getY() - 7 * delta);
-	    }
 
-	    if (elapsedTime > 2) {
-	        elapsedTime = 0;
-	    } else {
-	        elapsedTime += delta;
-	    }
-	    
-	     uiStage.act();
-	     batch.begin();
-	     batch.draw(background, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
-	     batch.end();
-	     uiStage.draw();	    
-	}
+    @Override
+    public void render(float delta) {
+        Pixmap pixmap = new Pixmap(Gdx.files.internal("01-FS/Objetos/cursor.png"));
+        int xHotspot = 15, yHotspot = 15;
+        Cursor cursor = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
+        Gdx.graphics.setCursor(cursor);
+
+        super.render(delta);
+
+        if (fadeOutCompleto && !ejecutarResto) {
+        	Parametros.titlePrimeraVez = true;
+        	ejecutarAnimacion=true;
+            ejecutarResto = true;
+
+            titleActor = new Image(title);
+            lluvia = new Lluvia();
+            this.uiStage.addActor(lluvia);
+            lluvia.setScaleY(Parametros.getAltoPantalla() / 125);
+            lluvia.setScaleX(Parametros.getAnchoPantalla() / 125);
+            this.uiStage.addActor(titleActor);
+            titleActor.setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+
+            tabla = new Table();
+            tabla.setFillParent(true);
+
+            tabla.setPosition(0, -170);
+            tabla.pad(60);
+
+            ResourceManager.musicaTitulo.play();
+            TextButton boton = new TextButton("Jugar", ResourceManager.textButtonStyle);
+
+            boton.addListener((Event e) -> {
+                if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
+                    return false;
+                AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+                this.dispose();
+
+                game.setScreen(new StartScreen(game));
+
+                return false;
+            });
+            TextButton botonOpciones = new TextButton("Dificultad", ResourceManager.textButtonStyle);
+            botonOpciones.addListener((Event e) -> {
+                if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
+                    return false;
+                AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+                this.dispose();
+
+                game.setScreen(new OptionsScreen(game));
+
+                return false;
+            });
+            TextButton botonSalir = new TextButton("Salir", ResourceManager.textButtonStyle);
+            botonSalir.addListener((Event e) -> {
+                if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
+                    return false;
+                AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+                this.dispose();
+                Gdx.app.exit();
+                return false;
+            });
+
+            tabla.add(botonOpciones).padRight(10).space(10).width(200).height(110);
+            tabla.add(boton).padRight(10).width(200).height(110);
+            tabla.add(botonSalir).space(10).width(200).height(110);
+
+            this.uiStage.addActor(tabla);
+        }
+        if(ejecutarAnimacion) {
+    	    // Mueve el actor titleActor en función del tiempo transcurrido
+    	    if (elapsedTime < 1) {
+    	        titleActor.setY(titleActor.getY() + 7 * delta);
+    	    } else if (elapsedTime < 4) {
+    	        titleActor.setY(titleActor.getY() - 7 * delta);
+    	    }
+
+    	    if (elapsedTime > 2) {
+    	        elapsedTime = 0;
+    	    } else {
+    	        elapsedTime += delta;
+    	    }
+        }
+        uiStage.act();
+        batch.begin();
+        batch.draw(background, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        batch.end();
+        uiStage.draw();
+    }
 }

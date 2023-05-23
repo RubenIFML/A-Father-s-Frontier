@@ -46,6 +46,7 @@ public final class ResourceManager {
         assets.load("Menu/raindrop.png", Texture.class);
         assets.load("Menu/niebla.png", Texture.class);
         assets.load("Menu/periodico.0_0.png", Texture.class);
+        assets.load("Menu/periodico.0_1.png", Texture.class);
         assets.load("Menu/periodico.1_0.png", Texture.class);
         assets.load("Menu/periodico.2_0.png", Texture.class);
         assets.load("Menu/periodico.3_0.png", Texture.class);
@@ -57,6 +58,8 @@ public final class ResourceManager {
         assets.load("Menu/controlesInicialesOw.png", Texture.class);
         assets.load("Menu/controlesIniciales1Ow.png", Texture.class);
         assets.load("Menu/controlesInicialesFs.png", Texture.class);
+        assets.load("Menu/controlesIniciales1Fs.png", Texture.class);
+        assets.load("Menu/advertencia.png", Texture.class);
        
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
@@ -219,6 +222,8 @@ public final class ResourceManager {
         
         //Música
         assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
+        assets.load("01-FS/Audio/music/maletin_por_favor_2.wav", Music.class);
+        assets.load("01-FS/Audio/music/maletin_por_favor_3.wav", Music.class);
         assets.load("01-FS/Audio/music/final.wav", Music.class);
         assets.load("01-FS/Audio/music/lluvia.wav", Music.class);
         assets.load("01-FS/Audio/music/title_theme.wav", Music.class);
@@ -256,7 +261,6 @@ public final class ResourceManager {
 		textButtonStyle.font=fuentePropia;
 		
 		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/title_theme.wav"));
-		musicaTitulo.play();
 	    musicaTitulo.setVolume(0.5f);
 		musicaTitulo.setLooping(true);
 	}

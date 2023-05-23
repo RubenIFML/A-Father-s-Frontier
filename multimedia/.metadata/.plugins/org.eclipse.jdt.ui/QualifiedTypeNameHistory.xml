@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.MathUtils"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Interpolation"/>
     <fullyQualifiedTypeName name="ow_elements.FadeInAction"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL20"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
     <fullyQualifiedTypeName name="ow_elements.Npc"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.tiled.TiledMapTileLayer"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Cell"/>
@@ -49,7 +47,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.TextureRegion"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g3d.model.Animation"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.Actions"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.utils.Timer.Task"/>
     <fullyQualifiedTypeName name="java.util.TimerTask"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Animation"/>
     <fullyQualifiedTypeName name="managers.ResourceManager"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Stack"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
 </qualifiedTypeNameHistroy>

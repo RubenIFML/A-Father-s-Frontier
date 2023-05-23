@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -52,7 +53,6 @@ import managers.AudioManager;
 import managers.ResourceManager;
 
 public class OverWorldScreen extends BScreen{
-	
 public Stage mainStage;
 
 Solid frontera;
@@ -82,7 +82,6 @@ private Actor controlesInicialesActor;
 private boolean planoActivo=false;
 private boolean controlesActivo=false;
 private Texto texto;
-
 private int tileWidth, tileHeight, mapWidthInTiles, mapHeightInTiles,mapWidthInPixels, mapHeightInPixels;
 private ActorComparator comparator;
 
@@ -212,6 +211,9 @@ private Animation<TextureRegion> anim;
 				scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.wav"));
 				scary.setLooping(true);
 				TrabajoACalle=true;
+				CasaACalle=false;
+				CalleASuper1=false;
+				CalleASuper2=false;
 			}
 			
 		}
@@ -813,10 +815,12 @@ private Animation<TextureRegion> anim;
 								break;
 								
 							case "NpcPerro":
+								if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == true) {
+								} else {
 								NpcStatic npcPerro=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
 										"02-OW/Personajes/personaje.perro_ow.png", "cola", "Grrrr...\n¡Guau, guau, guau!"
 										, "(Parece que no le he gustado, será mejor que\nme aleje antes de que ocurra un accidente.)");
-								npcs.add(npcPerro);
+								npcs.add(npcPerro);}
 								break;
 								
 							case "NpcSuper3":
@@ -1484,20 +1488,18 @@ private Animation<TextureRegion> anim;
 							progresion++;
 		                    break;
 						case 13:
-							Parametros.zoom+=0.20f;
 				        	AudioManager.playSound("02-OW/Audio/sounds/drama.wav");
 							texto.remove();
-							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.protagonista.final_ow.png", 1, 7, 2, true);
-							prota.setAnimation(anim);
+							prota.animacionFinal();
 							progresion++;
 							break;
 						case 14:
 							uiStage.addActor(blackBackgroundActor);
-							scary.stop();
-							risa.stop();
-							lloros.stop();
-							policia.stop();
-							ruido.stop();
+							if(scary.isPlaying()) {scary.stop();}
+							if(risa.isPlaying()) {risa.stop();}
+							if(lloros.isPlaying()) {lloros.stop();}
+							if(policia.isPlaying()) {policia.stop();}
+							if(ruido.isPlaying()) {ruido.stop();}
 							progresion++;
 							break;
 						case 15:
@@ -2024,117 +2026,162 @@ private Animation<TextureRegion> anim;
 		return list;
 	}
 	
-	public class ActorComparator implements Comparator<Actor>{
-
+	private class ActorComparator implements Comparator<Actor> {
 	    @Override
-	    public int compare(Actor a1, Actor a2) {
-            int result = Float.compare(a2.getY(), a1.getY());
-            if (result == 0) {
-                return a1.hashCode() - a2.hashCode(); // en caso de empate, se utiliza hashCode()
-            } else {
-                return result;
-            }
+	    public int compare(Actor actor1, Actor actor2) {
+	        if (actor1 == null && actor2 == null) {
+	            return 0;
+	        }
+	        if (actor1 == null) {
+	            return -1;
+	        }
+	        if (actor2 == null) {
+	            return 1;
+	        }
+	        // Comparar el nombre solo si no es nulo
+	        if (actor1.getName() != null && actor2.getName() != null) {
+	            if (actor1.getName().equals("bocadillo") && !actor2.getName().equals("bocadillo")) {
+	                return 1; // actor1 es "bocadillo" y actor2 no lo es, actor1 va después de actor2
+	            } else if (!actor1.getName().equals("bocadillo") && actor2.getName().equals("bocadillo")) {
+	                return -1; // actor1 no es "bocadillo" y actor2 sí lo es, actor1 va antes de actor2
+	            }
+	        }
+	        // Si los nombres son iguales o nulos, utilizar la posición en la lista
+	        if (actor1.getY() < actor2.getY()) {
+	            return 1; // actor1 está más arriba que actor2, actor1 va después de actor2
+	        } else if (actor1.getY() > actor2.getY()) {
+	            return -1; // actor1 está más abajo que actor2, actor1 va antes de actor2
+	        }
+	        return 0; // Los actores tienen la misma posición
 	    }
 	}
 	
 	@Override
 	public void render(float delta) {
-		
-		super.render(delta);
-		
-	   mainStage.act();
-	   uiStage.act();
-	   colide();
-	   
-	   centrarCamara(delta);
-	   
-	   m3d.x=Gdx.input.getX();
-	   m3d.y=Gdx.input.getY();
-	   m3d.z=0;
-	   camara.unproject(m3d);
-	   mouseX=m3d.x;
-	   mouseY=m3d.y;
-	   
-	   if(Parametros.dia!=4) {
-		   uiStage.addActor(reloj);
-		   uiStage.addActor(dinero);
-		   uiStage.addActor(tareasSinExpandir);   
-	   }
-	   
-	   if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && controlesActivo == false) {
-		   planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
-	       	if(planoActivo==false) {
-	       		prota.pasos.stop();
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
-	       		uiStage.addActor(planoActor);
-	   			Parametros.controlesActivos=false;
-	      			planoActivo=true;
-	       	}
-	       	else if (planoActivo==true) {
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
-	       		planoActor.remove();
-	      				Parametros.controlesActivos=true;
-	      				planoActivo=false;
-	      	}
+	    super.render(delta);
+
+	    mainStage.act();
+	    uiStage.act();
+	    colide();
+
+	    centrarCamara(delta);
+
+	    m3d.x = Gdx.input.getX();
+	    m3d.y = Gdx.input.getY();
+	    m3d.z = 0;
+	    camara.unproject(m3d);
+	    mouseX = m3d.x;
+	    mouseY = m3d.y;
+
+	    if (Parametros.dia != 4) {
+	        uiStage.addActor(reloj);
+	        uiStage.addActor(dinero);
+	        uiStage.addActor(tareasSinExpandir);
 	    }
-	   
-	   if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && planoActivo == false) {
-		   controlesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
-	       	if(controlesActivo==false) {
-	       		prota.pasos.stop();
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
-	       		uiStage.addActor(controlesActor);
-	   			Parametros.controlesActivos=false;
-	   			controlesActivo=true;
-	       	}
-	       	else if (controlesActivo==true) {
-	           	AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
-	           	controlesActor.remove();
-	      				Parametros.controlesActivos=true;
-	      				controlesActivo=false;
-	      	}
+
+	    if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && controlesActivo == false) {
+	        planoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	        if (planoActivo == false) {
+	            prota.pasos.stop();
+	            AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	            uiStage.addActor(planoActor);
+	            Parametros.controlesActivos = false;
+	            planoActivo = true;
+	        } else if (planoActivo == true) {
+	            AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	            planoActor.remove();
+	            Parametros.controlesActivos = true;
+	            planoActivo = false;
+	        }
 	    }
-	   
-	   if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && controlesActivo == false && planoActivo == false && Parametros.dia!=4) {
-	       	if(listaTareas==false) {
-				tareas = new Tareas();
-	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	        	uiStage.addActor(tareas);
-	   				listaTareas=true;
-	       	}
-	       	else if (listaTareas==true) {
-	           	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	           	tareas.remove();
-	      		listaTareas=false;
-	      	}
-	   }
-	   
-	   	if (Reloj.tiempoRestante<=10) {
-			this.tiktak.play();
-	   	}
-	   	
-	   	if (Reloj.tiempoRestante == 0) {
-			this.musicaCiudad.stop(); 
-			ambiente.stop();
-			prota.pasos.stop();
-			tiktak.stop();
-			Parametros.musicaUnaVez=true;
-			Parametros.dia++;
-			game.setScreen(new StatsScreen(game));
-	   	}
-	   	
+
+	    if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN) && planoActivo == false) {
+	        controlesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+	        if (controlesActivo == false) {
+	            prota.pasos.stop();
+	            AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	            uiStage.addActor(controlesActor);
+	            Parametros.controlesActivos = false;
+	            controlesActivo = true;
+	        } else if (controlesActivo == true) {
+	            AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+	            controlesActor.remove();
+	            Parametros.controlesActivos = true;
+	            controlesActivo = false;
+	        }
+	    }
+
+	    if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && controlesActivo == false && planoActivo == false
+	            && Parametros.dia != 4) {
+	        if (listaTareas == false) {
+	            tareas = new Tareas();
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            uiStage.addActor(tareas);
+	            listaTareas = true;
+	        } else if (listaTareas == true) {
+	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	            tareas.remove();
+	            listaTareas = false;
+	        }
+	    }
+
+	    if (Reloj.tiempoRestante <= 10) {
+	        this.tiktak.play();
+	    }
+
+	    if (Reloj.tiempoRestante == 0) {
+	        this.musicaCiudad.stop();
+	        ambiente.stop();
+	        prota.pasos.stop();
+	        tiktak.stop();
+	        Parametros.musicaUnaVez = true;
+	        Parametros.dia++;
+	        game.setScreen(new StatsScreen(game));
+	    }
+
 	    renderer.setView(camara);
 	    renderer.render(new int[]{0, 1, 2, 3});
-	    mainStage.getActors().sort(comparator);
-	        mainStage.draw();
-	        if(Parametros.zona==1 || Parametros.zona==3 || Parametros.zona==4 || Parametros.zona==5) {
-	        	renderer.render(new int[]{4});	
+
+	    // Obtener el SpriteBatch de la etapa principal (mainStage)
+	    SpriteBatch spriteBatch = (SpriteBatch) mainStage.getBatch();
+	    spriteBatch.begin();
+
+	    Array<Actor> actoresSinBocadillos = new Array<>();
+	    Array<Actor> actoresBocadillo = new Array<>();
+
+	    // Separar los actores en dos grupos: sin bocadillos y bocadillos
+	    for (Actor actor : mainStage.getActors()) {
+	        if (actor.getName() == null || !actor.getName().equals("bocadillo")) {
+	            actoresSinBocadillos.add(actor);
+	        } else {
+	            actoresBocadillo.add(actor);
 	        }
-		    
-			if(Parametros.zona==2) {
-			    createRainDrops();
-			}
-			
-	        uiStage.draw();
+	    }
+
+	    // Ordenar los actores sin bocadillos utilizando el comparador
+	    actoresSinBocadillos.sort(comparator);
+
+	    // Dibujar los actores sin bocadillos
+	    for (Actor actor : actoresSinBocadillos) {
+	        actor.draw(spriteBatch, 1);
+	    }
+
+	    // Dibujar los actores con bocadillos
+	    for (Actor actor : actoresBocadillo) {
+	        actor.draw(spriteBatch, 1);
+	    }
+
+	    spriteBatch.end();
+
+	    if (Parametros.zona == 1 || Parametros.zona == 3 || Parametros.zona == 4 || Parametros.zona == 5) {
+	        renderer.render(new int[]{4});
+	    }
+
+	    if (Parametros.zona == 2) {
+	        createRainDrops();
+	    }
+
+	    uiStage.draw();
 	}
+
 }

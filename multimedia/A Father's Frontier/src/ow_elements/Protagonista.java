@@ -3,6 +3,8 @@ package ow_elements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -15,12 +17,14 @@ public class Protagonista extends Element {
     private boolean unaVez = false;
     private float deadzoneRadius = 12; // Radio de la zona muerta
     public Sound pasos;
+	private Animation<TextureRegion> animacionLoca;
 
     public Protagonista(float x, float y, Stage s, OverWorldScreen nivel) {
         super(x, y, s);
         pasos = ResourceManager.getSound("02-OW/Audio/sounds/pasos.wav");
 
         prepararAnimacion("02-OW/Personajes/personaje.protagonista_ow.png", true);
+		animacionLoca = loadFullAnimation("02-OW/Personajes/personaje.protagonista.final_ow.png", 1, 7, 2, false);
 
         setAnimation(idleFrente);
         this.setPolygon(8, 32, 23, 5, 5);
@@ -88,4 +92,8 @@ public class Protagonista extends Element {
             }
         }
     }
+
+	public void animacionFinal() {
+		this.setAnimation(animacionLoca);
+	}
 }

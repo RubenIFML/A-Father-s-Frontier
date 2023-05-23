@@ -31,6 +31,7 @@
 	<section name="OptionalMessageDialog.hide.">
 		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
 		<item key="EmptyDefaultAssistCategory" value="false"/>
+		<item key="RunnableJar.export.ipwarning" value="false"/>
 	</section>
 	<section name="NewClassWizardPage">
 		<item key="create_constructor" value="false"/>
@@ -113,11 +114,13 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
-		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="D:\Desktop\multimedia"/>
+		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="D:\Desktop\multimedia.xml"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
-		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="Launcher - A Father&apos;s Frontier"/>
-		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="D:\Desktop\A Father&apos;s Frontier.jar"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="A Father&apos;s Frontier - A Father&apos;s Frontier"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="E:\Desktop\A Father&apos;s Frontier.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="E:\Desktop\A Father&apos;s Frontier.jar"/>
+			<item value="C:\Users\rmoya\Desktop\A Father&apos;s Frontier.jar"/>
 			<item value="D:\Desktop\A Father&apos;s Frontier.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">

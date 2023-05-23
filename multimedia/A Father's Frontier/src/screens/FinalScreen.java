@@ -68,25 +68,32 @@ private Actor protagonistaM;
 	    			else if (button == Input.Buttons.LEFT && contador==1 && texto.completo==true) {
 			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
-	     	            texto = new Texto("No puedo soportarlo...\nLo he perdido todo.", "talk1");
+	     	            texto = new Texto("No he conseguido el dinero...\nLo he perdido todo.", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && contador==2 && texto.completo==true) {
 			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	     	        	texto.remove();
-	     	            texto = new Texto("Evans...\nNos vemos al otro lado...", "talk1");
+	     	            texto = new Texto("El dolor se ha hecho tan insoportable que\nno merece la pena seguir luchando...", "talk1");
 	     	            this.uiStage.addActor(texto);
 	     	            contador ++;
 	     	        }
 	    			else if (button == Input.Buttons.LEFT && contador==3 && texto.completo==true) {
+			        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	     	        	texto.remove();
+	     	            texto = new Texto("Evans...\nNos vemos al otro lado...", "talk1");
+	     	            this.uiStage.addActor(texto);
+	     	            contador ++;
+	     	        }
+	    			else if (button == Input.Buttons.LEFT && contador==4 && texto.completo==true) {
 			        	AudioManager.playSound("02-OW/Audio/sounds/muerte.wav");
 	    	        	texto.remove();
 	    	        	uiStage.addActor(protagonistaM);
 	    	        	ruido.stop();
 	    	            contador ++;
 	     	        }
-	    	        else if (button == Input.Buttons.LEFT && contador==4 && texto.completo==true) {
+	    	        else if (button == Input.Buttons.LEFT && contador==5 && texto.completo==true) {
 	    	            Parametros.pierdes=false;
 	    	            game.setScreen(new TitleScreen(game));
 	    	        }

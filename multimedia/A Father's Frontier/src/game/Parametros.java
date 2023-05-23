@@ -28,6 +28,7 @@ public class Parametros {
  public static int dinero = 1;
  
  //Variables
+ public static boolean titlePrimeraVez = false;
  public static boolean frontera = false;
  public static boolean controlesActivos = true;
  public static boolean lockClick = false;
