@@ -75,7 +75,7 @@ public class NpcDependiente extends Element {
 	    if(siguienteInteraccion==0) {
 		    if (Gdx.input.justTouched()) {
 		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y) && !Parametros.interactuandoNpc) {
 		            interactuar();
 		        }
 		    }
@@ -108,10 +108,10 @@ public class NpcDependiente extends Element {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
 		    	if(Parametros.haComidoHoy == true) {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 		        }
 		    	else {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+		    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 		    	}
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        bocadillo.setName("bocadillo");
@@ -134,6 +134,7 @@ public class NpcDependiente extends Element {
 		    if (Parametros.haComidoHoy == true){
 			    switch (siguienteInteraccion) {
 			        case 0:
+			        	Parametros.interactuandoNpc = true;
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion = new Texto("Lo siento mucho, esa era la última existencia.\nÚltimamente nos llegan muy pocas raciones...", "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
@@ -143,6 +144,7 @@ public class NpcDependiente extends Element {
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion.hide();
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
+			        	Parametros.interactuandoNpc = false;
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 			            break;
 			    }
@@ -151,6 +153,7 @@ public class NpcDependiente extends Element {
 		    else if(Parametros.haComidoHoy == false) {
 			    switch (siguienteInteraccion) {
 			        case 0:
+			        	Parametros.interactuandoNpc = true;
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion = new Texto(this.dialogo1, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
@@ -179,6 +182,7 @@ public class NpcDependiente extends Element {
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
 			            Parametros.dinero-=Parametros.precioComida;
 			            Parametros.haComidoHoy = true;
+			        	Parametros.interactuandoNpc = false;
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 			            break;
 			    }
@@ -188,8 +192,9 @@ public class NpcDependiente extends Element {
 	    else {
 		    switch (siguienteInteraccion) {
 	        case 0:
+	        	Parametros.interactuandoNpc = true;
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto("Lo siento, pero si no tiene al menos tres libras\nno puedo venderle Fish & Chips...", "talk2");
+	            interaccion = new Texto("Lo siento, pero si no tiene al menos"+ Parametros.precioComida +" libras\nno puedo venderle Fish & Chips...", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;
@@ -204,6 +209,7 @@ public class NpcDependiente extends Element {
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion.hide();
 	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	        	Parametros.interactuandoNpc = false;
 	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	            break;
 		    }

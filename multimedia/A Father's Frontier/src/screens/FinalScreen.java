@@ -36,7 +36,7 @@ private Actor protagonistaM;
         
         ResourceManager.musicaTitulo.stop();
         
-		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.wav"));
+		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.mp3"));
 	    ruido.setLooping(true);
 	    ruido.setVolume(0.2f);
 
@@ -48,7 +48,7 @@ private Actor protagonistaM;
         texto.completo=true;
         this.uiStage.addActor(texto);
         
-	    protagonistaMT = new Texture("02-OW/personajes/personaje.ahorcado.png");
+	    protagonistaMT = new Texture("02-OW/personajes/p.ahorcado.png");
 	    protagonistaM = new Image(protagonistaMT);
 	    protagonistaM.setBounds(342, 220, 80, 500);
 	    

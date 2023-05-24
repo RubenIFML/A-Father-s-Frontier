@@ -87,7 +87,7 @@ public class NpcMision extends Element {
 	    if(siguienteInteraccion==0) {
 		    if (Gdx.input.justTouched()) {
 		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y) && !Parametros.interactuandoNpc) {
 		            interactuar();
 		        }
 		    }
@@ -123,106 +123,106 @@ public class NpcMision extends Element {
 		    	switch(this.mision) {
 			    	case 0:
 				    	if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 1:
 				    	if(Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 2:
 				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 3:
 				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 4:
 				    	if(Parametros.mision_una_lettera_d_amore == true) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 5:
 				    	if(Parametros.mision_buen_chico == true) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 6:
 				    	if(Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 7:
 				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 8:
 				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 9:
 				    	if(Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 10:
 				    	if(Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 11:
 				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 12:
 				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mision_ow.png"));
+				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 		    	}
@@ -265,7 +265,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -285,6 +285,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_un_extrano_muneco = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -294,6 +295,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_un_extrano_muneco == false && Parametros.mision_un_extrano_muneco_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -303,6 +305,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -311,6 +314,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_extrano_muneco == false && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -327,6 +331,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=3;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_un_extrano_muneco_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -335,6 +340,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -350,6 +356,7 @@ public class NpcMision extends Element {
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.dinero+=3;
 	    	            Parametros.mision_un_extrano_muneco_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -358,6 +365,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -367,6 +375,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -379,7 +388,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -399,6 +408,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_el_tesoro_perdido = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -408,6 +418,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_el_tesoro_perdido == false && Parametros.mision_el_tesoro_perdido_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -417,6 +428,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -425,6 +437,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_tesoro_perdido == false && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -440,6 +453,7 @@ public class NpcMision extends Element {
 	    	            Parametros.mision_el_tesoro_perdido_item=false;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_el_tesoro_perdido_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -448,6 +462,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -462,6 +477,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("02-OW/Audio/sounds/item.wav");
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_el_tesoro_perdido_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -470,6 +486,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -479,6 +496,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 		    	    }
@@ -491,7 +509,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -511,6 +529,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_el_viejo_general = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -520,6 +539,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_el_viejo_general == false && Parametros.mision_el_viejo_general_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -529,6 +549,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -537,6 +558,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_viejo_general == false && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -553,6 +575,7 @@ public class NpcMision extends Element {
 	    	            Parametros.mision_el_viejo_general_item=false;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_el_viejo_general_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -561,6 +584,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -576,6 +600,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_el_viejo_general_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -584,6 +609,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -593,6 +619,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -601,6 +628,7 @@ public class NpcMision extends Element {
 	    	case 3:
 		    	switch (siguienteInteraccion) {
 		        case 0:
+		        	Parametros.interactuandoNpc = true;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion = new Texto(this.dialogo1, "talk1");
 		            this.nivel.uiStage.addActor(interaccion);
@@ -629,6 +657,7 @@ public class NpcMision extends Element {
 		            Parametros.mision_el_viejo_general_completada = false;
 		            Parametros.mision_el_viejo_general_item = false;
 		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            Parametros.interactuandoNpc = false;
 		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 		            break;
 	    		}
@@ -638,6 +667,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_una_lettera_d_amore == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -672,6 +702,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("02-OW/Audio/sounds/comprar.wav");
 	    	            Parametros.dinero+=2;
 	    	            Parametros.mision_una_lettera_d_amore=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -681,6 +712,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_una_lettera_d_amore == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -690,6 +722,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -700,7 +733,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -720,6 +753,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_buen_chico = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -729,6 +763,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_buen_chico == false && Parametros.mision_buen_chico_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -738,6 +773,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -746,6 +782,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_buen_chico == false && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -762,6 +799,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_buen_chico_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -770,6 +808,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -785,6 +824,7 @@ public class NpcMision extends Element {
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.dinero+=2;
 	    	            Parametros.mision_buen_chico_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -793,6 +833,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -802,6 +843,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -812,7 +854,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -832,6 +874,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_malas_vistas = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -841,6 +884,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_malas_vistas == false && Parametros.mision_malas_vistas_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo3, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -850,6 +894,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -858,6 +903,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_malas_vistas == false && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -874,6 +920,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_malas_vistas_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -882,6 +929,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_item==false && Parametros.mision_malas_vistas_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo4, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -897,6 +945,7 @@ public class NpcMision extends Element {
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.dinero+=2;
 	    	            Parametros.mision_malas_vistas_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -905,6 +954,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_item==false && Parametros.mision_malas_vistas_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -914,6 +964,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -923,7 +974,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -978,6 +1029,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_elemental_mi_querido_simon = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -987,6 +1039,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Simon: ¿Dónde estará ese anciano loco?\nEspero que lo encuentre pronto, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -996,6 +1049,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1004,6 +1058,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_elemental_mi_querido_simon == false && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Simon: Ese viejo secuestra-niños tiene\nque andar por alguna parte...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1038,6 +1093,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=4;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_elemental_mi_querido_simon_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1046,6 +1102,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Simon: Ese viejo secuestra-niños tiene\nque andar por alguna parte...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1080,6 +1137,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=4;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_elemental_mi_querido_simon_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1088,6 +1146,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_completada == false && Parametros.mision_elemental_mi_querido_simon_item==false && Parametros.mision_elemental_mi_querido_simon_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Simon: Podría haberlo hecho sin usted,\nsin embargo, he de admitir que ha ayudado.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1097,6 +1156,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1105,6 +1165,7 @@ public class NpcMision extends Element {
 	    	case 8:
 		    	switch (siguienteInteraccion) {
 		        case 0:
+		        	Parametros.interactuandoNpc = true;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion = new Texto(this.dialogo1, "talk1");
 		            this.nivel.uiStage.addActor(interaccion);
@@ -1147,6 +1208,7 @@ public class NpcMision extends Element {
 		            Parametros.mision_elemental_mi_querido_simon_completada = false;
 		            Parametros.mision_elemental_mi_querido_simon_item = false;
 		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            Parametros.interactuandoNpc = false;
 		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 		            break;
 	    		}
@@ -1156,6 +1218,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1189,6 +1252,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_magia_blanca = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -1198,6 +1262,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_magia_blanca == false && Parametros.mision_magia_blanca_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1207,6 +1272,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1215,6 +1281,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_magia_blanca == false && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¡Esa es mi...! Digo... Esa es mi bolsa...\nMuchas gracias, amigo... No lo cuente...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1231,6 +1298,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_magia_blanca_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1239,6 +1307,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_item==false && Parametros.mision_magia_blanca_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¡Esa es mi...! Digo... Esa es mi bolsa...\nMuchas gracias, amigo... No lo cuente...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1254,6 +1323,7 @@ public class NpcMision extends Element {
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.dinero+=2;
 	    	            Parametros.mision_magia_blanca_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1262,6 +1332,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_completada == false && Parametros.mision_magia_blanca_item==false && Parametros.mision_magia_blanca_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Ni una palabra a nadie de lo que ha\nsucedido entre nosotros, ¿Entendido?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1271,6 +1342,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1280,6 +1352,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk2");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1313,6 +1386,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_un_glamuroso_collar = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -1322,6 +1396,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_un_glamuroso_collar == false && Parametros.mision_un_glamuroso_collar_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo5, "talk2");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1331,6 +1406,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	        	Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1339,6 +1415,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_glamuroso_collar == false && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Es ese mi collar? ¡Entréguemelo de inmediato!\nAquí tiene su recompensa, no se muera de hambre.", "talk2");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1355,6 +1432,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=4;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_un_glamuroso_collar_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1363,6 +1441,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_item==false && Parametros.mision_un_glamuroso_collar_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Es ese mi collar? ¡Entréguemelo de inmediato!\nTome su recompensa, no muera de hambre.", "talk2");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1378,6 +1457,7 @@ public class NpcMision extends Element {
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.dinero+=4;
 	    	            Parametros.mision_un_glamuroso_collar_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1386,6 +1466,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_completada == false && Parametros.mision_un_glamuroso_collar_item==false && Parametros.mision_un_glamuroso_collar_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Haber encontrado este collar no le hace menos\npordiosero de lo que es, ¿Sabe?", "talk2");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1395,6 +1476,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1404,7 +1486,7 @@ public class NpcMision extends Element {
 	    	    if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
-	    	        
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto(this.dialogo1, "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1445,6 +1527,7 @@ public class NpcMision extends Element {
 	    	            nivel.uiStage.addActor(tarjeta);
 	    	            AudioManager.playSound("02-OW/Audio/sounds/mision.wav");
 	    	            Parametros.mision_caos_en_la_ciudad = false;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            break;
@@ -1454,6 +1537,7 @@ public class NpcMision extends Element {
 	    	    else if(Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("Espero que no le moleste que no vaya a verle...\n¿Ha ido a avisarle ya? Puedo recomensarle...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1463,6 +1547,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1471,6 +1556,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Ha hablado con mi \"amigo\"?\nS-se ha enfadado, ¿Verdad?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1494,6 +1580,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_caos_en_la_ciudad_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1502,6 +1589,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_caos_en_la_ciudad == false && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_finalizada == false) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("¿Ha hablado con mi \"amigo\"?\nS-se ha enfadado, ¿Verdad?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1525,6 +1613,7 @@ public class NpcMision extends Element {
 	    	            Parametros.dinero+=2;
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
 	    	            Parametros.mision_caos_en_la_ciudad_finalizada=true;
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1533,6 +1622,7 @@ public class NpcMision extends Element {
 	    	    else if (Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_item==false && Parametros.mision_caos_en_la_ciudad_finalizada == true) {
 	    		    switch (siguienteInteraccion) {
 	    	        case 0:
+	    	        	Parametros.interactuandoNpc = true;
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion = new Texto("C-creo que soy hombre muerto...\nDebí haberme presentado...", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
@@ -1542,6 +1632,7 @@ public class NpcMision extends Element {
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
 	    	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	    	            Parametros.interactuandoNpc = false;
 	    	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	    	            break;
 	    		    }
@@ -1550,6 +1641,7 @@ public class NpcMision extends Element {
 	    	case 12:
 		    	switch (siguienteInteraccion) {
 		        case 0:
+		        	Parametros.interactuandoNpc = true;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion = new Texto(this.dialogo1, "talk1");
 		            this.nivel.uiStage.addActor(interaccion);
@@ -1585,6 +1677,7 @@ public class NpcMision extends Element {
 		            Parametros.mision_caos_en_la_ciudad_completada = false;
 		            Parametros.mision_caos_en_la_ciudad_item = false;
 		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            Parametros.interactuandoNpc = false;
 		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 		            break;
 	    		}

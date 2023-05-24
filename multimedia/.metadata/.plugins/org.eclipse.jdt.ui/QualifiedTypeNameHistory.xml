@@ -10,7 +10,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Cell"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.MapObjects"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMovil"/>
-    <fullyQualifiedTypeName name="ow_elements.Element"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMision"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.InputAdapter"/>
     <fullyQualifiedTypeName name="java.text.Format"/>
@@ -40,7 +39,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Color"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
     <fullyQualifiedTypeName name="screens.OverWorldScreen"/>
     <fullyQualifiedTypeName name="game.Postre"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.actions.AlphaAction"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Stack"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
+    <fullyQualifiedTypeName name="ow_elements.Element"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
 </qualifiedTypeNameHistroy>

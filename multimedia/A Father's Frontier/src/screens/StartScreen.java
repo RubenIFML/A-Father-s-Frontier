@@ -29,7 +29,6 @@ private boolean desactivable = false;
 private float fadeTimer = 0f;
 private Music musicaCiudad;
 private Music ruido;
-private Music tiktak;
 private int contador = 0;
 private Texto texto;
 private Texture siluetaTexture;
@@ -40,8 +39,7 @@ private Actor silueta;
 
         texto = new Texto("¿?: Si quiere recuperar a su hijo, ha de traer\nveinte libras a la casa del sur del distrito.", "talk1");
         texto.completo=true;
-		this.tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.wav"));
-		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.wav"));
+		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.mp3"));
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 
@@ -52,14 +50,14 @@ private Actor silueta;
 	        switch (Parametros.dia) {
 	            case 1:
 	                periodico = new Texture("Menu/periodico.0_0.png");
-	                siluetaTexture = new Texture("02-OW/personajes/personaje.silueta_ow.png");
+	                siluetaTexture = new Texture("02-OW/personajes/p_sil.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(362, 240, 76, 164);
 	        		ruido.setLooping(true);
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 2:
-	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos_ow.png");
+	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(342, 250, 100, 158);
 	                ResourceManager.musicaTitulo.stop();
@@ -67,7 +65,7 @@ private Actor silueta;
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 3:
-	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos1_ow.png");
+	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos1.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(362, 240, 76, 164);
 	                ResourceManager.musicaTitulo.stop();
@@ -75,7 +73,7 @@ private Actor silueta;
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 4:
-	                siluetaTexture = new Texture("02-OW/personajes/personaje.recuerdos1_ow.png");
+	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos1.png");
 	                ResourceManager.musicaTitulo.stop();
 		    }
         }
@@ -186,7 +184,7 @@ private Actor silueta;
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
-	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad));
 	    	            contador ++;
 	    	        }
 	    	        
@@ -234,7 +232,7 @@ private Actor silueta;
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
-	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad));
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==true) {
@@ -281,7 +279,7 @@ private Actor silueta;
 	    	        	texto.remove();
 	    	        	silueta.remove();
 	    	        	ruido.stop();
-	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad));
 	    	            contador ++;
 	    	        }
 	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==true) {
@@ -303,7 +301,7 @@ private Actor silueta;
 	     	        }
 	    	        else if (button == Input.Buttons.LEFT && Parametros.frontera==false && contador==1 && texto.completo==true) {
 	    	        	texto.remove();
-	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad, tiktak));
+	    	            game.setScreen(new OverWorldScreen(game, musicaCiudad));
 	    	            contador ++;
 	    	        }
 	    	}
@@ -321,6 +319,10 @@ private Actor silueta;
 
         super.render(delta);
         uiStage.act();
+        
+        if(ResourceManager.tiktak.isPlaying()) {
+	        ResourceManager.tiktak.stop();
+        }
         
         fadeTimer += delta;
         switch(Parametros.dia) {
@@ -354,7 +356,7 @@ private Actor silueta;
         		}
         		break;
         }
-
+        
         batch.begin();
         batch.draw(blackBackground, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
         batch.end();

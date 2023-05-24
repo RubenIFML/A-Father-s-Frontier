@@ -22,10 +22,12 @@ public class NpcStatic extends Element {
 	private String dialogo2;
 	private String animacion;
 	private String direccion;
+	private Stage s;
 
 	public NpcStatic(float x, float y, Stage s, OverWorldScreen nivel, String animacion, String direccion, String dialogo1, String dialogo2) {
 		super(x, y, s);
 		this.nivel = nivel;
+		this.s = s;
 		this.animacion = animacion;
 		this.dialogo1 = dialogo1;
 		this.dialogo2 = dialogo2;
@@ -51,16 +53,15 @@ public class NpcStatic extends Element {
 			break;
 		}
 		this.setPolygon(8, 32, 23, 5, 5);
-
-        switch (this.direccion) {
-        	case "cola":
-        		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight()/3);
-        		break;
-        	default:
-        		dialogBox=new Element(0,0,s,this.getWidth(),this.getHeight());
-        		break;
-        }
 		
+        switch (this.direccion) {
+    	case "cola":
+    		dialogBox=new Element(0,0,this.s,this.getWidth(),this.getHeight()/3);
+    		break;
+    	default:
+    		dialogBox=new Element(0,0,this.s,this.getWidth(),this.getHeight());
+    		break;
+        }
 		dialogBox.setPosition(this.getX(),this.getY());
 		dialogBox.setRectangle();
 	}
@@ -69,7 +70,7 @@ public class NpcStatic extends Element {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
 	    float distanciaY = Math.abs(nivel.prota.getY() - getY());
-
+	    
 	    comprobarColisiones();
 	    bocadillo(distanciaX, distanciaY);
 	    
@@ -90,7 +91,7 @@ public class NpcStatic extends Element {
 	    if(siguienteInteraccion==0) {
 		    if (Gdx.input.justTouched()) {
 		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y) && !Parametros.interactuandoNpc) {
 		            interactuar();
 		        }
 		    }
@@ -122,14 +123,14 @@ public class NpcStatic extends Element {
 		         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
-		        bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_ow.png"));
+		        bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
 		        switch (this.direccion) {
 		        	case "cola":
 		        		bocadillo.setPosition(getX()+10, getY()-62 + getHeight() + 10); // ajustar la posición del bocadillo
 		        		break;
 		        	default:
 		        		switch(this.animacion) {
-		        		case "02-OW/Personajes/personaje.herido_ow.png":
+		        		case "02-OW/Personajes/p.herido.png":
 			        		bocadillo.setPosition(getX()+22, getY()-52 + getHeight() + 10); // ajustar la posición del bocadillo
 		        			break;
 		        		default:
@@ -154,7 +155,8 @@ public class NpcStatic extends Element {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 		    switch (siguienteInteraccion) {
 	        case 0:
-	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	        	Parametros.interactuandoNpc = true;
+	        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion = new Texto(this.dialogo1, "talk1");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
@@ -170,6 +172,7 @@ public class NpcStatic extends Element {
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion.hide();
 	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	        	Parametros.interactuandoNpc = false;
 	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	            break;
 		    }

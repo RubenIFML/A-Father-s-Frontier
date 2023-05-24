@@ -23,7 +23,7 @@ public class TareasSinExpandir extends Actor {
         generator.dispose();
         
         this.titulo = "- LISTA DE TAREAS -";
-        this.tareas = new Texture("Menu/listaTareas_sinExpandir.png");
+        this.tareas = new Texture("Menu/listaTareas1.png");
         setBounds(10, 300, 232, 290);
     }
 

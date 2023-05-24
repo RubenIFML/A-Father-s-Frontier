@@ -1,6 +1,7 @@
 package ow_elements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,6 +14,7 @@ public class Reloj extends Actor {
     public static float tiempoRestante = 300;
     public static String tiempoTexto;
     private Texture reloj;
+    public Sound tiktak;
     private float textX;
     private float textY;
     private boolean empezar = false;

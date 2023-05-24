@@ -153,7 +153,7 @@
     <property name="name" value="Start"/>
    </properties>
   </object>
-  <object id="70" name="Cinematica" x="354.833" y="410.439" width="63.6667" height="20.4545">
+  <object id="70" name="Cinematica" x="354.833" y="415.984" width="63.6667" height="20.4545">
    <properties>
     <property name="name" value="cinematica"/>
    </properties>

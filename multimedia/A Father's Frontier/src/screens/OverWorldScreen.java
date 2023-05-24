@@ -73,6 +73,8 @@ private Texture blackBackgroundTexture;
 private Actor blackBackgroundActor;
 private Texture periodicoFinalTextura;
 private Actor periodicoFinalActor;
+private Texture finalisimoTextura;
+private Actor finalisimoActor;
 private Texture planoTexture;
 private Actor planoActor;
 private Texture controlesTexture;
@@ -97,7 +99,6 @@ private Solid ow2;
 @SuppressWarnings("unused")
 private Solid start;
 private Music musicaCiudad;
-private Music tiktak;
 private Reloj reloj;
 private Dinero dinero;
 private TarjetaDeZona tarjeta;
@@ -152,15 +153,22 @@ private Texture escena3T;
 private Animation<TextureRegion> anim;
 
 
-	public OverWorldScreen(Demo game, Music musicaCiudad, Music tiktak) {
+	public OverWorldScreen(Demo game, Music musicaCiudad) {
 		super(game);
 		this.musicaCiudad=musicaCiudad;
-		this.tiktak=tiktak;
 		
 		comparator=new ActorComparator();
 		mainStage=new Stage();
-		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.wav"));
-		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.wav"));
+		policia = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/policia.mp3"));
+		policia.setLooping(true);
+		lloros = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/lloros.mp3"));
+		lloros.setLooping(true);
+		risa = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/risa.mp3"));
+		risa.setLooping(true);
+		scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.mp3"));
+		scary.setLooping(true);
+		ambiente = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ambiente.mp3"));
+		ruido = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/final.mp3"));
 		planoTexture = new Texture(Gdx.files.internal("Menu/mapaEsquema.png"));
 		blackBackgroundTexture = new Texture(Gdx.files.internal("Menu/blackBackground.png"));
 		blackBackgroundActor = new Image(blackBackgroundTexture);
@@ -168,48 +176,43 @@ private Animation<TextureRegion> anim;
 		periodicoFinalTextura = new Texture(Gdx.files.internal("Menu/periodico.0_1.png"));
 		periodicoFinalActor = new Image(periodicoFinalTextura);
 		periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+		finalisimoTextura = new Texture(Gdx.files.internal("Menu/final.png"));
+		finalisimoActor = new Image(finalisimoTextura);
+		finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
 		planoActor = new Image(planoTexture);
 		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesOw.png"));
 		controlesActor = new Image(controlesTexture);
-		controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesInicialesOw.png"));
+		controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesOw2.png"));
 		controlesInicialesActor = new Image(controlesInicialesTexture);
 		reloj = new Reloj();
 		dinero = new Dinero();
 		tareasSinExpandir = new TareasSinExpandir();
         
-		escena1T = new Texture("02-OW/personajes/personaje.final1_ow.png");
+		escena1T = new Texture("02-OW/personajes/p.final1.png");
 		escena1 = new Image(escena1T);
 		escena1.setBounds(302, 190, 180, 360);
 
-		escena2T = new Texture("02-OW/personajes/personaje.final2_ow.png");
+		escena2T = new Texture("02-OW/personajes/p.final2.png");
 		escena2 = new Image(escena2T);
 		escena2.setBounds(302, 190, 180, 360);
 
-		escena3T = new Texture("02-OW/personajes/personaje.final3_ow.png");
+		escena3T = new Texture("02-OW/personajes/p.final3.png");
 		escena3 = new Image(escena3T);
 		escena3.setBounds(302, 190, 180, 360);
 		
 		if(Parametros.musicaUnaVez==true) {
 
 			if(Parametros.dia==1) {
-				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.wav"));
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia1.mp3"));
 			}
 			else if(Parametros.dia==2) {
-				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia2.wav"));
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia2.mp3"));
 			}
 			else if(Parametros.dia==3) {
-				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia3.wav"));
+				this.musicaCiudad = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/ciudad_dia3.mp3"));
 			}
 			else if(Parametros.dia==4) {
 				this.musicaCiudad = ruido;
-				policia = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/policia.wav"));
-				policia.setLooping(true);
-				lloros = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/lloros.wav"));
-				lloros.setLooping(true);
-				risa = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/risa.wav"));
-				risa.setLooping(true);
-				scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.wav"));
-				scary.setLooping(true);
 				TrabajoACalle=true;
 				CasaACalle=false;
 				CalleASuper1=false;
@@ -217,7 +220,7 @@ private Animation<TextureRegion> anim;
 			}
 			
 		}
-		
+
 		switch (Parametros.zona) {
 			case 1:
 				map=ResourceManager.getMap("Mapas/CasaProtagonista.tmx");
@@ -266,6 +269,27 @@ private Animation<TextureRegion> anim;
 						Tile tree=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
 								"02-OW/Tiles/tree.png", 31);
 						overs.add(tree);
+					break;
+					case "cajaReg":
+						
+						Tile cajaReg=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+								"02-OW/Tiles/cajaReg_3.png", 31);;
+								
+						switch(Parametros.precioComida) {
+							case 2:
+								cajaReg=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Tiles/cajaReg_2.png", 31);
+								break;
+							case 3:
+								cajaReg=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Tiles/cajaReg_3.png", 31);
+								break;
+							case 4:
+								cajaReg=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
+										"02-OW/Tiles/cajaReg_4.png", 31);
+								break;
+						}
+						overs.add(cajaReg);
 					break;
 					case "farolaA":
 						Tile farolaA=new Tile((float)props.get("x"), (float)props.get("y"),mainStage, this,
@@ -327,107 +351,107 @@ private Animation<TextureRegion> anim;
 						
 							case "NpcRio":
 								NpcStatic npcRio=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "El río Támesis esconde grandes secretos\nen su interior..."
+										"02-OW/Personajes/p.extra2.png", "derecha", "El río Támesis esconde grandes secretos\nen su interior..."
 										, "En tiempos de guerra, la muerte puede\nsentirse desde su rivera...");
 								npcs.add(npcRio);
 								break;
 
 							case "NpcPolicia":
 								NpcStatic npcPolicia=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
+										"02-OW/Personajes/p.policia.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
 										, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
 								npcs.add(npcPolicia);
 								break;
 
 							case "NpcPolicia2":
 								NpcStatic npcPolicia2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
+										"02-OW/Personajes/p.policia.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
 										, "No sabemos cuando volverá a estar permitido.\nLe recomiendo esperar con paciencia.");
 								npcs.add(npcPolicia2);
 								break;
 								
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
+										"02-OW/Personajes/p.dependiente.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
 										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
 						
 							case "NpcTenderete":
 								NpcStatic npcTenderete=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra8_ow.png", "frente", "¿Viene usted buscando...? Je, je, ya sabe... ¿No?\nLa magia blanca, si sabe a qué me refiero..."
+										"02-OW/Personajes/p.extra8.png", "frente", "¿Viene usted buscando...? Je, je, ya sabe... ¿No?\nLa magia blanca, si sabe a qué me refiero..."
 										, "Por su cara diría que no tiene ni idea de a qué me\ndedico... En fin, ¡No importa! ¡Muévase, y no moleste!");
 								npcs.add(npcTenderete);
 								break;
 								
 							case "NpcMarket":
 								NpcStatic npcMarket=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Tengo frío... No tengo casa... ¡Lo he perdido todo!\nMi mujer me odia, mis hijos no me quieren..."
+										"02-OW/Personajes/p.extra9.png", "frente", "Tengo frío... No tengo casa... ¡Lo he perdido todo!\nMi mujer me odia, mis hijos no me quieren..."
 										, "Solo quiero un poco de paz... Solo necesito que\nla vida me recompense... No puedo más...");
 								npcs.add(npcMarket);
 								break;
 								
 							case "NpcSuper1":
 								NpcStatic npcSuper1=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "Hacía años que no veía un supermercado\ntan vacío... No hay prácticamente nada."
+										"02-OW/Personajes/p.extra11.png", "frente", "Hacía años que no veía un supermercado\ntan vacío... No hay prácticamente nada."
 										, "Parece que vienen unos años duros...\nLe recomiendo prepararse para lo peor...");
 								npcs.add(npcSuper1);
 								break;
 								
 							case "NpcSuper2":
 								NpcStatic npcSuper2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Mi mujer insiste en que sea yo quien haga\nlas compras de la casa..."
+										"02-OW/Personajes/p.extra11.png", "espaldas", "Mi mujer insiste en que sea yo quien haga\nlas compras de la casa..."
 										, "¿¡Qué va a ser lo próximo!? ¿¡Ponerme un delantal\ny limpiar la casa!? ¡Por dios!");
 								npcs.add(npcSuper2);
 								break;
 								
 							case "NpcPlaza":
 								NpcStatic npcPlaza=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra5_ow.png", "derecha", "Esos Nazis... Las fuerzas de nustra nación están\nacabando con ellos como si fueran nenazas."
+										"02-OW/Personajes/p.extra5.png", "derecha", "Esos Nazis... Las fuerzas de nustra nación están\nacabando con ellos como si fueran nenazas."
 										, "¡Están desquiciados, su única cura es la muerte!\n");
 								npcs.add(npcPlaza);
 								break;
 								
 							case "NpcCasaSur":
 								NpcStatic npcCasaSur=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra2_ow.png", "derecha", "Siento que una sensación extraña rodea este\nlugar. Me pregunto quién vivirá aquí..."
+										"02-OW/Personajes/p.extra2.png", "derecha", "Siento que una sensación extraña rodea este\nlugar. Me pregunto quién vivirá aquí..."
 										, "¿Será el fantasma de Jack el destripador?\n¡Ja, ja, ja, ja!");
 								npcs.add(npcCasaSur);
 								break;
 								
 							case "NpcMovil1":
 								NpcMovil npcMovil1=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra1_ow.png", 1, 70);
+										"02-OW/Personajes/p.extra1.png", 1, 70);
 								npcs.add(npcMovil1);
 								break;
 								
 							case "NpcMovil2":
 								NpcMovil npcMovil2=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica_ow.png", 2, 60);
+										"02-OW/Personajes/p.chica.png", 2, 60);
 								npcs.add(npcMovil2);
 								break;
 								
 							case "NpcMovil3":
 								NpcMovil npcMovil3=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra3_ow.png", 1, 80);
+										"02-OW/Personajes/p.extra3.png", 1, 80);
 								npcs.add(npcMovil3);
 								break;
 								
 							case "NpcMovil4":
 								NpcMovil npcMovil4=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica1_ow.png", 2, 50);
+										"02-OW/Personajes/p.chica1.png", 2, 50);
 								npcs.add(npcMovil4);
 								break;
 								
 							case "NpcMovil5":
 								NpcMovil npcMovil5=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra5_ow.png", 1, 75);
+										"02-OW/Personajes/p.extra5.png", 1, 75);
 								npcs.add(npcMovil5);
 								break;
 									
 							case "misionNpc":
 								NpcMision misionNpc0=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra6_ow.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
+										"02-OW/Personajes/p.extra6.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
 										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo? Le prometo que le recompensaré.",
 										"¿Ha encontrado ya el muñeco de mi hija?\nEra un juguete bastante extraño...",
 										"¡Muchas gracias por recuperar el muñeco\nde mi hija! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
@@ -436,7 +460,7 @@ private Animation<TextureRegion> anim;
 								
 							case "misionNpc1":
 								NpcMision misionNpc1=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra_ow.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
+										"02-OW/Personajes/p.extra.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
 										, "He estado en una cabina telefónica hace\nun rato, se me deben haber caído...",
 										"¿Dónde estarán mis dos libras? Si las encuentra,\ntráigamelas, por favor...",
 										"¿Qué? ¡Esas son mis dos libras! Pero... ¿Sabe qué?\nEstoy de buen humor, ¡quédeselas!", "Las buenas personas me conmueven, y estoy\nseguro de que usted es una de ellas.", 1);
@@ -445,7 +469,7 @@ private Animation<TextureRegion> anim;
 								
 							case "misionNpc2":
 								NpcMision misionNpc2=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra10_ow.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
+										"02-OW/Personajes/p.extra10.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
 										, "Parezco ser el único que se preocupa por él...\n¿Por qué no vas a comprobar si está bien?",
 										"Hoy he estado en la calle, pero no he visto al viejo\npor ninguna parte... Si lo encuentras, dímelo.",
 										"¿Que Jericho estaba detrás del Super UK? ¡Dios!\nVaya susto me he llevado... ¡Te recompensaré!", "El viejo Jericho cuidaba de mí hace años, pero\ndesde la Gran Guerra, ya no parece ser el mismo...", 2);
@@ -454,7 +478,7 @@ private Animation<TextureRegion> anim;
 								
 							case "misionNpc3":
 								NpcMision misionNpc3=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.viejo1_ow.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
+										"02-OW/Personajes/p.viejo1.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
 										, "¿¡ES QUE NADIE LO VE!? ¡JA, JA, JA, JA!\nUn mal superior, ¡LA MALDAD DEFINITIVA!...",
 										"(Parece una persona trastornada... Será mejor\nque me vaya cuanto antes...)",
 										"", "", 3);
@@ -505,41 +529,41 @@ private Animation<TextureRegion> anim;
 						
 							case "NpcRio":
 								NpcMovil npcMovil0=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra5_ow.png", 1, 75);
+										"02-OW/Personajes/p.extra5.png", 1, 75);
 								npcs.add(npcMovil0);
 								break;
 								
 							case "NpcFarolaB":
 								NpcStatic npcFarolaB=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra4_ow.png", "derecha", "Algún día, quizás cuando acabe la guerra, quiero\ntener un coche como este...."
+										"02-OW/Personajes/p.extra4.png", "derecha", "Algún día, quizás cuando acabe la guerra, quiero\ntener un coche como este...."
 										, "De momento lo veo complicado... A penas\ntengo para pagarme la comida.");
 								npcs.add(npcFarolaB);
 								break;
 
 							case "NpcPolicia":
 								NpcStatic npcPolicia=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
+										"02-OW/Personajes/p.policia.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
 										, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
 								npcs.add(npcPolicia);
 								break;
 
 							case "NpcPolicia2":
 								NpcStatic npcPolicia2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
+										"02-OW/Personajes/p.policia.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
 										, "No sabemos cuando volverá a estar permitido.\nLe recomiendo esperar con paciencia.");
 								npcs.add(npcPolicia2);
 								break;
 						
 							case "NpcTenderete":
 								NpcStatic npcTenderete=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra8_ow.png", "frente", "¿Otra vez usted? ¿Sabe esta vez lo que quiere?...\n¿Todavía no? ¡Joder, usted está loco!"
+										"02-OW/Personajes/p.extra8.png", "frente", "¿Otra vez usted? ¿Sabe esta vez lo que quiere?...\n¿Todavía no? ¡Joder, usted está loco!"
 										, "¿Le parece normal? ¡Este es un negocio humilde!\n¡Déjeme en paz! ¡Lárguese de una vez y no vuelva!");
 								npcs.add(npcTenderete);
 								break;
 
 							case "NpcPlaza2":
 								NpcStatic npcPlaza2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra3_ow.png", "derecha", "La plaza de Greenwich es bastante conocida,\nsin embargo, a mí no me parece nada especial."
+										"02-OW/Personajes/p.extra3.png", "derecha", "La plaza de Greenwich es bastante conocida,\nsin embargo, a mí no me parece nada especial."
 										, "En el país del que yo vengo, tenemos una plaza\nmás grande, y sobre todo, mucho más bonita.");
 								npcs.add(npcPlaza2);
 								break;
@@ -547,7 +571,7 @@ private Animation<TextureRegion> anim;
 							case "NpcPlaza1":
 								if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
 									NpcStatic npcPlaza1=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-											"02-OW/Personajes/personaje.extra6_ow.png", "frente", "¡Ah, es usted! Muchas gracias por lo de ayer, mi\nhija ha recuperado su sonrisa gracias a usted."
+											"02-OW/Personajes/p.extra6.png", "frente", "¡Ah, es usted! Muchas gracias por lo de ayer, mi\nhija ha recuperado su sonrisa gracias a usted."
 											, "Aunque desde que mi mujer se fue, ya nada es\nlo mismo... Supongo que me entenderá, ¿Verdad?");
 									npcs.add(npcPlaza1);
 								}
@@ -555,21 +579,21 @@ private Animation<TextureRegion> anim;
 
 							case "NpcPerro":
 								NpcStatic npcPerro=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.perro_ow.png", "cola", "Grrrr...\n¡Guau, guau, guau!"
+										"02-OW/Personajes/p.perro.png", "cola", "Grrrr...\n¡Guau, guau, guau!"
 										, "(Parece que no le he gustado, será mejor que\nme aleje antes de que ocurra un accidente.)");
 								npcs.add(npcPerro);
 								break;
 								
 							case "NpcSuper3":
 								NpcStatic npcSuper3=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "A penas hay comida en buen estado en este\nsupermercado... Es un sitio horrible."
+										"02-OW/Personajes/p.extra11.png", "frente", "A penas hay comida en buen estado en este\nsupermercado... Es un sitio horrible."
 										, "Cualquier día de estos van a dejar que\nnos muramos de hambre, ya verá...");
 								npcs.add(npcSuper3);
 								break;
 								
 							case "NpcSuper4":
 								NpcStatic npcSuper4=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Todos estos inmigrantes judíos que están llegando\nal país... No me dan buena espina..."
+										"02-OW/Personajes/p.extra11.png", "espaldas", "Todos estos inmigrantes judíos que están llegando\nal país... No me dan buena espina..."
 										, "De aquí a unos meses este sitio se va a\nconvertir en un parque para delincuentes.");
 								npcs.add(npcSuper4);
 								break;
@@ -578,7 +602,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc4":
 								if(Parametros.mision_una_lettera_d_amore == false) {
 									NpcMision misionNpc4=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-											"02-OW/Personajes/personaje.viejo_ow.png", "frente", "¿Sabe? Mon amour debería haber llegado\na casa ayer, y sin embargo..."
+											"02-OW/Personajes/p.viejo.png", "frente", "¿Sabe? Mon amour debería haber llegado\na casa ayer, y sin embargo..."
 											, "Parece que después de todo no ha logrado\npasar la frontera... ¡Dannazione!",
 											"Un secondo... Quella lettera que lleva ahí...\n¡Esa es la firma de la mia amata!",
 											"¿Es para mí? ¡Mamma mia! ¡Grazie mille!\nSei un angelo, tenga esto como propina.", "No la tengo cerca, pero ahora sé que...\nNon importa quanto siamo lontani, ci amiamo.", 4);
@@ -588,7 +612,7 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcMarket":
 								NpcMision misionNpc5=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
+										"02-OW/Personajes/p.extra9.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
 										, "Ojalá poder hacerle quedarse... Pero no tengo\nnada para alimentarle... ¿Usted tiene algo?",
 										"Si tuviera algo para hacer que el perro se\nquedara conmigo, me sentiría menos solo...",
 										"¿Un hueso? ¡Genial! Así podré hacer que el perro\nse quede conmigo... Tome, como agradecimiento.", "Te llamaré... ¡Kuro! ¿Te gusta?\nAl fin alguien que me aprecia...", 5);
@@ -598,7 +622,7 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcCasaSur":
 								NpcMision misionNpc6=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra12_ow.png", "frente", "¡Por la reina Isabel II! ¡No veo un pimiento!\n¡Me estoy quedando ciego, dios santo!"
+										"02-OW/Personajes/p.extra12.png", "frente", "¡Por la reina Isabel II! ¡No veo un pimiento!\n¡Me estoy quedando ciego, dios santo!"
 										, "¡Si hay alguien ahí, ayúdeme por favor!\n¡Le prometo que le pagaré!",
 										"¿Hay alguien ahí? ¡Que alguien me ayude,\nme he quedado ciego!",
 										"¿Q-qué es esto? ¡No bromee conmigo, no veo!\n¿Unas gafas? ¡Gracias! ¡Por fin puedo ver!", "Así que usted es quien me ha salvado de\nese calvario... Le imaginaba distinto.", 6);
@@ -607,32 +631,32 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcMovil2":
 								NpcMovil npcMovil2=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica_ow.png", 2, 60);
+										"02-OW/Personajes/p.chica.png", 2, 60);
 								npcs.add(npcMovil2);
 								break;
 								
 							case "NpcMovil3":
 								NpcMovil npcMovil3=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra1_ow.png", 1, 80);
+										"02-OW/Personajes/p.extra1.png", 1, 80);
 								npcs.add(npcMovil3);
 								break;
 								
 							case "NpcMovil5":
 								NpcMovil npcMovil5=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra5_ow.png", 1, 75);
+										"02-OW/Personajes/p.extra5.png", 1, 75);
 								npcs.add(npcMovil5);
 								break;
 
 							case "NpcMovil6":
 								NpcMovil npcMovil6=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica1_ow.png", 2, 75);
+										"02-OW/Personajes/p.chica1.png", 2, 75);
 								npcs.add(npcMovil6);
 								break;
 								
 							case "misionNpc":
 								if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
 								} else {NpcMision misionNpc0=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra6_ow.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
+										"02-OW/Personajes/p.extra6.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
 										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
 										"¿Ha encontrado ya el muñeco de mi hija?\nEra un juguete bastante extraño...",
 										"¡Muchas gracias por recuperar el muñeco\nde mi hija! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
@@ -643,7 +667,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc1":
 					    	   if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == true) {				    		
 					    	   } else { NpcMision misionNpc1=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra_ow.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
+										"02-OW/Personajes/p.extra.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
 										, "He estado en una cabina telefónica hace\nun rato, se me deben haber caído...",
 										"¿Dónde estarán mis dos libras? Si las encuentra,\ntráigamelas, por favor...",
 										"¿Qué? ¡Esas son mis dos libras! Pero... ¿Sabe qué?\nEstoy de buen humor, ¡quédeselas!", "Las buenas personas me conmueven, y estoy\nseguro de que usted es una de ellas.", 1);
@@ -654,7 +678,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc2":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
 					    	    } else {NpcMision misionNpc2=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra10_ow.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
+										"02-OW/Personajes/p.extra10.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
 										, "Parezco ser el único que se preocupa por él...\n¿Por qué no vas a comprobar si está bien?",
 										"Hoy he estado en la calle, pero no he visto al viejo\npor ninguna parte... Si lo encuentras, dímelo.",
 										"¿Que Jericho estaba en la zona suroeste?\nVaya susto me he llevado... ¡Te recompensaré!", "El viejo Jericho cuidaba de mí hace años, pero\ndesde la Gran Guerra, ya no parece ser el mismo...", 2);
@@ -664,7 +688,7 @@ private Animation<TextureRegion> anim;
 								
 							case "misionNpc3":
 								NpcMision misionNpc3=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.viejo1_ow.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
+										"02-OW/Personajes/p.viejo1.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
 										, "¿¡ES QUE NADIE LO VE!? ¡JA, JA, JA, JA!\nUn mal superior, ¡LA MALDAD DEFINITIVA!...",
 										"(Parece una persona trastornada... Será mejor\nque me vaya cuanto antes...)",
 										"", "", 3);
@@ -675,7 +699,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc7":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
 						    	    NpcMision misionNpc7=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-											"02-OW/Personajes/personaje.detective_ow.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
+											"02-OW/Personajes/p.detective.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
 											, "Pues bien, ¿ha visto al viejo loco que\nvaga por las calles de Greenwich?",
 											"Las piezas de puzle encajan solas...\n¿No cree?",
 											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda de una\npersona como usted para encontrar a ese", 7);
@@ -690,7 +714,7 @@ private Animation<TextureRegion> anim;
 					    	    	 else {
 					    	    		 System.out.println("Se cumple 2");
 					    	    		 NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-												"02-OW/Personajes/personaje.viejo1_ow.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
+												"02-OW/Personajes/p.viejo1.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
 												, "El alcohol me está matando... Solo quiero que\nlas voces paren de una vez por todas...",
 												"Tengo mucho miedo... Tengo mucho miedo...\nTengo mucho miedo... Tengo mucho miedo...",
 												"(Así que este es el verdadero Jericho\ndespués de todo...)", "(Un pobre hombre traumatizado que\nha acabado solo en la calle...)", 8);
@@ -701,7 +725,7 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
+										"02-OW/Personajes/p.dependiente.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
 										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
@@ -761,55 +785,55 @@ private Animation<TextureRegion> anim;
 						
 							case "NpcRio":
 								NpcMovil npcMovil0=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica1_ow.png", 1, 75);
+										"02-OW/Personajes/p.chica1.png", 1, 75);
 								npcs.add(npcMovil0);
 								break;
 
 							case "NpcBox":
 								NpcStatic npcBox=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra8_ow.png", "izquierda", "La situación de los pasaportes en este país es\nuna verdadera vergüenza, es insoportable."
+										"02-OW/Personajes/p.extra8.png", "izquierda", "La situación de los pasaportes en este país es\nuna verdadera vergüenza, es insoportable."
 										, "¡Mi primo debería haber llegado hace un meses!\nEsto es culpa de las absurdas normas...");
 								npcs.add(npcBox);
 								break;
 								
 							case "NpcPolicia":
 								NpcStatic npcPolicia=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
+										"02-OW/Personajes/p.policia.png", "frente", "¿Es usted el guardia fronterizo?\nPuede pasar."
 										, "Si necesita cualquier cosa, solo tiene que\ncomunicarlo.");
 								npcs.add(npcPolicia);
 								break;
 
 							case "NpcPolicia2":
 								NpcStatic npcPolicia2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
+										"02-OW/Personajes/p.policia.png", "derecha", "El acceso a esta parte del distrito está\ntotalmente cerrado al público."
 										, "No sabemos cuando volverá a estar permitido.\nLe recomiendo esperar con paciencia.");
 								npcs.add(npcPolicia2);
 								break;
 
 							case "NpcTree":
 								NpcStatic npcTree=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "Estoy investigando a ese señor de ahí...\nEl señor de la pequeña tienda, ¿Lo ve?"
+										"02-OW/Personajes/p.extra11.png", "frente", "Estoy investigando a ese señor de ahí...\nEl señor de la pequeña tienda, ¿Lo ve?"
 										, "Sospecho que vende sustancias ilegales, y creo\nque estoy bastante cerca de atraparlo...");
 								npcs.add(npcTree);
 								break;
 								
 							case "NpcPlaza2":
 								NpcStatic npcPlaza2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.policia_ow.png", "derecha", "Ciudadano, le informo de que la ciudad está\nen estado de alerta roja debido a los constantes"
+										"02-OW/Personajes/p.policia.png", "derecha", "Ciudadano, le informo de que la ciudad está\nen estado de alerta roja debido a los constantes"
 										, "ataques alemanes por todo el país.\nLe recomiendo que permanezca en su casa.");
 								npcs.add(npcPlaza2);
 								break;
 
 							case "NpcPlaza3":
 								NpcStatic npcPlaza3=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra2_ow.png", "izquierda", "La policía alerta de unos supuestos ataques\ndel gobierno Nazi al país, sin embargo..."
+										"02-OW/Personajes/p.extra2.png", "izquierda", "La policía alerta de unos supuestos ataques\ndel gobierno Nazi al país, sin embargo..."
 										, "La vida debe continuar, no podemos parar\nde trabajar, o moriremos de hambre...");
 								npcs.add(npcPlaza3);
 								break;
 
 							case "NpcSur":
 								NpcStatic npcSur=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.herido_ow.png", "frente", "¡BOMBARDEAN LONDRES! He visto los bombardeos en\nprimera persona, y no puedo llegar a explicarle"
+										"02-OW/Personajes/p.herido.png", "frente", "¡BOMBARDEAN LONDRES! He visto los bombardeos en\nprimera persona, y no puedo llegar a explicarle"
 										, "lo horrible que es estar frente a esa gran nube\nroja... ¡NI SIQUIERA SÉ CÓMO ESTOY VIVO!");
 								npcs.add(npcSur);
 								break;
@@ -818,21 +842,21 @@ private Animation<TextureRegion> anim;
 								if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == true) {
 								} else {
 								NpcStatic npcPerro=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.perro_ow.png", "cola", "Grrrr...\n¡Guau, guau, guau!"
+										"02-OW/Personajes/p.perro.png", "cola", "Grrrr...\n¡Guau, guau, guau!"
 										, "(Parece que no le he gustado, será mejor que\nme aleje antes de que ocurra un accidente.)");
 								npcs.add(npcPerro);}
 								break;
 								
 							case "NpcSuper3":
 								NpcStatic npcSuper3=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "frente", "¡Apártese de mi comida! ¡Ni se le ocurra\ncogerla, la he visto yo primero!"
+										"02-OW/Personajes/p.extra11.png", "frente", "¡Apártese de mi comida! ¡Ni se le ocurra\ncogerla, la he visto yo primero!"
 										, "¿Qué se ha creído?\n¡Tengo hijos a los que alimentar!");
 								npcs.add(npcSuper3);
 								break;
 								
 							case "NpcSuper2":
 								NpcStatic npcSuper2=new NpcStatic((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra11_ow.png", "espaldas", "Están cayendo bombas... BOMBAS encima de\nnuestro país..."
+										"02-OW/Personajes/p.extra11.png", "espaldas", "Están cayendo bombas... BOMBAS encima de\nnuestro país..."
 										, "Si esto no acaba pronto, no se va a salvar\nni un alma...");
 								npcs.add(npcSuper2);
 								break;
@@ -840,7 +864,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc4":
 								if(Parametros.mision_una_lettera_d_amore == false) {
 									NpcMision misionNpc4=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-											"02-OW/Personajes/personaje.viejo_ow.png", "frente", "¿Sabe? Mon amour debería haber llegado\na casa ayer, y sin embargo..."
+											"02-OW/Personajes/p.viejo.png", "frente", "¿Sabe? Mon amour debería haber llegado\na casa ayer, y sin embargo..."
 											, "Parece que después de todo no ha logrado\npasar la frontera... ¡Dannazione!",
 											"Un secondo... Quella lettera que lleva ahí...\n¡Esa es la firma de la mia amata!",
 											"¿Es para mí? ¡Mamma mia! ¡Grazie mille!\nSei un angelo, tenga esto como propina.", "No la tengo cerca, pero ahora sé que...\nNon importa quanto siamo lontani, ci amiamo.", 4);
@@ -850,19 +874,19 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcMovil3":
 								NpcMovil npcMovil3=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra5_ow.png", 1, 80);
+										"02-OW/Personajes/p.extra5.png", 1, 80);
 								npcs.add(npcMovil3);
 								break;
 
 							case "NpcMovil6":
 								NpcMovil npcMovil6=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.chica_ow.png", 2, 75);
+										"02-OW/Personajes/p.chica.png", 2, 75);
 								npcs.add(npcMovil6);
 								break;
 
 							case "NpcMovil10":
 								NpcMovil npcMovil10=new NpcMovil((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra1_ow.png", 1, 75);
+										"02-OW/Personajes/p.extra1.png", 1, 75);
 								npcs.add(npcMovil10);
 								break;
 								
@@ -870,7 +894,7 @@ private Animation<TextureRegion> anim;
 								
 							case "NpcTenderete":
 								NpcMision misionNpc12=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra8_ow.png", "frente", "¡Usted de nuevo! ¡Será...!\nMire... No estoy para discursiones..."
+										"02-OW/Personajes/p.extra8.png", "frente", "¡Usted de nuevo! ¡Será...!\nMire... No estoy para discursiones..."
 										, "Ese hombre de detrás del árbol me está espiando,\ny no puedo moverme de mi puesto o sospechará...",
 										"Ya que nos hemos hecho amigos... ¿Podría\ntraerme una bolsa que dejé en la estación de",
 										"metro del sureste de la ciudad?\nLe prometo que le recompensaré debidamente.", "¿Ha encontrado ya la bolsa que le pedí?\nEstá en la estación de metro, vamos...", 9);
@@ -880,7 +904,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc":
 								if (Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false && Parametros.mision_un_extrano_muneco_item==false && Parametros.mision_un_extrano_muneco_finalizada == true) {
 								} else {NpcMision misionNpc0=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra6_ow.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
+										"02-OW/Personajes/p.extra6.png", "derecha", "Parece usted una bellísima persona...\n¿Me haría un favor?"
 										, "Mi hija ha perdido su muñeco. ¿Podría\nencontrarlo? Le prometo una jugosa recompensa.",
 										"¿Ha encontrado ya el muñeco de mi hija?\nEra un juguete bastante extraño...",
 										"¡Muchas gracias por recuperar el muñeco\nde mi hija! Aquí tiene su recompensa...", "Gracias por todo... Últimamente se echan en\nfalta personas como usted...", 0);
@@ -891,7 +915,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc1":
 					    	   if (Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false && Parametros.mision_el_tesoro_perdido_item==false && Parametros.mision_el_tesoro_perdido_finalizada == true) {				    		
 					    	   } else { NpcMision misionNpc1=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra_ow.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
+										"02-OW/Personajes/p.extra.png", "derecha", "¡Maldición! ¡He perdido mis dos libras!\nMe pregunto dónde estarán..."
 										, "He estado en una cabina telefónica hace\nun rato, se me deben haber caído...",
 										"¿Dónde estarán mis dos libras? Si las encuentra,\ntráigamelas, por favor...",
 										"¿Qué? ¡Esas son mis dos libras! Pero... ¿Sabe qué?\nEstoy de buen humor, ¡quédeselas!", "Las buenas personas me conmueven, y estoy\nseguro de que usted es una de ellas.", 1);
@@ -902,7 +926,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc2":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
 					    	    } else {NpcMision misionNpc2=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra10_ow.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
+										"02-OW/Personajes/p.extra10.png", "frente", "¡Eh, tú! ¿Has visto por ahí al viejo Jericho?\nEs un anciano loco que vaga por ahí..."
 										, "Parezco ser el único que se preocupa por él...\n¿Por qué no vas a comprobar si está bien?",
 										"Hoy he estado en la calle, pero no he visto al viejo\npor ninguna parte... Si lo encuentras, dímelo.",
 										"¿Que Jericho estaba en la zona suroeste?\nVaya susto me he llevado... ¡Te recompensaré!", "El viejo Jericho cuidaba de mí hace años, pero\ndesde la Gran Guerra, ya no parece ser el mismo...", 2);
@@ -912,7 +936,7 @@ private Animation<TextureRegion> anim;
 								
 							case "misionNpc3":
 								NpcMision misionNpc3=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.viejo1_ow.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
+										"02-OW/Personajes/p.viejo1.png", "frente", "Jericho: Es el fin del mundo, ¡EL FIN DEL MUNDO!\nLa sangre de los bastardos cae ante nosotros."
 										, "¿¡ES QUE NADIE LO VE!? ¡JA, JA, JA, JA!\nUn mal superior, ¡LA MALDAD DEFINITIVA!...",
 										"(Parece una persona trastornada... Será mejor\nque me vaya cuanto antes...)",
 										"", "", 3);
@@ -924,7 +948,7 @@ private Animation<TextureRegion> anim;
 								if (Parametros.mision_buen_chico == true && Parametros.mision_buen_chico_completada == false && Parametros.mision_buen_chico_item==false && Parametros.mision_buen_chico_finalizada == true) {
 								} else {
 								NpcMision misionNpc5=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra9_ow.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
+										"02-OW/Personajes/p.extra9.png", "frente", "Este chucho ha venido a hacerme compañía...\nParece ser el único al que le importo ahora..."
 										, "Ojalá poder hacerle quedarse... Pero no tengo\nnada para alimentarle... ¿Usted tiene algo?",
 										"Si tuviera algo para hacer que el perro se\nquedara conmigo, me sentiría menos solo...",
 										"¿Un hueso? ¡Genial! Así podré hacer que el perro\nse quede conmigo... Tome, como agradecimiento.", "Te llamaré... ¡Kuro! ¿Te gusta?\nAl fin alguien que me aprecia...", 5);
@@ -936,7 +960,7 @@ private Animation<TextureRegion> anim;
 								if (Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_completada == false && Parametros.mision_malas_vistas_item==false && Parametros.mision_malas_vistas_finalizada == true) {
 								} else {
 								NpcMision misionNpc6=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra12_ow.png", "frente", "¡Por la reina Isabel II! ¡No veo un pimiento!\n¡Me estoy quedando ciego, dios santo!"
+										"02-OW/Personajes/p.extra12.png", "frente", "¡Por la reina Isabel II! ¡No veo un pimiento!\n¡Me estoy quedando ciego, dios santo!"
 										, "¡Si hay alguien ahí, ayúdeme por favor!\n¡Le prometo que le pagaré!",
 										"¿Hay alguien ahí? ¡Que alguien me ayude,\nme he quedado ciego!",
 										"¿Q-qué es esto? ¡No bromee conmigo, no veo!\n¿Unas gafas? ¡Gracias! ¡Por fin puedo ver!", "Así que usted es quien me ha salvado de\nese calvario... Le imaginaba distinto.", 6);
@@ -947,7 +971,7 @@ private Animation<TextureRegion> anim;
 							case "misionNpc7":
 					    	    if (Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false && Parametros.mision_el_viejo_general_item==false && Parametros.mision_el_viejo_general_finalizada == true) {
 						    	    NpcMision misionNpc7=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-											"02-OW/Personajes/personaje.detective_ow.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
+											"02-OW/Personajes/p.detective.png", "frente", "¿?: ¿Ha oído las noticias, buen hombre?\nUn secuestrador de niños anda suelto..."
 											, "Pues bien, ¿ha visto al viejo loco que\nvaga por las calles de Greenwich?",
 											"Las piezas de puzle encajan solas...\n¿No cree?",
 											"Soy el detective Simon Sinclair, encantado\nde conocerle, señor.", "Simon: Resulta que necesito la ayuda de una\npersona como usted para encontrar a ese", 7);
@@ -962,7 +986,7 @@ private Animation<TextureRegion> anim;
 					    	    	 else {
 					    	    		 System.out.println("Se cumple 2");
 					    	    		 NpcMision misionNpc8=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-												"02-OW/Personajes/personaje.viejo1_ow.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
+												"02-OW/Personajes/p.viejo1.png", "izquierda", "Jericho: Esoy arruinado... Todos piensan que\nestoy loco... ¡Ahora dicen que rapto niños!"
 												, "El alcohol me está matando... Solo quiero que\nlas voces paren de una vez por todas...",
 												"Tengo mucho miedo... Tengo mucho miedo...\nTengo mucho miedo... Tengo mucho miedo...",
 												"(Así que este es el verdadero Jericho\ndespués de todo...)", "(Un pobre hombre traumatizado que\nha acabado solo en la calle...)", 8);
@@ -973,7 +997,7 @@ private Animation<TextureRegion> anim;
 
 							case "misionNpc9":
 								NpcMision misionNpc9=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra8_ow.png", "derecha", "¡Qué barbaridad! Tenía mi collar en el cuello hace\nmenos de un segundo, ¡Y ya no está!"
+										"02-OW/Personajes/p.extra8.png", "derecha", "¡Qué barbaridad! Tenía mi collar en el cuello hace\nmenos de un segundo, ¡Y ya no está!"
 										, "Una actriz como yo no puede andar por la calle\nen estas condiciones ¡Faltaría más!",
 										"Soy Rachelle Miller, la conocidísima intérprete\namericana, ¿Es que no me conoce? ¡JA!",
 										"No esperaría más de un pordiosero como usted\n¡Ande y busque mi collar! ¡Rápido!", "¿Ha encontrado ya mi valioso collar?\nSi lo encuentra, quizás pueda recompensarle.", 10);
@@ -982,7 +1006,7 @@ private Animation<TextureRegion> anim;
 
 							case "misionNpc10":
 					    	    NpcMision misionNpc10=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra10_ow.png", "izquierda", "¡Cuánto tiempo, vecino! ¿Cómo va la vida?\n¿Se ha enterado de la noticia del día?"
+										"02-OW/Personajes/p.extra10.png", "izquierda", "¡Cuánto tiempo, vecino! ¿Cómo va la vida?\n¿Se ha enterado de la noticia del día?"
 										, "Dicen por ahí que debemos permanecer en casa,\nque Alemania está bombardeando Londres...",
 										"La policía está por la calle, y no creo que sea\nuna muy buena idea salir, pero...",
 										"Hoy había quedado con... Un amigo, ya sabe...\nNo quiero dejarlo plantado...", "¿Podría acercarse a avisarle que no voy a\naparecer? Seguramente estará cerca del super.", 11);
@@ -993,7 +1017,7 @@ private Animation<TextureRegion> anim;
 					    	    if (Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_completada == false && Parametros.mision_caos_en_la_ciudad_item==false && Parametros.mision_caos_en_la_ciudad_finalizada == true) {}
 					    	    else {
 					    	    	NpcMision misionNpc11=new NpcMision((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.extra10_ow.png", "derecha", "¿Qué es lo que quiere? Estoy esperando a que\nvenga un amigo... ¿Cómo que no va aparecer?"
+										"02-OW/Personajes/p.extra10.png", "derecha", "¿Qué es lo que quiere? Estoy esperando a que\nvenga un amigo... ¿Cómo que no va aparecer?"
 										, "¡Será nenaza! ¿¡Qué hago yo ahora con toda esta\nmercancía!? ¡Idiota!",
 										"¡Solo por un par de bombas ya se le ponen a\ntemblar las piernas! ¡Ese tío está muerto!",
 										"En fin... Gracias por avisar, al menos\nusted sí tiene modales.", "", 12);
@@ -1003,7 +1027,7 @@ private Animation<TextureRegion> anim;
 					    	    
 							case "NpcDependiente":
 								NpcDependiente npcDependiente=new NpcDependiente((float)props.get("x"), (float)props.get("y"),mainStage, this,
-										"02-OW/Personajes/personaje.dependiente_ow.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
+										"02-OW/Personajes/p.dependiente.png", "frente", "Bienvenido a Super UK Market.\n¿Una ración de Fish & Chips, verdad?"
 										, "Serán " + Parametros.precioComida + " libras, si es tan amable.\n(Pones el dinero encima de la mesa)", "Aquí tiene. Espero verle pronto.\n(Has obtenido Fish & Chips)");
 								npcs.add(npcDependiente);
 								break;
@@ -1322,8 +1346,7 @@ private Animation<TextureRegion> anim;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 			if (tocaPuertaSur == true && Parametros.dia==4) {
 				if (button == Input.Buttons.LEFT) {
-		    		if(texto.completo==true) {
-						switch(progresion) {
+					switch(progresion) {
 						case 0:
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 							texto.remove();
@@ -1354,25 +1377,13 @@ private Animation<TextureRegion> anim;
 							teletransporte(4);
 							tocaPuertaSur=false;
 							break;
-						}
-		    		}
-	    		} else {
-	    			texto.completo=true;
-		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-				}
+					}
+	    		}
 			}
 						
 			else if (tocaCinematica  == true && Parametros.dia==4) {
 				
 				if (button == Input.Buttons.LEFT) {
-					policia = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/policia.wav"));
-					policia.setLooping(true);
-					lloros = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/lloros.wav"));
-					lloros.setLooping(true);
-					risa = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/risa.wav"));
-					risa.setLooping(true);
-					scary = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/scary.wav"));
-					scary.setLooping(true);
 					
 		    		if(texto.completo==true) {
 						switch(progresion) {
@@ -1402,7 +1413,7 @@ private Animation<TextureRegion> anim;
 							texto.remove();
 							uiStage.addActor(blackBackgroundActor);
 				           	AudioManager.playSound("02-OW/Audio/sounds/apunalar.wav");
-							texto = new Texto("Fui yo.\n", "talk1");
+							texto = new Texto("He sido yo todo este tiempo.\n", "talk1");
 							uiStage.addActor(texto);
 							progresion++;
 							break;
@@ -1473,41 +1484,63 @@ private Animation<TextureRegion> anim;
 							break;
 		                case 11:
 		                    texto.remove();
-							risa.play();
-		                    anim = prota.loadFullAnimation("02-OW/Personajes/personaje.silueta_ow.png", 1, 1, 0.1f, true);
-		                    prota.setAnimation(anim);
-		                    progresion++;
-		                    break;
-
-						case 12:
-		                    texto.remove();
-							risa.play();
-				        	AudioManager.playSound("02-OW/Audio/sounds/respiracion.wav");
-							anim = prota.loadFullAnimation("02-OW/Personajes/personaje.recuerdos1_ow.png", 1, 1, 0.1f, true);
-							prota.setAnimation(anim);
-							progresion++;
-		                    break;
-						case 13:
 				        	AudioManager.playSound("02-OW/Audio/sounds/drama.wav");
-							texto.remove();
-							prota.animacionFinal();
+				        	texto = new Texto("Policía: ¿¡Quién anda ahí!?\n¡Arriba las manos o disparo!", "talk1");
+							uiStage.addActor(texto);
+		                    anim = prota.loadFullAnimation("02-OW/Personajes/p_sil.png", 1, 1, 0.1f, true);
+		                    prota.setAnimation(anim);
 							progresion++;
-							break;
-						case 14:
+		                    break;
+		                case 12:
+		                    texto.remove();
+				        	texto = new Texto("Evans... Evans... Evans... Evans...\nEvans... Evans... Evans... Evans...", "talk1");
+				        	uiStage.addActor(texto);
+		                    anim = prota.loadFullAnimation("02-OW/Personajes/p.recuerdos1.png", 1, 1, 0.1f, true);
+		                    prota.setAnimation(anim);
+							progresion++;
+		                    break;
+		                case 13:
+		                    texto.remove();
+				        	texto = new Texto("Policía: ¡Último aviso!\n", "talk1");
+				        	uiStage.addActor(texto);
+		                    anim = prota.loadFullAnimation("02-OW/Personajes/recuerdos2.png", 1, 1, 0.1f, true);
+		                    prota.setAnimation(anim);
+							progresion++;
+		                    break;
+		                case 14:
+		                    texto.remove();
+				        	texto = new Texto("Evans... Evans... Evans... Evans...\nEvans... Evans... Evans... Evans...", "talk1");
+				        	uiStage.addActor(texto);
+		                    anim = prota.loadFullAnimation("02-OW/Personajes/recuerdos3.png", 1, 1, 0.1f, true);
+		                    prota.setAnimation(anim);
+							progresion++;
+		                    break;
+		                case 15:
+		                    texto.remove();
 							uiStage.addActor(blackBackgroundActor);
-							if(scary.isPlaying()) {scary.stop();}
-							if(risa.isPlaying()) {risa.stop();}
-							if(lloros.isPlaying()) {lloros.stop();}
-							if(policia.isPlaying()) {policia.stop();}
-							if(ruido.isPlaying()) {ruido.stop();}
-							progresion++;
-							break;
-						case 15:
-							uiStage.addActor(periodicoFinalActor);
+				        	AudioManager.playSound("02-OW/Audio/sounds/disparo.wav");
+				        	texto = new Texto("(...)\n", "talk1");
+							scary.stop();
+							risa.stop();
+							lloros.stop();
+							policia.stop();
+							ruido.stop();
+				        	uiStage.addActor(texto);
 							progresion++;
 							break;
 						case 16:
+		                    texto.remove();
+							uiStage.addActor(periodicoFinalActor);
+							progresion++;
+							break;
+						case 17:
 							periodicoFinalActor.remove();
+							uiStage.addActor(finalisimoActor);
+							progresion++;
+							break;
+						case 18:
+							finalisimoActor.remove();
+							Parametros.musicaUnaVez=true;
 		    	            game.setScreen(new TitleScreen(game));
 							progresion++;
 							break;
@@ -1556,7 +1589,7 @@ private Animation<TextureRegion> anim;
     					        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
     								texto.remove();
     								controlesInicialesActor.remove();
-    								controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesIniciales1Ow.png"));
+    								controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesOw3.png"));
     								controlesInicialesActor = new Image(controlesInicialesTexture);
     								controlesInicialesActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
     								uiStage.addActor(controlesInicialesActor);
@@ -1893,7 +1926,7 @@ private Animation<TextureRegion> anim;
 		ambiente.stop();
 		prota.pasos.stop();
 		Parametros.zona=zona;
-		game.setScreen(new OverWorldScreen(game, this.musicaCiudad, this.tiktak));
+		game.setScreen(new OverWorldScreen(game, this.musicaCiudad));
 		switch(Parametros.zona) {
 			case 4:
 				break;
@@ -2072,7 +2105,7 @@ private Animation<TextureRegion> anim;
 	    camara.unproject(m3d);
 	    mouseX = m3d.x;
 	    mouseY = m3d.y;
-
+	    
 	    if (Parametros.dia != 4) {
 	        uiStage.addActor(reloj);
 	        uiStage.addActor(dinero);
@@ -2126,17 +2159,21 @@ private Animation<TextureRegion> anim;
 	    }
 
 	    if (Reloj.tiempoRestante <= 10) {
-	        this.tiktak.play();
+	        ResourceManager.tiktak.play();
 	    }
 
 	    if (Reloj.tiempoRestante == 0) {
 	        this.musicaCiudad.stop();
 	        ambiente.stop();
 	        prota.pasos.stop();
-	        tiktak.stop();
 	        Parametros.musicaUnaVez = true;
-	        Parametros.dia++;
-	        game.setScreen(new StatsScreen(game));
+	        if(Parametros.dinero < 20 && Parametros.dia == 3) {
+	        	game.setScreen(new FinalScreen(game));
+	        }
+	        else {
+		        Parametros.dia++;
+		        game.setScreen(new StatsScreen(game));
+	        }
 	    }
 
 	    renderer.setView(camara);

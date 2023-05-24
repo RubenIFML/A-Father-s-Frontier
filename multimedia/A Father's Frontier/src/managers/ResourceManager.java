@@ -24,6 +24,7 @@ public final class ResourceManager {
 	public static TextButtonStyle textButtonStyle;
 	public BitmapFont fuentePropia;
 	public static Music musicaTitulo;
+	public static Music tiktak;
 	
 	public static void loadAllResources(){
 		
@@ -37,8 +38,8 @@ public final class ResourceManager {
 		assets.load("Mapas/Habitacion.tmx", TiledMap.class);
 		
         //Menú
-		assets.load("Menu/PapersBackgraundTsx.png", Texture.class);
-        assets.load("Menu/titleBackground.jpg", Texture.class);
+		assets.load("Menu/tsxB.png", Texture.class);
+        assets.load("Menu/titleB.jpg", Texture.class);
         assets.load("Menu/titleTitle.png", Texture.class);
         assets.load("Menu/blackBackground.png", Texture.class);
         assets.load("Menu/menuBoton.png", Texture.class);
@@ -52,14 +53,15 @@ public final class ResourceManager {
         assets.load("Menu/periodico.3_0.png", Texture.class);
         assets.load("Menu/mapaEsquema.png", Texture.class);
         assets.load("Menu/dialogoOW.png", Texture.class);
-        assets.load("Menu/listaTareas_sinExpandir.png", Texture.class);
+        assets.load("Menu/listaTareas1.png", Texture.class);
         assets.load("Menu/controlesOw.png", Texture.class);
         assets.load("Menu/controlesFs.png", Texture.class);
-        assets.load("Menu/controlesInicialesOw.png", Texture.class);
-        assets.load("Menu/controlesIniciales1Ow.png", Texture.class);
-        assets.load("Menu/controlesInicialesFs.png", Texture.class);
-        assets.load("Menu/controlesIniciales1Fs.png", Texture.class);
+        assets.load("Menu/controlesOw2.png", Texture.class);
+        assets.load("Menu/controlesOw3.png", Texture.class);
+        assets.load("Menu/controlesFs2.png", Texture.class);
+        assets.load("Menu/controlesFs3.png", Texture.class);
         assets.load("Menu/advertencia.png", Texture.class);
+        assets.load("Menu/final.png", Texture.class);
        
         //Pasaportes      
         assets.load("01-FS/Objetos/pasaporte.1_1.png", Texture.class);
@@ -90,9 +92,9 @@ public final class ResourceManager {
         
         //Objetos estáticos
         assets.load("01-FS/Objetos/botonRojo.png", Texture.class);
-        assets.load("01-FS/Objetos/botonRojo_Pressed.png", Texture.class);
+        assets.load("01-FS/Objetos/br_p.png", Texture.class);
         assets.load("01-FS/Objetos/botonVerde.png", Texture.class);
-        assets.load("01-FS/Objetos/botonVerde_Pressed.png", Texture.class);
+        assets.load("01-FS/Objetos/bv_p.png", Texture.class);
         assets.load("01-FS/Objetos/mesa.png", Texture.class);
         assets.load("01-FS/Objetos/maletin.png", Texture.class);
         
@@ -136,44 +138,44 @@ public final class ResourceManager {
         assets.load("01-FS/Personajes/FS.3_4.png", Texture.class);
         
         //Personajes OW
-        assets.load("02-OW/Personajes/sombra_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/bocadillo_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/bocadillo_mision_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/bocadillo_mail_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/bocadillo_objeto_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.protagonista_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.ahorcado.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.chica_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.chica1_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.dependiente_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.detective_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.evans_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra1_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra2_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra3_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra4_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra5_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra6_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra7_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra8_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra9_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra10_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra11_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.extra12_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.herido_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.perro_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.policia_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.protagonista.final_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.secuestrador_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.silueta_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.recuerdos_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.viejo_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.viejo1_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.final1_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.final2_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.final3_ow.png", Texture.class);
-        assets.load("02-OW/Personajes/personaje.recuerdos1_ow.png", Texture.class);
+        assets.load("02-OW/Personajes/b.png", Texture.class);
+        assets.load("02-OW/Personajes/b_mision.png", Texture.class);
+        assets.load("02-OW/Personajes/b_mail.png", Texture.class);
+        assets.load("02-OW/Personajes/b_objeto.png", Texture.class);
+        assets.load("02-OW/Personajes/p.prota.png", Texture.class);
+        assets.load("02-OW/Personajes/p.ahorcado.png", Texture.class);
+        assets.load("02-OW/Personajes/p.chica.png", Texture.class);
+        assets.load("02-OW/Personajes/p.chica1.png", Texture.class);
+        assets.load("02-OW/Personajes/p.dependiente.png", Texture.class);
+        assets.load("02-OW/Personajes/p.detective.png", Texture.class);
+        assets.load("02-OW/Personajes/p.evans.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra1.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra2.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra3.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra4.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra5.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra6.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra7.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra8.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra9.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra10.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra11.png", Texture.class);
+        assets.load("02-OW/Personajes/p.extra12.png", Texture.class);
+        assets.load("02-OW/Personajes/p.herido.png", Texture.class);
+        assets.load("02-OW/Personajes/p.perro.png", Texture.class);
+        assets.load("02-OW/Personajes/p.policia.png", Texture.class);
+        assets.load("02-OW/Personajes/p.final.prota.png", Texture.class);
+        assets.load("02-OW/Personajes/p_sil.png", Texture.class);
+        assets.load("02-OW/Personajes/p.recuerdos.png", Texture.class);
+        assets.load("02-OW/Personajes/p.viejo.png", Texture.class);
+        assets.load("02-OW/Personajes/p.viejo1.png", Texture.class);
+        assets.load("02-OW/Personajes/p.final1.png", Texture.class);
+        assets.load("02-OW/Personajes/p.final2.png", Texture.class);
+        assets.load("02-OW/Personajes/p.final3.png", Texture.class);
+        assets.load("02-OW/Personajes/p.recuerdos1.png", Texture.class);
+        assets.load("02-OW/Personajes/recuerdos2.png", Texture.class);
+        assets.load("02-OW/Personajes/recuerdos3.png", Texture.class);
         
         //Tiles
         assets.load("02-OW/Tiles/tree.png", Texture.class);
@@ -186,6 +188,9 @@ public final class ResourceManager {
         assets.load("02-OW/Tiles/fuente.png", Texture.class);
         assets.load("02-OW/Tiles/coche.png", Texture.class);
         assets.load("02-OW/Tiles/mailBox.png", Texture.class);
+        assets.load("02-OW/Tiles/cajaReg_2.png", Texture.class);
+        assets.load("02-OW/Tiles/cajaReg_3.png", Texture.class);
+        assets.load("02-OW/Tiles/cajaReg_4.png", Texture.class);
         
         //Sonidos
         assets.load("01-FS/Audio/sounds/boton.wav", Sound.class);
@@ -221,21 +226,21 @@ public final class ResourceManager {
         assets.load("02-OW/Audio/sounds/drama.wav", Sound.class);
         
         //Música
-        assets.load("01-FS/Audio/music/maletin_por_favor.wav", Music.class);
-        assets.load("01-FS/Audio/music/maletin_por_favor_2.wav", Music.class);
-        assets.load("01-FS/Audio/music/maletin_por_favor_3.wav", Music.class);
-        assets.load("01-FS/Audio/music/final.wav", Music.class);
-        assets.load("01-FS/Audio/music/lluvia.wav", Music.class);
-        assets.load("01-FS/Audio/music/title_theme.wav", Music.class);
-        assets.load("02-OW/Audio/music/ciudad_dia1.wav", Music.class);
-        assets.load("02-OW/Audio/music/ciudad_dia2.wav", Music.class);
-        assets.load("02-OW/Audio/music/ciudad_dia3.wav", Music.class);
-        assets.load("02-OW/Audio/music/ambiente.wav", Music.class);
-        assets.load("02-OW/Audio/music/tiktak.wav", Sound.class);
-        assets.load("02-OW/Audio/music/policia.wav", Sound.class);
-        assets.load("02-OW/Audio/music/lloros.wav", Sound.class);
-        assets.load("02-OW/Audio/music/risa.wav", Sound.class);
-        assets.load("02-OW/Audio/music/scary.wav", Sound.class);
+        assets.load("01-FS/Audio/music/frontera1.mp3", Music.class);
+        assets.load("01-FS/Audio/music/frontera2.mp3", Music.class);
+        assets.load("01-FS/Audio/music/frontera3.mp3", Music.class);
+        assets.load("01-FS/Audio/music/final.mp3", Music.class);
+        assets.load("01-FS/Audio/music/lluvia.mp3", Music.class);
+        assets.load("01-FS/Audio/music/title.mp3", Music.class);
+        assets.load("02-OW/Audio/music/ciudad_dia1.mp3", Music.class);
+        assets.load("02-OW/Audio/music/ciudad_dia2.mp3", Music.class);
+        assets.load("02-OW/Audio/music/ciudad_dia3.mp3", Music.class);
+        assets.load("02-OW/Audio/music/ambiente.mp3", Music.class);
+        assets.load("02-OW/Audio/music/tiktak.mp3", Sound.class);
+        assets.load("02-OW/Audio/music/policia.mp3", Sound.class);
+        assets.load("02-OW/Audio/music/lloros.mp3", Sound.class);
+        assets.load("02-OW/Audio/music/risa.mp3", Sound.class);
+        assets.load("02-OW/Audio/music/scary.mp3", Sound.class);
 	}
 	
 	public static boolean update(){
@@ -260,9 +265,12 @@ public final class ResourceManager {
 		textButtonStyle.up=new NinePatchDrawable(buttonPatch);
 		textButtonStyle.font=fuentePropia;
 		
-		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/title_theme.wav"));
+		musicaTitulo = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/title.mp3"));
 	    musicaTitulo.setVolume(0.5f);
 		musicaTitulo.setLooping(true);
+
+		tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.mp3"));
+
 	}
 	
 	/*public static TextureAtlas getAtlas(String path){

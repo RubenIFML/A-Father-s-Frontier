@@ -70,7 +70,6 @@ private Maletin maletin;
 //Música
 private Music musica;
 private Music musica2;
-private Music tiktak;
 
 //Sistema
 private int contador = 0;
@@ -116,6 +115,7 @@ private Objeto llave;
 private Objeto duxer;
 private Texture controlesTexture;
 private Image controlesActor;
+private boolean unaVez;
 
 /**
  * Constructor de la Frontier Screen, en el que se declaran todos
@@ -132,7 +132,7 @@ private Image controlesActor;
 		Parametros.dineroAnterior = Parametros.dinero;
 		
 		//Fondos
-		backgroundTexture = new Texture(Gdx.files.internal("Menu/PapersBackgraundTsx.png"));
+		backgroundTexture = new Texture(Gdx.files.internal("Menu/tsxB.png"));
 		backgroundActor = new Image(backgroundTexture);
 		blackBackground = new Texture(Gdx.files.internal("Menu/blackBackground.png"));
 		blackBackgroundActor = new Image(blackBackground);
@@ -140,24 +140,23 @@ private Image controlesActor;
 		//Música
 		switch(Parametros.dia) {
 			case 1:
-				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor.wav"));
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/frontera1.mp3"));
 				break;
 				
 			case 2:
-				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor_2.wav"));
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/frontera2.mp3"));
 				break;
 				
 			case 3:
-				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/maletin_por_favor_3.wav"));
+				musica = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/frontera3.mp3"));
 				break;
 		}
         musica.setVolume(0.3f);
 		musica.setLooping(true);
-		musica2 = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/lluvia.wav"));
+		musica2 = Gdx.audio.newMusic(Gdx.files.internal("01-FS/Audio/music/lluvia.mp3"));
 		musica2.play();
         musica2.setVolume(0.4f);
 		musica2.setLooping(true);
-		tiktak = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/tiktak.wav"));
 		
 	    //Mapa
 		map=ResourceManager.getMap("Mapas/PapersBackground.tmx");
@@ -213,10 +212,10 @@ private Image controlesActor;
 				mesa = new Mesa();
 				mainStage.addActor(mesa);
 				
-				botonRojo = new Boton(165, "botonRojo.png", "botonRojo_pressed.png");
+				botonRojo = new Boton(165, "botonRojo.png", "br_p.png");
 				mainStage.addActor(botonRojo);
 				
-				botonVerde = new Boton(200, "botonVerde.png", "botonVerde_pressed.png");
+				botonVerde = new Boton(200, "botonVerde.png", "bv_p.png");
 				mainStage.addActor(botonVerde);
 				
 				maletin = new Maletin();
@@ -232,10 +231,10 @@ private Image controlesActor;
 				periodicoTexture = new Texture(Gdx.files.internal("Menu/periodico.1_0.png"));
 				periodicoActor = new Image(periodicoTexture);
 
-				controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesInicialesFs.png"));
+				controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesFs2.png"));
 				controlesInicialesActor = new Image(controlesInicialesTexture);
 
-				controlesIniciales1Texture = new Texture(Gdx.files.internal("Menu/controlesIniciales1Fs.png"));
+				controlesIniciales1Texture = new Texture(Gdx.files.internal("Menu/controlesFs3.png"));
 				controlesIniciales1Actor = new Image(controlesIniciales1Texture);
 				
 				//Diálogo
@@ -271,10 +270,10 @@ private Image controlesActor;
 				mesa = new Mesa();
 				mainStage.addActor(mesa);
 				
-				botonRojo = new Boton(165, "botonRojo.png", "botonRojo_pressed.png");
+				botonRojo = new Boton(165, "botonRojo.png", "br_p.png");
 				mainStage.addActor(botonRojo);
 				
-				botonVerde = new Boton(200, "botonVerde.png", "botonVerde_pressed.png");
+				botonVerde = new Boton(200, "botonVerde.png", "bv_p.png");
 				mainStage.addActor(botonVerde);
 				
 				maletin = new Maletin();
@@ -323,10 +322,10 @@ private Image controlesActor;
 				mesa = new Mesa();
 				mainStage.addActor(mesa);
 				
-				botonRojo = new Boton(165, "botonRojo.png", "botonRojo_pressed.png");
+				botonRojo = new Boton(165, "botonRojo.png", "br_p.png");
 				mainStage.addActor(botonRojo);
 				
-				botonVerde = new Boton(200, "botonVerde.png", "botonVerde_pressed.png");
+				botonVerde = new Boton(200, "botonVerde.png", "bv_p.png");
 				mainStage.addActor(botonVerde);
 				
 				maletin = new Maletin();
@@ -666,7 +665,11 @@ private Image controlesActor;
 				        	
 				        	reloj.stop();
 				        	
-				        	texto = new Texto("por favor, lleva esta.\n"
+				        	if (ResourceManager.tiktak.isPlaying()){
+				        		ResourceManager.tiktak.stop();
+				        	}
+				        	
+				        	texto = new Texto("por favor, lleve esta.\n"
 		        							+ "carta a mi marido...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
@@ -682,7 +685,7 @@ private Image controlesActor;
 				        	texto.remove();
 				        	
 				        	texto = new Texto("Es un hombre italiano\n"
-				        					+ "de buen vestir, estoy", 7, 154, "talk2");
+				        					+ "de buen vestir...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -692,8 +695,8 @@ private Image controlesActor;
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	texto.remove();
 				        	
-				        	texto = new Texto("segura de que podrás\n"
-				        					+ "encontrarlo...", 7, 154, "talk2");
+				        	texto = new Texto("Estará esperando en\n"
+				        					+ "la parada de metro...", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
 				        	contador++;
@@ -773,8 +776,8 @@ private Image controlesActor;
 			            	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			    			texto.remove();
 			    			
-			    			texto = new Texto("(Estoy agotado... Pero\n"
-			    							+ "no debo detenerme...)", 7, 154, "talk2");
+			    			texto = new Texto("(Parece que hoy hay dos\n"
+			    							+ "páginas de reglas...)", 7, 154, "talk2");
 			    			mainStage.addActor(texto);
 			    			
 			        		AudioManager.playSound("01-FS/Audio/sounds/maletin.wav");
@@ -1026,9 +1029,14 @@ private Image controlesActor;
 	
 				        	AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 				        	FS2_4.texto.remove();
-				        	
+
+				        	reloj.stop();
 						    musica.stop();
 			            	fs2_4.fadeOut();
+
+				        	if (ResourceManager.tiktak.isPlaying()){
+				        		ResourceManager.tiktak.stop();
+				        	}
 				        	
 				        	texto = new Texto("(La chica ha salido\n"
 		        							+ "corriendo con una ", 7, 154, "talk2");
@@ -1047,7 +1055,6 @@ private Image controlesActor;
 				        					+ "su rostro...)", 7, 154, "talk2");
 				        	mainStage.addActor(texto);
 				        	
-				        	reloj.stop();
 				        	contador++;
 							
 				        } else if (contador==17) {
@@ -1413,6 +1420,9 @@ private Image controlesActor;
 							Parametros.analizar=false;
 							Parametros.analizado4=false;
 				        	reloj.stop();
+				        	if (ResourceManager.tiktak.isPlaying()){
+				        		ResourceManager.tiktak.stop();
+				        	}
 				        	contador=16;
 							
 				        } else if (contador==16) {
@@ -1685,8 +1695,9 @@ private Image controlesActor;
     	
     	*/
 
-	    if(reloj.tiempoRestante<=10) {
-			tiktak.play();
+	    if(reloj.tiempoRestante<=10 && !unaVez) {
+	    	ResourceManager.tiktak.play();
+	    	unaVez=true;
 	    }
 	    
 	    if(reloj.tiempoRestante==0) {
@@ -1694,7 +1705,7 @@ private Image controlesActor;
 			contador=0;
 			Parametros.frontera=false;
 			game.setScreen(new StatsScreen(game));
-			tiktak.stop();
+			ResourceManager.tiktak.stop();
 		    musica.stop();
 		    musica2.stop();
 	    }

@@ -86,7 +86,7 @@ public class Objeto extends Element {
 		         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
-		    	bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_objeto_ow.png"));
+		    	bocadillo = new Image(new Texture("02-OW/Personajes/b_objeto.png"));
 		    	
 		        bocadillo.setPosition(getX()+7, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        bocadillo.setName("bocadillo");

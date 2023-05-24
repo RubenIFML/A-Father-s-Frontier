@@ -60,7 +60,7 @@ public class NpcMailBox extends Element {
 	    if(siguienteInteraccion==0) {
 		    if (Gdx.input.justTouched()) {
 		        Vector2 clickCoords = nivel.mainStage.screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
-		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y)) {
+		        if (distanciaX < 60 && distanciaY < 60 && dialogBox.getBoundaryPolygon().contains(clickCoords.x, clickCoords.y) && !Parametros.interactuandoNpc) {
 		            interactuar();
 		        }
 		    }
@@ -93,7 +93,7 @@ public class NpcMailBox extends Element {
 			         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 			    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 			    if (bocadillo == null) {
-			        bocadillo = new Image(new Texture("02-OW/Personajes/bocadillo_mail_ow.png"));
+			        bocadillo = new Image(new Texture("02-OW/Personajes/b_mail.png"));
 			        bocadillo.setBounds(getX()+10, getY()-34 + getHeight() + 10, 15,15); // ajustar la posición del bocadillo
 			        bocadillo.setName("bocadillo");
 			        nivel.mainStage.addActor(bocadillo);
@@ -117,6 +117,7 @@ public class NpcMailBox extends Element {
 		case 4:
 		    switch (siguienteInteraccion) {
 	        case 0:
+	        	Parametros.interactuandoNpc = true;
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion = new Texto("(Ya he pagado mi deuda de hoy,\ndebo recordar volver mañana.)", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
@@ -126,6 +127,7 @@ public class NpcMailBox extends Element {
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	            interaccion.hide();
 	            Parametros.controlesActivos = true; // se activan los controles del personaje
+	            Parametros.interactuandoNpc = false;
 	            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 	            break;
 		    }
@@ -137,6 +139,7 @@ public class NpcMailBox extends Element {
 		    	if(Parametros.haPagadoDeuda == false) {
 				    switch (siguienteInteraccion) {
 			        case 0:
+			        	Parametros.interactuandoNpc = true;
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion = new Texto(this.dialogo1, "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
@@ -155,6 +158,7 @@ public class NpcMailBox extends Element {
 			            interaccion.hide();
 			            Parametros.haPagadoDeuda = true;
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
+			            Parametros.interactuandoNpc = false;
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 			            Parametros.dinero-=Parametros.precioImpuestos;
 			            break;
@@ -163,6 +167,7 @@ public class NpcMailBox extends Element {
 		    	else {
 				    switch (siguienteInteraccion) {
 			        case 0:
+			        	Parametros.interactuandoNpc = true;
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion = new Texto("(Ya he pagado mi deuda de hoy,\ndebo recordar volver mañana.)", "talk2");
 			            this.nivel.uiStage.addActor(interaccion);
@@ -172,6 +177,7 @@ public class NpcMailBox extends Element {
 			            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 			            interaccion.hide();
 			            Parametros.controlesActivos = true; // se activan los controles del personaje
+			            Parametros.interactuandoNpc = false;
 			            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 			            break;
 				    }
@@ -181,8 +187,9 @@ public class NpcMailBox extends Element {
 		    else {
 			    switch (siguienteInteraccion) {
 		        case 0:
+		        	Parametros.interactuandoNpc = true;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto("(Necesito al menos £" + Parametros.precioImpuestos + " para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
+		            interaccion = new Texto("(Necesito al menos " + Parametros.precioImpuestos + " libras para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;
@@ -190,6 +197,7 @@ public class NpcMailBox extends Element {
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 		            interaccion.hide();
 		            Parametros.controlesActivos = true; // se activan los controles del personaje
+		            Parametros.interactuandoNpc = false;
 		            siguienteInteraccion = 0; // se reinicia el contador después de la última interacción
 		            break;
 			    }

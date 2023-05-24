@@ -42,7 +42,7 @@ public class TitleScreen extends BScreen {
 
         resetear();
 
-        background = new Texture("Menu/titleBackground.jpg");
+        background = new Texture("Menu/titleB.jpg");
         title = new Texture("Menu/titleTitle.png");
         lluvia = new Lluvia();
         this.uiStage.addActor(lluvia);
@@ -84,8 +84,6 @@ public class TitleScreen extends BScreen {
 	    Parametros.frontera=false;
 	    Parametros.controlesActivos=true;
 		Parametros.zona=1;
-		Parametros.haComidoHoy = false;
-		Parametros.haPagadoDeuda = false;
 		 
 		Parametros.haComidoHoy = false;                                    
 		Parametros.haPagadoDeuda = false;

@@ -31,6 +31,10 @@ private boolean diaHabilitada = false;
 	    batch = new SpriteBatch();
 	    background = new Texture("Menu/blackBackground.png");
 	    
+    	if (ResourceManager.tiktak.isPlaying()){
+    		ResourceManager.tiktak.stop();
+    	}
+	    
 		estadisticas=new Label("Estadísticas del día: \r\n\n"
 				+ "DINERO ANTES: £" + Parametros.dineroAnterior + " + £" + (Parametros.dinero-Parametros.dineroAnterior) + "\r\n"
 				+ "DINERO DESPUÉS: £"  + Parametros.dinero + "\r\n\n"

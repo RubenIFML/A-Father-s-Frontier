@@ -27,7 +27,7 @@ private boolean diaHabilitada = false;
 	public DeathScreen(Demo game) {
 	    super(game);
 		
-		musica = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/muerte.wav"));
+		musica = Gdx.audio.newMusic(Gdx.files.internal("02-OW/Audio/music/muerte.mp3"));
 		musica.play();
 	    musica.setVolume(0.2f);
 	    musica.setLooping(true);

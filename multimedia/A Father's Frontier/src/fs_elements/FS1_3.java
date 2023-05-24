@@ -32,7 +32,7 @@ public class FS1_3 extends Actor {
         	
         	//Texto
         	texto = new Texto("Miles: Espero poder\n"
-        					+ "verte más adelante.)", 7, 154, "talk1");
+        					+ "verle más adelante.)", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido
@@ -49,8 +49,8 @@ public class FS1_3 extends Actor {
         else if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true && Parametros.analizar==true) {
         	
         	//Texto
-        	texto = new Texto("Miles: No tienes ni idea\n"
-							+ "de lo que haces.", 7, 154, "talk1");
+        	texto = new Texto("Miles: No tiene ni idea\n"
+							+ "de lo que hace.", 7, 154, "talk1");
         	mainStage.addActor(texto);
         	
         	//Sonido

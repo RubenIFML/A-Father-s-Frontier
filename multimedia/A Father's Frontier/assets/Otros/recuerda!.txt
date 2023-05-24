@@ -1,8 +1,0 @@
-- ARREGLAR ANIMACIÓN FINAL
-- Arreglar música tras final
-- Cambiar textura caja registradora dependiendo de la dificultad
-- No poder hablar con varios NPC a la vez
-- Spawn día 4 tras reinicio
-- Jugar juego completo
-
-- Cambiar sistema correcto / incorrecto
