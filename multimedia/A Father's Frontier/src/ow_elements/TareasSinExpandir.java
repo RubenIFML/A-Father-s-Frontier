@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import managers.ResourceManager;
+
 public class TareasSinExpandir extends Actor {
 
     private BitmapFont font;
@@ -23,7 +25,7 @@ public class TareasSinExpandir extends Actor {
         generator.dispose();
         
         this.titulo = "- LISTA DE TAREAS -";
-        this.tareas = new Texture("Menu/listaTareas1.png");
+        this.tareas = ResourceManager.getTexture("Menu/listaTareas1.png");
         setBounds(10, 300, 232, 290);
     }
 

@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import managers.ResourceManager;
+
 public class Reloj extends Actor {
 
     private BitmapFont font;
@@ -32,7 +34,7 @@ public class Reloj extends Actor {
         textY = 577;
         setBounds(647, 540, 143, 50);
         
-        this.reloj = new Texture("Menu/menuBoton.png");
+        this.reloj = ResourceManager.getTexture("Menu/menuBoton.png");
     }
 
     public void act(float delta) {

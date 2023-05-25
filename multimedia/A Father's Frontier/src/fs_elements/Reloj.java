@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
+import managers.ResourceManager;
 
 public class Reloj extends Actor {
 
@@ -24,7 +25,7 @@ public class Reloj extends Actor {
         
         setBounds(178, 158, 62, 23);
         
-        this.reloj = new Texture("Menu/menuBoton.png");
+        this.reloj = ResourceManager.getTexture("Menu/menuBoton.png");
     }
 
     public void act(float delta) {

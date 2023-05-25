@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class Objeto extends Actor {
     static Objeto objetoArrastrado = null;
@@ -40,7 +41,7 @@ public class Objeto extends Actor {
         this.sonido = sonido;
 
         setBounds(this.x, this.y, this.width, this.height);
-        reglas = new Texture("01-FS/Objetos/" + this.textura);
+        reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura);
     }
 
     @Override

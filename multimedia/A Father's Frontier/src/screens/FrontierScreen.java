@@ -132,9 +132,9 @@ private boolean unaVez;
 		Parametros.dineroAnterior = Parametros.dinero;
 		
 		//Fondos
-		backgroundTexture = new Texture(Gdx.files.internal("Menu/tsxB.png"));
+		backgroundTexture = ResourceManager.getTexture("Menu/tsxB.png");
 		backgroundActor = new Image(backgroundTexture);
-		blackBackground = new Texture(Gdx.files.internal("Menu/blackBackground.png"));
+		blackBackground = ResourceManager.getTexture("Menu/blackBackground.png");
 		blackBackgroundActor = new Image(blackBackground);
 		
 		//Música
@@ -169,7 +169,7 @@ private boolean unaVez;
 		mainStage.addActor(backgroundActor);
 		backgroundActor.setSize(240,180);
 		mainStage.addActor(lluvia);
-		controlesTexture = new Texture(Gdx.files.internal("Menu/controlesFs.png"));
+		controlesTexture = ResourceManager.getTexture("Menu/controlesFs.png");
 		controlesActor = new Image(controlesTexture);
 
 		//Parámetros
@@ -228,13 +228,13 @@ private boolean unaVez;
 				reloj = new Reloj();
 				mainStage.addActor(reloj);
 	
-				periodicoTexture = new Texture(Gdx.files.internal("Menu/periodico.1_0.png"));
+				periodicoTexture = ResourceManager.getTexture("Menu/periodico.1_0.png");
 				periodicoActor = new Image(periodicoTexture);
 
-				controlesInicialesTexture = new Texture(Gdx.files.internal("Menu/controlesFs2.png"));
+				controlesInicialesTexture = ResourceManager.getTexture("Menu/controlesFs2.png");
 				controlesInicialesActor = new Image(controlesInicialesTexture);
 
-				controlesIniciales1Texture = new Texture(Gdx.files.internal("Menu/controlesFs3.png"));
+				controlesIniciales1Texture = ResourceManager.getTexture("Menu/controlesFs3.png");
 				controlesIniciales1Actor = new Image(controlesIniciales1Texture);
 				
 				//Diálogo
@@ -286,7 +286,7 @@ private boolean unaVez;
 				reloj = new Reloj();
 				mainStage.addActor(reloj);
 	
-				periodicoTexture = new Texture(Gdx.files.internal("Menu/periodico.2_0.png"));
+				periodicoTexture = ResourceManager.getTexture("Menu/periodico.2_0.png");
 				periodicoActor = new Image(periodicoTexture);
 				
 				//Diálogo
@@ -338,7 +338,7 @@ private boolean unaVez;
 				reloj = new Reloj();
 				mainStage.addActor(reloj);
 
-				periodicoTexture = new Texture(Gdx.files.internal("Menu/periodico.3_0.png"));
+				periodicoTexture = ResourceManager.getTexture("Menu/periodico.3_0.png");
 				periodicoActor = new Image(periodicoTexture);
 				
 				//Diálogo

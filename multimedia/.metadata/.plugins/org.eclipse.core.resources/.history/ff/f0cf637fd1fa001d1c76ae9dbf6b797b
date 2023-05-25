@@ -1,0 +1,56 @@
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
+
+import game.Parametros;
+import managers.ResourceManager;
+
+public class EndScreen extends BScreen {
+    private OrthographicCamera camera;
+    private Batch batch;
+    private Texture blackBackground;
+    private Actor blackBackgroundActor;
+    private Texture periodicoFinalTextura;
+    private Actor periodicoFinalActor;
+    private Texture finalisimoTextura;
+    private Actor finalisimoActor;
+    private InputMultiplexer inputMultiplexer;
+
+    public EndScreen(Demo game) {
+        super(game);
+
+        periodicoFinalTextura = ResourceManager.getTexture("Menu/periodico.0_1.png");
+        periodicoFinalActor = new Image(periodicoFinalTextura);
+        periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        finalisimoTextura = ResourceManager.getTexture("Menu/final.png");
+        finalisimoActor = new Image(finalisimoTextura);
+        finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+
+        batch = new SpriteBatch();
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+
+        blackBackground = ResourceManager.getTexture("Menu/blackBackground.png");
+        blackBackgroundActor = new Image(blackBackground);
+        this.uiStage.addActor(blackBackgroundActor);
+
+        // Crear el InputMultiplexer
+        inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(uiStage); // Agregar el uiStage al InputMultiplexer
+
+        // Configurar el InputMultiplexer como el InputProcessor actual
+        Gdx.input.setInputProcessor(inputMultiplexer);
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act();
+
+        batch.begin();
+        batch.draw(blackBackground, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        batch.end();
+
+        uiStage.draw();
+    }
+}

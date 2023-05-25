@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class Reglas extends Actor {
     static Reglas reglasArrastradas = null;
@@ -43,7 +44,7 @@ public class Reglas extends Actor {
     	this.textura3 = textura3;
     	
         setBounds(this.x, this.y, this.width, this.height);
-        reglas = new Texture("01-FS/Objetos/" + this.textura1);
+        reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
     }
 
     @Override
@@ -61,26 +62,26 @@ public class Reglas extends Actor {
                 	
                 	else if(this.textura3 == null) {
                 		if(posicion == 0) {
-                			reglas = new Texture("01-FS/Objetos/" + this.textura2);
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
                 			posicion++;
                 		}
                 		else if (posicion == 1){
-                			reglas = new Texture("01-FS/Objetos/" + this.textura1);
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
                 			posicion--;
                 		}
                     } 
                 	
                 	else {
                 		if(posicion == 0) {
-                			reglas = new Texture("01-FS/Objetos/" + this.textura2);
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
                 			posicion++;
                 		}
                 		else if (posicion == 1){
-                			reglas = new Texture("01-FS/Objetos/" + this.textura3);
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura3);
                 			posicion++;
                 		}
                 		else if (posicion == 2){
-                			reglas = new Texture("01-FS/Objetos/" + this.textura1);
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
                 			posicion-=2;
                 		}
                 	}

@@ -36,7 +36,7 @@ private boolean diaHabilitada = false;
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 	    
 	    batch = new SpriteBatch();
-	    background = new Texture("Menu/blackBackground.png");
+	    background = ResourceManager.getTexture("Menu/blackBackground.png");
 	    
 	    if(Parametros.haComidoHoy == false) {
 	    	if(Parametros.haPagadoDeuda==false) {
@@ -68,7 +68,7 @@ private boolean diaHabilitada = false;
 						+ "contra usted debido a que no ha\n"
 						+ "pagado sus impuestos y deudas...\n"
 						+ "Ha acabado solo en la carcel, pero\n"
-						+ "sobretodo, sin su hijo.\n\n"
+						+ "sobre todo, sin su hijo.\n\n"
 						+ "Pulse ENTER para volver"
 						, uiStyle);
 	    	}

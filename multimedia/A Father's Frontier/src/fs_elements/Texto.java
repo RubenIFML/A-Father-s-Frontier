@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class Texto extends Actor {
     private Texture caja;
@@ -40,7 +41,7 @@ public class Texto extends Actor {
     	this.textY=textY;
     	
     	setBounds(0, 150, 100, 30);
-        caja = new Texture("Menu/menuBoton.png");
+        caja = ResourceManager.getTexture("Menu/menuBoton.png");
         
         texto=new Label("", uiStyle);
         texto.setPosition(this.textX, this.textY+11);

@@ -1,0 +1,91 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+
+import game.Demo;
+import game.Parametros;
+
+public class EndScreen extends BScreen {
+    private Batch batch;
+    private Actor periodicoFinalActor;
+    private Actor finalisimoActor;
+    private boolean fadeInComplete;
+    private boolean fadeOutComplete;
+    private float delayTimer;
+
+    public EndScreen(Demo game) {
+        super(game);
+
+        // Crear y configurar los actores
+        periodicoFinalActor = new Actor();
+        periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        periodicoFinalActor.setColor(1f, 1f, 1f, 0f); // Transparente al principio
+
+        finalisimoActor = new Actor();
+        finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        finalisimoActor.setColor(1f, 1f, 1f, 0f); // Transparente al principio
+
+        batch = new SpriteBatch();
+
+        fadeInComplete = false;
+        fadeOutComplete = false;
+        delayTimer = 0f;
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act();
+
+        if (!fadeInComplete) {
+            // Realizar el efecto de fadeIn en periodicoFinalActor
+            periodicoFinalActor.addAction(Actions.fadeIn(1f, Interpolation.fade));
+
+            if (periodicoFinalActor.getColor().a >= 1f) {
+                fadeInComplete = true;
+                delayTimer = 0f;
+            }
+        } else if (!fadeOutComplete) {
+            // Retardo de 3 segundos después del fadeIn
+            delayTimer += delta;
+            if (delayTimer >= 3f) {
+                // Realizar el efecto de fadeOut en periodicoFinalActor
+                periodicoFinalActor.addAction(Actions.fadeOut(1f, Interpolation.fade));
+
+                if (periodicoFinalActor.getColor().a <= 0f) {
+                    fadeOutComplete = true;
+                    delayTimer = 0f;
+                }
+            }
+        } else {
+            // Realizar el efecto de fadeIn en finalisimoActor
+            finalisimoActor.addAction(Actions.fadeIn(1f, Interpolation.fade));
+
+            if (finalisimoActor.getColor().a >= 1f) {
+                // Esperar a que se pulse clic
+                if (Gdx.input.isTouched()) {
+                    // Realizar el efecto de fadeOut en finalisimoActor
+                    finalisimoActor.addAction(Actions.fadeOut(1f, Interpolation.fade));
+                }
+            }
+        }
+
+        batch.begin();
+        batch.setColor(Color.WHITE);
+        batch.end();
+
+        uiStage.draw();
+
+        // Dibujar los actores manualmente
+        batch.begin();
+        periodicoFinalActor.draw(batch, 1f); // Usar el alpha completo (1f)
+        finalisimoActor.draw(batch, 1f); // Usar el alpha completo (1f)
+        batch.end();
+    }
+}

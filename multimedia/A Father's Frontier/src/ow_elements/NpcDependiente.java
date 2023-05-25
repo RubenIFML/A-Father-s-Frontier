@@ -1,13 +1,13 @@
 package ow_elements;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 import screens.OverWorldScreen;
 
 public class NpcDependiente extends Element {
@@ -108,10 +108,10 @@ public class NpcDependiente extends Element {
 		    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 		    if (bocadillo == null) {
 		    	if(Parametros.haComidoHoy == true) {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+		    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 		        }
 		    	else {
-		    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+		    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 		    	}
 		        bocadillo.setPosition(getX()+17, getY()-10 + getHeight() + 10); // ajustar la posición del bocadillo
 		        bocadillo.setName("bocadillo");
@@ -128,6 +128,7 @@ public class NpcDependiente extends Element {
 	
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
+	    nivel.prota.pasos.stop();
 	    
 	    if(Parametros.dinero >= Parametros.precioComida) {
 	    	
@@ -194,7 +195,7 @@ public class NpcDependiente extends Element {
 	        case 0:
 	        	Parametros.interactuandoNpc = true;
 	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	            interaccion = new Texto("Lo siento, pero si no tiene al menos"+ Parametros.precioComida +" libras\nno puedo venderle Fish & Chips...", "talk2");
+	            interaccion = new Texto("Lo siento, pero si no tiene al menos" + Parametros.precioComida +" libras\nno puedo venderle Fish & Chips...", "talk2");
 	            this.nivel.uiStage.addActor(interaccion);
 	            siguienteInteraccion++;
 	            break;

@@ -1,13 +1,13 @@
 package ow_elements;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 import screens.OverWorldScreen;
 
 public class NpcMision extends Element {
@@ -123,106 +123,106 @@ public class NpcMision extends Element {
 		    	switch(this.mision) {
 			    	case 0:
 				    	if(Parametros.mision_un_extrano_muneco == true && Parametros.mision_un_extrano_muneco_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 1:
 				    	if(Parametros.mision_el_tesoro_perdido == true && Parametros.mision_el_tesoro_perdido_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 2:
 				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_completada == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 3:
 				    	if(Parametros.mision_el_viejo_general == true && Parametros.mision_el_viejo_general_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 4:
 				    	if(Parametros.mision_una_lettera_d_amore == true) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 5:
 				    	if(Parametros.mision_buen_chico == true) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 6:
 				    	if(Parametros.mision_malas_vistas == true && Parametros.mision_malas_vistas_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 7:
 				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 8:
 				    	if(Parametros.mision_elemental_mi_querido_simon == true && Parametros.mision_elemental_mi_querido_simon_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 9:
 				    	if(Parametros.mision_magia_blanca == true && Parametros.mision_magia_blanca_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 10:
 				    	if(Parametros.mision_un_glamuroso_collar == true && Parametros.mision_un_glamuroso_collar_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 11:
 				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 			    	case 12:
 				    	if(Parametros.mision_caos_en_la_ciudad == true && Parametros.mision_caos_en_la_ciudad_item == false) {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b.png"));
 				    	}
 				    	else {
-				    		bocadillo = new Image(new Texture("02-OW/Personajes/b_mision.png"));
+				    		bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mision.png"));
 				    	}
 				    	break;
 		    	}
@@ -256,6 +256,7 @@ public class NpcMision extends Element {
 	
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
+	    nivel.prota.pasos.stop();
 	    
 	    switch(this.mision) {
 	    
@@ -1011,7 +1012,7 @@ public class NpcMision extends Element {
 	    	        case 5:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
 	    	            interaccion.hide();
-	    	            interaccion = new Texto("degenerado, ya que cambia de localización\ndtodos los días.", "talk1");
+	    	            interaccion = new Texto("degenerado, ya que cambia de localización\ntodos los días.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -1066,19 +1067,22 @@ public class NpcMision extends Element {
 	    	            break;
 	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
 	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
 	    	        case 2:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
 	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
 	    	        case 3:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\na hacer! ¡AJÁ!", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
@@ -1110,19 +1114,22 @@ public class NpcMision extends Element {
 	    	            break;
 	    	        case 1:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
 	    	            interaccion = new Texto("¿Lo ha encontrado ya? ¿Jericho?\n¿Detrás del UK Market? ¿BUENA PERSONA?", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
 	    	        case 2:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
+	    	            interaccion.hide();
 	    	            interaccion = new Texto("Fingiré que no ha dicho eso último...\nUn placer hacer negocios con usted, amigo.", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;
 	    	        case 3:
 	    	            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\n a hacer! ¡AJÁ!", "talk1");
+	    	            interaccion.hide();
+	    	            interaccion = new Texto("¡El gran Simon Sinclair lo ha vuelto\na hacer! ¡AJÁ!", "talk1");
 	    	            this.nivel.uiStage.addActor(interaccion);
 	    	            siguienteInteraccion++;
 	    	            break;

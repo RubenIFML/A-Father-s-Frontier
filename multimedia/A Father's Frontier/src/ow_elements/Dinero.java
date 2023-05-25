@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
+import managers.ResourceManager;
 
 public class Dinero extends Actor {
 
@@ -26,7 +27,7 @@ public class Dinero extends Actor {
         generator.dispose();
 
         
-        this.dinero = new Texture("Menu/menuBoton.png");
+        this.dinero = ResourceManager.getTexture("Menu/menuBoton.png");
         setBounds(688, 10, 100, 60);
         comparacion();
         this.dineroActual = "£" + Parametros.dinero;

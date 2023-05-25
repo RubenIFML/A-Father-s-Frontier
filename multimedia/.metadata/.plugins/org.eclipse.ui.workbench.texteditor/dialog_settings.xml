@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="title"/>
+		<item key="selection" value="misionNpc7"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="title"/>
-			<item value="sombra"/>
-			<item value="secuestrad"/>
-			<item value="periodicoFinal"/>
-			<item value="periodicofinal"/>
-			<item value="musicaUna"/>
-			<item value="menu"/>
-			<item value="periodico"/>
-			<item value="scary.s"/>
-			<item value="scary"/>
-			<item value="todo este tiempo"/>
-			<item value="fui yo"/>
-			<item value="render"/>
-			<item value="loadf"/>
-			<item value="fullload"/>
+			<item value="misionNpc7"/>
+			<item value="&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;case &quot;misionNpc7&quot;:"/>
+			<item value="sinclair"/>
+			<item value="case 3"/>
+			<item value="mailbox"/>
+			<item value="mailBox"/>
+			<item value="tus deudas e"/>
+			<item value="p"/>
+			<item value="genial"/>
+			<item value="guay"/>
+			<item value="súper"/>
+			<item value="musicaCi"/>
+			<item value="mUSICACI"/>
+			<item value="pasos.p"/>
+			<item value="musicaCiudad.pla"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -36,7 +36,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1733"/>
+		<item key="DIALOG_X_ORIGIN" value="1424"/>
 		<item key="DIALOG_Y_ORIGIN" value="542"/>
 		<item key="DIALOG_WIDTH" value="504"/>
 		<item key="DIALOG_HEIGHT" value="413"/>

@@ -1,0 +1,47 @@
+package screens;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+import game.Demo;
+import game.Parametros;
+
+public class EndScreen extends BScreen {
+    private Batch batch;
+    private Actor periodicoFinalActor;
+    private Actor finalisimoActor;
+
+    public EndScreen(Demo game) {
+        super(game);
+
+        // Crear y configurar los actores
+        periodicoFinalActor = new Actor();
+        periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+
+        finalisimoActor = new Actor();
+        finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+
+        batch = new SpriteBatch();
+
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act();
+
+
+        batch.begin();
+        batch.setColor(Color.WHITE);
+        batch.end();
+
+        uiStage.draw();
+
+        batch.begin();
+        periodicoFinalActor.draw(batch, 1f);
+        finalisimoActor.draw(batch, 1f);
+        batch.end();
+    }
+}

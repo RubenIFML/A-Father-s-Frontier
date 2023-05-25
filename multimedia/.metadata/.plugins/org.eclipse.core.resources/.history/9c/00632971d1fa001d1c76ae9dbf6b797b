@@ -1,0 +1,120 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
+import game.Demo;
+import game.Parametros;
+import managers.ResourceManager;
+
+public class EndScreen extends BScreen {
+    private OrthographicCamera camera;
+    private Batch batch;
+    private Stage uiStage;
+    private Viewport viewport;
+
+    private Texture blackBackground;
+    private Actor blackBackgroundActor;
+    private Texture periodicoFinalTextura;
+    private Actor periodicoFinalActor;
+    private Texture finalisimoTextura;
+    private Actor finalisimoActor;
+
+    private boolean isPeriodicoFinalClicked;
+    private boolean isDelayFinished;
+
+    public EndScreen(Demo game) {
+        super(game);
+
+        batch = new SpriteBatch();
+        viewport = new FitViewport(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        uiStage = new Stage(viewport, batch);
+        Gdx.input.setInputProcessor(uiStage);
+
+        blackBackground = ResourceManager.getTexture("Menu/blackBackground.png");
+        blackBackgroundActor = new Image(blackBackground);
+        blackBackgroundActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        uiStage.addActor(blackBackgroundActor);
+
+        periodicoFinalTextura = ResourceManager.getTexture("Menu/periodico.0_1.png");
+        periodicoFinalActor = new Image(periodicoFinalTextura);
+        periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        periodicoFinalActor.getColor().a = 0; // Configurar la transparencia inicial a 0
+        periodicoFinalActor.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                isPeriodicoFinalClicked = true;
+            }
+        });
+        uiStage.addActor(periodicoFinalActor);
+
+        finalisimoTextura = ResourceManager.getTexture("Menu/final.png");
+        finalisimoActor = new Image(finalisimoTextura);
+        finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        finalisimoActor.getColor().a = 0; // Configurar la transparencia inicial a 0
+        finalisimoActor.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (isDelayFinished) {
+                    // Realizar acción al hacer clic en finalisimoActor
+                }
+            }
+        });
+        uiStage.addActor(finalisimoActor);
+
+        isPeriodicoFinalClicked = false;
+        isDelayFinished = false;
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act(delta);
+
+        // Realizar fadeIn del actor periodicoFinalActor
+        if (!isPeriodicoFinalClicked) {
+            float fadeInDuration = 1.0f; // Duración del fade in en segundos
+            if (periodicoFinalActor.getColor().a < 1) {
+                periodicoFinalActor.addAction(Actions.fadeIn(fadeInDuration));
+            }
+        }
+
+        // Realizar fadeOut y delay antes de mostrar finalisimoActor
+        if (isPeriodicoFinalClicked && periodicoFinalActor.getColor().a == 1 && !isDelayFinished) {
+            float fadeOutDuration = 1.0f; // Duración del fade out en segundos
+            periodicoFinalActor.addAction(Actions.sequence(
+                    Actions.fadeOut(fadeOutDuration),
+                    Actions.delay(3.0f), // Delay de 3 segundos
+                    Actions.run(() -> {
+                        isDelayFinished = true;
+                        finalisimoActor.addAction(Actions.fadeIn(fadeOutDuration));
+                    })
+            ));
+        }
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        batch.draw(blackBackground, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        batch.end();
+
+        uiStage.draw();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        batch.dispose();
+        uiStage.dispose();
+    }
+}

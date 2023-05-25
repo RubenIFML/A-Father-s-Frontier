@@ -42,13 +42,13 @@ public class TitleScreen extends BScreen {
 
         resetear();
 
-        background = new Texture("Menu/titleB.jpg");
-        title = new Texture("Menu/titleTitle.png");
+        background = ResourceManager.getTexture("Menu/titleB.jpg");
+        title = ResourceManager.getTexture("Menu/titleTitle.png");
         lluvia = new Lluvia();
         this.uiStage.addActor(lluvia);
         lluvia.setScaleY(Parametros.getAltoPantalla() / 125);
         lluvia.setScaleX(Parametros.getAnchoPantalla() / 125);
-        advertenciaTexture = new Texture("Menu/advertencia.png");
+        advertenciaTexture = ResourceManager.getTexture("Menu/advertencia.png");
         advertenciaActor = new Image(advertenciaTexture);
         advertenciaActor.getColor().a = 0f; // Inicialmente establecemos la transparencia en 0
         advertenciaActor.setBounds(0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
@@ -85,7 +85,7 @@ public class TitleScreen extends BScreen {
 	    Parametros.controlesActivos=true;
 		Parametros.zona=1;
 		 
-		Parametros.haComidoHoy = false;                                    
+		Parametros.haComidoHoy = false;
 		Parametros.haPagadoDeuda = false;
 		
 		Parametros.mision_un_extrano_muneco = true;                        

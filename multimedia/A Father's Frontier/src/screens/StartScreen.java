@@ -49,15 +49,15 @@ private Actor silueta;
         	Reloj.tiempoRestante = Parametros.segundosBaseOW;
 	        switch (Parametros.dia) {
 	            case 1:
-	                periodico = new Texture("Menu/periodico.0_0.png");
-	                siluetaTexture = new Texture("02-OW/personajes/p_sil.png");
+	                periodico = ResourceManager.getTexture("Menu/periodico.0_0.png");
+	                siluetaTexture=ResourceManager.getTexture("02-OW/Personajes/p_sil.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(362, 240, 76, 164);
 	        		ruido.setLooping(true);
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 2:
-	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos.png");
+	                siluetaTexture = ResourceManager.getTexture("02-OW/Personajes/p.recuerdos.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(342, 250, 100, 158);
 	                ResourceManager.musicaTitulo.stop();
@@ -65,7 +65,7 @@ private Actor silueta;
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 3:
-	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos1.png");
+	                siluetaTexture = ResourceManager.getTexture("02-OW/Personajes/p.recuerdos1.png");
 	                silueta = new Image(siluetaTexture);
 	                silueta.setBounds(362, 240, 76, 164);
 	                ResourceManager.musicaTitulo.stop();
@@ -73,7 +73,7 @@ private Actor silueta;
 	        		ruido.setVolume(0.2f);
 	                break;
 	            case 4:
-	                siluetaTexture = new Texture("02-OW/personajes/p.recuerdos1.png");
+	                siluetaTexture = ResourceManager.getTexture("02-OW/Personajes/p.recuerdos1.png");
 	                ResourceManager.musicaTitulo.stop();
 		    }
         }
@@ -81,22 +81,22 @@ private Actor silueta;
         else if (Parametros.frontera==true) {
 	        switch (Parametros.dia) {
             case 1:
-                periodico = new Texture("Menu/periodico.1_0.png");
+                periodico = ResourceManager.getTexture("Menu/periodico.1_0.png");
                 break;
             case 2:
-                periodico = new Texture("Menu/periodico.2_0.png");
+                periodico = ResourceManager.getTexture("Menu/periodico.2_0.png");
                 break;
             case 3:
-                periodico = new Texture("Menu/periodico.3_0.png");
+                periodico = ResourceManager.getTexture("Menu/periodico.3_0.png");
                 break;
             default:
-                periodico = new Texture("Menu/periodico.3_0.png");
+                periodico = ResourceManager.getTexture("Menu/periodico.3_0.png");
                 ResourceManager.musicaTitulo.stop();
                 game.setScreen(new FrontierScreen(game));
 		    }
         }
         
-        blackBackground = new Texture("Menu/blackBackground.png");
+        blackBackground = ResourceManager.getTexture("Menu/blackBackground.png");
         blackBackgroundActor = new Image(blackBackground);
         this.uiStage.addActor(blackBackgroundActor);
         

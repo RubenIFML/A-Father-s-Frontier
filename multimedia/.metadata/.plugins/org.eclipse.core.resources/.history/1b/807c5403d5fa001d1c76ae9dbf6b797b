@@ -1,0 +1,57 @@
+package screens;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
+import game.Demo;
+import game.Parametros;
+import managers.ResourceManager;
+
+public class EndScreen extends BScreen {
+    private Batch batch;
+    private Actor periodicoFinalActor;
+    private Texture periodicoFinalTexture;
+    private Actor finalisimoActor;
+    private Texture finalisimoTexture;
+
+    public EndScreen(Demo game) {
+        super(game);
+
+        // Crear y configurar los actores
+        periodicoFinalTexture = ResourceManager.getTexture("Menu/periodico.0_1.png");
+        periodicoFinalActor = new Actor();
+        periodicoFinalActor = new Image(periodicoFinalTexture);
+        periodicoFinalActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        uiStage.addActor(periodicoFinalActor);
+        
+        finalisimoTexture = ResourceManager.getTexture("Menu/final.png");
+        finalisimoActor = new Actor();
+        finalisimoActor = new Image(finalisimoTexture);
+        finalisimoActor.setSize(Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+
+        batch = new SpriteBatch();
+
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act();
+
+
+        batch.begin();
+        batch.setColor(Color.WHITE);
+        batch.end();
+
+        uiStage.draw();
+
+        batch.begin();
+        periodicoFinalActor.draw(batch, 1f);
+        finalisimoActor.draw(batch, 1f);
+        batch.end();
+    }
+}

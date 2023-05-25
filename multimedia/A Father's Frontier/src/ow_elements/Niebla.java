@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import managers.ResourceManager;
+
 public class Niebla extends Actor {
 
   private Texture texture;
@@ -14,7 +16,7 @@ public class Niebla extends Actor {
   
   public Niebla(float width, float height, String textura) {
 	this.textura = textura;
-    texture = new Texture(this.textura); // Asegúrate de tener una textura con el efecto de niebla
+    texture = ResourceManager.getTexture(this.textura); // Asegúrate de tener una textura con el efecto de niebla
     setWidth(width);
     setHeight(height);
   }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
+import managers.ResourceManager;
 
 public class Tareas extends Actor {
 
@@ -56,7 +57,7 @@ public class Tareas extends Actor {
         // Configurar el resto de los atributos
         this.titulo = "- LISTA DE TAREAS -";
         setBounds(10, 300, 232, 290);
-        this.tareas = new Texture("Menu/listaTareas.png");
+        this.tareas = ResourceManager.getTexture("Menu/listaTareas.png");
         
         // Actualizar la lista con las tareas que estén en true
         actualizarLista();

@@ -1,13 +1,13 @@
 package ow_elements;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 import screens.OverWorldScreen;
 
 public class NpcMailBox extends Element {
@@ -93,7 +93,7 @@ public class NpcMailBox extends Element {
 			         (nivel.prota.getX() >= getX() && nivel.prota.getY() >= getY()))) {
 			    // el personaje está cerca y en la dirección correcta, creamos y agregamos el actor bocadillo
 			    if (bocadillo == null) {
-			        bocadillo = new Image(new Texture("02-OW/Personajes/b_mail.png"));
+			        bocadillo = new Image(ResourceManager.getTexture("02-OW/Personajes/b_mail.png"));
 			        bocadillo.setBounds(getX()+10, getY()-34 + getHeight() + 10, 15,15); // ajustar la posición del bocadillo
 			        bocadillo.setName("bocadillo");
 			        nivel.mainStage.addActor(bocadillo);
@@ -113,6 +113,7 @@ public class NpcMailBox extends Element {
 	}
 	
 	private void interactuar() {
+	    nivel.prota.pasos.stop();
 		switch(Parametros.dia) {
 		case 4:
 		    switch (siguienteInteraccion) {
@@ -189,7 +190,7 @@ public class NpcMailBox extends Element {
 		        case 0:
 		        	Parametros.interactuandoNpc = true;
 		            AudioManager.playSound("01-FS/Audio/sounds/menuBoton.wav");
-		            interaccion = new Texto("(Necesito al menos " + Parametros.precioImpuestos + " libras para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
+		            interaccion = new Texto("(Necesito al menos £" + Parametros.precioImpuestos + " para pagar mis deudas\ne impuestos... Llevo meses de retraso)", "talk2");
 		            this.nivel.uiStage.addActor(interaccion);
 		            siguienteInteraccion++;
 		            break;

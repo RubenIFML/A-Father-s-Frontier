@@ -32,7 +32,7 @@ private int estadoActual = 0;
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 	    
 	    batch = new SpriteBatch();
-	    background = new Texture("Menu/tsxB.png");
+	    background = ResourceManager.getTexture("Menu/tsxB.png");
 
 		tabla = new Table();
 		tabla.setFillParent(true);

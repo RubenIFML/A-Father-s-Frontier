@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class Texto extends Actor {
     private Texture caja;
@@ -42,7 +43,7 @@ public class Texto extends Actor {
         this.text=text;
         this.voice=voice;
 
-        caja = new Texture(Gdx.files.internal("Menu/dialogoOW.png"));
+        caja = ResourceManager.getTexture("Menu/dialogoOW.png");
 
         texto=new Label("", uiStyle);
         texto.setPosition(30, 92);

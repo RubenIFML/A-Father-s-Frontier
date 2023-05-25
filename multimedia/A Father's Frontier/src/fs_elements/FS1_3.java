@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class FS1_3 extends Actor {
     private Texture persona3;
@@ -21,7 +22,7 @@ public class FS1_3 extends Actor {
     public FS1_3(Stage mainStage) {
     	this.mainStage=mainStage;
     	setBounds(79, 73, 80, 100);
-        persona3 = new Texture("01-FS/Personajes/FS.1_3.png");
+        persona3 = ResourceManager.getTexture("01-FS/Personajes/FS.1_3.png");
     }
 
     @Override
@@ -98,10 +99,10 @@ public class FS1_3 extends Actor {
     }
 
     public void hide() {
-    	this.persona3 = new Texture("01-FS/Personajes/transparente.png");
+    	this.persona3 = ResourceManager.getTexture("01-FS/Personajes/transparente.png");
     }
     
     public void show() {
-        persona3 = new Texture("01-FS/Personajes/FS.1_3.png");
+        persona3 = ResourceManager.getTexture("01-FS/Personajes/FS.1_3.png");
     }
 }

@@ -29,7 +29,7 @@ private boolean diaHabilitada = false;
 	    camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
 	    
 	    batch = new SpriteBatch();
-	    background = new Texture("Menu/blackBackground.png");
+	    background = ResourceManager.getTexture("Menu/blackBackground.png");
 	    
     	if (ResourceManager.tiktak.isPlaying()){
     		ResourceManager.tiktak.stop();

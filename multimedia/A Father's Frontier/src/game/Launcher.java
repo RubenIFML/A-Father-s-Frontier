@@ -1,5 +1,6 @@
 package game;
 
+import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -13,6 +14,7 @@ public class Launcher {
         config.width = Parametros.getAnchoPantalla();
         config.height = Parametros.getAltoPantalla();
         config.resizable = false;
+        config.addIcon("icon.png", FileType.Internal);
         
         @SuppressWarnings("unused")
         LwjglApplication launcher = new LwjglApplication(myGame, config);

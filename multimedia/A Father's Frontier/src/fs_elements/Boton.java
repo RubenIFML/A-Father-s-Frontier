@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import game.Parametros;
 import managers.AudioManager;
+import managers.ResourceManager;
 
 public class Boton extends Actor {
     private Texture boton;
@@ -21,27 +22,27 @@ public class Boton extends Actor {
     	this.textura1 = textura1;
     	this.textura2 = textura2;
         setBounds(this.x, 10, 32, 35);
-        boton = new Texture("01-FS/Objetos/" + this.textura1);
+        boton = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
     }
 
     @Override
     public void act(float delta) {
     	if(x == 165) {
 	        if (Gdx.input.isKeyJustPressed(Input.Keys.DEL) && Parametros.controlesActivos==true) {
-	            boton = new Texture("01-FS/Objetos/" + this.textura2);
+	            boton = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
 	            AudioManager.playSound("01-FS/Audio/sounds/boton.wav");
 	        }
 	        else {
-	        	boton = new Texture("01-FS/Objetos/" + this.textura1);
+	        	boton = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
 	        }
     	}
     	else if(x == 200) {
 	        if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && Parametros.controlesActivos==true) {
-	            boton = new Texture("01-FS/Objetos/" + this.textura2);
+	            boton = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
 	            AudioManager.playSound("01-FS/Audio/sounds/boton.wav");
 	        }
 	        else {
-	        	boton = new Texture("01-FS/Objetos/" + this.textura1);
+	        	boton = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
 	        }
     	}
     }

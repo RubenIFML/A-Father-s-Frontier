@@ -1,0 +1,52 @@
+package screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
+import game.Demo;
+import game.Parametros;
+import managers.AudioManager;
+import managers.ResourceManager;
+import ow_elements.Texto;
+
+public class EndScreen extends BScreen {
+private OrthographicCamera camera;
+private Batch batch;
+private Texture blackBackground;
+private Actor blackBackgroundActor;
+private Music ruido;
+private int contador = 0;
+private Texto texto;
+
+    public EndScreen(Demo game) {
+        super(game);
+        
+        batch = new SpriteBatch();
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Parametros.getAltoPantalla(), Parametros.getAltoPantalla());
+
+        blackBackground = ResourceManager.getTexture("Menu/blackBackground.png");
+        blackBackgroundActor = new Image(blackBackground);
+        this.uiStage.addActor(blackBackgroundActor);
+
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        uiStage.act();
+
+        batch.begin();
+        batch.draw(blackBackground, 0, 0, Parametros.getAnchoPantalla(), Parametros.getAltoPantalla());
+        batch.end();
+
+        uiStage.draw();
+    }
+}

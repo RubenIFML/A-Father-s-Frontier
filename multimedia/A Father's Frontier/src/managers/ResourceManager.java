@@ -54,12 +54,14 @@ public final class ResourceManager {
         assets.load("Menu/mapaEsquema.png", Texture.class);
         assets.load("Menu/dialogoOW.png", Texture.class);
         assets.load("Menu/listaTareas1.png", Texture.class);
+        assets.load("Menu/listaTareas.png", Texture.class);
         assets.load("Menu/controlesOw.png", Texture.class);
         assets.load("Menu/controlesFs.png", Texture.class);
         assets.load("Menu/controlesOw2.png", Texture.class);
         assets.load("Menu/controlesOw3.png", Texture.class);
         assets.load("Menu/controlesFs2.png", Texture.class);
         assets.load("Menu/controlesFs3.png", Texture.class);
+        assets.load("Menu/oscuridad.png", Texture.class);
         assets.load("Menu/advertencia.png", Texture.class);
         assets.load("Menu/final.png", Texture.class);
        
@@ -124,6 +126,7 @@ public final class ResourceManager {
         assets.load("02-OW/Objetos/objeto.peluche.png", Texture.class);
         
         //Personajes FS
+        assets.load("01-FS/Personajes/transparente.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_1.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_2.png", Texture.class);
         assets.load("01-FS/Personajes/FS.1_3.png", Texture.class);

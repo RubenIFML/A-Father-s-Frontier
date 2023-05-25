@@ -113,7 +113,6 @@ public class Lluvia extends Actor {
 	   public void setAnimation(Animation<TextureRegion> anim)
 	    {
 	        animation = anim;
-	        if(anim==null) {System.out.println("Es nula");}
 	        TextureRegion tr = animation.getKeyFrame(0);
 	        float w = tr.getRegionWidth();
 	        float h = tr.getRegionHeight();

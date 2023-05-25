@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.math.Interpolation"/>
-    <fullyQualifiedTypeName name="ow_elements.FadeInAction"/>
-    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL20"/>
     <fullyQualifiedTypeName name="ow_elements.Npc"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.maps.tiled.TiledMapTileLayer"/>
@@ -15,7 +11,6 @@
     <fullyQualifiedTypeName name="java.text.Format"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.utils.ClickListener"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.Input"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Polygon"/>
     <fullyQualifiedTypeName name="ow_elements.NpcDependiente"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.audio.Music"/>
@@ -23,14 +18,11 @@
     <fullyQualifiedTypeName name="fs_elements.Reloj"/>
     <fullyQualifiedTypeName name="ow_elements.Reloj"/>
     <fullyQualifiedTypeName name="ow_elements.Tareas"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
     <fullyQualifiedTypeName name="ow_elements.TareasSinExpandir"/>
     <fullyQualifiedTypeName name="ow_elements.Dinero"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.math.Vector2"/>
     <fullyQualifiedTypeName name="ow_elements.NpcMailBox"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
     <fullyQualifiedTypeName name="ow_elements.NombreZona"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
@@ -52,12 +44,20 @@
     <fullyQualifiedTypeName name="java.util.Timer"/>
     <fullyQualifiedTypeName name="javax.management.timer.Timer"/>
     <fullyQualifiedTypeName name="javax.swing.Timer"/>
-    <fullyQualifiedTypeName name="game.Parametros"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Animation"/>
-    <fullyQualifiedTypeName name="managers.ResourceManager"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Stack"/>
-    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Action"/>
     <fullyQualifiedTypeName name="ow_elements.Element"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Game"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+    <fullyQualifiedTypeName name="managers.ResourceManager"/>
     <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Actor"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Batch"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.OrthographicCamera"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Image"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
+    <fullyQualifiedTypeName name="game.Parametros"/>
+    <fullyQualifiedTypeName name="game.Demo"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+    <fullyQualifiedTypeName name="com.badlogic.gdx.Files.FileType"/>
 </qualifiedTypeNameHistroy>
