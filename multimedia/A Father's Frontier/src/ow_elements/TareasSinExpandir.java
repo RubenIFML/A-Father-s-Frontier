@@ -9,6 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import managers.ResourceManager;
 
+/**
+ * Muestra el cartel de "Lista de tareas" en la parte superior izquierda de la interfaz.
+ * @author Rubén Moya
+ */
 public class TareasSinExpandir extends Actor {
 
     private BitmapFont font;

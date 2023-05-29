@@ -18,6 +18,11 @@ import managers.ResourceManager;
 import ow_elements.Reloj;
 import ow_elements.Texto;
 
+/**
+ * Establece la pantalla de inicio de cada día del juego, donde
+ * se muestran los periódicos o los flashbacks.
+ * @author Rubén Moya
+ */
 public class StartScreen extends BScreen {
 private OrthographicCamera camera;
 private Batch batch;

@@ -13,6 +13,12 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla de estadísticas que se muestra al final de
+ * cada día de la Frontera, mostrando el dinero que ha ganado o perdido
+ * el personaje.
+ * @author Rubén Moya
+ */
 public class StatsScreen extends BScreen{
 private OrthographicCamera camera;
 private Batch batch;

@@ -10,6 +10,10 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece los NPC de las misiones secundarias de la Ciudad.
+ * @author Rubén Moya
+ */
 public class NpcMision extends Element {
 	private OverWorldScreen nivel;
 	private Texto interaccion;
@@ -58,6 +62,9 @@ public class NpcMision extends Element {
 		dialogBox.setRectangle();
 	}
 
+	/**
+	 * Controla las interacciones, las colisiones, la distancia y mueve el bocadillo.
+	 */
 	public void act(float delta) {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
@@ -105,12 +112,24 @@ public class NpcMision extends Element {
 	    }
 	}
 
+	/**
+	 * Comprueba las colisiones del NpcMision con el protagonista.
+	 */
 	private void comprobarColisiones() {
 		if (this.nivel.prota.overlaps(this)) {
 			this.nivel.prota.preventOverlap(this);
 		}
 	}
-	
+
+	/**
+	 * Crea el actor bocadillo del NpcMision, el cual se oculta si el
+	 * protagonista está lejos y aparece si está cerca. Si el protagonista
+	 * todavía no ha completado la misión hoy, el bocadillo mostrará una
+	 * exclamación, y si ya la ha completado, el bocadillo mostrará puntos
+	 * suspensivos.
+	 * @param distanciaX Distancia en "X" entre el npc y el protagonista.
+	 * @param distanciaY Distancia en "Y" entre el npc y el protagonista.
+	 */
 	private void bocadillo(float distanciaX, float distanciaY) {
 		if (distanciaX < 60 && distanciaY < 60 &&
 		        ((nivel.prota.getX() < getX() && nivel.prota.getY() < getY()) ||
@@ -253,7 +272,12 @@ public class NpcMision extends Element {
 		    }
 		}
 	}
-	
+
+	/**
+	 * Crea los diálogos, cambia variables y muestra al jugador las interacciones
+	 * del NPC una tras otra si se pulsa clic izquierdo. Cada NPC misión tiene sus
+	 * propias normas, sus propias variables y sus propios comportamientos.
+	 */
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    nivel.prota.pasos.stop();

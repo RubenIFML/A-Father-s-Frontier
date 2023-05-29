@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import managers.ResourceManager;
 import screens.LoadScreen;
 
+/**
+ * La clase principal del juego.
+ */
 public class Demo extends Game
 {
 	SpriteBatch batch;

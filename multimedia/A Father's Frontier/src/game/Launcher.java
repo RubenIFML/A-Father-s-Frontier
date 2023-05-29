@@ -5,6 +5,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
+/**
+ * La clase que crea la ventana del juego.
+ */
 public class Launcher {
     public static void main(String[] args) {
         Game myGame = new Demo();

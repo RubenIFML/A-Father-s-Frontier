@@ -10,6 +10,10 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece el NPC del buzón de correo para pagar deudas e impuestos.
+ * @author Rubén Moya
+ */
 public class NpcMailBox extends Element {
 	private OverWorldScreen nivel;
 	private Texto interaccion;
@@ -34,6 +38,9 @@ public class NpcMailBox extends Element {
 		dialogBox.setRectangle();
 	}
 
+	/**
+	 * Controla las interacciones, las colisiones, la distancia y mueve el bocadillo.
+	 */
 	public void act(float delta) {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
@@ -78,12 +85,23 @@ public class NpcMailBox extends Element {
 	    }
 	}
 
+	/**
+	 * Comprueba las colisiones del NpcMailBox con el protagonista.
+	 */
 	private void comprobarColisiones() {
 		if (this.nivel.prota.overlaps(this)) {
 			this.nivel.prota.preventOverlap(this);
 		}
 	}
-	
+
+	/**
+	 * Crea el actor bocadillo del NpcMailBox, el cual se oculta si el
+	 * protagonista está lejos y aparece si está cerca. Si el protagonista
+	 * todavía no ha pagado las deudas hoy, el bocadillo mostrará una carta,
+	 * y si ya ha pagado hoy, el bocadillo mostrará puntos suspensivos.
+	 * @param distanciaX Distancia en "X" entre el npc y el protagonista.
+	 * @param distanciaY Distancia en "Y" entre el npc y el protagonista.
+	 */
 	private void bocadillo(float distanciaX, float distanciaY) {
 		if(!Parametros.haPagadoDeuda)
 			if (distanciaX < 60 && distanciaY < 60 &&
@@ -112,6 +130,10 @@ public class NpcMailBox extends Element {
 		}
 	}
 	
+	/**
+	 * Crea los diálogos, cambia variables y muestra al jugador las interacciones
+	 * del NPC una tras otra si se pulsa clic izquierdo.
+	 */
 	private void interactuar() {
 	    nivel.prota.pasos.stop();
 		switch(Parametros.dia) {

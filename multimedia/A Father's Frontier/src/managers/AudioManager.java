@@ -5,6 +5,9 @@ import com.badlogic.gdx.audio.Sound;
 
 import game.Parametros;
 
+/**
+ * La clase que controla el audio del juego.
+ */
 public class AudioManager {
 	public static Music currentMusic;
 	public static String currentMusicName="";

@@ -1,0 +1,147 @@
+package fs_elements;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+import game.Parametros;
+import managers.AudioManager;
+import managers.ResourceManager;
+
+public class Reglas extends Actor {
+    static Reglas reglasArrastradas = null;
+    private boolean isDragged = false;
+    private float lastX, lastY;
+    private Texture reglas;
+    private float deltaX;
+    private float deltaY;
+    private boolean primeraVez = true;
+
+    private float x;
+    private float y;
+    private float width;
+    private float height;
+    private String textura1;
+    private String textura2;
+    private String textura3;
+    private int posicion=0;
+    private float gravity = -200f;
+    private float yVelocity = 0f;
+    @SuppressWarnings("unused")
+	private boolean isFalling = false;
+    
+    public Reglas(float x, float y, float width, float height, String textura1, String textura2, String textura3) {
+    	this.x = x;
+    	this.y = y;
+    	this.width = width;
+    	this.height = height;
+    	this.textura1 = textura1;
+    	this.textura2 = textura2;
+    	this.textura3 = textura3;
+    	
+        setBounds(this.x, this.y, this.width, this.height);
+        reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
+    }
+
+    @Override
+    public void act(float delta) {
+        Vector2 stageCoords = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));
+
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && Parametros.controlesActivos==true) {
+            if (getRectangle().contains(stageCoords.x, stageCoords.y) && Objeto.objetoArrastrado == null && reglasArrastradas == null) {
+                reglasArrastradas = this;
+                isDragged = true;
+                if (primeraVez == true) {
+                	
+                	if(this.textura2 == null && this.textura3 == null) {
+                	}
+                	
+                	else if(this.textura3 == null) {
+                		if(posicion == 0) {
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
+                			posicion++;
+                		}
+                		else if (posicion == 1){
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
+                			posicion--;
+                		}
+                    } 
+                	
+                	else {
+                		if(posicion == 0) {
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura2);
+                			posicion++;
+                		}
+                		else if (posicion == 1){
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura3);
+                			posicion++;
+                		}
+                		else if (posicion == 2){
+                			reglas = ResourceManager.getTexture("01-FS/Objetos/" + this.textura1);
+                			posicion-=2;
+                		}
+                	}
+                	
+                    AudioManager.playSound("01-FS/Audio/sounds/papeles.wav");
+                    primeraVez = false;
+                }
+            }
+        } else {
+            if (reglasArrastradas == this) {
+                reglasArrastradas = null;
+            }
+            isDragged = false;
+            primeraVez = true;
+        }
+        if (isDragged) {
+            deltaX = stageCoords.x - lastX;
+            deltaY = stageCoords.y - lastY;
+            float newX = getX() + deltaX;
+            float newY = getY() + deltaY;
+            // Comprobar límites de pantalla en X
+            if (newX < -5) {
+                newX = -5;
+            } else if (newX > 190) {
+                newX = 192;
+            }
+            // Comprobar límites de pantalla en Y
+            if (newY < -5) {
+                newY = -5;
+            } else if (newY > 150) {
+                newY = 152;
+            }
+            setPosition(newX, newY);
+        } else {
+            // Apply gravity
+            if (getY() > 60) {
+                yVelocity += gravity * delta;
+                float newY = getY() + yVelocity * delta;
+                if (newY <= 60) {
+                    newY = 60;
+                    yVelocity = 0;
+                    isFalling = false;
+                }
+                setPosition(getX(), newY);
+                isFalling = true;
+            } else {
+                isFalling = false;
+            }
+        }
+        lastX = stageCoords.x;
+        lastY = stageCoords.y;
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(reglas, getX(), getY(), getWidth(), getHeight());
+    }
+
+    public Rectangle getRectangle() {
+        return new Rectangle(getX(), getY(), getWidth(), getHeight());
+    }
+
+}

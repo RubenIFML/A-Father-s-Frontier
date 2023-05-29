@@ -14,6 +14,11 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla de muerte del juego, a la cual se accederá si el jugador no
+ * ha pagado sus deudas o no ha comido.
+ * @author Rubén Moya
+ */
 public class DeathScreen extends BScreen{
 private OrthographicCamera camera;
 private Batch batch;

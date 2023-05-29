@@ -4,6 +4,9 @@ package screens;
 import game.Demo;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla de carga del juego.
+ */
 public class LoadScreen extends BScreen{
 	
 	

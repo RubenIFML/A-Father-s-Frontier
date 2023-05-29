@@ -14,6 +14,11 @@ import game.Demo;
 import game.Parametros;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla final del juego, a la cual solo se accederá si el jugador está a punto de
+ * terminar el juego.
+ * @author Rubén Moya
+ */
 public class EndScreen extends BScreen {
     private Batch batch;
     private Actor periodicoFinalActor;

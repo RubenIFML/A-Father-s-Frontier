@@ -4,6 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import managers.ResourceManager;
 
+/**
+ * Carga y establece las gotas de agua de la lluvia de la Ciudad.
+ * @author Rubén Moya
+ */
 public class Gota extends Actor {
     
     private float x;

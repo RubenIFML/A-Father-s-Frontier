@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="libs/gdx-freetype.jar;libs/gdx-natives.jar;libs/gdx.jar;libs/gdx-backend-lwjgl-natives.jar;libs/gdx-freetype-natives.jar;libs/gdx-sources.jar;libs/gdx-backend-lwjgl.jar" destdir="doc" doctitle="Documentación - A Father's Frontier" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="game,ow_elements,screens,fs_elements,managers" source="1.8" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="https://docs.oracle.com/en/java/javase/17/docs/api/"/>
+            <link href="file:/E:/Documents/GitHub/A-Father-s-Frontier/multimedia/A%20Father's%20Frontier/doc/"/>
+        </javadoc>
+    </target>
+</project>

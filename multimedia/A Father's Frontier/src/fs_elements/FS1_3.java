@@ -11,6 +11,10 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Establece la persona 3 del día 1 de la Frontera.
+ * @author Rubén Moya
+ */
 public class FS1_3 extends Actor {
     private Texture persona3;
     private float elapsedTime = 0;
@@ -87,6 +91,9 @@ public class FS1_3 extends Actor {
         }
     }
 
+    /**
+     * Desvanece poco a poco al actor.
+     */
     public void fadeOut() {
         fadingOut = true;
     }
@@ -98,10 +105,16 @@ public class FS1_3 extends Actor {
         batch.setColor(1, 1, 1, 1);
     }
 
+    /**
+     * Oculta al actor.
+     */
     public void hide() {
     	this.persona3 = ResourceManager.getTexture("01-FS/Personajes/transparente.png");
     }
     
+    /**
+     * Muestra al actor.
+     */
     public void show() {
         persona3 = ResourceManager.getTexture("01-FS/Personajes/FS.1_3.png");
     }

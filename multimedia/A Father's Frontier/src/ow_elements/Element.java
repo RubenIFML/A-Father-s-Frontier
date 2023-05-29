@@ -18,8 +18,10 @@ import com.badlogic.gdx.utils.Array;
 
 import game.Parametros;
 import managers.ResourceManager;
-;
 
+/**
+ * Clase de la que extienden todos los elementos de la Ciudad.
+ */
 public class Element extends Actor{
 	public Animation<TextureRegion> animation;
 	protected float animationTime;
@@ -238,6 +240,12 @@ public class Element extends Actor{
 	        return anim;
 	    }
 	
+	  
+	/**
+	 * Carga una sprite sheet y la convierte en un array, parametrizando
+	 * determinadas direcciones y posiciones de los personajes.
+	 * @author Rubén Moya
+	 */
 	public Array<TextureRegion>[] loadFullAnimationArray(String name, int rows, int cols, float frameDuration, boolean loop) { 
 	    Texture texture = ResourceManager.getTexture(name);
 	    int frameWidth = texture.getWidth() / cols;
@@ -294,7 +302,11 @@ public class Element extends Actor{
 
 	    return animationArrays;
 	}
-	
+
+	/**
+	 * Carga las animaciones contenidas en un array de Texture Region.
+	 * @author Rubén Moya
+	 */
 	public Animation<TextureRegion> loadAnimationFromArray(Array<TextureRegion> array, float frameDuration, boolean loop) {
 	    Animation<TextureRegion> anim = new Animation<TextureRegion>(frameDuration, array);
 

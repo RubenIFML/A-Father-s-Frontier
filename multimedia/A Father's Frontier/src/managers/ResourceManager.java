@@ -17,6 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 
+/**
+ * El administrador de recursos del juego.
+ * @author Rubén Moya
+ */
 public final class ResourceManager {
 	private ResourceManager() {}
 	public static AssetManager assets=new AssetManager();

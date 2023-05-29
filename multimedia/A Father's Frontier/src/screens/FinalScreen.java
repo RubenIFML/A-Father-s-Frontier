@@ -16,6 +16,11 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import ow_elements.Texto;
 
+/**
+ * Establece la pantalla de muerte definitiva del juego, a la cual solo se accederá si el jugador
+ * ha llegado al final, pero no ha conseguido el dinero.
+ * @author Rubén Moya
+ */
 public class FinalScreen extends BScreen {
 private OrthographicCamera camera;
 private Batch batch;

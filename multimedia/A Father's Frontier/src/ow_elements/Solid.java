@@ -3,6 +3,9 @@ package ow_elements;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+/**
+ * Crea los sólidos de la Ciudad.
+ */
 public class Solid extends Element{
 
 	public Solid(float x, float y, Stage s, float w, float h) {

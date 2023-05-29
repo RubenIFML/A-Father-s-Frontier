@@ -11,6 +11,10 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece los NPCs estáticos de la Ciudad.
+ * @author Rubén Moya
+ */
 public class NpcStatic extends Element {
 	private OverWorldScreen nivel;
 	private Texto interaccion;
@@ -66,6 +70,9 @@ public class NpcStatic extends Element {
 		dialogBox.setRectangle();
 	}
 
+	/**
+	 * Controla las interacciones, las colisiones, la distancia y mueve el bocadillo.
+	 */
 	public void act(float delta) {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
@@ -109,12 +116,21 @@ public class NpcStatic extends Element {
 	    }
 	}
 
+	/**
+	 * Comprueba las colisiones del NpcStatic con el protagonista.
+	 */
 	private void comprobarColisiones() {
 		if (this.nivel.prota.overlaps(this)) {
 			this.nivel.prota.preventOverlap(this);
 		}
 	}
-	
+
+	/**
+	 * Crea el actor bocadillo del NpcStatic, el cual se oculta si el
+	 * protagonista está lejos y aparece si está cerca.
+	 * @param distanciaX Distancia en "X" entre el npc y el protagonista.
+	 * @param distanciaY Distancia en "Y" entre el npc y el protagonista.
+	 */
 	private void bocadillo(float distanciaX, float distanciaY) {
 		if (distanciaX < 60 && distanciaY < 60 &&
 		        ((nivel.prota.getX() < getX() && nivel.prota.getY() < getY()) ||
@@ -150,7 +166,11 @@ public class NpcStatic extends Element {
 		    }
 		}
 	}
-	
+
+	/**
+	 * Crea los diálogos, cambia variables y muestra al jugador las interacciones
+	 * del NPC una tras otra si se pulsa clic izquierdo.
+	 */
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    nivel.prota.pasos.stop();

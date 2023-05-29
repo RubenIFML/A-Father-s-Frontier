@@ -11,6 +11,10 @@ import game.Parametros;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece el protagonista controlable por el jugador.
+ * @author Rubén Moya
+ */
 public class Protagonista extends Element {
     private boolean unaVez = false;
     private float deadzoneRadius = 12; // Radio de la zona muerta
@@ -26,6 +30,11 @@ public class Protagonista extends Element {
         this.setPolygon(8, 32, 23, 5, 5);
     }
 
+	/**
+	 * Si el jugador mantiene el clic derecho, el protagonista se moverá hacia la dirección
+	 * indicada. Si deja de pulsarlo, el protagonista parará. También ejecuta el sonido de
+	 * los pasos.
+	 */
     @Override
     public void act(float delta) {
         if (Parametros.controlesActivos == true) {
@@ -56,6 +65,10 @@ public class Protagonista extends Element {
         }
     }
 
+	/**
+	 * Se ejecutan las animaciones de movimiento del protagonista. Si el protagonista está parado
+	 * y el cursor está hacia cualquier dirección, el protagonista mirará hacia esa dirección.
+	 */
     private void animaciones() {
         if (this.velocity.isZero()) {
             Vector2 clickPos = getStage().screenToStageCoordinates(new Vector2(Gdx.input.getX(), Gdx.input.getY()));

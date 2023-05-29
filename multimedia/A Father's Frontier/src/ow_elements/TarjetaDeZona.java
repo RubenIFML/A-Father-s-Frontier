@@ -7,6 +7,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+/**
+ * Carga el nombre de la zona en la que se encuentra el protagonista, para después
+ * desvanecerse pasados unos segundos.
+ * @author Rubén Moya
+ */
 public class TarjetaDeZona extends Actor {
 
     private BitmapFont font;
@@ -14,7 +19,7 @@ public class TarjetaDeZona extends Actor {
     private int textX=20;
     private int textY=54;
     private int color;
-    private float elapsed = 0f;  // Tiempo transcurrido desde la creación de la tarjeta
+    private float elapsed = 0f;
     
     public TarjetaDeZona(String titulo, int color) {
     	

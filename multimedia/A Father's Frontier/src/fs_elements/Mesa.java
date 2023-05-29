@@ -6,6 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import managers.ResourceManager;
 
+/**
+ * Crea la mesa de la Frontera.
+ * @author Rubén Moya
+ */
 public class Mesa extends Actor {
     private Texture mesa;
     

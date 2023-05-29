@@ -10,6 +10,10 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece el NPC de la dependienta del Super UK Market.
+ * @author Rubén Moya
+ */
 public class NpcDependiente extends Element {
 	private OverWorldScreen nivel;
 	private Texto interaccion;
@@ -50,6 +54,9 @@ public class NpcDependiente extends Element {
 		dialogBox.setRectangle();
 	}
 
+	/**
+	 * Controla las interacciones, las colisiones, la distancia y mueve el bocadillo.
+	 */
 	public void act(float delta) {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
@@ -93,12 +100,23 @@ public class NpcDependiente extends Element {
 	    }
 	}
 
+	/**
+	 * Comprueba las colisiones del NpcDependiente con el protagonista.
+	 */
 	private void comprobarColisiones() {
 		if (this.nivel.prota.overlaps(this)) {
 			this.nivel.prota.preventOverlap(this);
 		}
 	}
-	
+
+	/**
+	 * Crea el actor bocadillo del NpcDependiente, el cual se oculta si el
+	 * protagonista está lejos y aparece si está cerca. Si el protagonista
+	 * todavía no ha comido hoy, el bocadillo mostrará una exclamación, y
+	 * si ya ha comido hoy, el bocadillo mostrará puntos suspensivos.
+	 * @param distanciaX Distancia en "X" entre el npc y el protagonista.
+	 * @param distanciaY Distancia en "Y" entre el npc y el protagonista.
+	 */
 	private void bocadillo(float distanciaX, float distanciaY) {
 		if (distanciaX < 60 && distanciaY < 60 &&
 		        ((nivel.prota.getX() < getX() && nivel.prota.getY() < getY()) ||
@@ -126,6 +144,10 @@ public class NpcDependiente extends Element {
 		}
 	}
 	
+	/**
+	 * Crea los diálogos, cambia variables y muestra al jugador las interacciones
+	 * del NPC una tras otra si se pulsa clic izquierdo.
+	 */
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    nivel.prota.pasos.stop();

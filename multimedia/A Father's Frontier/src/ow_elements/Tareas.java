@@ -10,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import game.Parametros;
 import managers.ResourceManager;
 
+/**
+ * Establece la lista de tareas del jugador en la Ciudad.
+ * @author Rubén Moya
+ */
 public class Tareas extends Actor {
 
     private BitmapFont font;
@@ -62,7 +66,10 @@ public class Tareas extends Actor {
         // Actualizar la lista con las tareas que estén en true
         actualizarLista();
     }
-    
+
+	/**
+	 * Actualiza la lista con las misiones activas e inactivas del jugador.
+	 */
     private void actualizarLista() {
         lista = "";
         boolean hayMisiones = false;
@@ -77,9 +84,11 @@ public class Tareas extends Actor {
         }
     }
 
+	/**
+	 * Actualiza la lista de tareas si ha habido cambios y esta está abierta.
+	 */
     public void act(float delta) {
         super.act(delta);
-        // Actualizar la lista si hay cambios en las tareas
         for (int i = 0; i < tareasBoolean.length; i++) {
             boolean tareaActual = tareasBoolean[i];
             tareasBoolean[i] = obtenerValorBooleano(i);
@@ -89,7 +98,10 @@ public class Tareas extends Actor {
             }
         }
     }
-    
+
+	/**
+	 * Relaciona los Strings de las tareas con sus variables booleanas.
+	 */
     private boolean obtenerValorBooleano(int indice) {
         boolean valor = true ;
         switch (indice) {

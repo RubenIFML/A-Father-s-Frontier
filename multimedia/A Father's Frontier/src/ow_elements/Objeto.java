@@ -10,6 +10,10 @@ import managers.AudioManager;
 import managers.ResourceManager;
 import screens.OverWorldScreen;
 
+/**
+ * Establece los Objetos recolectables de la Ciudad.
+ * @author Rubén Moya
+ */
 public class Objeto extends Element {
 	private OverWorldScreen nivel;
 	private Texto interaccion;
@@ -36,6 +40,9 @@ public class Objeto extends Element {
 		dialogBox.setRectangle();
 	}
 
+	/**
+	 * Controla las interacciones, las colisiones, la distancia y mueve el bocadillo.
+	 */
 	public void act(float delta) {
 	    super.act(delta);
 	    float distanciaX = Math.abs(nivel.prota.getX() - getX());
@@ -77,7 +84,13 @@ public class Objeto extends Element {
 	    		}
 	    }
 	}
-	
+
+	/**
+	 * Crea el actor bocadillo del Objeto, el cual se oculta si el
+	 * protagonista está lejos y aparece si está cerca.
+	 * @param distanciaX Distancia en "X" entre el npc y el protagonista.
+	 * @param distanciaY Distancia en "Y" entre el npc y el protagonista.
+	 */
 	private void bocadillo(float distanciaX, float distanciaY) {
 		if (distanciaX < 60 && distanciaY < 60 &&
 		        ((nivel.prota.getX() < getX() && nivel.prota.getY() < getY()) ||
@@ -101,6 +114,11 @@ public class Objeto extends Element {
 		}
 	}
 
+	/**
+	 * Crea los diálogos, cambia variables y muestra al jugador las interacciones
+	 * del Objeto una tras otra si se pulsa clic izquierdo. Cuando la interacción
+	 * termina, el Objeto desaparece.
+	 */
 	private void interactuar() {
 	    Parametros.controlesActivos = false; // se desactivan los controles del personaje
 	    nivel.prota.pasos.stop();

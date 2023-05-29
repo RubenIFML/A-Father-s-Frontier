@@ -15,6 +15,13 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Crea los diálogos con los NPCs de la Ciudad,
+ * los cuales pueden ser pasados con clic izquierdo, y se
+ * dibujarán letra a letra, reproduciendo un sonido en
+ * determinadas letras.
+ * @author Rubén Moya
+ */
 public class Texto extends Actor {
     private Texture caja;
     private String text;
@@ -104,6 +111,9 @@ public class Texto extends Actor {
         texto.draw(batch, parentAlpha);
     }
 
+	/**
+	 * Elimina el actor.
+	 */
     public void hide() {
         this.remove();
     }

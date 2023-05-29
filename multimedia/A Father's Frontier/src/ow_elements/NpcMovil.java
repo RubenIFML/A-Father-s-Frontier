@@ -4,6 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import screens.OverWorldScreen;
 
+/**
+ * Establece los NPC móviles, tanto sus direcciones, como sus velocidades entre otros.
+ * @author Rubén Moya
+ */
 public class NpcMovil extends Element {
     private float velocidad;
     private float velocidadAnterior;
@@ -31,6 +35,9 @@ public class NpcMovil extends Element {
         this.animacionActual = direccion;
     }
 
+	/**
+	 * Controla la dirección, las colisiones y la animación.
+	 */
     public void act(float delta) {
         super.act(delta);
         if (direccion == 1) {
@@ -42,6 +49,11 @@ public class NpcMovil extends Element {
         comprobarColisiones();
     }
 
+	/**
+	 * Comprueba las colisiones del NpcMovil con el protagonista.
+	 * En el caso de que el protagonista esté tocando al NpcMovil,
+	 * el NpcMovil parará su marcha en seco.
+	 */
     private void comprobarColisiones() {
         for (Solid solido : this.nivel.solidos) {
             if (this.overlaps(solido)) {
@@ -60,6 +72,9 @@ public class NpcMovil extends Element {
         }
     }
 
+	/**
+	 * Establece la animación de caminar del NpcMovil.
+	 */
     private void animaciones() {
         if (direccionMovimiento > 0) {
             if (direccion == 1) {

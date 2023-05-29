@@ -12,6 +12,11 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Crea los objetos de las personas de la Frontera, los cuales
+ * pueden ser arrastrados por el jugador.
+ * @author Rubén Moya
+ */
 public class Objeto extends Actor {
     static Objeto objetoArrastrado = null;
     private boolean isDragged = false;

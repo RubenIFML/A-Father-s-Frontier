@@ -11,6 +11,10 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Establece los botones de la Frontera.
+ * @author Rubén Moya
+ */
 public class Boton extends Actor {
     private Texture boton;
     private float x;

@@ -14,6 +14,10 @@ import com.badlogic.gdx.utils.Array;
 import game.Parametros;
 import managers.ResourceManager;
 
+/**
+ * Crea la animación de lluvia de la Frontera.
+ * @author Rubén Moya
+ */
 public class Lluvia extends Actor {
 	protected Animation<TextureRegion> animation;
 	protected float animationTime;

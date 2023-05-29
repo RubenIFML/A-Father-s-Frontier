@@ -6,6 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import managers.ResourceManager;
 
+/**
+ * Crea el maletín de las personas de la Frontera.
+ * @author Rubén Moya
+ */
 public class Maletin extends Actor {
     private Texture maletin;
     
@@ -23,10 +27,17 @@ public class Maletin extends Actor {
         batch.draw(maletin, getX(), getY(), getWidth(), getHeight());
     }
     
+	
+	/**
+	 * Muestra al actor
+	 */
     public void hide() {
     	this.maletin = ResourceManager.getTexture("01-FS/Personajes/transparente.png");
     }
-    
+
+	/**
+	 * Oculta al actor
+	 */
     public void show() {
     	this.maletin = ResourceManager.getTexture("01-FS/Objetos/maletin.png");
     }

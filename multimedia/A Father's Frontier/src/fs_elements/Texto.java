@@ -13,6 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Crea los diálogos con los personajes de la Frontera,
+ * los cuales pueden ser pasados con clic izquierdo, y se
+ * dibujarán letra a letra, reproduciendo un sonido en
+ * determinadas letras.
+ * @author Rubén Moya
+ */
 public class Texto extends Actor {
     private Texture caja;
     private String text;
@@ -99,7 +106,10 @@ public class Texto extends Actor {
         batch.draw(caja, getX(), getY(), getWidth(), getHeight());
         texto.draw(batch, parentAlpha);
     }
-    
+
+	/**
+	 * Elimina el actor.
+	 */
     public void hide() {
     	this.remove();
     }

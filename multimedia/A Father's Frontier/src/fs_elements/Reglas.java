@@ -12,6 +12,11 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Crea las reglas de cada día de la Frontera, las cuales
+ * pueden pasar de página a partir del día dos.
+ * @author Rubén Moya
+ */
 public class Reglas extends Actor {
     static Reglas reglasArrastradas = null;
     private boolean isDragged = false;

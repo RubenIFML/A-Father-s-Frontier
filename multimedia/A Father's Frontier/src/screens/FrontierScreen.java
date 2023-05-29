@@ -37,20 +37,20 @@ import managers.AudioManager;
 import managers.ResourceManager;
 
 /**
- * La clase principal de la Frontier Screen.
+ * La clase principal de la Frontera.
  * @author Rubén Moya
  */
 public class FrontierScreen extends BScreen implements InputProcessor{
 
 //Indispensables
-Stage mainStage;
 OrthographicCamera camara;
 private OrthogonalTiledMapRenderer renderer;
-private TiledMap map;
 public float mouseX;
 public float mouseY;
 
 //Escenario
+private TiledMap map;
+Stage mainStage;
 private Texture blackBackground;
 private Texture backgroundTexture;
 private Texture periodicoTexture;
@@ -1615,7 +1615,8 @@ private boolean unaVez;
 	 * encargado de renderizar el juego, y en este caso,
 	 * también de comprobar la posición del ratón en
 	 * pantalla, además de comprobar si el reloj ha
-	 * llegado a cero.
+	 * llegado a cero o si el jugador ha abierto los
+	 * controles o el periódico.
 	 * @param delta Proporcionamos el deltaTime al método
 	 * para que pueda saber cuántos segundos han pasado
 	 * desde que se ejecutó el último frame.
@@ -1679,21 +1680,6 @@ private boolean unaVez;
     			controlesActivo=false;
         	}
     	}
-        
-        /* ---	CONTROLES ---
-        
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-        	if(activo==false) {
-        		mainStage.addActor(periodicoActor);
-       			activo=true;
-        	}
-        	else if (activo==true) {
-        		periodicoActor.remove();
-       			activo=false;
-        	}
-    	}
-    	
-    	*/
 
 	    if(reloj.tiempoRestante<=10 && !unaVez) {
 	    	ResourceManager.tiktak.play();

@@ -1,5 +1,11 @@
 package game;
 
+/**
+* Los parámetros del juego, los cuales sirven para
+ * ser utilizados para configurar las estadísticas,
+ * misiones, pantalla, audio, entre otros.
+ * @author Rubén Moya
+ */
 public class Parametros {
 
  //Screen
@@ -93,27 +99,45 @@ public class Parametros {
  public static boolean mision_un_glamuroso_collar_item = true;
  public static boolean mision_un_glamuroso_collar_completada = true;
  public static boolean mision_un_glamuroso_collar_finalizada = false;
- 
+
+/**
+ * Recibe el ancho de la pantalla.
+ */
 public static int getAnchoPantalla() {
 	return anchoPantalla;
 }
 
+/**
+ * Establece el ancho de la pantalla.
+ */
 public static void setAnchoPantalla(int anchoPantalla) {
 	Parametros.anchoPantalla = anchoPantalla;
 }
 
+/**
+ * Recibe el alto de la pantalla.
+ */
 public static int getAltoPantalla() {
 	return altoPantalla;
 }
 
+/**
+ * Establece el alto de la pantalla.
+ */
 public static void setAltoPantalla(int altoPantalla) {
 	Parametros.altoPantalla = altoPantalla;
 }
 
+/**
+ * Recibe el volumen del juego.
+ */
 public static float getMusicVolume() {
 	return musicVolume;
 }
 
+/**
+ * Establece el volumen del juego.
+ */
 public static void setMusicVolume(float musicVolume) {
 	Parametros.musicVolume = musicVolume;
 }

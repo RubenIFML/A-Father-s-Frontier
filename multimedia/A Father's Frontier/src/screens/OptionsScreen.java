@@ -16,6 +16,10 @@ import game.Parametros;
 import managers.AudioManager;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla de opciones del juego, en este caso, de la dificultad.
+ * @author Rubén Moya
+ */
 public class OptionsScreen extends BScreen{
 private Table tabla;
 private Table tabla2;

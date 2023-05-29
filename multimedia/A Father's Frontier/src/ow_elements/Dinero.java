@@ -10,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import game.Parametros;
 import managers.ResourceManager;
 
+/**
+ * El contador que muestra el dinero del jugador en la Ciudad.
+ * @author Rubén Moya
+ */
 public class Dinero extends Actor {
 
     private BitmapFont font;
@@ -45,7 +49,11 @@ public class Dinero extends Actor {
         batch.draw(dinero, getX(), getY(), getWidth(), getHeight());
         font.draw(batch, dineroActual, textX, textY);
     }
-    
+
+	/**
+	 * Toma el dinero del jugador, y si tiene menos de dos cifras, el texto tomará
+	 * una posición distinta que si tiene una.
+	 */
     private void comparacion() {
         if(Parametros.dinero <10) {
             textX=713;

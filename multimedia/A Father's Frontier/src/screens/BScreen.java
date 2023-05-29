@@ -13,6 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import game.Demo;
 import managers.ResourceManager;
 
+/**
+ * Establece la pantalla de la que extenderán todas las demás.
+ */
 public class BScreen implements Screen, InputProcessor{
 	final Demo game;
 	public ResourceManager resourceManager;

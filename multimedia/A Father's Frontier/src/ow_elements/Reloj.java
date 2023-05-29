@@ -10,6 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import managers.ResourceManager;
 
+/**
+ * Crea el reloj de la Ciudad, el cual va reduciéndose
+ * poco a poco hasta que llega a cero.
+ * @author Rubén Moya
+ */
 public class Reloj extends Actor {
 
     private BitmapFont font;
@@ -37,6 +42,10 @@ public class Reloj extends Actor {
         this.reloj = ResourceManager.getTexture("Menu/menuBoton.png");
     }
 
+	/**
+	 * El tiempo se va restando milisegundo a milisegundo hasta que llega a cero.
+	 * Dependiendo de la longitud del número, la posición del texto cambiará.
+	 */
     public void act(float delta) {
         super.act(delta);
         
@@ -58,19 +67,31 @@ public class Reloj extends Actor {
         font.draw(batch, tiempoTexto, textX, textY);
     }
 
+	/**
+	 * Comienza el reloj.
+	 */
     public void start() {
         empezar = true;
     }
-	
+
+	/**
+	 * Detiene el reloj.
+	 */
     public void stop() {
         empezar = false;
     }
-	
+
+	/**
+	 * Modifica el tiempo del reloj.
+	 */
     public void modTiempo(float tiempo) {
         tiempoRestante += tiempo;
         tiempoTexto = convertirTiempo(tiempoRestante);
     }
-    
+
+	/**
+	 * Conviere los segundos dados a milisegundos y minutos.
+	 */
     private String convertirTiempo(float tiempo) {
         int minutos = (int) tiempo / 60;
         int segundos = (int) tiempo % 60;

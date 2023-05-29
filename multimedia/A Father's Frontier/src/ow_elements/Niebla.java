@@ -6,6 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import managers.ResourceManager;
 
+/**
+ * Carga la niebla de la Ciudad.
+ * @author Rubén Moya
+ */
 public class Niebla extends Actor {
 
   private Texture texture;
@@ -23,12 +27,12 @@ public class Niebla extends Actor {
 
   @Override
   public void act(float delta) {
-    elapsedTime += delta; // aumenta el tiempo transcurrido
-    if (elapsedTime < 2f) { // durante los primeros 2 segundos
-      x += delta * 10f; // mueve hacia arriba a la derecha
+    elapsedTime += delta;
+    if (elapsedTime < 2f) {
+      x += delta * 10f;
       y += delta * 5f;
-    } else { // después de 2 segundos
-      x -= delta * 10f; // mueve en dirección contraria
+    } else {
+      x -= delta * 10f;
       y -= delta * 5f;
       if(elapsedTime > 4f) {
     	  elapsedTime=0;
@@ -36,9 +40,13 @@ public class Niebla extends Actor {
     }
   }
 
+  /**
+  * Mueve la niebla de un lado a otro.
+  * @author Rubén Moya
+  */
   @Override
   public void draw(Batch batch, float parentAlpha) {
-    batch.setColor(1, 1, 1, 0.3f); // Ajusta la opacidad según tu preferencia
+    batch.setColor(1, 1, 1, 0.3f);
     batch.draw(texture, getX()-19 + x, getY()-16 + y, getWidth()+50, getHeight()+50);
     batch.setColor(1, 1, 1, 1);
   }

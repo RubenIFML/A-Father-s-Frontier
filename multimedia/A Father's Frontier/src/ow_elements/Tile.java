@@ -3,6 +3,10 @@ package ow_elements;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import screens.OverWorldScreen;
 
+/**
+ * Establece las tiles que se superpondrán al jugador en la Ciudad.
+ * @author Rubén Moya
+ */
 public class Tile extends Element {
 	private OverWorldScreen nivel;
 	private String tile;
@@ -33,6 +37,9 @@ public class Tile extends Element {
 	    }
 	}
 
+	/**
+	 * Comprueba las colisiones de la Tile con el protagonista.
+	 */
 	private void comprobarColisiones() {
 		if (this.nivel.prota.overlaps(this)) {
 			this.nivel.prota.preventOverlap(this);
